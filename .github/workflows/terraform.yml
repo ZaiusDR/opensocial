@@ -23,7 +23,9 @@ jobs:
         run: terraform init ./terraform
       - name: 'Terraform Validate'
         run: terraform validate ./terraform
+      - name: 'Terraform Format'
+        run: terraform fmt ./terraform
       - name: 'Terraform Apply'
         run: terraform apply ./terraform
         env:
-          TF_CLI_ARGS: "-var-file=terraform/tfvars/vars_dev.tfvars"
+          TF_CLI_ARGS: "-var-file=terraform/tfvars/vars_dev.tfvars -auto-approve"
