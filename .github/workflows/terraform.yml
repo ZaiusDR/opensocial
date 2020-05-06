@@ -15,7 +15,7 @@ jobs:
       - uses: hashicorp/setup-terraform@v1
         with:
           terraform_version: 0.12.24
-      - name: 'Terraform Init'
-        run: terraform init
-      - id: validate
+      - name: 'Terraform Validate'
         run: terraform validate
+      - name: 'Terraform Apply'
+        run: terraform apply
