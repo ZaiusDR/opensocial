@@ -25,3 +25,5 @@ jobs:
         run: terraform validate ./terraform
       - name: 'Terraform Apply'
         run: terraform apply ./terraform
+        env:
+          TF_CLI_ARGS: "-var-file=tfvars/vars_dev.tfvars"
