@@ -5,27 +5,34 @@ jobs:
   terraform:
     name: 'Infra'
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./terraform
     env:
       AWS_REGION: ${{ secrets.AWS_REGION }}
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
     steps:
-      - name: 'Checkout'
-        uses: actions/checkout@master
-      - name: 'Set up Python'
-        uses: actions/setup-python@v1
-        with:
-          python-version: '3.7'
+      - uses: actions/checkout@v2
+
       - uses: hashicorp/setup-terraform@v1
         with:
           terraform_version: 0.12.24
+
+      - uses: actions/setup-python@v1
+        with:
+          python-version: '3.7'
+
       - name: 'Terraform Init'
-        run: terraform init ./terraform
+        run: terraform init
+
       - name: 'Terraform Validate'
-        run: terraform validate ./terraform
+        run: terraform validate
+
       - name: 'Terraform Format'
-        run: terraform fmt ./terraform
+        run: terraform fmt
+
       - name: 'Terraform Apply'
-        run: terraform apply ./terraform
+        run: terraform apply
         env:
-          TF_CLI_ARGS: "-var-file=terraform/tfvars/vars_dev.tfvars -auto-approve"
+          TF_CLI_ARGS: "-var-file=tfvars/vars_dev.tfvars -auto-approve"
