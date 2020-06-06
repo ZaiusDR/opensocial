@@ -61,6 +61,7 @@ resource "aws_iam_role_policy_attachment" "scrapper_lambda_trigger_attachment" {
 
 module "scrapper-lambda" {
   source = "nozaq/lambda-auto-package/aws"
+  version = "0.2.0"
 
   source_dir  = "${var.scrapper_lambda_path}/project_scrapper"
   output_path = "${var.scrapper_lambda_path}/source.zip"
