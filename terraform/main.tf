@@ -67,9 +67,10 @@ module "scrapper-lambda" {
   output_path = "${var.scrapper_lambda_path}/source.zip"
 
   build_triggers = {
+    requirements = base64sha256(file("${var.scrapper_lambda_path}/requirements.txt"))
     lambda = base64sha256(file("${var.scrapper_lambda_path}/project_scrapper/handler.py"))
   }
-  build_command = "python -m unittest ${var.scrapper_lambda_path}/tests/test_handler.py"
+  build_command = "${var.scrapper_lambda_path}/tests.sh"
 
   iam_role_name_prefix = "scrapper-lambda-role-"
 

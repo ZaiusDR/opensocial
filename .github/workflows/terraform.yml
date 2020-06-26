@@ -23,6 +23,9 @@ jobs:
         with:
           python-version: '3.7'
 
+      - name: 'Install Pip Tests Dependencies'
+        run: pip install -r ../scrapper_lambda/test_requirements.txt
+
       - name: 'Terraform Init'
         run: terraform init
 
