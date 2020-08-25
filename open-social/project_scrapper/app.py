@@ -1,7 +1,7 @@
 import json
 
-from open_social_core.infrastructure import github_gateway
-from open_social_core.service import project_service
+from infrastructure import github_gateway
+from service import project_service
 
 
 def lambda_handler(event, context):
@@ -11,6 +11,6 @@ def lambda_handler(event, context):
     return {
         "statusCode": 200,
         "body": json.dumps({
-            "message": "hello world",
+            "projects": projects,
         }),
     }

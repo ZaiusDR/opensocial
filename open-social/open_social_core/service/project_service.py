@@ -1,5 +1,5 @@
-from open_social_core.repository import project_repository
-from open_social_core.service import github_project_parser
+from repository import project_repository
+from service import github_project_parser
 
 
 def save(projects_json):

@@ -18,23 +18,20 @@ Resources:
         - python3.8
     Metadata:
       BuildMethod: python3.8
-#
-#  ProjectScrapperFunction:
-#    Type: AWS::Serverless::Function
-#    Properties:
-#      CodeUri: project_Scrapper/
-#      Handler: app.lambda_handler
-#      Runtime: python3.8
-#      Events:
-#        ScrapperTrigger:
-#          Type: Schedule
-#          Properties:
-#            Schedule: rate(10 minutes)
 
-#Outputs:
-#  HelloWorldFunction:
-#    Description: "Github Project Scrapper"
-#    Value: !GetAtt ProjectScrapperFunction.Arn
-#  HelloWorldFunctionIamRole:
-#    Description: "Implicit IAM Role created for Project Scrapper function"
-#    Value: !GetAtt ProjectScrapperFunction.Arn
+  ProjectScrapperFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: project_scrapper/
+      Handler: app.lambda_handler
+      Runtime: python3.8
+      Layers:
+        - Ref: OpenSocialCoreLayer
+
+Outputs:
+  ProjectScrapperFunction:
+    Description: "Github Project Scrapper"
+    Value: !GetAtt ProjectScrapperFunction.Arn
+  ProjectScrapperFunctionIamRole:
+    Description: "Implicit IAM Role created for Project Scrapper function"
+    Value: !GetAtt ProjectScrapperFunction.Arn

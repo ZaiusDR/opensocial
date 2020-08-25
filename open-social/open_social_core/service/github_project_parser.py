@@ -1,4 +1,4 @@
-from open_social_core.domain import github_project
+from domain import github_project
 
 
 def parse_project_activity(project):

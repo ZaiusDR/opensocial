@@ -1,0 +1,10 @@
+name: 'AWS SAM GitHub Action'
+description: 'Run AWS SAM Framework Commands'
+
+inputs:
+  sam_command:
+    description: 'AWS SAM subcommand to execute.'
+    required: true
+runs:
+  using: 'docker'
+  image: './Dockerfile'
