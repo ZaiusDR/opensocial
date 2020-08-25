@@ -1,5 +1,5 @@
-from scrapper_lambda.project_scrapper import github_gateway
-from scrapper_lambda.project_scrapper import project_service
+from open_social_core.infrastructure import github_gateway
+from open_social_core.service import project_service
 
 
 def lambda_handler(event, context):

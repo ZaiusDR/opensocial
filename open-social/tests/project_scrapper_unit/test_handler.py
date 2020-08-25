@@ -2,14 +2,14 @@ import unittest
 
 from unittest import mock
 
-from scrapper_lambda.project_scrapper import handler
-from scrapper_lambda.project_scrapper import github_project
+from project_scrapper import handler
+from open_social_core.domain import github_project
 
 
 class TestLambda(unittest.TestCase):
 
-    @mock.patch('scrapper_lambda.project_scrapper.github_gateway.get_project_list')
-    @mock.patch('scrapper_lambda.project_scrapper.project_service.save')
+    @mock.patch('project_scrapper.handler.github_gateway.get_project_list')
+    @mock.patch('project_scrapper.handler.project_service.save')
     def test_should_return_a_list_of_saved_projects(self, service_mock, gateway_mock):
         gateway_mock.return_value = {}
         expected_projects = [

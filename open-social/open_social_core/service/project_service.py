@@ -1,5 +1,5 @@
-from scrapper_lambda.project_scrapper import github_project_parser
-from scrapper_lambda.project_scrapper import project_repository
+from open_social_core.repository import project_repository
+from open_social_core.service import github_project_parser
 
 
 def save(projects_json):

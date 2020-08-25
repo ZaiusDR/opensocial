@@ -1,0 +1,40 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  open-social
+
+  Sample SAM Template for open-social
+
+Globals:
+  Function:
+    Timeout: 3
+
+Resources:
+  OpenSocialCoreLayer:
+    Type: AWS::Serverless::LayerVersion
+    Properties:
+      ContentUri: open_social_core
+      CompatibleRuntimes:
+        - python3.8
+    Metadata:
+      BuildMethod: python3.8
+#
+#  ProjectScrapperFunction:
+#    Type: AWS::Serverless::Function
+#    Properties:
+#      CodeUri: project_Scrapper/
+#      Handler: app.lambda_handler
+#      Runtime: python3.8
+#      Events:
+#        ScrapperTrigger:
+#          Type: Schedule
+#          Properties:
+#            Schedule: rate(10 minutes)
+
+#Outputs:
+#  HelloWorldFunction:
+#    Description: "Github Project Scrapper"
+#    Value: !GetAtt ProjectScrapperFunction.Arn
+#  HelloWorldFunctionIamRole:
+#    Description: "Implicit IAM Role created for Project Scrapper function"
+#    Value: !GetAtt ProjectScrapperFunction.Arn

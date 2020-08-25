@@ -1,4 +1,4 @@
-from scrapper_lambda.project_scrapper import github_project
+from open_social_core.domain import github_project
 
 
 def parse_project_activity(project):
@@ -7,4 +7,3 @@ def parse_project_activity(project):
         stargazers=project['stargazers_count'],
         project_url=project['html_url']
     )
-

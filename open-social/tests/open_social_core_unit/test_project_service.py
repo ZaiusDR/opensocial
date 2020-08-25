@@ -3,15 +3,15 @@ import unittest
 
 from unittest import mock
 
-from scrapper_lambda.project_scrapper import project_service
-from scrapper_lambda.project_scrapper import github_project
+from open_social_core.service import project_service
+from open_social_core.domain import github_project
 
-from scrapper_lambda.tests import constants
+from tests import constants
 
 
 class TestProjectService(unittest.TestCase):
 
-    @mock.patch('scrapper_lambda.project_scrapper.github_project_parser.parse_project_activity')
+    @mock.patch('open_social_core.service.project_service.github_project_parser.parse_project_activity')
     def test_should_parse_all_projects_in_json(self, parser_mock):
         projects_json = json.loads(constants.PROJECT_LIST_RESPONSE)
 
@@ -19,7 +19,7 @@ class TestProjectService(unittest.TestCase):
 
         self.assertEqual(parser_mock.call_count, 2)
 
-    @mock.patch('scrapper_lambda.project_scrapper.project_repository.save')
+    @mock.patch('open_social_core.service.project_service.project_repository.save')
     def test_should_save_github_projects(self, repository_mock):
         expected_projects = [
             github_project.GithubProject('project_1', 24, 'url_1'),

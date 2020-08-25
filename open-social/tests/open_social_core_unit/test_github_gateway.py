@@ -2,9 +2,9 @@ import unittest
 
 import responses
 
-from scrapper_lambda.project_scrapper import github_gateway
+from open_social_core.infrastructure import github_gateway
 
-from scrapper_lambda.tests import constants
+from tests import constants
 
 
 class TestGithubAPI(unittest.TestCase):

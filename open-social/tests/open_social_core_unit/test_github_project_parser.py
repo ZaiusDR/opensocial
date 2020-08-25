@@ -1,9 +1,9 @@
 import json
 import unittest
 
-from scrapper_lambda.project_scrapper import github_project_parser
+from open_social_core.service import github_project_parser
 
-from scrapper_lambda.tests import constants
+from tests import constants
 
 
 class TestProjectParser(unittest.TestCase):

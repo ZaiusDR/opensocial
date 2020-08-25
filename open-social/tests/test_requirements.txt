@@ -1,0 +1,5 @@
+-r ../project_scrapper/requirements.txt
+-r ../open_social_core/requirements.txt
+pytest
+pytest-mock
+responses
