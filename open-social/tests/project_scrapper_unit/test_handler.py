@@ -14,8 +14,8 @@ class TestLambda(unittest.TestCase):
     def test_should_return_a_list_of_saved_projects(self, service_mock, gateway_mock):
         gateway_mock.return_value = {}
         expected_projects = [
-            github_project.GithubProject('project_1', 24, 'url_1'),
-            github_project.GithubProject('project_2', 25, 'url_2')
+            github_project.GithubProject('project_1', 'user1/project_1', 24, 'url_1'),
+            github_project.GithubProject('project_2', 'user2/project_2', 25, 'url_2')
         ]
         expected_response = {
             'statusCode': 200, 'body': json.dumps({"projects": expected_projects})

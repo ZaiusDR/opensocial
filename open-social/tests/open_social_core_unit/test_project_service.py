@@ -22,8 +22,8 @@ class TestProjectService(unittest.TestCase):
     @mock.patch('open_social_core.service.project_service.project_repository.save')
     def test_should_save_github_projects(self, repository_mock):
         expected_projects = [
-            github_project.GithubProject('project_1', 24, 'url_1'),
-            github_project.GithubProject('project_2', 25, 'url_2')
+            github_project.GithubProject('project_1', 'user1/project_1', 24, 'url_1'),
+            github_project.GithubProject('project_2', 'user2/project_2', 25, 'url_2')
         ]
         repository_mock.return_value = expected_projects
 
