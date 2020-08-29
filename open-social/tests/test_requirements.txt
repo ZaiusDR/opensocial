@@ -1,5 +1,6 @@
 -r ../project_scrapper/requirements.txt
 -r ../open_social_core/requirements.txt
+moto
 pytest
 pytest-mock
 responses

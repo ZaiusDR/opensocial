@@ -25,8 +25,22 @@ Resources:
       CodeUri: project_scrapper/
       Handler: app.lambda_handler
       Runtime: python3.8
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref ProjectDynamoDBTable
       Layers:
         - Ref: OpenSocialCoreLayer
+
+  ProjectDynamoDBTable:
+    Type: AWS::Serverless::SimpleTable
+    Properties:
+      PrimaryKey:
+        Name: 'full_name'
+        Type: String
+      TableName: open-social-projects
+      ProvisionedThroughput:
+        ReadCapacityUnits: 25
+        WriteCapacityUnits: 25
 
 Outputs:
   ProjectScrapperFunction:

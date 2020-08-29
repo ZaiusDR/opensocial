@@ -27,12 +27,14 @@ jobs:
           python-version: '3.8'
 
       - name: 'Install Pip Dependencies'
-        run: pip install -r open-social/tests/test_requirements.txt
+        run: pip install --use-feature=2020-resolver -r open-social/tests/test_requirements.txt
 
       - name: 'Run Unittests'
         working-directory: ./open-social
         run: |
           pytest -v tests
+        env:
+          AWS_DEFAULT_REGION: 'eu-central-1'
 
       - name: 'Validate SAM App'
         uses: ./actions/aws-sam

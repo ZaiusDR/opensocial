@@ -12,7 +12,8 @@ from tests import constants
 class TestProjectService(unittest.TestCase):
 
     @mock.patch('open_social_core.service.project_service.github_project_parser.parse_project_activity')
-    def test_should_parse_all_projects_in_json(self, parser_mock):
+    @mock.patch('open_social_core.service.project_service.project_repository.save')
+    def test_should_parse_all_projects_in_json(self, repository_mock, parser_mock):
         projects_json = json.loads(constants.PROJECT_LIST_RESPONSE)
 
         project_service.save(projects_json)
