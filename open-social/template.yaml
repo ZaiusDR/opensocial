@@ -32,6 +32,21 @@ Resources:
       Layers:
         - Ref: OpenSocialCoreLayer
 
+  ApiCrudLambdaFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: open_social_crud/
+      Handler: app.lambda_handler
+      Runtime: python3.8
+      Events:
+        ListEvent:
+          Type: Api
+          Properties:
+            Path: /projects
+            Method: get
+            RestApiId:
+              Ref: OpenSocialAPI
+
   ProjectDynamoDBTable:
     Type: AWS::Serverless::SimpleTable
     Properties:
@@ -42,6 +57,12 @@ Resources:
       ProvisionedThroughput:
         ReadCapacityUnits: 25
         WriteCapacityUnits: 25
+
+  OpenSocialAPI:
+    Type: AWS::Serverless::Api
+    Properties:
+      StageName: dev
+
 
 Outputs:
   ProjectScrapperFunction:
