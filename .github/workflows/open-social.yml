@@ -32,7 +32,7 @@ jobs:
       - name: 'Run Unittests'
         working-directory: ./open-social
         run: |
-          pytest -v tests
+          pytest
         env:
           AWS_DEFAULT_REGION: 'eu-central-1'
 
