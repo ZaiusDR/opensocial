@@ -36,7 +36,7 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       CodeUri: open_social_crud/
-      Handler: app.lambda_handler
+      Handler: app.list_projects
       Runtime: python3.8
       Events:
         ListEvent:
