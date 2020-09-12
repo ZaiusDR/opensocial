@@ -34,7 +34,7 @@ class TestApp(unittest.TestCase):
         ]
         project_repository.save(projects)
 
-        response = app.list_projects()
+        response = app.list_projects({}, {})
 
         print(response)
 
