@@ -32,9 +32,11 @@ class TestApp(unittest.TestCase):
             github_project.GithubProject('project_1', 'user1/project_1', 24, 'url_1'),
             github_project.GithubProject('project_2', 'user2/project_2', 25, 'url_2')
         ]
-        expected_project_num = 2
         project_repository.save(projects)
 
-        listed_projects = app.list_projects()
+        response = app.list_projects()
 
-        self.assertEqual(len(listed_projects['Item']), expected_project_num)
+        print(response)
+
+        self.assertEqual(response['statusCode'], 200)
+        self.assertEqual(len(response['body']), 2)

@@ -17,11 +17,11 @@ def lambda_handler(event, context):
 
 def list_projects():
     client = boto3.client('dynamodb')
-    return client.get_item(
-        TableName='open-social-projects',
-        Key={
-            'full_name': {
-                'S': 'user1/project_1'
-            }
-        }
+    query_response = client.scan(
+        TableName='open-social-projects'
     )
+
+    return {
+        "statusCode": 200,
+        "body": query_response['Items']
+    }
