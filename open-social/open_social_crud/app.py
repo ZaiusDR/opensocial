@@ -23,7 +23,5 @@ def list_projects(event, context):
 
     return {
         "statusCode": 200,
-        "body": query_response['Items'],
-        "headers": {},
-        "isBase64Encoded": False
+        "body": query_response['Items']
     }
