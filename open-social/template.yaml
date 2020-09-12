@@ -38,6 +38,9 @@ Resources:
       CodeUri: open_social_crud/
       Handler: app.list_projects
       Runtime: python3.8
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref ProjectDynamoDBTable
       Events:
         ListEvent:
           Type: Api
