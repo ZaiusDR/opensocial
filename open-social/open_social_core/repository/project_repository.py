@@ -1,19 +1,26 @@
 import boto3
 
+TABLE_NAME = 'open-social-projects'
+
 
 def save(projects):
-    db_client = boto3.client('dynamodb')
+    table = _get_table()
     for project in projects:
-        db_client.put_item(
-            TableName='open-social-projects',
+        table.put_item(
             Item={
-                'full_name': {
-                        'S': project.full_name
-                },
-                'project_name': {
-                    'S': project.project_name
-                }
+                'full_name': project.full_name,
+                'project_name': project.project_name
             }
         )
 
     return projects
+
+
+def get_projects():
+    table = _get_table()
+    return table.scan()['Items']
+
+
+def _get_table():
+    dynamodb = boto3.resource('dynamodb')
+    return dynamodb.Table(TABLE_NAME)

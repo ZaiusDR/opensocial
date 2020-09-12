@@ -16,12 +16,9 @@ def lambda_handler(event, context):
 
 
 def list_projects(event, context):
-    client = boto3.client('dynamodb')
-    query_response = client.scan(
-        TableName='open-social-projects'
-    )
+    projects = project_service.get_projects()
 
     return {
         "statusCode": 200,
-        "body": json.dumps(query_response['Items'])
+        "body": json.dumps(projects)
     }

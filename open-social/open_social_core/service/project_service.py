@@ -7,3 +7,7 @@ def save(projects_json):
                 for project
                 in projects_json['items']]
     return project_repository.save(projects)
+
+
+def get_projects():
+    return project_repository.get_projects()
