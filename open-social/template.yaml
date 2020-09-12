@@ -41,6 +41,8 @@ Resources:
       Policies:
         - DynamoDBCrudPolicy:
             TableName: !Ref ProjectDynamoDBTable
+      Layers:
+        - Ref: OpenSocialCoreLayer
       Events:
         ListEvent:
           Type: Api
