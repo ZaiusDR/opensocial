@@ -1,4 +1,5 @@
 import unittest
+import json
 
 import boto3
 import moto
@@ -36,7 +37,5 @@ class TestApp(unittest.TestCase):
 
         response = app.list_projects({}, {})
 
-        print(response)
-
         self.assertEqual(response['statusCode'], 200)
-        self.assertEqual(len(response['body']), 2)
+        self.assertEqual(len(json.loads(response['body'])), 2)
