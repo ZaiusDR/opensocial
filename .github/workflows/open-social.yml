@@ -122,11 +122,13 @@ jobs:
         with:
           node-version: '12'
 
-      - name: 'DEBUG'
-        run: ls -la
-
       - name: 'Install Dependencies'
         run: yarn install
+
+      - name: 'Unit Tests'
+        run: yarn test
+        env:
+          CI: true
 
       - name: 'Build App'
         run: yarn build
