@@ -1,8 +1,5 @@
 import json
 
-import boto3
-
-
 from service import project_service
 
 
@@ -20,5 +17,6 @@ def list_projects(event, context):
 
     return {
         "statusCode": 200,
-        "body": json.dumps(projects)
+        "body": json.dumps(projects),
+        "headers": {"Access-Control-Allow-Origin": "*"}
     }
