@@ -57,7 +57,7 @@ jobs:
       - name: 'Deploy SAM App'
         uses: ./actions/aws-sam
         with:
-          sam_command: deploy --template-file .aws-sam/build/template.yaml --stack-name open-social --capabilities CAPABILITY_NAMED_IAM --s3-bucket open-social-sam-layers
+          sam_command: deploy --template-file .aws-sam/build/template.yaml --stack-name open-social --capabilities CAPABILITY_NAMED_IAM --s3-bucket open-social-sam-layers --no-fail-on-empty-changeset
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
@@ -74,7 +74,7 @@ jobs:
       - name: 'Checkout'
         uses: actions/checkout@v2
 
-      - name: Configure AWS credentials from Test account
+      - name: 'Configure AWS credentials'
         uses: aws-actions/configure-aws-credentials@v1
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
