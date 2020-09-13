@@ -1,4 +1,5 @@
 .terraform/
+*terraform.tfstate*
 .idea/
 *__pycache__
 *.zip
