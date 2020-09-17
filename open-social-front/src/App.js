@@ -20,23 +20,20 @@ class App extends React.Component {
   }
 
   render() {
-    let projects;
-    if (this.state.projects !== null) {
-      projects = (
-        <ul>
-          {this.state.projects.map(project =>
-            <Project project={project} full_name={project}/>
-          )}
-        </ul>
-      )
-    }
     return (
       <div className="App">
         <header className="App-header">
             Open Social
         </header>
         <div>
-          {projects}
+          {this.state.projects ?
+            <ul>
+              {this.state.projects.map(project =>
+                <Project key={project.full_name} project={project}/>
+              )}
+            </ul> :
+            null
+          }
         </div>
       </div>
     );

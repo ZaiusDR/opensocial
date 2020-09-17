@@ -1,6 +1,5 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import { rest } from 'msw'
 import Project from "./Project";
 
 const project = {
