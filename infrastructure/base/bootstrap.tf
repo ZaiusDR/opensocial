@@ -1,10 +1,9 @@
 module "terraform_state_backend" {
-  source     = "git::https://github.com/cloudposse/terraform-aws-tfstate-backend.git"
+  source     = "git::https://github.com/cloudposse/terraform-aws-tfstate-backend.git?ref=tags/0.26.0"
   namespace  = "Open Social"
   stage      = "base"
   name       = "open-social"
   attributes = ["state"]
-  region     = "eu-west-1"
 
   terraform_state_file = "terraform.tfstate"
 
