@@ -98,6 +98,42 @@ jobs:
       - name: 'Terraform Apply'
         run: terraform apply -auto-approve
 
+  infra-top:
+    name: 'Top infrastructure'
+    needs: 'infra-base'
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./infrastructure/top
+
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v2
+
+      - name: 'Configure AWS credentials'
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      - name: 'Configure Terraform'
+        uses: hashicorp/setup-terraform@v1
+        with:
+          terraform_version: 0.12.29
+
+      - name: 'Terraform Init'
+        run: terraform init
+
+      - name: 'Terraform Validate'
+        run: terraform validate
+
+      - name: 'Terraform Format'
+        run: terraform fmt -check -diff
+
+      - name: 'Terraform Apply'
+        run: terraform apply -auto-approve
+
   static-host:
     name: 'Build Frontend'
     runs-on: ubuntu-latest
