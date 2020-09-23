@@ -1,3 +1,29 @@
+resource "aws_s3_bucket" "open-social-front" {
+  bucket = var.frontend_bucket_name
+  acl    = "private"
+
+  website {
+    index_document = "index.html"
+  }
+
+  policy = <<EOF
+{
+  "Version": "2008-10-17",
+  "Statement": [
+    {
+      "Sid": "PublicReadForGetBucketObjects",
+      "Effect": "Allow",
+      "Principal": {
+        "CanonicalUser": "${aws_cloudfront_origin_access_identity.open_social_cloud_front_identity.s3_canonical_user_id}"
+      },
+      "Action": "s3:GetObject",
+      "Resource": "arn:aws:s3:::${var.frontend_bucket_name}/*"
+    }
+  ]
+}
+EOF
+}
+
 data "aws_route53_zone" "open_social_hosted_zone" {
   zone_id = var.open_social_hosted_zone
 }
@@ -37,7 +63,7 @@ resource "aws_cloudfront_distribution" "open_social_front_cloud_front" {
     }
   }
   origin {
-    domain_name = data.terraform_remote_state.base_remote_state.outputs.front_s3_bucket_domain_name
+    domain_name = aws_s3_bucket.open-social-front.bucket_domain_name
     origin_id   = var.cloud_front_origin_id
 
     s3_origin_config {

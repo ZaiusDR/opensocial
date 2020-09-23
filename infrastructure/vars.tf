@@ -1,3 +1,8 @@
+variable "frontend_bucket_name" {
+  type    = string
+  default = "open-social-front"
+}
+
 variable "open_social_hosted_zone" {
   type    = string
   default = "Z056117665GXDL3UXFF7"
