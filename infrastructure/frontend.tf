@@ -58,7 +58,7 @@ resource "aws_cloudfront_distribution" "open_social_front_cloud_front" {
     forwarded_values {
       query_string = false
       cookies {
-        forward = "all"
+        forward = "none"
       }
     }
   }
