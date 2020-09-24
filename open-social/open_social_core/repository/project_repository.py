@@ -9,7 +9,12 @@ def save(projects):
         table.put_item(
             Item={
                 'full_name': project.full_name,
-                'project_name': project.project_name
+                'project_name': project.project_name,
+                'stargazers': project.stargazers,
+                'watchers': project.watchers,
+                'project_url': project.project_url,
+                'created': project.created,
+                'updated': project.updated
             }
         )
 

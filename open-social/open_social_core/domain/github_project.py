@@ -6,6 +6,9 @@ GithubProject = collections.namedtuple(
         'project_name',
         'full_name',
         'stargazers',
-        'project_url'
+        'watchers',
+        'project_url',
+        'created',
+        'updated'
     ]
 )

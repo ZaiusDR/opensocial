@@ -1,10 +1,12 @@
+import decimal
 import unittest
 import json
 
 import boto3
 import moto
 
-from open_social_core.domain import github_project
+from tests import fixtures
+
 from open_social_core.repository import project_repository
 from open_social_crud import app
 
@@ -29,13 +31,15 @@ class TestApp(unittest.TestCase):
                 }
             ]
         )
-        projects = [
-            github_project.GithubProject('project_1', 'user1/project_1', 24, 'url_1'),
-            github_project.GithubProject('project_2', 'user2/project_2', 25, 'url_2')
-        ]
+        projects = fixtures.github_projects
         project_repository.save(projects)
 
         response = app.list_projects({}, {})
 
         self.assertEqual(response['statusCode'], 200)
         self.assertEqual(len(json.loads(response['body'])), 2)
+
+    def test_should_convert_decimal_to_integer(self):
+        converted = app.decimal_default(decimal.Decimal(3))
+
+        self.assertTrue(isinstance(converted, int))

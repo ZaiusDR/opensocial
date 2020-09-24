@@ -4,9 +4,9 @@ import unittest
 from unittest import mock
 
 from open_social_core.service import project_service
-from open_social_core.domain import github_project
 
 from tests import constants
+from tests import fixtures
 
 
 class TestProjectService(unittest.TestCase):
@@ -22,10 +22,7 @@ class TestProjectService(unittest.TestCase):
 
     @mock.patch('open_social_core.service.project_service.project_repository.save')
     def test_should_save_github_projects(self, repository_mock):
-        expected_projects = [
-            github_project.GithubProject('project_1', 'user1/project_1', 24, 'url_1'),
-            github_project.GithubProject('project_2', 'user2/project_2', 25, 'url_2')
-        ]
+        expected_projects = fixtures.github_projects
         repository_mock.return_value = expected_projects
 
         projects = project_service.save(json.loads(constants.PROJECT_LIST_RESPONSE))

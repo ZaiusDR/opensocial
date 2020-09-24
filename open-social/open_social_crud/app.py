@@ -1,3 +1,4 @@
+import decimal
 import json
 
 from service import project_service
@@ -17,6 +18,12 @@ def list_projects(event, context):
 
     return {
         "statusCode": 200,
-        "body": json.dumps(projects),
+        "body": json.dumps(projects, default=decimal_default),
         "headers": {"Access-Control-Allow-Origin": "*"}
     }
+
+
+def decimal_default(obj):
+    if isinstance(obj, decimal.Decimal):
+        return int(obj)
+    raise TypeError
