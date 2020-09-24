@@ -22,19 +22,21 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-            Open Social
-        </header>
-        <div>
-          {this.state.projects ?
-            <ul>
-              {this.state.projects.map(project =>
-                <Project key={project.full_name} project={project}/>
-              )}
-            </ul> :
-            null
-          }
-        </div>
+        {this.state.projects ?
+          <div>
+            <header className="App-header">
+              Open Social
+            </header>
+            <div>
+              <ul style={{"listStyleType": "none"}}>
+                {this.state.projects.map(project =>
+                  <Project key={project.full_name} project={project}/>
+                )}
+              </ul>
+            </div>
+          </div> :
+          null
+        }
       </div>
     );
   }
