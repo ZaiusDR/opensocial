@@ -25,10 +25,11 @@ class App extends React.Component {
         {this.state.projects ?
           <div>
             <header className="App-header">
-              Open Social
+              <img className="Header-image" src={'logo192.png'} alt={'site-logo'}/>
+              <p>Open Social</p>
             </header>
             <div>
-              <ul style={{"listStyleType": "none"}}>
+              <ul className="Project-list">
                 {this.state.projects.map(project =>
                   <Project key={project.full_name} project={project}/>
                 )}
