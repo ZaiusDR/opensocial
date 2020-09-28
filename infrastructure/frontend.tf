@@ -55,6 +55,7 @@ resource "aws_cloudfront_distribution" "open_social_front_cloud_front" {
     cached_methods         = ["GET", "HEAD"]
     target_origin_id       = var.cloud_front_origin_id
     viewer_protocol_policy = "redirect-to-https"
+
     forwarded_values {
       query_string = false
       cookies {
@@ -76,7 +77,8 @@ resource "aws_cloudfront_distribution" "open_social_front_cloud_front" {
     }
   }
   viewer_certificate {
-    acm_certificate_arn = data.aws_acm_certificate.open_social_certificate.arn
-    ssl_support_method  = "sni-only"
+    acm_certificate_arn      = data.aws_acm_certificate.open_social_certificate.arn
+    ssl_support_method       = "sni-only"
+    minimum_protocol_version = "TLSv1.2_2019"
   }
 }
