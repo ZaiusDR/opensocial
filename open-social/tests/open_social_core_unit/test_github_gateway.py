@@ -7,8 +7,8 @@ from open_social_core.infrastructure import github_gateway
 from tests import constants
 
 
+@responses.activate
 class TestGithubAPI(unittest.TestCase):
-    @responses.activate
     def test_should_get_a_project_list_from_github(self):
         responses.add(
             responses.GET,
