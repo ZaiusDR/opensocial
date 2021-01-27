@@ -5,10 +5,14 @@ GithubProject = collections.namedtuple(
     [
         'project_name',
         'full_name',
+        'description',
+        'open_issues',
         'stargazers',
         'watchers',
+        'forks',
         'project_url',
         'created',
-        'updated'
+        'updated',
+        'language'
     ]
 )

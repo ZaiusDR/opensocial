@@ -13,8 +13,12 @@ class TestProjectParser(unittest.TestCase):
         )
 
         self.assertEqual(project_information.project_name, 'crisischeckin')
+        self.assertEqual(project_information.description, 'Crisischeckin Humanitarian Toolbox repository')
+        self.assertEqual(project_information.open_issues, 258)
         self.assertEqual(project_information.stargazers, 177)
         self.assertEqual(project_information.watchers, 177)
+        self.assertEqual(project_information.forks, 172)
         self.assertEqual(project_information.project_url, 'https://github.com/HTBox/crisischeckin')
         self.assertEqual(project_information.created, '2013-07-24T14:14:46Z')
         self.assertEqual(project_information.updated, '2020-04-07T23:08:23Z')
+        self.assertEqual(project_information.language, 'C#')

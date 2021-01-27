@@ -208,3 +208,30 @@ PROJECT_LIST_RESPONSE = '''
     ]
 }
 '''
+
+
+CONTRIBUTORS = '''
+[
+    {
+        "login": "Contributor",
+        "id": 493969,
+        "node_id": "MDQ6VXNlcjQ5Mzk2OQ==",
+        "avatar_url": "https://avatars.githubusercontent.com/u/493969?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/Contributor",
+        "html_url": "https://github.com/Contributor",
+        "followers_url": "https://api.github.com/users/Contributor/followers",
+        "following_url": "https://api.github.com/users/Contributor/following{/other_user}",
+        "gists_url": "https://api.github.com/users/Contributor/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/Contributor/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/Contributor/subscriptions",
+        "organizations_url": "https://api.github.com/users/Contributor/orgs",
+        "repos_url": "https://api.github.com/users/Contributor/repos",
+        "events_url": "https://api.github.com/users/Contributor/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/Contributor/received_events",
+        "type": "User",
+        "site_admin": false,
+        "contributions": 184
+    }
+]
+'''
