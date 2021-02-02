@@ -235,3 +235,177 @@ CONTRIBUTORS = '''
     }
 ]
 '''
+
+
+SAMPLE_COMMITS = r''' 
+[
+    {
+        "sha": "52774dbad84cf4e0c07e461321349f1ae294edfa",
+        "node_id": "MDY6Q29tbWl0MTE2MzYzOTc6NTI3NzRkYmFkODRjZjRlMGMwN2U0NjEzMjEzNDlmMWFlMjk0ZWRmYQ==",
+        "commit": {
+            "author": {
+                "name": "Tony Surma",
+                "email": "tony@surmafamily.com",
+                "date": "2017-04-22T14:14:23Z"
+            },
+            "committer": {
+                "name": "GitHub",
+                "email": "noreply@github.com",
+                "date": "2017-04-22T14:14:23Z"
+            },
+            "message": "Merge pull request #702 from cmgutmanis/save-resources-from-home-page\n\nAdding mapping to resource object from homepage.",
+            "tree": {
+                "sha": "884ad1f7d828ef561e99f64eff1dc1655e2162dd",
+                "url": "https://api.github.com/repos/HTBox/crisischeckin/git/trees/884ad1f7d828ef561e99f64eff1dc1655e2162dd"
+            },
+            "url": "https://api.github.com/repos/HTBox/crisischeckin/git/commits/52774dbad84cf4e0c07e461321349f1ae294edfa",
+            "comment_count": 0,
+            "verification": {
+                "verified": false,
+                "reason": "unsigned",
+                "signature": null,
+                "payload": null
+            }
+        },
+        "url": "https://api.github.com/repos/HTBox/crisischeckin/commits/52774dbad84cf4e0c07e461321349f1ae294edfa",
+        "html_url": "https://github.com/HTBox/crisischeckin/commit/52774dbad84cf4e0c07e461321349f1ae294edfa",
+        "comments_url": "https://api.github.com/repos/HTBox/crisischeckin/commits/52774dbad84cf4e0c07e461321349f1ae294edfa/comments",
+        "author": {
+            "login": "tonysurma",
+            "id": 5067595,
+            "node_id": "MDQ6VXNlcjUwNjc1OTU=",
+            "avatar_url": "https://avatars.githubusercontent.com/u/5067595?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/tonysurma",
+            "html_url": "https://github.com/tonysurma",
+            "followers_url": "https://api.github.com/users/tonysurma/followers",
+            "following_url": "https://api.github.com/users/tonysurma/following{/other_user}",
+            "gists_url": "https://api.github.com/users/tonysurma/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/tonysurma/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/tonysurma/subscriptions",
+            "organizations_url": "https://api.github.com/users/tonysurma/orgs",
+            "repos_url": "https://api.github.com/users/tonysurma/repos",
+            "events_url": "https://api.github.com/users/tonysurma/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/tonysurma/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "committer": {
+            "login": "web-flow",
+            "id": 19864447,
+            "node_id": "MDQ6VXNlcjE5ODY0NDQ3",
+            "avatar_url": "https://avatars.githubusercontent.com/u/19864447?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/web-flow",
+            "html_url": "https://github.com/web-flow",
+            "followers_url": "https://api.github.com/users/web-flow/followers",
+            "following_url": "https://api.github.com/users/web-flow/following{/other_user}",
+            "gists_url": "https://api.github.com/users/web-flow/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/web-flow/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/web-flow/subscriptions",
+            "organizations_url": "https://api.github.com/users/web-flow/orgs",
+            "repos_url": "https://api.github.com/users/web-flow/repos",
+            "events_url": "https://api.github.com/users/web-flow/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/web-flow/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "parents": [
+            {
+                "sha": "2d837f280d4a6f474e17b400d12a32f6a5d71c37",
+                "url": "https://api.github.com/repos/HTBox/crisischeckin/commits/2d837f280d4a6f474e17b400d12a32f6a5d71c37",
+                "html_url": "https://github.com/HTBox/crisischeckin/commit/2d837f280d4a6f474e17b400d12a32f6a5d71c37"
+            },
+            {
+                "sha": "7e072c470bb31b3a265ac53d0beb73f3e0856b7b",
+                "url": "https://api.github.com/repos/HTBox/crisischeckin/commits/7e072c470bb31b3a265ac53d0beb73f3e0856b7b",
+                "html_url": "https://github.com/HTBox/crisischeckin/commit/7e072c470bb31b3a265ac53d0beb73f3e0856b7b"
+            }
+        ]
+    },
+    {
+        "sha": "2d837f280d4a6f474e17b400d12a32f6a5d71c37",
+        "node_id": "MDY6Q29tbWl0MTE2MzYzOTc6MmQ4MzdmMjgwZDRhNmY0NzRlMTdiNDAwZDEyYTMyZjZhNWQ3MWMzNw==",
+        "commit": {
+            "author": {
+                "name": "Tony Surma",
+                "email": "tony@surmafamily.com",
+                "date": "2017-04-22T14:13:56Z"
+            },
+            "committer": {
+                "name": "GitHub",
+                "email": "noreply@github.com",
+                "date": "2017-04-22T14:13:56Z"
+            },
+            "message": "Merge pull request #706 from abhijeet2083/master\n\nfixed the issue where organization dropdown error not clearing on account registration page #704",
+            "tree": {
+                "sha": "cffb232e050a7dc6ca5a56415ab1370d0ebcb359",
+                "url": "https://api.github.com/repos/HTBox/crisischeckin/git/trees/cffb232e050a7dc6ca5a56415ab1370d0ebcb359"
+            },
+            "url": "https://api.github.com/repos/HTBox/crisischeckin/git/commits/2d837f280d4a6f474e17b400d12a32f6a5d71c37",
+            "comment_count": 0,
+            "verification": {
+                "verified": false,
+                "reason": "unsigned",
+                "signature": null,
+                "payload": null
+            }
+        },
+        "url": "https://api.github.com/repos/HTBox/crisischeckin/commits/2d837f280d4a6f474e17b400d12a32f6a5d71c37",
+        "html_url": "https://github.com/HTBox/crisischeckin/commit/2d837f280d4a6f474e17b400d12a32f6a5d71c37",
+        "comments_url": "https://api.github.com/repos/HTBox/crisischeckin/commits/2d837f280d4a6f474e17b400d12a32f6a5d71c37/comments",
+        "author": {
+            "login": "tonysurma",
+            "id": 5067595,
+            "node_id": "MDQ6VXNlcjUwNjc1OTU=",
+            "avatar_url": "https://avatars.githubusercontent.com/u/5067595?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/tonysurma",
+            "html_url": "https://github.com/tonysurma",
+            "followers_url": "https://api.github.com/users/tonysurma/followers",
+            "following_url": "https://api.github.com/users/tonysurma/following{/other_user}",
+            "gists_url": "https://api.github.com/users/tonysurma/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/tonysurma/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/tonysurma/subscriptions",
+            "organizations_url": "https://api.github.com/users/tonysurma/orgs",
+            "repos_url": "https://api.github.com/users/tonysurma/repos",
+            "events_url": "https://api.github.com/users/tonysurma/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/tonysurma/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "committer": {
+            "login": "web-flow",
+            "id": 19864447,
+            "node_id": "MDQ6VXNlcjE5ODY0NDQ3",
+            "avatar_url": "https://avatars.githubusercontent.com/u/19864447?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/web-flow",
+            "html_url": "https://github.com/web-flow",
+            "followers_url": "https://api.github.com/users/web-flow/followers",
+            "following_url": "https://api.github.com/users/web-flow/following{/other_user}",
+            "gists_url": "https://api.github.com/users/web-flow/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/web-flow/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/web-flow/subscriptions",
+            "organizations_url": "https://api.github.com/users/web-flow/orgs",
+            "repos_url": "https://api.github.com/users/web-flow/repos",
+            "events_url": "https://api.github.com/users/web-flow/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/web-flow/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "parents": [
+            {
+                "sha": "df644d98f0dc4c415d47a18b890790514063bfa3",
+                "url": "https://api.github.com/repos/HTBox/crisischeckin/commits/df644d98f0dc4c415d47a18b890790514063bfa3",
+                "html_url": "https://github.com/HTBox/crisischeckin/commit/df644d98f0dc4c415d47a18b890790514063bfa3"
+            },
+            {
+                "sha": "bcfdd5dd425840ced4f775d7318fd5332628c901",
+                "url": "https://api.github.com/repos/HTBox/crisischeckin/commits/bcfdd5dd425840ced4f775d7318fd5332628c901",
+                "html_url": "https://github.com/HTBox/crisischeckin/commit/bcfdd5dd425840ced4f775d7318fd5332628c901"
+            }
+        ]
+    }
+]
+'''

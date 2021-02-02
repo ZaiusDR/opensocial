@@ -5,8 +5,8 @@ from service import project_service
 
 
 def lambda_handler(event, context):
-    projects_json = github_gateway.get_project_list(event)
-    projects = project_service.save(projects_json)
+    github_projects = github_gateway.get_project_list(event)
+    projects = project_service.bulk_save(github_projects)
 
     return {
         "statusCode": 200,

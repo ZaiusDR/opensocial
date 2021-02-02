@@ -13,6 +13,7 @@ GithubProject = collections.namedtuple(
         'project_url',
         'created',
         'updated',
-        'language'
+        'language',
+        'last_commit_dates'
     ]
 )

@@ -11,7 +11,7 @@ from project_scrapper import app
 class TestLambda(unittest.TestCase):
 
     @mock.patch('project_scrapper.app.github_gateway.get_project_list')
-    @mock.patch('project_scrapper.app.project_service.save')
+    @mock.patch('project_scrapper.app.project_service.bulk_save')
     def test_should_return_a_list_of_saved_projects(self, service_mock, gateway_mock):
         gateway_mock.return_value = {}
         event = {'q': 'humanitarian'}

@@ -4,4 +4,4 @@ mock==4.0.2
 moto
 pytest
 pytest-mock
-responses
+responses==0.12.1

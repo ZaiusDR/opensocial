@@ -1,7 +1,7 @@
 from domain import github_project
 
 
-def parse_project_activity(project):
+def parse_project_activity(project, commits_json):
     return github_project.GithubProject(
         project_name=project['name'],
         full_name=project['full_name'],
@@ -13,5 +13,10 @@ def parse_project_activity(project):
         project_url=project['html_url'],
         created=project['created_at'],
         updated=project['updated_at'],
-        language=project['language']
+        language=project['language'],
+        last_commit_dates=[
+            commit['commit']['author']['date']
+            for commit in commits_json
+            if type(commits_json) is list
+        ]
     )

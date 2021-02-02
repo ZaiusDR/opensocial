@@ -18,7 +18,8 @@ def save(projects):
                 'project_url': project.project_url,
                 'created': project.created,
                 'updated': project.updated,
-                'language': project.language
+                'language': project.language,
+                'last_commit_dates': project.last_commit_dates
             }
         )
 
