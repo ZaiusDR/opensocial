@@ -7,6 +7,8 @@ REPOS_SEARCH_URL = GITHUB_API_URL + 'search/repositories'
 
 
 def get_project_list(query):
+    query.update(sort='updated', per_page='50')
+    
     response = requests.get(REPOS_SEARCH_URL, params=query)
     github_projects = []
 

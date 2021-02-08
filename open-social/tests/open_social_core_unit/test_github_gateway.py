@@ -13,7 +13,7 @@ class TestGithubAPI(unittest.TestCase):
     @responses.activate
     def test_should_get_a_project_list_from_github(self):
         query = {'q': 'fake_query'}
-        repos_url = f'{github_gateway.REPOS_SEARCH_URL}?q=fake_query'
+        repos_url = f'{github_gateway.REPOS_SEARCH_URL}?q=fake_query&sort=updated&per_page=50'
         repo1_commits_url = 'https://api.github.com/repos/HTBox/crisischeckin/commits'
         repo2_commits_url = 'https://api.github.com/repos/kobotoolbox/kobocat/commits'
         responses.add(
