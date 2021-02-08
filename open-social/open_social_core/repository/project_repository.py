@@ -12,7 +12,6 @@ def save(projects):
                 'project_name': project.project_name,
                 'description': project.description,
                 'open_issues': project.open_issues,
-                'stargazers': project.stargazers,
                 'watchers': project.watchers,
                 'forks': project.forks,
                 'project_url': project.project_url,

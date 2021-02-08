@@ -7,7 +7,6 @@ def parse_project_activity(project, commits_json):
         full_name=project['full_name'],
         description=project['description'],
         open_issues=project['open_issues_count'],
-        stargazers=project['stargazers_count'],
         watchers=project['watchers_count'],
         forks=project['forks_count'],
         project_url=project['html_url'],
