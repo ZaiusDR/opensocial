@@ -9,8 +9,9 @@
 }
 
 .App-header {
-  min-height: 10vh;
-  max-height: 10vh;
+  font-family: Roboto, sans-serif;
+  min-height: 15vh;
+  max-height: 15vh;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -19,7 +20,7 @@
 }
 
 .Header-image {
-  max-width: 10vh;
+  max-width: 15vh;
   margin: 15px;
 }
 
