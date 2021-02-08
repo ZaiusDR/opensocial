@@ -3,8 +3,8 @@ import collections
 GithubProject = collections.namedtuple(
     'GithubProject',
     [
-        'project_name',
         'full_name',
+        'project_name',
         'description',
         'open_issues',
         'watchers',
@@ -13,6 +13,7 @@ GithubProject = collections.namedtuple(
         'created',
         'updated',
         'language',
-        'last_commit_dates'
+        'last_commit_dates',
+        'archived'
     ]
 )

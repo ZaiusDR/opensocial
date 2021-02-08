@@ -8,7 +8,7 @@ REPOS_SEARCH_URL = GITHUB_API_URL + 'search/repositories'
 
 def get_project_list(query):
     query.update(sort='updated', per_page='50')
-    
+
     response = requests.get(REPOS_SEARCH_URL, params=query)
     github_projects = []
 
@@ -20,7 +20,6 @@ def get_project_list(query):
 
 
 def _get_project_commits(project):
-    print(project['commits_url'].split('{')[0])
     commits_url = project['commits_url'].split('{')[0]
     response = requests.get(commits_url)
     return response.json()

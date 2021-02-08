@@ -36,6 +36,8 @@ class TestProjectRepository(unittest.TestCase):
         self.dynamodb = None
 
     def test_should_save_projects(self):
+        project_fields = self.projects[0]._fields
+
         project_repository.save(self.projects)
 
         response = self.table.get_item(
@@ -45,6 +47,7 @@ class TestProjectRepository(unittest.TestCase):
         )
 
         self.assertTrue('Item' in response.keys())
+        self.assertEqual(list(response['Item'].keys()), list(project_fields))
 
     def test_should_get_all_projects(self):
         project_repository.save(self.projects)

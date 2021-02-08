@@ -17,5 +17,6 @@ def parse_project_activity(project, commits_json):
             commit['commit']['author']['date']
             for commit in commits_json
             if type(commits_json) is list
-        ]
+        ],
+        archived=project['archived']
     )

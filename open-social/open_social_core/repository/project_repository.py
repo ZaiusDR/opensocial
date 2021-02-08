@@ -18,7 +18,8 @@ def save(projects):
                 'created': project.created,
                 'updated': project.updated,
                 'language': project.language,
-                'last_commit_dates': project.last_commit_dates
+                'last_commit_dates': project.last_commit_dates,
+                'archived': project.archived
             }
         )
 
