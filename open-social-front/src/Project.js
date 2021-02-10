@@ -34,8 +34,8 @@ function Project(props) {
         <div>Description: {props.project.description}</div>
         <div>Open Issues: {props.project.open_issues}</div>
         <div>Watchers: {props.project.watchers}</div>
-        <div>Created: {props.project.created}</div>
-        <div>Updated: {props.project.updated}</div>
+        <div>Created: {moment(props.project.created).format('YYYY-MM-DD')}</div>
+        <div>Updated: {moment(props.project.updated).format('YYYY-MM-DD')}</div>
         <div>Forks: {props.project.forks}</div>
         <div>Language: {props.project.language ? props.project.language : 'N/A'}</div>
         <div>Archived: {props.project.archived ? 'Yes' : 'No'}</div>
