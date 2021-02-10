@@ -1,16 +1,29 @@
 import React from "react";
 import "./Project.css";
-import {Line, CartesianGrid, XAxis, YAxis, AreaChart} from 'recharts';
+import {Area, AreaChart, CartesianGrid, XAxis, YAxis} from 'recharts';
+import moment from "moment";
 
 function Project(props) {
+
+  const commits = props.project.last_commit_dates;
+
+  function getXAxisDate(month) {
+    return moment().subtract(month, 'months').format('YYYY-MM')
+  }
+
+  function getCommitsNumberByMonth(last_commits, month) {
+    return last_commits.filter(date => date.toString().includes(month)).length
+  }
+
   const data = [
-    {name: '2020-01', uv: 4, pv: 5, amt: 2400},
-    {name: '2020-02', uv: 7, pv: 8, amt: 3400},
-    {name: '2020-03', uv: 4, pv: 5, amt: 8400},
+    {name: getXAxisDate(5), commits: getCommitsNumberByMonth(commits, getXAxisDate(5))},
+    {name: getXAxisDate(4), commits: getCommitsNumberByMonth(commits, getXAxisDate(4))},
+    {name: getXAxisDate(3), commits: getCommitsNumberByMonth(commits, getXAxisDate(3))},
+    {name: getXAxisDate(2), commits: getCommitsNumberByMonth(commits, getXAxisDate(2))},
+    {name: getXAxisDate(1), commits: getCommitsNumberByMonth(commits, getXAxisDate(1))},
+    {name: getXAxisDate(0), commits: getCommitsNumberByMonth(commits, getXAxisDate(0))},
   ];
-  // const data = props.project.last_commit_dates.map(commit_date =>{
-  //   commit
-  // })
+
   return (
     <li key={props.project.full_name} className="Project-item">
       <div className="Project">
@@ -26,12 +39,24 @@ function Project(props) {
         <div>Forks: {props.project.forks}</div>
         <div>Language: {props.project.language ? props.project.language : 'N/A'}</div>
         <div>Archived: {props.project.archived ? 'Yes' : 'No'}</div>
-        <div>Last Commit Dates: {props.project.last_commit_dates}</div>
-        <div><AreaChart test-id='CommitGraph' width={600} height={300} data={data}>
-          <Line type="monotone" dataKey="uv" stroke="#8884d8" />
-          <CartesianGrid stroke="#ccc" />
+        <div>Recent Commits Activity: </div>
+        <div>
+          <AreaChart
+            test-id='CommitGraph'
+            width={600}
+            height={300}
+            data={data}
+            margin={{
+              top: 10,
+              right: 70,
+              left: 0,
+              bottom: 0,
+            }}
+          >
+          <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="name" />
           <YAxis />
+          <Area type="monotone" dataKey={"commits"} stroke={"#75689c"} fill={"#b8a2fa"}/>
         </AreaChart></div>
       </div>
     </li>
