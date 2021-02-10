@@ -1,6 +1,6 @@
 import React from "react";
 import "./Project.css";
-import {Area, AreaChart, CartesianGrid, XAxis, YAxis} from 'recharts';
+import {Area, AreaChart, CartesianGrid, ResponsiveContainer, XAxis, YAxis} from 'recharts';
 import moment from "moment";
 
 function Project(props) {
@@ -40,7 +40,7 @@ function Project(props) {
         <div>Language: {props.project.language ? props.project.language : 'N/A'}</div>
         <div>Archived: {props.project.archived ? 'Yes' : 'No'}</div>
         <div>Recent Commits Activity: </div>
-        <div>
+        <ResponsiveContainer width="90%" height={200}>
           <AreaChart
             test-id='CommitGraph'
             width={600}
@@ -53,11 +53,12 @@ function Project(props) {
               bottom: 0,
             }}
           >
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="name" />
-          <YAxis />
-          <Area type="monotone" dataKey={"commits"} stroke={"#75689c"} fill={"#b8a2fa"}/>
-        </AreaChart></div>
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="name" />
+            <YAxis />
+            <Area type="monotone" dataKey={"commits"} stroke={"#75689c"} fill={"#b8a2fa"}/>
+          </AreaChart>
+        </ResponsiveContainer>
       </div>
     </li>
   )
