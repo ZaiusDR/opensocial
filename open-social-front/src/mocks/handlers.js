@@ -9,11 +9,13 @@ export const handlers = [
       ctx.json([
         {
           "project_name": "project1",
-          "full_name": "user1/project1"
+          "full_name": "user1/project1",
+          "last_commit_dates": ["2020-11-23T19:50:55Z", "2020-11-23T19:50:11Z"]
         },
         {
           "project_name": "project2",
-          "full_name": "user2/project2"
+          "full_name": "user2/project2",
+          "last_commit_dates": ["2020-03-25T19:50:55Z", "2021-01-28T20:50:11Z"]
         }
       ]),
     )
