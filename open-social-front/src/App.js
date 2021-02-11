@@ -22,22 +22,22 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        {this.state.projects ?
-          <div>
-            <header className="App-header">
-              <img className="Header-image" src={'logo192.png'} alt={'site-logo'}/>
-              <p>Open Social</p>
-            </header>
-            <div>
-              <ul className="Project-list">
-                {this.state.projects.map(project =>
-                  <Project key={project.full_name} project={project}/>
-                )}
-              </ul>
-            </div>
-          </div> :
-          null
-        }
+        <div>
+          <header className="App-header">
+            <img className="Header-image" src={'logo192.png'} alt={'site-logo'}/>
+            <p>Open Social</p>
+          </header>
+            {this.state.projects ?
+              <div>
+                <ul className="Project-list">
+                  {this.state.projects.map(project =>
+                    <Project key={project.full_name} project={project}/>
+                  )}
+                </ul>
+              </div> :
+              null
+            }
+        </div>
       </div>
     );
   }
