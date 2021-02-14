@@ -1,10 +1,13 @@
 import React from 'react';
 import './App.css';
+import loadable from '@loadable/component'
 import Project from './Project';
-import ReactList from 'react-list';
-import Loader from "react-loader-spinner";
 
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+
+const ReactList = loadable(() => import('react-list'));
+const Loader = loadable(() => import('react-loader-spinner'));
+
 
 const api_url = 'https://01ruue3xk0.execute-api.eu-west-1.amazonaws.com/dev/projects';
 
