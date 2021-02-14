@@ -67,6 +67,7 @@ Resources:
     Type: AWS::Serverless::Api
     Properties:
       StageName: dev
+      MinimumCompressionSize: 0
       Cors:
         AllowMethods: "'GET'"
         AllowHeaders: "'X-Forwarded-For'"
