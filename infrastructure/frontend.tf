@@ -55,6 +55,7 @@ resource "aws_cloudfront_distribution" "open_social_front_cloud_front" {
     cached_methods         = ["GET", "HEAD"]
     target_origin_id       = var.cloud_front_origin_id
     viewer_protocol_policy = "redirect-to-https"
+    compress               = true
 
     forwarded_values {
       query_string = false
