@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import Project from './Project';
+import ReactList from 'react-list';
 
 const api_url = 'https://01ruue3xk0.execute-api.eu-west-1.amazonaws.com/dev/projects';
 
@@ -29,11 +30,14 @@ class App extends React.Component {
           </header>
             {this.state.projects ?
               <div>
-                <ul className="Project-list">
-                  {this.state.projects.map(project =>
-                    <Project key={project.full_name} project={project}/>
-                  )}
-                </ul>
+                <ReactList
+                  itemRenderer={(index, key) => {
+                    return <Project key={key} project={this.state.projects[index]}/>
+                  }}
+                  length={this.state.projects.length}
+                  type={'simple'}
+                >
+                </ReactList>
               </div> :
               null
             }

@@ -47,7 +47,7 @@ function Project(props) {
             height={300}
             data={data}
             margin={{
-              top: 10,
+              top: 30,
               right: 70,
               left: 0,
               bottom: 0,

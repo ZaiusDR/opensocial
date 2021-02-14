@@ -9,6 +9,7 @@
     "moment": "^2.29.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-list": "^0.8.16",
     "react-scripts": "3.4.3",
     "recharts": "^2.0.4"
   },
