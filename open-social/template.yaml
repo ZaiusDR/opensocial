@@ -70,6 +70,8 @@ Resources:
       CacheClusterEnabled: true
       CacheClusterSize: '0.5'
       MinimumCompressionSize: 0
+      BinaryMediaTypes:
+        - application~1json
       Cors:
         AllowMethods: "'GET'"
         AllowHeaders: "'X-Forwarded-For'"
