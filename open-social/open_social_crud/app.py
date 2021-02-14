@@ -19,7 +19,10 @@ def list_projects(event, context):
     return {
         "statusCode": 200,
         "body": json.dumps(projects, default=decimal_default),
-        "headers": {"Access-Control-Allow-Origin": "*"}
+        "headers": {
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Headers": "Content-Type,Content-Encoding"
+        }
     }
 
 
