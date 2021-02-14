@@ -10,6 +10,7 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-list": "^0.8.16",
+    "react-loader-spinner": "^4.0.0",
     "react-scripts": "3.4.3",
     "recharts": "^2.0.4"
   },

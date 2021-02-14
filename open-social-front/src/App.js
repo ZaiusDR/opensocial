@@ -2,6 +2,9 @@ import React from 'react';
 import './App.css';
 import Project from './Project';
 import ReactList from 'react-list';
+import Loader from "react-loader-spinner";
+
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 const api_url = 'https://01ruue3xk0.execute-api.eu-west-1.amazonaws.com/dev/projects';
 
@@ -36,10 +39,11 @@ class App extends React.Component {
                   }}
                   length={this.state.projects.length}
                   type={'simple'}
+                  pageSize={5}
                 >
                 </ReactList>
               </div> :
-              null
+              <Loader type="ThreeDots" color="#DCDCDC" height={80} width={80}/>
             }
         </div>
       </div>
