@@ -67,6 +67,8 @@ Resources:
     Type: AWS::Serverless::Api
     Properties:
       StageName: dev
+      CacheClusterEnabled: true
+      CacheClusterSize: '0.5'
       MinimumCompressionSize: 0
       Cors:
         AllowMethods: "'GET'"
