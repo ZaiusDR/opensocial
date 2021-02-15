@@ -20,7 +20,7 @@ class TestProjectParser(unittest.TestCase):
         self.assertEqual(project_information.forks, 172)
         self.assertEqual(project_information.project_url, 'https://github.com/HTBox/crisischeckin')
         self.assertEqual(project_information.created, '2013-07-24T14:14:46Z')
-        self.assertEqual(project_information.updated, '2020-04-07T23:08:23Z')
+        self.assertEqual(project_information.updated, '2020-10-07T23:08:23Z')
         self.assertEqual(project_information.language, 'C#')
         self.assertEqual(project_information.last_commit_dates, ['2017-04-22T14:14:23Z', '2017-04-22T14:13:56Z'])
         self.assertEqual(project_information.archived, False)
