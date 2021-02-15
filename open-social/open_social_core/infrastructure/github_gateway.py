@@ -23,6 +23,7 @@ def get_project_list(query):
             response = requests.get(REPOS_SEARCH_URL, params=query)
             next_page_header = response.headers['link']
             next_url = _get_url_from_link_header(next_page_header)
+            print('parsing', next_url)
         else:
             response = requests.get(next_url)
         for project in response.json()['items']:
