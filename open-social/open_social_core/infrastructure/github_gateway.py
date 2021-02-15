@@ -39,7 +39,7 @@ def _get_project_commits(project):
     commits_url = project['commits_url'].split('{')[0]
     print(commits_url)
     response = requests.get(commits_url)
-    print('commits: ', response)
+    print('commits: ', response.headers)
     return response.json()
 
 
