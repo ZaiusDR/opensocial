@@ -37,7 +37,9 @@ def get_project_list(query):
 
 def _get_project_commits(project):
     commits_url = project['commits_url'].split('{')[0]
+    print(commits_url)
     response = requests.get(commits_url)
+    print('commits: ', response)
     return response.json()
 
 
