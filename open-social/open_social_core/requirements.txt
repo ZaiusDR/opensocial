@@ -1,4 +1,3 @@
 boto3
 requests
---pre
 gql[requests]
