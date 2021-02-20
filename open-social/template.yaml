@@ -29,7 +29,7 @@ Resources:
       Policies:
         - DynamoDBCrudPolicy:
             TableName: !Ref ProjectDynamoDBTable
-        - SSMParameterStore:
+        - SSMParameterReadPolicy:
             ParameterName: "/github/open-social-token"
       Layers:
         - Ref: OpenSocialCoreLayer
