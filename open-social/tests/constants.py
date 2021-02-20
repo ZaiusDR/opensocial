@@ -674,7 +674,7 @@ PROJECTS = {
                     'isArchived': False,
                     'issues': {'totalCount': 0},
                     'languages': {'nodes': [{'name': 'Java'}]},
-                    'primaryLanguage': {'name': 'Java'},
+                    'primaryLanguage': None,
                     'pushedAt': '2021-02-03T16:10:19Z',
                     'stargazerCount': 0,
                     'updatedAt': '2021-02-03T16:10:22Z',

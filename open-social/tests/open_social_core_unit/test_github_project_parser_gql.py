@@ -39,3 +39,10 @@ class TestProjectParser(unittest.TestCase):
         self.assertEqual(project_information.project_name, 'sebLaLa80/pepinierePHP')
         self.assertEqual(project_information.last_commit_dates, [])
 
+    def test_should_parse_project_activity_with_no_primary_language(self):
+        project_information = github_project_parser_gql.parse_project_activity(
+            constants.PROJECTS['search']['repos'][1]['repo']
+        )
+
+        self.assertEqual(project_information.project_name, 'yukunl/PepinTour')
+        self.assertEqual(project_information.language, None)

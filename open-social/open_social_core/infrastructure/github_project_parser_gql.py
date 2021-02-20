@@ -12,7 +12,7 @@ def parse_project_activity(project):
         project_url=project['url'],
         created=project['createdAt'],
         updated=project['updatedAt'],
-        language=project['primaryLanguage']['name'],
+        language=project['primaryLanguage']['name'] if project['primaryLanguage'] else None,
         last_commit_dates=[
             commit['node']['author']['date']
             for commit in project['commitsCount']['history']['edges']
