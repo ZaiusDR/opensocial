@@ -35,7 +35,7 @@ def get_project_list(topic):
         headers={'Authorization': 'bearer {0}'.format(_get_token())}
     )
 
-    client = gql.Client(transport=transport, fetch_schema_from_transport=True)
+    client = gql.Client(transport=transport)
 
     gql_query = gql.gql(github_queries_gql.initial_query)
 
