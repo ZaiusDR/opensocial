@@ -18,6 +18,10 @@
     animation: fadein 1s ease-in;
 }
 
+.graphContainer {
+    font-size: 15px;
+}
+
 @keyframes fadein {
     from { opacity: 0; }
     to   { opacity: 1; }

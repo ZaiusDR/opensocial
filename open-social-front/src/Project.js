@@ -1,6 +1,6 @@
 import React from "react";
 import "./Project.css";
-import {Area, AreaChart, CartesianGrid, ResponsiveContainer, XAxis, YAxis} from 'recharts';
+import {Area, AreaChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis} from 'recharts';
 import moment from "moment";
 
 function Project(props) {
@@ -16,12 +16,12 @@ function Project(props) {
   }
 
   const data = [
-    {name: getXAxisDate(5), commits: getCommitsNumberByMonth(commits, getXAxisDate(5))},
-    {name: getXAxisDate(4), commits: getCommitsNumberByMonth(commits, getXAxisDate(4))},
-    {name: getXAxisDate(3), commits: getCommitsNumberByMonth(commits, getXAxisDate(3))},
-    {name: getXAxisDate(2), commits: getCommitsNumberByMonth(commits, getXAxisDate(2))},
-    {name: getXAxisDate(1), commits: getCommitsNumberByMonth(commits, getXAxisDate(1))},
-    {name: getXAxisDate(0), commits: getCommitsNumberByMonth(commits, getXAxisDate(0))},
+    {month: getXAxisDate(5), commits: getCommitsNumberByMonth(commits, getXAxisDate(5))},
+    {month: getXAxisDate(4), commits: getCommitsNumberByMonth(commits, getXAxisDate(4))},
+    {month: getXAxisDate(3), commits: getCommitsNumberByMonth(commits, getXAxisDate(3))},
+    {month: getXAxisDate(2), commits: getCommitsNumberByMonth(commits, getXAxisDate(2))},
+    {month: getXAxisDate(1), commits: getCommitsNumberByMonth(commits, getXAxisDate(1))},
+    {month: getXAxisDate(0), commits: getCommitsNumberByMonth(commits, getXAxisDate(0))},
   ];
 
   return (
@@ -40,11 +40,11 @@ function Project(props) {
         <div>Language: {props.project.language ? props.project.language : 'N/A'}</div>
         <div>Archived: {props.project.archived ? 'Yes' : 'No'}</div>
         <div>Recent Commits Activity: </div>
-        <ResponsiveContainer width="100%" height={200}>
+        <ResponsiveContainer className={"graphContainer"} width="100%" height={200}>
           <AreaChart
             test-id='CommitGraph'
             width={600}
-            height={300}
+            height={200}
             data={data}
             margin={{
               top: 30,
@@ -54,8 +54,9 @@ function Project(props) {
             }}
           >
             <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="name" />
+            <XAxis dataKey="month" />
             <YAxis />
+            <Tooltip />
             <Area type="monotone" dataKey={"commits"} stroke={"#75689c"} fill={"#b8a2fa"}/>
           </AreaChart>
         </ResponsiveContainer>
