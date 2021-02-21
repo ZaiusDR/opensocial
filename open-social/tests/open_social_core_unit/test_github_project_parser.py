@@ -1,13 +1,13 @@
 import unittest
 
-from open_social_core.infrastructure import github_project_parser_gql
+from open_social_core.infrastructure import github_project_parser
 
 from tests import constants
 
 
 class TestProjectParser(unittest.TestCase):
     def test_should_parse_project_activity(self):
-        project_information = github_project_parser_gql.parse_project_activity(
+        project_information = github_project_parser.parse_project_activity(
             constants.PROJECTS['search']['repos'][0]['repo']
         )
 
@@ -24,7 +24,7 @@ class TestProjectParser(unittest.TestCase):
         self.assertEqual(project_information.archived, False)
 
     def test_should_parse_project_activity_with_zero_commits(self):
-        project_information = github_project_parser_gql.parse_project_activity(
+        project_information = github_project_parser.parse_project_activity(
             constants.PROJECTS['search']['repos'][1]['repo']
         )
 
@@ -32,7 +32,7 @@ class TestProjectParser(unittest.TestCase):
         self.assertEqual(project_information.last_commit_dates, [])
 
     def test_should_parse_project_activity_with_null_commits(self):
-        project_information = github_project_parser_gql.parse_project_activity(
+        project_information = github_project_parser.parse_project_activity(
             constants.PROJECTS['search']['repos'][2]['repo']
         )
 
@@ -40,7 +40,7 @@ class TestProjectParser(unittest.TestCase):
         self.assertEqual(project_information.last_commit_dates, [])
 
     def test_should_parse_project_activity_with_no_primary_language(self):
-        project_information = github_project_parser_gql.parse_project_activity(
+        project_information = github_project_parser.parse_project_activity(
             constants.PROJECTS['search']['repos'][1]['repo']
         )
 

@@ -6,8 +6,8 @@ import gql
 
 from gql.transport.requests import RequestsHTTPTransport
 
-from infrastructure import github_queries_gql
-from infrastructure import github_project_parser_gql
+from infrastructure import github_queries
+from infrastructure import github_project_parser
 
 
 API_URL = 'https://api.github.com/graphql'
@@ -37,7 +37,7 @@ def get_project_list(topic):
 
     client = gql.Client(transport=transport)
 
-    gql_query = gql.gql(github_queries_gql.initial_query)
+    gql_query = gql.gql(github_queries.initial_query)
 
     result = client.execute(gql_query, variable_values=gql_query_params)
     return _parse_projects(result)
@@ -46,7 +46,7 @@ def get_project_list(topic):
 def _parse_projects(result):
     parsed_projects = []
     for project in result['search']['repos']:
-        parsed_project = github_project_parser_gql.parse_project_activity(project['repo'])
+        parsed_project = github_project_parser.parse_project_activity(project['repo'])
         parsed_projects.append(parsed_project)
     return parsed_projects
 
