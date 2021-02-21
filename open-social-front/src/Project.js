@@ -40,7 +40,7 @@ function Project(props) {
         <div>Language: {props.project.language ? props.project.language : 'N/A'}</div>
         <div>Archived: {props.project.archived ? 'Yes' : 'No'}</div>
         <div>Recent Commits Activity: </div>
-        <ResponsiveContainer width="90%" height={200}>
+        <ResponsiveContainer width="100%" height={200}>
           <AreaChart
             test-id='CommitGraph'
             width={600}
