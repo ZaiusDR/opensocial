@@ -1,5 +1,7 @@
 import unittest
 
+import freezegun
+
 from open_social_core.infrastructure import github_project_parser
 
 from tests import constants
@@ -50,3 +52,21 @@ class TestProjectParser(unittest.TestCase):
 
         self.assertEqual(project_information.project_name, 'PepinTour')
         self.assertEqual(project_information.language, None)
+
+    @freezegun.freeze_time('2021-02-21')
+    def test_should_correctly_generate_commits_graph_data(self):
+        expected_commit_graph_data = [
+            {'month': '2021-02', 'commits': '2'},
+            {'month': '2021-01', 'commits': '1'},
+            {'month': '2020-12', 'commits': '1'},
+            {'month': '2020-11', 'commits': '0'},
+            {'month': '2020-10', 'commits': '1'},
+            {'month': '2020-09', 'commits': '3'},
+        ]
+
+        project_information = github_project_parser.parse_project_activity(
+            constants.PROJECTS['search']['repos'][3]['repo']
+        )
+
+        self.assertEqual(project_information.project_name, 'pepiniereLabranche')
+        self.assertEqual(project_information.commits_graph_data, expected_commit_graph_data)

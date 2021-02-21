@@ -1,3 +1,6 @@
+from datetime import datetime
+from dateutil import relativedelta
+
 from domain import github_project
 
 
@@ -16,9 +19,28 @@ def parse_project_activity(project):
         updated=project['updatedAt'],
         language=project['primaryLanguage']['name'] if project['primaryLanguage'] else None,
         total_commits=project['commitsCount']['history']['totalCount'] if project['commitsCount'] else 0,
-        last_commit_dates=[
-            commit['node']['author']['date']
-            for commit in project['commitsCount']['history']['edges']
-        ] if project['commitsCount'] else [],
+        last_commit_dates=_get_commits(project),
+        commits_graph_data=_get_commits_graph_data(project),
         archived=project['isArchived']
     )
+
+
+def _get_commits_graph_data(project):
+    commits_graph_data = []
+
+    for i in range(0, 6):
+        date = (datetime.now().replace(microsecond=0) - relativedelta.relativedelta(months=i)).strftime('%Y-%m')
+        commits_graph_data.append(
+            {
+                'month': date,
+                'commits': str(len([commit_date for commit_date in _get_commits(project) if date in commit_date]))
+            }
+        )
+    return commits_graph_data
+
+
+def _get_commits(project):
+    return [
+        commit['node']['author']['date']
+        for commit in project['commitsCount']['history']['edges']
+    ] if project['commitsCount'] else []

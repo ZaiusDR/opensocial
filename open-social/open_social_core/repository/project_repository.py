@@ -22,6 +22,7 @@ def save(projects):
                 'language': project.language,
                 'total_commits': project.total_commits,
                 'last_commit_dates': project.last_commit_dates,
+                'commits_graph_data': project.commits_graph_data,
                 'archived': project.archived
             }
         )
