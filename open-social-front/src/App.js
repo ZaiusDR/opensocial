@@ -22,7 +22,7 @@ class App extends React.Component {
   componentDidMount() {
     fetch(api_url)
       .then(response => response.json())
-      .then(projects => this.setState({projects: projects}))
+      .then(response_json => this.setState({projects: response_json.projects}))
       .catch(error => console.error(error));
   }
 

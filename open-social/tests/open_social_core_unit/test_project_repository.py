@@ -49,9 +49,18 @@ class TestProjectRepository(unittest.TestCase):
         self.assertTrue('Item' in response.keys())
         self.assertEqual(list(response['Item'].keys()), list(project_fields))
 
-    def test_should_get_all_projects(self):
+    def test_should_get_all_projects_with_no_pagination(self):
         project_repository.save(self.projects)
 
         response = project_repository.get_projects()
 
-        self.assertEqual(len(response), 2)
+        self.assertEqual(len(response['projects']), 2)
+
+    def test_should_get_all_projects_with_pagination(self):
+        project_repository.save(fixtures.github_projects_pagination)
+
+        page1 = project_repository.get_projects()
+        page2 = project_repository.get_projects(page1['page_identifier'])
+
+        self.assertEqual(len(page1['projects']), 5)
+        self.assertEqual(len(page2['projects']), 1)

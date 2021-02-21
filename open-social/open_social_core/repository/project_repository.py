@@ -29,9 +29,17 @@ def save(projects):
     return projects
 
 
-def get_projects():
+def get_projects(exclusive_start_key=None):
     table = _get_table()
-    return table.scan()['Items']
+    if exclusive_start_key:
+        response = table.scan(Limit=5, ExclusiveStartKey={'full_name': exclusive_start_key})
+    else:
+        response = table.scan(Limit=5)
+    results = {
+        'projects': response['Items'],
+        'page_identifier': response['LastEvaluatedKey']['full_name'] if 'LastEvaluatedKey' in response else None
+    }
+    return results
 
 
 def _get_table():

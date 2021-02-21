@@ -6,7 +6,7 @@ export const handlers = [
   rest.get(api_url + '/dev/projects', (req, res, ctx) => {
     return res(
       ctx.status(200),
-      ctx.json([
+      ctx.json({"projects": [
         {
           "project_name": "project1",
           "full_name": "user1/project1",
@@ -17,7 +17,7 @@ export const handlers = [
           "full_name": "user2/project2",
           "last_commit_dates": ["2020-03-25T19:50:55Z", "2021-01-28T20:50:11Z"]
         }
-      ]),
+      ]}),
     )
   }),
 ]
