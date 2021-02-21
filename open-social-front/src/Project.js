@@ -4,26 +4,6 @@ import {Area, AreaChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAx
 import moment from "moment";
 
 function Project(props) {
-
-  const commits = props.project.last_commit_dates;
-
-  function getXAxisDate(month) {
-    return moment().subtract(month, 'months').format('YYYY-MM')
-  }
-
-  function getCommitsNumberByMonth(last_commits, month) {
-    return last_commits.filter(date => date.toString().includes(month)).length
-  }
-
-  const data = [
-    {month: getXAxisDate(5), commits: getCommitsNumberByMonth(commits, getXAxisDate(5))},
-    {month: getXAxisDate(4), commits: getCommitsNumberByMonth(commits, getXAxisDate(4))},
-    {month: getXAxisDate(3), commits: getCommitsNumberByMonth(commits, getXAxisDate(3))},
-    {month: getXAxisDate(2), commits: getCommitsNumberByMonth(commits, getXAxisDate(2))},
-    {month: getXAxisDate(1), commits: getCommitsNumberByMonth(commits, getXAxisDate(1))},
-    {month: getXAxisDate(0), commits: getCommitsNumberByMonth(commits, getXAxisDate(0))},
-  ];
-
   return (
     <li key={props.project.full_name} className="Project-item">
       <div className="Project">
@@ -45,7 +25,7 @@ function Project(props) {
             test-id='CommitGraph'
             width={600}
             height={200}
-            data={data}
+            data={props.project.commits_graph_data}
             margin={{
               top: 30,
               right: 70,
