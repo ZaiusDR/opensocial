@@ -16,7 +16,6 @@ GithubProject = collections.namedtuple(
         'updated',
         'language',
         'total_commits',
-        'last_commit_dates',
         'commits_graph_data',
         'archived'
     ]

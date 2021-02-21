@@ -16,7 +16,6 @@ github_projects = [
         updated='2019-08-06T07:38:15Z',
         language='Python',
         total_commits=24,
-        last_commit_dates=['2019-02-06T07:38:15Z'],
         commits_graph_data={},
         archived=True
     ),
@@ -34,7 +33,6 @@ github_projects = [
         updated='2019-08-13T11:12:55Z',
         language='Javascript',
         total_commits=59,
-        last_commit_dates=['2019-03-13T11:12:55Z', '2019-06-13T08:11:24Z'],
         commits_graph_data={},
         archived=False
     )
