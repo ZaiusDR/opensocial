@@ -135,4 +135,6 @@ jobs:
 
       - name: 'Copy to S3'
         run: |
-          aws s3 sync build/ s3://open-social-front
+          aws s3 sync build/ s3://open-social-front --cache-control max-age=31536000
+          aws s3 cp s3://open-social-front/index.html s3://open-social-front/index.html --metadata-directive REPLACE --cache-control no-cache
+          aws s3 cp s3://open-social-front/service-worker.js s3://open-social-front/service-worker.js --metadata-directive REPLACE --cache-control no-cache
