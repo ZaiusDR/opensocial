@@ -13,11 +13,14 @@ def save(projects):
                 'description': project.description,
                 'open_issues': project.open_issues,
                 'watchers': project.watchers,
+                'stargazers': project.stargazers,
                 'forks': project.forks,
                 'project_url': project.project_url,
+                'pushed': project.pushed,
                 'created': project.created,
                 'updated': project.updated,
                 'language': project.language,
+                'total_commits': project.total_commits,
                 'last_commit_dates': project.last_commit_dates,
                 'archived': project.archived
             }

@@ -10,27 +10,22 @@ query recentRepos($query: String!, $date_limit: GitTimestamp!) {
       repo: node {
         ... on Repository {
           nameWithOwner
-          url
-          pushedAt
+          name
           description
-          forkCount
+          issues(states: OPEN) {
+            totalCount
+          }
           watchers {
             totalCount
           }
           stargazerCount
+          forkCount
+          url
+          pushedAt
           createdAt
           updatedAt
-          isArchived
           primaryLanguage {
             name
-          }
-          languages(first: 10) {
-            nodes {
-              name
-            }
-          }
-          issues(states: OPEN) {
-            totalCount
           }
           commitsCount: object(expression: "master") {
             ... on Commit {
@@ -44,6 +39,12 @@ query recentRepos($query: String!, $date_limit: GitTimestamp!) {
                   }
                 }
               }
+            }
+          }
+          isArchived
+          languages(first: 10) {
+            nodes {
+              name
             }
           }
         }

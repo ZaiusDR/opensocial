@@ -8,6 +8,7 @@ PROJECTS = {
         'repos': [
             {
                 'repo': {
+                    'name': 'pepinazo',
                     'nameWithOwner': 'jomarnavarro/pepinazo',
                     'commitsCount': {
                         'history': {
@@ -15,7 +16,7 @@ PROJECTS = {
                                 {'node': {'author': {'date': '2020-08-21T19:53:19-04:00'}}},
                                 {'node': {'author': {'date': '2021-02-03T10:10:19-06:00'}}}
                             ],
-                            'totalCount': 1
+                            'totalCount': 2
                         }
                     },
                     'createdAt': '2019-05-08T23:51:02Z',
@@ -36,6 +37,7 @@ PROJECTS = {
             },
             {
                 'repo': {
+                    'name': 'PepinTour',
                     'nameWithOwner': 'yukunl/PepinTour',
                     'commitsCount': {
                         'history': {'edges': [],
@@ -57,6 +59,7 @@ PROJECTS = {
             },
             {
                 'repo': {
+                    'name': 'pepinierePHP',
                     'nameWithOwner': 'sebLaLa80/pepinierePHP',
                     'commitsCount': None,
                     'createdAt': '2020-12-06T14:27:39Z',
@@ -77,6 +80,7 @@ PROJECTS = {
             },
             {
                 'repo': {
+                    'name': 'pepiniereLabranche',
                     'nameWithOwner': 'Louisppotvin/pepiniereLabranche',
                     'commitsCount': {
                         'history': {

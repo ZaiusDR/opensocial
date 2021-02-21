@@ -3,16 +3,19 @@ from domain import github_project
 
 def parse_project_activity(project):
     return github_project.GithubProject(
-        project_name=project['nameWithOwner'],
+        project_name=project['name'],
         full_name=project['nameWithOwner'],
         description=project['description'],
         open_issues=project['issues']['totalCount'],
         watchers=project['watchers']['totalCount'],
+        stargazers=project['stargazerCount'],
         forks=project['forkCount'],
         project_url=project['url'],
+        pushed=project['pushedAt'],
         created=project['createdAt'],
         updated=project['updatedAt'],
         language=project['primaryLanguage']['name'] if project['primaryLanguage'] else None,
+        total_commits=project['commitsCount']['history']['totalCount'] if project['commitsCount'] else 0,
         last_commit_dates=[
             commit['node']['author']['date']
             for commit in project['commitsCount']['history']['edges']

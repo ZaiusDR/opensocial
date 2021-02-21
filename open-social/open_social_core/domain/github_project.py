@@ -8,11 +8,14 @@ GithubProject = collections.namedtuple(
         'description',
         'open_issues',
         'watchers',
+        'stargazers',
         'forks',
         'project_url',
+        'pushed',
         'created',
         'updated',
         'language',
+        'total_commits',
         'last_commit_dates',
         'archived'
     ]
