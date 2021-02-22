@@ -1,6 +1,7 @@
 import decimal
 import unittest
-import json
+
+from unittest import mock
 
 import boto3
 import moto
@@ -38,6 +39,13 @@ class TestApp(unittest.TestCase):
 
         self.assertEqual(response['statusCode'], 200)
         # self.assertEqual(len(json.loads(response['body'])), 2)
+
+    @mock.patch('open_social_crud.app._gzip_b64encode')
+    @mock.patch('open_social_crud.app.project_service.get_projects')
+    def test_should_get_projects_with_pagination(self, project_service_mock, b64encode_mock):
+        app.list_projects({'queryStringParmaters': {'page': 'fake_page'}}, {})
+
+        project_service_mock.assert_called_once_with('fake_page')
 
     def test_should_convert_decimal_to_integer(self):
         converted = app.decimal_default(decimal.Decimal(3))

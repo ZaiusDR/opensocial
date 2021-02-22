@@ -1,11 +1,11 @@
 import React from 'react';
-import './App.css';
+import InfiniteScroll from 'react-infinite-scroll-component';
 import loadable from '@loadable/component'
 import Project from './Project';
 
+import './App.css';
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
-const ReactList = loadable(() => import('react-list'));
 const Loader = loadable(() => import('react-loader-spinner'));
 
 
@@ -15,15 +15,25 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      projects: null
+      projects: [],
+      hasMore: false,
+      nextKey: null
     }
   }
 
   componentDidMount() {
-    fetch(api_url)
-      .then(response => response.json())
-      .then(response_json => this.setState({projects: response_json.projects}))
-      .catch(error => console.error(error));
+    this.fetchData()
+  };
+
+ fetchData = () => {
+   fetch(this.state.nextKey ? `${api_url}?page=${this.state.nextKey}` : api_url)
+     .then(response => response.json())
+     .then(response_json => this.setState({
+       projects: this.state.projects.concat(response_json.projects),
+       hasMore: !!response_json.page_identifier,
+       nextKey: response_json.page_identifier
+     }))
+     .catch(error => console.error(error));
   }
 
   render() {
@@ -34,17 +44,26 @@ class App extends React.Component {
             <img className="Header-image" src={'logo192.png'} alt={'site-logo'}/>
             <p>Open Social</p>
           </header>
-            {this.state.projects ?
+        </div>
+        <div>
+            {this.state.projects.length > 0 ?
               <div>
-                <ReactList
-                  itemRenderer={(index, key) => {
-                    return <Project key={key} project={this.state.projects[index]}/>
-                  }}
-                  length={this.state.projects.length}
-                  type={'simple'}
-                  pageSize={5}
+                <InfiniteScroll
+                  dataLength={this.state.projects.length} //This is important field to render the next data
+                  next={this.fetchData}
+                  hasMore={this.state.hasMore}
+                  loader={<h4>Loading...</h4>}
+                  endMessage={
+                    <p style={{ textAlign: 'center' }}>
+                      <b>Yay! You have seen it all</b>
+                    </p>
+                  }
                 >
-                </ReactList>
+                  {this.state.projects.map((project) => (
+                      <Project key={project.full_name} project={project}/>
+                    )
+                  )}
+                </InfiniteScroll>
               </div> :
               <Loader type="ThreeDots" color="#DCDCDC" height={80} width={80}/>
             }
