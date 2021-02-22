@@ -1,5 +1,4 @@
 import React from 'react';
-import LazyLoad from 'react-lazyload';
 import './App.css';
 import loadable from '@loadable/component'
 import Project from './Project';
@@ -27,8 +26,6 @@ class App extends React.Component {
       .catch(error => console.error(error));
   }
 
-
-
   render() {
     return (
       <div className="App">
@@ -37,15 +34,11 @@ class App extends React.Component {
             <img className="Header-image" src={'logo192.png'} alt={'site-logo'}/>
             <p>Open Social</p>
           </header>
-        </div>
-        <div>
             {this.state.projects ?
               <div>
                 <ReactList
                   itemRenderer={(index, key) => {
-                    return <LazyLoad height={500}>
-                      <Project key={key} project={this.state.projects[index]}/>
-                    </LazyLoad>
+                    return <Project key={key} project={this.state.projects[index]}/>
                   }}
                   length={this.state.projects.length}
                   type={'simple'}
