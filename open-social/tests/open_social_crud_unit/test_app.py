@@ -35,7 +35,7 @@ class TestApp(unittest.TestCase):
         projects = fixtures.github_projects
         project_repository.save(projects)
 
-        response = app.list_projects({}, {})
+        response = app.list_projects({'queryStringParameters': None}, {})
 
         self.assertEqual(response['statusCode'], 200)
         # self.assertEqual(len(json.loads(response['body'])), 2)
