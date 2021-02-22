@@ -25,6 +25,7 @@ def _gzip_b64encode(data):
 
 
 def list_projects(event, context):
+    print(event)
     if 'queryStringParmaters' in event and 'page' in event['queryStringParmaters']:
         projects = project_service.get_projects(event['queryStringParmaters']['page'])
     else:
