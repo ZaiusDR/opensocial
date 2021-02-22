@@ -12,10 +12,10 @@
     border: 1px solid #111111;
     box-shadow: #7f7f7f;
     padding: 1%;
-    -webkit-animation: fadein 1s ease-in;
-    -moz-animation: fadein 1s ease-in;
-    -o-animation: fadein 1s ease-in;
-    animation: fadein 1s ease-in;
+    -webkit-animation: fadein 0.5s ease-in;
+    -moz-animation: fadein 0.5s ease-in;
+    -o-animation: fadein 0.5s ease-in;
+    animation: fadein 0.5s ease-in;
 }
 
 .graphContainer {
