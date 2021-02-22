@@ -21,7 +21,7 @@ class TestProjectService(unittest.TestCase):
         self.assertEqual(projects, expected_projects)
 
     @mock.patch('open_social_core.service.project_service.project_repository.get_projects')
-    def test_should_return_all_projects(self, repository_mock):
+    def test_should_return_projects(self, repository_mock):
         expected_projects = [{'full_name': 'project_1'}]
         repository_mock.return_value = expected_projects
 
@@ -29,3 +29,9 @@ class TestProjectService(unittest.TestCase):
 
         repository_mock.assert_called_once()
         self.assertEqual(projects, expected_projects)
+
+    @mock.patch('open_social_core.service.project_service.project_repository.get_projects')
+    def test_should_return_projects_with_pagination(self, repository_mock):
+        project_service.get_projects('fake_key')
+
+        repository_mock.assert_called_once_with('fake_key')
