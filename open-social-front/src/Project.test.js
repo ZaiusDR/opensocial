@@ -7,8 +7,11 @@ const project = {
   full_name: 'user1/project1',
   description: 'fake_description',
   open_issues: '25',
+  total_commits: '10',
   watchers: '17',
+  stargazers: '35',
   project_url: 'https://github.com/user1/project1',
+  pushed: '2018-09-11T17:30:35Z',
   created: '2018-09-12T16:30:35Z',
   updated: '2020-03-28T18:27:57Z',
   forks: '2313',
@@ -23,7 +26,10 @@ test('renders a project information', () => {
   const projectFullName = getByText(project.full_name, { exact: false });
   const description = getByText(project.description, { exact: false });
   const openIssues = getByText(project.open_issues, { exact: false });
+  const totalCommits = getByText(project.total_commits, { exact: false });
   const watchers = getByText(project.watchers, { exact: false });
+  const stargazers = getByText(project.stargazers, { exact: false });
+  const pushed = getByText(project.pushed.split('T')[0], { exact: false });
   const created = getByText(project.created.split('T')[0], { exact: false });
   const updated = getByText(project.updated.split('T')[0], { exact: false });
   const forks = getByText(project.forks, { exact: false });
@@ -35,7 +41,10 @@ test('renders a project information', () => {
   expect(projectFullName).toBeInTheDocument();
   expect(description).toBeInTheDocument();
   expect(openIssues).toBeInTheDocument();
+  expect(totalCommits).toBeInTheDocument();
   expect(watchers).toBeInTheDocument();
+  expect(stargazers).toBeInTheDocument();
+  expect(pushed).toBeInTheDocument();
   expect(created).toBeInTheDocument();
   expect(updated).toBeInTheDocument();
   expect(forks).toBeInTheDocument();

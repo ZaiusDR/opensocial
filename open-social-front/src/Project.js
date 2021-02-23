@@ -13,7 +13,10 @@ function Project(props) {
         <div>Full Name: {props.project.full_name}</div>
         <div>Description: {props.project.description}</div>
         <div>Open Issues: {props.project.open_issues}</div>
+        <div>Total Commits: {props.project.total_commits}</div>
         <div>Watchers: {props.project.watchers}</div>
+        <div>Stargazers: {props.project.stargazers}</div>
+        <div>Pushed: {moment(props.project.pushed).format('YYYY-MM-DD')}</div>
         <div>Created: {moment(props.project.created).format('YYYY-MM-DD')}</div>
         <div>Updated: {moment(props.project.updated).format('YYYY-MM-DD')}</div>
         <div>Forks: {props.project.forks}</div>
