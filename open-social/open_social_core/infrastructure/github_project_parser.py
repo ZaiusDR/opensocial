@@ -1,5 +1,3 @@
-import decimal
-
 from datetime import datetime
 from dateutil import relativedelta
 
@@ -34,13 +32,7 @@ def _get_commits_graph_data(project):
         commits_graph_data.append(
             {
                 'month': date,
-                'commits': decimal.Decimal(
-                    len(
-                        [commit_date for commit_date
-                         in _get_commits(project)
-                         if date in commit_date]
-                    )
-                )
+                'commits': len([commit_date for commit_date in _get_commits(project) if date in commit_date])
             }
         )
     return commits_graph_data
