@@ -1,6 +1,5 @@
 .App {
   text-align: center;
-  padding: 15px;
   opacity: 1;
   -webkit-animation: fadein 0.5s ease-in;
   -moz-animation: fadein 0.5s ease-in;
@@ -10,18 +9,33 @@
 
 .App-header {
   font-family: Roboto, sans-serif;
-  min-height: 15vh;
-  max-height: 15vh;
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: flex-start;
-  font-size: calc(20px + 2vmin);
+}
+
+.Header-text {
+  width: 80%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.Header-text h1 {
+  margin-block: 2%;
+  font-size: 4vw;
+  height: 80%;
+}
+
+.Header-text h6 {
+  margin-block: 5px;
+  font-size: 1.7vw;
+  height: 20%;
 }
 
 .Header-image {
-  max-width: 15vh;
-  margin: 15px;
+  padding: 2%;
+  width: 10vw;
 }
 
 .Project-list {

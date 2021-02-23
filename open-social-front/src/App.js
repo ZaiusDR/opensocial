@@ -43,7 +43,10 @@ class App extends React.Component {
       <div className="App">
         <header className="App-header">
           <img className="Header-image" src={'logo192.png'} alt={'site-logo'}/>
-          <p>Open Social</p>
+          <div className="Header-text">
+            <h1>Open Social</h1>
+            <h6>Humanitarian Open Source projects Aggregator</h6>
+          </div>
         </header>
         <main>
             {this.state.projects.length > 0 ?
