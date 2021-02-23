@@ -1,12 +1,14 @@
 import React from 'react';
-import InfiniteScroll from 'react-infinite-scroll-component';
+// import InfiniteScroll from 'react-infinite-scroll-component';
 import loadable from '@loadable/component'
-import Project from './Project';
 
 import './App.css';
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
+const InfiniteScroll = loadable(() => import('react-infinite-scroll-component'));
 const Loader = loadable(() => import('react-loader-spinner'));
+const Project = loadable(() => import('./Project'));
+
 
 
 const api_url = 'https://01ruue3xk0.execute-api.eu-west-1.amazonaws.com/dev/projects';
@@ -39,13 +41,11 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <div>
-          <header className="App-header">
-            <img className="Header-image" src={'logo192.png'} alt={'site-logo'}/>
-            <p>Open Social</p>
-          </header>
-        </div>
-        <div>
+        <header className="App-header">
+          <img className="Header-image" src={'logo192.png'} alt={'site-logo'}/>
+          <p>Open Social</p>
+        </header>
+        <main>
             {this.state.projects.length > 0 ?
               <div>
                 <InfiniteScroll
@@ -67,7 +67,7 @@ class App extends React.Component {
               </div> :
               <Loader type="ThreeDots" color="#DCDCDC" height={80} width={80}/>
             }
-        </div>
+        </main>
       </div>
     );
   }
