@@ -18,6 +18,43 @@
     animation: fadein 0.5s ease-in;
 }
 
+.Project-name {
+    font-size: 2vw;
+    padding: 2px;
+}
+
+.Project-details {
+    padding: 2px;
+    margin-bottom: 5px;
+}
+
+.Stats {
+    padding: 2px;
+    display: flex;
+    flex-direction: row;
+}
+
+.Stats-activity {
+    border: lightgray solid 1px;
+    padding: 15px;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+
+.Stats-dates {
+    border: lightgray solid 1px;
+    padding: 15px;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+
+.Graph-data {
+    margin-top: 5px;
+    padding: 2px;
+}
+
 .graphContainer {
     font-size: 15px;
 }

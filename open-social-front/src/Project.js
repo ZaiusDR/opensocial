@@ -7,42 +7,52 @@ function Project(props) {
   return (
     <li key={props.project.full_name} className="Project-item">
       <div className="Project">
-        <div>
+        <div className="Project-name">
           <a href={props.project.project_url}>{props.project.project_name}</a>
         </div>
-        <div>Full Name: {props.project.full_name}</div>
-        <div>Description: {props.project.description}</div>
-        <div>Open Issues: {props.project.open_issues}</div>
-        <div>Total Commits: {props.project.total_commits}</div>
-        <div>Watchers: {props.project.watchers}</div>
-        <div>Stargazers: {props.project.stargazers}</div>
-        <div>Pushed: {moment(props.project.pushed).format('YYYY-MM-DD')}</div>
-        <div>Created: {moment(props.project.created).format('YYYY-MM-DD')}</div>
-        <div>Updated: {moment(props.project.updated).format('YYYY-MM-DD')}</div>
-        <div>Forks: {props.project.forks}</div>
-        <div>Language: {props.project.language ? props.project.language : 'N/A'}</div>
-        <div>Archived: {props.project.archived ? 'Yes' : 'No'}</div>
-        <div>Recent Commits Activity: </div>
-        <ResponsiveContainer className={"graphContainer"} width="100%" height={200}>
-          <AreaChart
-            test-id='CommitGraph'
-            width={600}
-            height={200}
-            data={props.project.commits_graph_data}
-            margin={{
-              top: 30,
-              right: 70,
-              left: 0,
-              bottom: 0,
-            }}
-          >
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="month" />
-            <YAxis />
-            <Tooltip />
-            <Area type="monotone" dataKey={"commits"} stroke={"#75689c"} fill={"#b8a2fa"}/>
-          </AreaChart>
-        </ResponsiveContainer>
+        <div className="Project-details">
+          <div><b>Full Name:</b> {props.project.full_name}</div>
+          <div><b>Description:</b> {props.project.description}</div>
+          <div><b>Language:</b> {props.project.language ? props.project.language : 'N/A'}</div>
+        </div>
+        <div className="Stats">
+          <div className="Stats-activity">
+            <div><b>Open Issues:</b> {props.project.open_issues}</div>
+            <div><b>Total Commits:</b> {props.project.total_commits}</div>
+            <div><b>Watchers:</b> {props.project.watchers}</div>
+            <div><b>Stargazers:</b> {props.project.stargazers}</div>
+            <div><b>Forks:</b> {props.project.forks}</div>
+            <div><b>Archived:</b> {props.project.archived ? 'Yes' : 'No'}</div>
+          </div>
+          <div className="Stats-dates">
+            <div><b>Pushed:</b> {moment(props.project.pushed).format('YYYY-MM-DD')}</div>
+            <div><b>Created:</b> {moment(props.project.created).format('YYYY-MM-DD')}</div>
+            <div><b>Updated:</b> {moment(props.project.updated).format('YYYY-MM-DD')}</div>
+          </div>
+        </div>
+        <div className="Graph-data">
+          <div><b>Recent Commits Activity:</b></div>
+          <ResponsiveContainer className={"graphContainer"} width="100%" height={200}>
+            <AreaChart
+              test-id='CommitGraph'
+              width={600}
+              height={200}
+              data={props.project.commits_graph_data}
+              margin={{
+                top: 30,
+                right: 70,
+                left: 0,
+                bottom: 0,
+              }}
+            >
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="month" />
+              <YAxis />
+              <Tooltip />
+              <Area type="monotone" dataKey={"commits"} stroke={"#75689c"} fill={"#b8a2fa"}/>
+            </AreaChart>
+          </ResponsiveContainer>
+        </div>
       </div>
     </li>
   )
