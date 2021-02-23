@@ -8,7 +8,7 @@ function Project(props) {
     <li key={props.project.full_name} className="Project-item">
       <div className="Project">
         <div className="Project-name">
-          <a href={props.project.project_url}>{props.project.project_name}</a>
+          <a href={props.project.project_url}><b>{props.project.project_name}</b></a>
         </div>
         <div className="Project-details">
           <div><b>Full Name:</b> {props.project.full_name}</div>
