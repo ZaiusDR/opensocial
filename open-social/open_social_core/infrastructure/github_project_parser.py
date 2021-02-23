@@ -27,7 +27,7 @@ def parse_project_activity(project):
 def _get_commits_graph_data(project):
     commits_graph_data = []
 
-    for i in range(0, 6):
+    for i in range(5, -1, -1):
         date = (datetime.now().replace(microsecond=0) - relativedelta.relativedelta(months=i)).strftime('%Y-%m')
         commits_graph_data.append(
             {
