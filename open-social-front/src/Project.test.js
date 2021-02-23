@@ -37,7 +37,6 @@ test('renders a project information', () => {
   const archived = getByText('No', { exact: false });
 
   expect(projectName).toBeInTheDocument();
-  expect(projectName).toHaveAttribute('href', project.project_url);
   expect(projectFullName).toBeInTheDocument();
   expect(description).toBeInTheDocument();
   expect(openIssues).toBeInTheDocument();
