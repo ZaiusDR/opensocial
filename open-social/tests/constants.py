@@ -1,8 +1,8 @@
-PROJECTS = {
+PROJECTS_FIRST_PAGE = {
     'search': {
         'pageInfo': {
             'endCursor': 'Y3Vyc29yOjQx',
-            'hasNextPage': False,
+            'hasNextPage': True,
             'startCursor': 'Y3Vyc29yOjE='
         },
         'repos': [
@@ -77,7 +77,19 @@ PROJECTS = {
                     'url': 'https://github.com/sebLaLa80/pepinierePHP',
                     'watchers': {'totalCount': 1}
                 }
-            },
+            }
+        ]
+    }
+}
+
+PROJECTS_SECOND_PAGE = {
+    'search': {
+        'pageInfo': {
+            'endCursor': 'Y3Vyc29yOjQx',
+            'hasNextPage': False,
+            'startCursor': 'Y3Vyc29yOjE='
+        },
+        'repos': [
             {
                 'repo': {
                     'name': 'pepiniereLabranche',

@@ -37,10 +37,17 @@ def get_project_list(topic):
 
     client = gql.Client(transport=transport)
 
+    has_next_page = True
+    projects = []
     gql_query = gql.gql(github_queries.initial_query)
-
-    result = client.execute(gql_query, variable_values=gql_query_params)
-    return _parse_projects(result)
+    while has_next_page:
+        result = client.execute(gql_query, variable_values=gql_query_params)
+        projects.extend(_parse_projects(result))
+        if not _has_next_page(result):
+            has_next_page = False
+        else:
+            gql_query_params.update(after=_get_next_page_marker(result))
+    return projects
 
 
 def _parse_projects(result):
@@ -62,3 +69,11 @@ def _get_token():
         Name=TOKEN_PATH,
         WithDecryption=True
     )['Parameter']['Value']
+
+
+def _has_next_page(result):
+    return result['search']['pageInfo']['hasNextPage']
+
+
+def _get_next_page_marker(result):
+    return result['search']['pageInfo']['endCursor']
