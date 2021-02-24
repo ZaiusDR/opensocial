@@ -6,7 +6,7 @@
 .Project {
     text-align: start;
     margin-top: 25px;
-    font-size: 1.5vw;
+    font-size: 1.3vw;
     display: flex;
     flex-direction: column;
     border: 1px solid #111111;
@@ -19,7 +19,7 @@
 }
 
 .Project-name {
-    font-size: 2vw;
+    font-size: 1.8vw;
     padding: 2px;
     margin-bottom: 5px;
 }
@@ -54,10 +54,6 @@
 .Graph-data {
     margin-top: 5px;
     padding: 2px;
-}
-
-.graphContainer {
-    font-size: 15px;
 }
 
 @media only screen and (max-width: 600px) {
