@@ -43,6 +43,20 @@
   padding: 0;
 }
 
+@media only screen and (max-width: 600px) {
+  .Header-text h1 {
+    font-size: 9vw;
+  }
+
+  .Header-text h6 {
+    font-size: 4vw;
+  }
+
+  .Header-image {
+    width: 20vw;
+  }
+}
+
 @keyframes fadein {
   from { opacity: 0; }
   to   { opacity: 1; }
