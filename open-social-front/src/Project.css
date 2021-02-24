@@ -10,7 +10,7 @@
     display: flex;
     flex-direction: column;
     border: 1px solid #111111;
-    box-shadow: #7f7f7f;
+    box-shadow: 2px 2px 7px lightslategray;
     padding: 1%;
     -webkit-animation: fadein 0.5s ease-in;
     -moz-animation: fadein 0.5s ease-in;
