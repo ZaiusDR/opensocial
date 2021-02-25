@@ -33,7 +33,7 @@ jobs:
         run: pip install -r open-social/tests/test_requirements.txt
 
       - name: 'Run Unittests'
-        working-directory: ./open-social
+        working-directory: ./open-socia
         run: |
           pytest
         env:
