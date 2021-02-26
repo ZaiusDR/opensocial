@@ -65,8 +65,8 @@ Resources:
         - AttributeName: 'total_commits'
           AttributeType: 'N'
       KeySchema:
-        AttributeName: 'full_name'
-        KeyType: 'HASH'
+        - AttributeName: 'full_name'
+          KeyType: 'HASH'
       GlobalSecondaryIndexes:
         - IndexName: 'TotalCommitsIndex'
           KeySchema:
