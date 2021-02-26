@@ -76,7 +76,11 @@ Resources:
               KeyType: 'RANGE'
           Projection:
             ProjectionType: 'ALL'
+          ProvisionedThroughput:
+            ReadCapacityUnits: 25
+            WriteCapacityUnits: 25
       TableName: open-social-projects
+      BillingMode: 'PROVISIONED'
       ProvisionedThroughput:
         ReadCapacityUnits: 25
         WriteCapacityUnits: 25
