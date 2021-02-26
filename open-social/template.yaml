@@ -74,6 +74,8 @@ Resources:
               KeyType: 'HASH'
             - AttributeName: 'total_commits'
               KeyType: 'RANGE'
+          Projection:
+            ProjectionType: 'ALL'
       TableName: open-social-projects
       ProvisionedThroughput:
         ReadCapacityUnits: 25
