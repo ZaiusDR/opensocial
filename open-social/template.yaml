@@ -55,11 +55,25 @@ Resources:
               Ref: OpenSocialAPI
 
   ProjectDynamoDBTable:
-    Type: AWS::Serverless::SimpleTable
+    Type: AWS::DynamoDB::Table
     Properties:
-      PrimaryKey:
-        Name: 'full_name'
-        Type: String
+      AttributeDefinitions:
+        - AttributeName: 'full_name'
+          AttributeType: 'S'
+        - AttributeName: 'archived'
+          AttributeType: 'N'
+        - AttributeName: 'total_commits'
+          AttributeType: 'N'
+      KeySchema:
+        AttributeName: 'full_name'
+        KeyType: 'HASH'
+      GlobalSecondaryIndexes:
+        - IndexName: 'TotalCommitsIndex'
+          KeySchema:
+            - AttributeName: 'archived'
+              KeyType: 'HASH'
+            - AttributeName: 'total_commits'
+              KeyType: 'RANGE'
       TableName: open-social-projects
       ProvisionedThroughput:
         ReadCapacityUnits: 25
