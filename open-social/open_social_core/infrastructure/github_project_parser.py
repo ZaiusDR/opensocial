@@ -20,7 +20,7 @@ def parse_project_activity(project):
         language=project['primaryLanguage']['name'] if project['primaryLanguage'] else None,
         total_commits=project['commitsCount']['history']['totalCount'] if project['commitsCount'] else 0,
         commits_graph_data=_get_commits_graph_data(project),
-        archived=project['isArchived']
+        archived=1 if project['isArchived'] else 0
     )
 
 

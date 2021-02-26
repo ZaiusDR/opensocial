@@ -26,7 +26,7 @@ class TestProjectParser(unittest.TestCase):
         self.assertEqual(project_information.updated, '2021-01-16T01:32:01Z')
         self.assertEqual(project_information.language, 'Java')
         self.assertEqual(project_information.total_commits, 2)
-        self.assertEqual(project_information.archived, False)
+        self.assertEqual(project_information.archived, 0)
 
     def test_should_parse_project_activity_with_no_primary_language(self):
         project_information = github_project_parser.parse_project_activity(
