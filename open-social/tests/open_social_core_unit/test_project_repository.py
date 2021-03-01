@@ -27,6 +27,32 @@ class TestProjectRepository(unittest.TestCase):
                 {
                     'AttributeName': 'full_name',
                     'AttributeType': 'S'
+                },
+                {
+                    'AttributeName': 'archived',
+                    'AttributeType': 'N'
+                },
+                {
+                    'AttributeName': 'total_commits',
+                    'AttributeType': 'N'
+                }
+            ],
+            GlobalSecondaryIndexes=[
+                {
+                    'IndexName': 'TotalCommitsIndex',
+                    'KeySchema': [
+                        {
+                            'AttributeName': 'archived',
+                            'KeyType': 'HASH'
+                        },
+                        {
+                            'AttributeName': 'total_commits',
+                            'KeyType': 'RANGE'
+                        }
+                    ],
+                    'Projection': {
+                        'ProjectionType': 'ALL'
+                    }
                 }
             ]
         )
@@ -64,3 +90,25 @@ class TestProjectRepository(unittest.TestCase):
 
         self.assertEqual(len(page1['projects']), 5)
         self.assertEqual(len(page2['projects']), 1)
+
+    def test_should_return_projects_sorted_by_total_commits_desc(self):
+        sorted_by = 'total_commits'
+        project_repository.save(fixtures.github_projects_pagination)
+
+        page1 = project_repository.get_sorted_projects(sorted_by, False)
+        page2 = project_repository.get_sorted_projects(sorted_by, False, page1['page_identifier'])
+
+        self.assertEqual(page1['projects'][0]['total_commits'], 61)
+        self.assertEqual(page1['projects'][1]['total_commits'], 59)
+        self.assertEqual(len(page1['projects']), 5)
+        self.assertEqual(len(page2['projects']), 1)
+
+    def test_should_return_projects_sorted_by_total_commits_asc(self):
+        sorted_by = 'total_commits'
+        project_repository.save(fixtures.github_projects_pagination)
+
+        page1 = project_repository.get_sorted_projects(sorted_by, True)
+        project_repository.get_sorted_projects(sorted_by, True, page1['page_identifier'])
+
+        self.assertEqual(page1['projects'][0]['total_commits'], 0)
+        self.assertEqual(page1['projects'][1]['total_commits'], 5)

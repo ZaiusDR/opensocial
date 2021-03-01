@@ -32,6 +32,18 @@ class TestProjectService(unittest.TestCase):
 
     @mock.patch('open_social_core.service.project_service.project_repository.get_projects')
     def test_should_return_projects_with_pagination(self, repository_mock):
-        project_service.get_projects('fake_key')
+        project_service.get_projects(sorted_by=None, page='fake_key')
 
         repository_mock.assert_called_once_with('fake_key')
+
+    @mock.patch('open_social_core.service.project_service.project_repository.get_sorted_projects')
+    def test_should_return_projects_with_sorted_by_total_commits_asc(self, repository_mock):
+        project_service.get_projects(sorted_by='total_commits', asc=True, page='fake_key')
+
+        repository_mock.assert_called_once_with('total_commits', True, 'fake_key')
+
+    @mock.patch('open_social_core.service.project_service.project_repository.get_sorted_projects')
+    def test_should_return_projects_with_sorted_by_total_commits_desc(self, repository_mock):
+        project_service.get_projects(sorted_by='total_commits', asc=False, page='fake_key')
+
+        repository_mock.assert_called_once_with('total_commits', False, 'fake_key')

@@ -17,7 +17,7 @@ github_projects = [
         language='Python',
         total_commits=24,
         commits_graph_data={},
-        archived=True
+        archived=0
     ),
     github_project.GithubProject(
         project_name='project_2',
@@ -34,7 +34,7 @@ github_projects = [
         language='Javascript',
         total_commits=59,
         commits_graph_data={},
-        archived=False
+        archived=0
     )
 ]
 
@@ -52,9 +52,9 @@ github_projects_pagination = [
         created='2019-08-04T05:36:49Z',
         updated='2019-08-06T07:38:15Z',
         language='Python',
-        total_commits=24,
+        total_commits=38,
         commits_graph_data={},
-        archived=True
+        archived=0
     ),
     github_project.GithubProject(
         project_name='project_2',
@@ -71,7 +71,7 @@ github_projects_pagination = [
         language='Javascript',
         total_commits=59,
         commits_graph_data={},
-        archived=False
+        archived=0
     ),
     github_project.GithubProject(
         project_name='project_3',
@@ -88,7 +88,7 @@ github_projects_pagination = [
         language='Python',
         total_commits=24,
         commits_graph_data={},
-        archived=True
+        archived=0
     ),
     github_project.GithubProject(
         project_name='project_4',
@@ -103,9 +103,9 @@ github_projects_pagination = [
         created='2019-08-13T11:01:35Z',
         updated='2019-08-13T11:12:55Z',
         language='Javascript',
-        total_commits=59,
+        total_commits=61,
         commits_graph_data={},
-        archived=False
+        archived=0
     ),
     github_project.GithubProject(
         project_name='project_5',
@@ -120,9 +120,9 @@ github_projects_pagination = [
         created='2019-08-04T05:36:49Z',
         updated='2019-08-06T07:38:15Z',
         language='Python',
-        total_commits=24,
+        total_commits=5,
         commits_graph_data={},
-        archived=True
+        archived=0
     ),
     github_project.GithubProject(
         project_name='project_6',
@@ -137,8 +137,8 @@ github_projects_pagination = [
         created='2019-08-13T11:01:35Z',
         updated='2019-08-13T11:12:55Z',
         language='Javascript',
-        total_commits=59,
+        total_commits=0,
         commits_graph_data={},
-        archived=False
+        archived=0
     )
 ]
