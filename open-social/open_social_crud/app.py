@@ -26,9 +26,9 @@ def _gzip_b64encode(data):
 
 def list_projects(event, context):
     print(event)
-    page = event.get('queryStringParameters', {}).get('page', None)
-    sorted_by = event.get('queryStringParameters', {}).get('sorted_by', None)
-    asc = event.get('queryStringParameters', {}).get('asc', None)
+    page = event.get('queryStringParameters', {}) and event.get('queryStringParameters', {}).get('page', None)
+    sorted_by = event.get('queryStringParameters', {}) and event.get('queryStringParameters', {}).get('sorted_by', None)
+    asc = event.get('queryStringParameters', {}) and event.get('queryStringParameters', {}).get('asc', None)
 
     projects = project_service.get_projects(sorted_by, asc, page)
 
