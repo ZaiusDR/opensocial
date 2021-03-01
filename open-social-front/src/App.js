@@ -25,10 +25,13 @@ class App extends React.Component {
 
   componentDidMount() {
     this.fetchData()
-  };
+  }
 
  fetchData = () => {
-   fetch(this.state.nextKey ? `${api_url}?page=${this.state.nextKey}` : api_url)
+   fetch(this.state.nextKey ?
+        `${api_url}?page=${encodeURIComponent(JSON.stringify(this.state.nextKey)).toString()}`
+        : api_url
+   )
      .then(response => response.json())
      .then(response_json => this.setState({
        projects: this.state.projects.concat(response_json.projects),

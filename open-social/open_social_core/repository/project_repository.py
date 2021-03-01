@@ -1,3 +1,5 @@
+import json
+
 import boto3
 
 from boto3.dynamodb.conditions import Key
@@ -34,7 +36,7 @@ def save(projects):
 def get_projects(exclusive_start_key=None):
     table = _get_table()
     if exclusive_start_key:
-        response = table.scan(Limit=5, ExclusiveStartKey=exclusive_start_key)
+        response = table.scan(Limit=5, ExclusiveStartKey=json.loads(exclusive_start_key))
     else:
         response = table.scan(Limit=5)
     results = {
@@ -55,7 +57,7 @@ def get_sorted_projects(sorted_by, scan_index_forward, exclusive_start_key=None)
             KeyConditionExpression=Key('archived').eq(0),
             Limit=5,
             ScanIndexForward=scan_index_forward,
-            ExclusiveStartKey=exclusive_start_key
+            ExclusiveStartKey=json.loads(exclusive_start_key)
         )
     else:
         response = table.query(
