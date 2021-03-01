@@ -45,7 +45,7 @@ class TestApp(unittest.TestCase):
     def test_should_get_projects_with_pagination(self, project_service_mock, b64encode_mock):
         app.list_projects({'queryStringParameters': {'page': 'fake_page'}}, {})
 
-        project_service_mock.assert_called_once_with(None, None, 'fake_page')
+        project_service_mock.assert_called_once_with(None, False, 'fake_page')
 
     @mock.patch('open_social_crud.app._gzip_b64encode')
     @mock.patch('open_social_crud.app.project_service.get_projects')

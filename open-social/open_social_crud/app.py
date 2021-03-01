@@ -26,9 +26,9 @@ def _gzip_b64encode(data):
 
 def list_projects(event, context):
     print(event)
-    page = event.get('queryStringParameters', {}) and event.get('queryStringParameters', {}).get('page', None)
-    sorted_by = event.get('queryStringParameters', {}) and event.get('queryStringParameters', {}).get('sorted_by', None)
-    asc = event.get('queryStringParameters', {}) and event.get('queryStringParameters', {}).get('asc', None)
+    page = _get_query_parameter(event, 'page', None)
+    sorted_by = _get_query_parameter(event, 'sorted_by', None)
+    asc = _get_query_parameter(event, 'asc', False)
 
     projects = project_service.get_projects(sorted_by, asc, page)
 
@@ -43,6 +43,11 @@ def list_projects(event, context):
             'Access-Control-Allow-Headers': 'Content-Type,Content-Encoding'
         }
     }
+
+
+def _get_query_parameter(event, parameter_name, default):
+    return event.get('queryStringParameters', {}) and \
+           event.get('queryStringParameters', {}).get(parameter_name, default)
 
 
 def decimal_default(obj):
