@@ -13,6 +13,7 @@
     "react-infinite-scroll-component": "^6.0.0",
     "react-loader-spinner": "^4.0.0",
     "react-scripts": "4.0.3",
+    "react-select": "^4.1.0",
     "recharts": "^2.0.4"
   },
   "scripts": {
