@@ -69,6 +69,10 @@
   .Header-image {
     width: 20vw;
   }
+
+  .Form-label {
+    font-size: 4vw;
+  }
 }
 
 @keyframes fadein {
