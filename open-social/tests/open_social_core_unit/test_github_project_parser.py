@@ -39,7 +39,7 @@ class TestProjectParser(unittest.TestCase):
     @freezegun.freeze_time('2021-02-21')
     def test_should_correctly_generate_commits_graph_data(self):
         expected_commit_graph_data = [
-            {'month': '2020-09', 'commits': 3},
+            {'month': '2020-09', 'commits': 7},
             {'month': '2020-10', 'commits': 1},
             {'month': '2020-11', 'commits': 0},
             {'month': '2020-12', 'commits': 1},

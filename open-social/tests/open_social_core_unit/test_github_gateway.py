@@ -21,11 +21,13 @@ class TestGithubAPI(unittest.TestCase):
         client.put_parameter(
             Name=github_gateway.TOKEN_PATH, Description='Fake Token', Value='value', Type='SecureString'
         )
-        gql_mock.side_effect = [constants.PROJECTS_FIRST_PAGE, constants.PROJECTS_SECOND_PAGE]
+        gql_mock.side_effect = [
+            constants.PROJECTS_FIRST_PAGE, constants.PROJECTS_SECOND_PAGE, constants.COMMITS_PAGE
+        ]
         topic = {'topic': 'fake_topic'}
 
         project_list = github_gateway.get_project_list(topic)
 
-        self.assertEqual(gql_mock.call_count, 2)
+        self.assertEqual(gql_mock.call_count, 3)
         self.assertEqual(parser_mock.call_count, 4)
         self.assertEqual(len(project_list), 4)

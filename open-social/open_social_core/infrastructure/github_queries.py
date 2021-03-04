@@ -30,6 +30,10 @@ query recentRepos($query: String!, $date_limit: GitTimestamp!, $after: String) {
           commitsCount: object(expression: "master") {
             ... on Commit {
               history(since: $date_limit) {
+                pageInfo {
+                  endCursor
+                  hasNextPage
+                }
                 totalCount
                 edges {
                   node {
@@ -45,6 +49,36 @@ query recentRepos($query: String!, $date_limit: GitTimestamp!, $after: String) {
           languages(first: 10) {
             nodes {
               name
+            }
+          }
+        }
+      }
+    }
+  }
+}
+'''
+
+commit_query = '''
+query recentRepos($repo_name: String!, $repo_owner: String!, $date_limit: GitTimestamp!, $after: String) {
+  repository(name: $repo_name, owner: $repo_owner) {
+    ref(qualifiedName: "master") {
+      target {
+        ... on Commit {
+          history(
+            since: $date_limit
+            first: 100
+            after: $after
+          ) {
+            pageInfo {
+              hasNextPage
+              endCursor
+            }
+            edges {
+              node {
+                author {
+                  date
+                }
+              }
             }
           }
         }
