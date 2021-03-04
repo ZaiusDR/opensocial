@@ -30,8 +30,9 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: ./actions/aws-sam
+          file: Dockerfile.build
           push: true
-          tags: eduardosuarez/aws-sam-action:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/aws-sam-action:latest
 
   sam-app:
     name: 'SAM App Deploy'

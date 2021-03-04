@@ -1,11 +1,1 @@
-FROM python:3.8-alpine
-
-ENV SAM_CLI_TELEMETRY 0
-
-RUN apk --update --no-cache add jq curl bash gcc musl-dev
-
-RUN pip install aws-sam-cli
-
-COPY entrypoint.sh /entrypoint.sh
-
-ENTRYPOINT ["/entrypoint.sh"]
+FROM eduardosuarez/aws-sam-action:latest
