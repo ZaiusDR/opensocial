@@ -6,7 +6,7 @@ const project = {
   project_name: 'project1',
   full_name: 'user1/project1',
   description: 'fake_description',
-  contributors: '2',
+  contributors: '19',
   open_issues: '25',
   total_commits: '10',
   watchers: '17',
