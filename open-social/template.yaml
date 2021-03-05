@@ -64,7 +64,7 @@ Resources:
           AttributeType: 'N'
         - AttributeName: 'total_commits'
           AttributeType: 'N'
-        - AttrubuteName: 'contributors'
+        - AttributeName: 'contributors'
           AttributeType: 'N'
       KeySchema:
         - AttributeName: 'full_name'
