@@ -67,18 +67,18 @@ Resources:
       KeySchema:
         - AttributeName: 'full_name'
           KeyType: 'HASH'
-      GlobalSecondaryIndexes:
-        - IndexName: 'TotalCommitsIndex'
-          KeySchema:
-            - AttributeName: 'sorting'
-              KeyType: 'HASH'
-            - AttributeName: 'total_commits'
-              KeyType: 'RANGE'
-          Projection:
-            ProjectionType: 'ALL'
-          ProvisionedThroughput:
-            ReadCapacityUnits: 25
-            WriteCapacityUnits: 25
+#      GlobalSecondaryIndexes:
+#        - IndexName: 'TotalCommitsIndex'
+#          KeySchema:
+#            - AttributeName: 'sorting'
+#              KeyType: 'HASH'
+#            - AttributeName: 'total_commits'
+#              KeyType: 'RANGE'
+#          Projection:
+#            ProjectionType: 'ALL'
+#          ProvisionedThroughput:
+#            ReadCapacityUnits: 25
+#            WriteCapacityUnits: 25
       TableName: open-social-projects
       BillingMode: 'PROVISIONED'
       ProvisionedThroughput:
