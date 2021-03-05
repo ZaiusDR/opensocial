@@ -38,6 +38,7 @@ query recentRepos($query: String!, $date_limit: GitTimestamp!, $after: String) {
                 edges {
                   node {
                     author {
+                      name
                       date
                     }
                   }
@@ -75,6 +76,7 @@ query recentRepos($repo_name: String!, $repo_owner: String!, $date_limit: GitTim
             edges {
               node {
                 author {
+                  name
                   date
                 }
               }
