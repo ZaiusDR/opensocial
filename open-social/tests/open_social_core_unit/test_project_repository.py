@@ -36,6 +36,10 @@ class TestProjectRepository(unittest.TestCase):
                 {
                     'AttributeName': 'total_commits',
                     'AttributeType': 'N'
+                },
+                {
+                    'AttributeName': 'contributors',
+                    'AttributeType': 'N'
                 }
             ],
             GlobalSecondaryIndexes=[
@@ -48,6 +52,22 @@ class TestProjectRepository(unittest.TestCase):
                         },
                         {
                             'AttributeName': 'total_commits',
+                            'KeyType': 'RANGE'
+                        }
+                    ],
+                    'Projection': {
+                        'ProjectionType': 'ALL'
+                    }
+                },
+                {
+                    'IndexName': 'ContributorsIndex',
+                    'KeySchema': [
+                        {
+                            'AttributeName': 'sorting',
+                            'KeyType': 'HASH'
+                        },
+                        {
+                            'AttributeName': 'contributors',
                             'KeyType': 'RANGE'
                         }
                     ],
@@ -113,3 +133,13 @@ class TestProjectRepository(unittest.TestCase):
 
         self.assertEqual(page1['projects'][0]['total_commits'], 0)
         self.assertEqual(page1['projects'][1]['total_commits'], 5)
+
+    def test_should_return_projects_sorted_by_contributors_desc(self):
+        sorted_by = 'contributors'
+        project_repository.save(fixtures.github_projects_pagination)
+
+        page1 = project_repository.get_sorted_projects(sorted_by, False)
+        project_repository.get_sorted_projects(sorted_by, False, json.dumps(page1['page_identifier']))
+
+        self.assertEqual(page1['projects'][0]['contributors'], 30)
+        self.assertEqual(page1['projects'][1]['contributors'], 19)

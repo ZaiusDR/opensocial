@@ -13,7 +13,8 @@ const Select = loadable(() => import ('react-select'));
 
 const api_url = 'https://01ruue3xk0.execute-api.eu-west-1.amazonaws.com/dev/projects';
 const sort_by = [
-  { value: 'total_commits', label: 'Total Commits' }
+  { value: 'total_commits', label: 'Total Commits' },
+  { value: 'contributors', label: 'Contributors' },
 ]
 
 class App extends React.Component {
