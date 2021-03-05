@@ -9,6 +9,7 @@ def parse_project_activity(project):
         project_name=project['name'],
         full_name=project['nameWithOwner'],
         description=project['description'],
+        contributors=_get_contributors(project),
         open_issues=project['issues']['totalCount'],
         watchers=project['watchers']['totalCount'],
         stargazers=project['stargazerCount'],
@@ -20,7 +21,7 @@ def parse_project_activity(project):
         language=project['primaryLanguage']['name'] if project['primaryLanguage'] else None,
         total_commits=project['commitsCount']['history']['totalCount'] if project['commitsCount'] else 0,
         commits_graph_data=_get_commits_graph_data(project),
-        archived=1 if project['isArchived'] else 0
+        sorting=0
     )
 
 
@@ -43,3 +44,10 @@ def _get_commits(project):
         commit['node']['author']['date']
         for commit in project['commitsCount']['history']['edges']
     ] if project['commitsCount'] else []
+
+
+def _get_contributors(project):
+    return len({
+        commit['node']['author']['name']
+        for commit in project['commitsCount']['history']['edges']
+    }) if project['commitsCount'] else 0

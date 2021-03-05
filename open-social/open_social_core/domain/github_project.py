@@ -6,6 +6,7 @@ GithubProject = collections.namedtuple(
         'full_name',
         'project_name',
         'description',
+        'contributors',
         'open_issues',
         'watchers',
         'stargazers',
@@ -17,6 +18,6 @@ GithubProject = collections.namedtuple(
         'language',
         'total_commits',
         'commits_graph_data',
-        'archived'
+        'sorting'
     ]
 )

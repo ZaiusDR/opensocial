@@ -45,7 +45,6 @@ query recentRepos($query: String!, $date_limit: GitTimestamp!, $after: String) {
               }
             }
           }
-          isArchived
           languages(first: 10) {
             nodes {
               name

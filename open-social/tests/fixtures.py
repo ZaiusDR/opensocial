@@ -6,6 +6,7 @@ github_projects = [
         project_name='project_1',
         full_name='user1/project_1',
         description='description1',
+        contributors=18,
         open_issues=30,
         watchers=15,
         stargazers=25,
@@ -17,12 +18,13 @@ github_projects = [
         language='Python',
         total_commits=24,
         commits_graph_data={},
-        archived=0
+        sorting=0
     ),
     github_project.GithubProject(
         project_name='project_2',
         full_name='user2/project_2',
         description='description2',
+        contributors=23,
         open_issues=239,
         watchers=34,
         stargazers=29,
@@ -34,7 +36,7 @@ github_projects = [
         language='Javascript',
         total_commits=59,
         commits_graph_data={},
-        archived=0
+        sorting=0
     )
 ]
 
@@ -43,6 +45,7 @@ github_projects_pagination = [
         project_name='project_1',
         full_name='user1/project_1',
         description='description1',
+        contributors=1,
         open_issues=30,
         watchers=15,
         stargazers=25,
@@ -54,12 +57,13 @@ github_projects_pagination = [
         language='Python',
         total_commits=38,
         commits_graph_data={},
-        archived=0
+        sorting=0
     ),
     github_project.GithubProject(
         project_name='project_2',
         full_name='user2/project_2',
         description='description2',
+        contributors=15,
         open_issues=239,
         watchers=34,
         stargazers=29,
@@ -71,12 +75,13 @@ github_projects_pagination = [
         language='Javascript',
         total_commits=59,
         commits_graph_data={},
-        archived=0
+        sorting=0
     ),
     github_project.GithubProject(
         project_name='project_3',
         full_name='user1/project_3',
         description='description1',
+        contributors=0,
         open_issues=30,
         watchers=15,
         stargazers=25,
@@ -88,12 +93,13 @@ github_projects_pagination = [
         language='Python',
         total_commits=24,
         commits_graph_data={},
-        archived=0
+        sorting=0
     ),
     github_project.GithubProject(
         project_name='project_4',
         full_name='user2/project_4',
         description='description2',
+        contributors=19,
         open_issues=239,
         watchers=34,
         stargazers=29,
@@ -105,12 +111,13 @@ github_projects_pagination = [
         language='Javascript',
         total_commits=61,
         commits_graph_data={},
-        archived=0
+        sorting=0
     ),
     github_project.GithubProject(
         project_name='project_5',
         full_name='user1/project_5',
         description='description1',
+        contributors=30,
         open_issues=30,
         watchers=15,
         stargazers=25,
@@ -122,12 +129,13 @@ github_projects_pagination = [
         language='Python',
         total_commits=5,
         commits_graph_data={},
-        archived=0
+        sorting=0
     ),
     github_project.GithubProject(
         project_name='project_6',
         full_name='user2/project_6',
         description='description2',
+        contributors=3,
         open_issues=239,
         watchers=34,
         stargazers=29,
@@ -139,6 +147,6 @@ github_projects_pagination = [
         language='Javascript',
         total_commits=0,
         commits_graph_data={},
-        archived=0
+        sorting=0
     )
 ]

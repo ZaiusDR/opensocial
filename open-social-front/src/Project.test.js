@@ -6,6 +6,7 @@ const project = {
   project_name: 'project1',
   full_name: 'user1/project1',
   description: 'fake_description',
+  contributors: 2,
   open_issues: '25',
   total_commits: '10',
   watchers: '17',
@@ -16,7 +17,6 @@ const project = {
   updated: '2020-03-28T18:27:57Z',
   forks: '2313',
   language: 'Python',
-  archived: false,
   last_commit_dates: ['2020-11-23T19:50:55Z', '2020-11-23T19:50:11Z']
 }
 
@@ -25,6 +25,7 @@ test('renders a project information', () => {
   const projectName = getByText(project.project_name);
   const projectFullName = getByText(project.full_name, { exact: false });
   const description = getByText(project.description, { exact: false });
+  const contributors = getByText(project.contributors, { exact: false });
   const openIssues = getByText(project.open_issues, { exact: false });
   const totalCommits = getByText(project.total_commits, { exact: false });
   const watchers = getByText(project.watchers, { exact: false });
@@ -34,11 +35,11 @@ test('renders a project information', () => {
   const updated = getByText(project.updated.split('T')[0], { exact: false });
   const forks = getByText(project.forks, { exact: false });
   const language = getByText(project.language, { exact: false });
-  const archived = getByText('No', { exact: false });
 
   expect(projectName).toBeInTheDocument();
   expect(projectFullName).toBeInTheDocument();
   expect(description).toBeInTheDocument();
+  expect(contributors).toBeInTheDocument();
   expect(openIssues).toBeInTheDocument();
   expect(totalCommits).toBeInTheDocument();
   expect(watchers).toBeInTheDocument();
@@ -48,5 +49,4 @@ test('renders a project information', () => {
   expect(updated).toBeInTheDocument();
   expect(forks).toBeInTheDocument();
   expect(language).toBeInTheDocument();
-  expect(archived).toBeInTheDocument();
 });

@@ -16,6 +16,7 @@ class TestProjectParser(unittest.TestCase):
         self.assertEqual(project_information.project_name, 'pepinazo')
         self.assertEqual(project_information.full_name, 'jomarnavarro/pepinazo')
         self.assertEqual(project_information.description, 'Introduces cucumber with page objects.')
+        self.assertEqual(project_information.contributors, 2)
         self.assertEqual(project_information.open_issues, 0)
         self.assertEqual(project_information.watchers, 1)
         self.assertEqual(project_information.stargazers, 71)
@@ -26,7 +27,7 @@ class TestProjectParser(unittest.TestCase):
         self.assertEqual(project_information.updated, '2021-01-16T01:32:01Z')
         self.assertEqual(project_information.language, 'Java')
         self.assertEqual(project_information.total_commits, 2)
-        self.assertEqual(project_information.archived, 0)
+        self.assertEqual(project_information.sorting, 0)
 
     def test_should_parse_project_activity_with_no_primary_language(self):
         project_information = github_project_parser.parse_project_activity(

@@ -15,6 +15,7 @@ def save(projects):
                 'full_name': project.full_name,
                 'project_name': project.project_name,
                 'description': project.description,
+                'contributors': project.contributors,
                 'open_issues': project.open_issues,
                 'watchers': project.watchers,
                 'stargazers': project.stargazers,
@@ -26,7 +27,7 @@ def save(projects):
                 'language': project.language,
                 'total_commits': project.total_commits,
                 'commits_graph_data': project.commits_graph_data,
-                'archived': project.archived
+                'sorting': project.sorting
             }
         )
 
@@ -54,7 +55,7 @@ def get_sorted_projects(sorted_by, scan_index_forward, exclusive_start_key=None)
     if exclusive_start_key:
         response = table.query(
             IndexName=sorted_to_index[sorted_by],
-            KeyConditionExpression=Key('archived').eq(0),
+            KeyConditionExpression=Key('sorting').eq(0),
             Limit=5,
             ScanIndexForward=scan_index_forward,
             ExclusiveStartKey=json.loads(exclusive_start_key)
@@ -62,7 +63,7 @@ def get_sorted_projects(sorted_by, scan_index_forward, exclusive_start_key=None)
     else:
         response = table.query(
             IndexName=sorted_to_index[sorted_by],
-            KeyConditionExpression=Key('archived').eq(0),
+            KeyConditionExpression=Key('sorting').eq(0),
             Limit=5,
             ScanIndexForward=scan_index_forward
         )

@@ -17,12 +17,12 @@ function Project(props) {
         </div>
         <div className="Stats">
           <div className="Stats-activity">
+            <div><b>Contributors:</b> {props.project.contributors}</div>
             <div><b>Open Issues:</b> {props.project.open_issues}</div>
             <div><b>Total Commits:</b> {props.project.total_commits}</div>
             <div><b>Watchers:</b> {props.project.watchers}</div>
             <div><b>Stargazers:</b> {props.project.stargazers}</div>
             <div><b>Forks:</b> {props.project.forks}</div>
-            <div><b>Archived:</b> {props.project.archived ? 'Yes' : 'No'}</div>
           </div>
           <div className="Stats-dates">
             <div><b>Pushed:</b> {moment(props.project.pushed).format('YYYY-MM-DD')}</div>

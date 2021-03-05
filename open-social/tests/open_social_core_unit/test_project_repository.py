@@ -30,7 +30,7 @@ class TestProjectRepository(unittest.TestCase):
                     'AttributeType': 'S'
                 },
                 {
-                    'AttributeName': 'archived',
+                    'AttributeName': 'sorting',
                     'AttributeType': 'N'
                 },
                 {
@@ -43,7 +43,7 @@ class TestProjectRepository(unittest.TestCase):
                     'IndexName': 'TotalCommitsIndex',
                     'KeySchema': [
                         {
-                            'AttributeName': 'archived',
+                            'AttributeName': 'sorting',
                             'KeyType': 'HASH'
                         },
                         {
