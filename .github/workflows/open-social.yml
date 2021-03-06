@@ -33,11 +33,9 @@ jobs:
           file: ./actions/aws-sam/Dockerfile.build
           push: true
           cache-to: |
-            type=registry
-            ref=${{ secrets.DOCKERHUB_USERNAME }}/aws-sam-action
+            type=registry,ref=${{ secrets.DOCKERHUB_USERNAME }}/aws-sam-action
           cache-from: |
-            type=registry
-            ref=${{ secrets.DOCKERHUB_USERNAME }}/aws-sam-action
+            type=registry,ref=${{ secrets.DOCKERHUB_USERNAME }}/aws-sam-action
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/aws-sam-action:latest
 
   sam-app:
