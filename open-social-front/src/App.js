@@ -76,7 +76,7 @@ class App extends React.Component {
           <img className="Header-image" src={'logo192.png'} alt={'site-logo'}/>
           <div className="Header-text">
             <h1>Open Social</h1>
-            <h2>Humanitarian Open Source projects Aggregator</h2>
+            <p>Humanitarian Open Source projects Aggregator</p>
           </div>
         </header>
         <main>
