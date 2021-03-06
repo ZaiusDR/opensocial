@@ -35,7 +35,7 @@ jobs:
           context: ./actions/aws-sam
           file: ./actions/aws-sam/Dockerfile.build
           push: true
-          platform: linux/amd64
+          platforms: linux/amd64
           cache-to: type=inline
           cache-from: type=registry,ref=${{ secrets.DOCKERHUB_USERNAME }}/aws-sam-action:latest
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/aws-sam-action:latest
