@@ -49,7 +49,7 @@ function Project(props) {
               <XAxis dataKey="month" />
               <YAxis />
               <Tooltip />
-              <Area type="monotone" dataKey={"commits"} stroke={"#75689c"} fill={"#b8a2fa"}/>
+              <Area type="monotone" dataKey={"commits"} stroke={"#001529"} fill={"#365d8c"}/>
             </AreaChart>
           </ResponsiveContainer>
         </div>
