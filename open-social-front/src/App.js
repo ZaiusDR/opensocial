@@ -7,7 +7,7 @@ import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import 'antd/dist/antd.css';
 import {Layout, Row, Col, Carousel, Image} from 'antd';
 
-const { Header, Footer, Content } = Layout;
+const { Header, Content } = Layout;
 
 const InfiniteScroll = loadable(() => import('react-infinite-scroll-component'));
 const Loader = loadable(() => import('react-loader-spinner'));
