@@ -105,15 +105,19 @@ class App extends React.Component {
               </div>
             </Carousel>
           </Header>
-          <Content className="site-layout" style={{ padding: '0 50px', marginTop: 64, maxWidth: '980px' }}>
-            <Row type={'flex'} style={{ paddingTop: '15px' }} align={'middle'} gutter={{ xs: 8, sm: 16, md: 24}} justify={'end'}>
-              <Col style={{ fontSize: '30px'}} span={6}><b>Project List:</b></Col>
-              <Col style={{ textAlign: 'end'}} span={6} offset={6}><b>Sorted By:</b></Col>
-              <Col span={6} style={{ textAlignLast: 'center' }}>
+          <Content className="site-layout" style={{ marginTop: 64, maxWidth: '980px' }}>
+            <Row
+              align={'middle'}
+              gutter={{ xs: 8, sm: 16, md: 24}}
+            >
+              <Col span={8} style={{ fontSize: 'calc(15px + 1.5vw)'}}><b>Project List:</b></Col>
+              <Col span={8} style={{ textAlign: 'end'}}><b>Sorted By:</b></Col>
+              <Col span={8} style={{ textAlignLast: 'center' }}>
                 <Select
                   onChange={this.onSortBy}
                   options={sort_by}
                   isClearable={true}
+                  isSearchable={false}
                 />
               </Col>
             </Row>
