@@ -180,18 +180,8 @@ jobs:
       - name: 'Install Gatsby S3 Plugin'
         run: npm install gatsby-plugin-s3
 
-#      - name: 'Unit Tests'
-#        run: yarn test
-#        env:
-#          CI: true
-
       - name: 'Build App'
         run: npm run build
 
       - name: 'Deploy App'
         run: npm run deploy
-
-#      - name: 'Copy to S3'
-#        run: |
-#          aws s3 sync build/ s3://open-social-front --cache-control max-age=31536000
-#          aws s3 cp s3://open-social-front/index.html s3://open-social-front/index.html --metadata-directive REPLACE --cache-control no-cache --content-type text/html
