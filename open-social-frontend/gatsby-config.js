@@ -1,6 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: "Open Social",
+    siteUrl: "https://open-social.net",
   },
   plugins: [
     "gatsby-plugin-antd",
