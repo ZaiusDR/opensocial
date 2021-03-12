@@ -5,7 +5,8 @@ import loadable from '@loadable/component'
 import './App.css';
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import 'antd/dist/antd.css';
-import {Layout, Row, Col, Carousel, Image} from 'antd';
+import { Layout, Row, Col, Carousel } from 'antd';
+import { StaticImage } from "gatsby-plugin-image";
 
 const { Header, Content } = Layout;
 
@@ -84,7 +85,7 @@ class App extends React.Component {
               autoplay
               effect={'fade'}
             >
-              <div style={{ maxHeight: 'inherit', transform: 'translateY(50%)' }}>
+              <div>
                 <h1 style={{ fontSize: '35px', fontWeight: 'bold', position: 'absolute', top: '30%', left: 0, zIndex: 2}}>
                   <span style={{ background: 'rgba(0, 0, 0, 0.7)', color: 'white', padding: '10px' }} >
                     Welcome to Open Social!!<br/>
@@ -95,13 +96,33 @@ class App extends React.Component {
                     An Humanitarian Open Source Projects Aggregator
                   </span>
                 </p>
-                <Image style={{ display: 'block', transform: 'translateY(-20%)' }} width={'100%'} preview={false} src={'.images/collaboration-heart-medium.jpg'} alt={'collaboration'} />
+                <StaticImage src={'../images/collaboration-heart-medium.jpg'} alt={'collaboration'} />
               </div>
-              <div style={{ maxHeight: 'inherit', transform: 'translateY(50%)' }}>
-                <Image style={{ display: 'block', transform: 'translateY(-20%)' }} width={'100%'} preview={false} src={'.images/open-source.jpg'} alt={'open source'} />
+              <div>
+                <h1 style={{ fontSize: '35px', fontWeight: 'bold', position: 'absolute', top: '30%', left: 0, zIndex: 2}}>
+                  <span style={{ background: 'rgba(0, 0, 0, 0.7)', color: 'white', padding: '10px' }} >
+                    Welcome to Open Social!!<br/>
+                  </span>
+                </h1>
+                <p style={{ fontSize: '25px', fontWeight: 'bold', position: 'absolute', top: '38%', left: 0, zIndex: 2}}>
+                  <span style={{ background: 'rgba(0, 0, 0, 0.7)', color: 'white', padding: '10px' }} >
+                    An Humanitarian Open Source Projects Aggregator
+                  </span>
+                </p>
+                <StaticImage src={'../images/open-source.jpg'} alt={'collaboration'} />
               </div>
-              <div style={{ maxHeight: 'inherit', transform: 'translateY(50%)' }}>
-                <Image style={{ display: 'block', transform: 'translateY(-20%)' }} width={'100%'} preview={false} src={'.images/community.jpg'} alt={'community'} />
+              <div>
+                <h1 style={{ fontSize: '35px', fontWeight: 'bold', position: 'absolute', top: '30%', left: 0, zIndex: 2}}>
+                  <span style={{ background: 'rgba(0, 0, 0, 0.7)', color: 'white', padding: '10px' }} >
+                    Welcome to Open Social!!<br/>
+                  </span>
+                </h1>
+                <p style={{ fontSize: '25px', fontWeight: 'bold', position: 'absolute', top: '38%', left: 0, zIndex: 2}}>
+                  <span style={{ background: 'rgba(0, 0, 0, 0.7)', color: 'white', padding: '10px' }} >
+                    An Humanitarian Open Source Projects Aggregator
+                  </span>
+                </p>
+                <StaticImage src={'../images/community.jpg'} alt={'community'} />
               </div>
             </Carousel>
           </Header>

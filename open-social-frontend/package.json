@@ -35,5 +35,8 @@
     "react-loader-spinner": "^4.0.0",
     "react-select": "^4.2.1",
     "recharts": "^2.0.8"
+  },
+  "devDependencies": {
+    "gatsby-plugin-s3": "^0.3.8"
   }
 }
