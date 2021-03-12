@@ -166,6 +166,9 @@ jobs:
         with:
           node-version: '14'
 
+      - name: 'Install Dependencies'
+        run: npm install
+
       - name: 'Install Gatsby S3 Plugin'
         run: npm install gatsby-plugin-s3
 
