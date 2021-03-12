@@ -148,7 +148,7 @@ jobs:
     needs: ['infrastructure', 'sam-app']
     defaults:
       run:
-        working-directory: ./open-social-front
+        working-directory: ./open-social-frontend
 
     steps:
       - name: 'Checkout'
@@ -166,19 +166,21 @@ jobs:
         with:
           node-version: '14'
 
-      - name: 'Install Dependencies'
-        run: yarn install
+      - name: 'Install Gatsby S3 Plugin'
+        run: npm install gatsby-plugin-s3
 
-      - name: 'Unit Tests'
-        run: yarn test
-        env:
-          CI: true
+#      - name: 'Unit Tests'
+#        run: yarn test
+#        env:
+#          CI: true
 
       - name: 'Build App'
-        run: yarn build
+        run: npm run build
 
-      - name: 'Copy to S3'
-        run: |
-          aws s3 sync build/ s3://open-social-front --cache-control max-age=31536000
-          aws s3 cp s3://open-social-front/index.html s3://open-social-front/index.html --metadata-directive REPLACE --cache-control no-cache --content-type text/html
-#          aws s3 cp s3://open-social-front/service-worker.js s3://open-social-front/service-worker.js --metadata-directive REPLACE --cache-control no-cache --content-type application/javascript
+      - name: 'Deploy App'
+        run: npm run deploy
+
+#      - name: 'Copy to S3'
+#        run: |
+#          aws s3 sync build/ s3://open-social-front --cache-control max-age=31536000
+#          aws s3 cp s3://open-social-front/index.html s3://open-social-front/index.html --metadata-directive REPLACE --cache-control no-cache --content-type text/html
