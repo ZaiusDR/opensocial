@@ -2,11 +2,12 @@ import React from 'react';
 import loadable from '@loadable/component'
 
 
-import './App.css';
+import '../styles/App.css';
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import 'antd/dist/antd.css';
-import { Layout, Row, Col, Carousel } from 'antd';
-import { StaticImage } from "gatsby-plugin-image";
+import { Layout, Row, Col } from 'antd';
+import HeaderCarousel from "./HeaderCarousel";
+import {StaticImage} from "gatsby-plugin-image";
 
 const { Header, Content } = Layout;
 
@@ -36,7 +37,12 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    this.fetchData();
+    console.log(this.props)
+    this.setState({
+      projects: this.state.projects.concat(this.props.initialProjects.internalProjects.projects),
+      hasMore: !!this.props.initialProjects.internalProjects.page_identifier,
+      nextKey: this.props.initialProjects.internalProjects.page_identifier
+    })
   }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
@@ -79,61 +85,26 @@ class App extends React.Component {
     return (
       <div className="App">
         <Layout style={{ alignItems: 'center' }}>
-          <Header style={{ width: '100%', height: '35vw', padding: 0 }}>
-            <Carousel
-              style={{ width: '100%', maxHeight: '35vw', overflow: 'hidden' }}
-              autoplay
-              effect={'fade'}
-            >
-              <div>
-                <h1 style={{ fontSize: '35px', fontWeight: 'bold', position: 'absolute', top: '30%', left: 0, zIndex: 2}}>
-                  <span style={{ background: 'rgba(0, 0, 0, 0.7)', color: 'white', padding: '10px' }} >
-                    Welcome to Open Social!!<br/>
-                  </span>
-                </h1>
-                <p style={{ fontSize: '25px', fontWeight: 'bold', position: 'absolute', top: '38%', left: 0, zIndex: 2}}>
-                  <span style={{ background: 'rgba(0, 0, 0, 0.7)', color: 'white', padding: '10px' }} >
-                    An Humanitarian Open Source Projects Aggregator
-                  </span>
-                </p>
-                <StaticImage src={'../images/collaboration-heart-medium.jpg'} alt={'collaboration'} />
-              </div>
-              <div>
-                <h1 style={{ fontSize: '35px', fontWeight: 'bold', position: 'absolute', top: '30%', left: 0, zIndex: 2}}>
-                  <span style={{ background: 'rgba(0, 0, 0, 0.7)', color: 'white', padding: '10px' }} >
-                    Welcome to Open Social!!<br/>
-                  </span>
-                </h1>
-                <p style={{ fontSize: '25px', fontWeight: 'bold', position: 'absolute', top: '38%', left: 0, zIndex: 2}}>
-                  <span style={{ background: 'rgba(0, 0, 0, 0.7)', color: 'white', padding: '10px' }} >
-                    An Humanitarian Open Source Projects Aggregator
-                  </span>
-                </p>
-                <StaticImage src={'../images/open-source.jpg'} alt={'collaboration'} />
-              </div>
-              <div>
-                <h1 style={{ fontSize: '35px', fontWeight: 'bold', position: 'absolute', top: '30%', left: 0, zIndex: 2}}>
-                  <span style={{ background: 'rgba(0, 0, 0, 0.7)', color: 'white', padding: '10px' }} >
-                    Welcome to Open Social!!<br/>
-                  </span>
-                </h1>
-                <p style={{ fontSize: '25px', fontWeight: 'bold', position: 'absolute', top: '38%', left: 0, zIndex: 2}}>
-                  <span style={{ background: 'rgba(0, 0, 0, 0.7)', color: 'white', padding: '10px' }} >
-                    An Humanitarian Open Source Projects Aggregator
-                  </span>
-                </p>
-                <StaticImage src={'../images/community.jpg'} alt={'community'} />
-              </div>
-            </Carousel>
+          <Header style={{ width: '100%', position: 'fixed', zIndex: 20 }}>
+            <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center'}}>
+              <StaticImage
+                src={'../images/icon.png'}
+                alt={'unicorn'}
+                height={44}
+                layout='fixed'
+              />
+              <h1 style={{ margin: 0, color: 'white', paddingLeft: 10 }}>Open Social</h1>
+            </div>
           </Header>
-          <Content className="site-layout" style={{ marginTop: 64, maxWidth: '980px' }}>
+          <Content className="site-layout" style={{ width: '100%', maxWidth: '980px' }} >
+            <HeaderCarousel style={{ width: '100%' }} />
             <Row
               align={'middle'}
               gutter={{ xs: 8, sm: 16, md: 24}}
             >
               <Col span={10} style={{ fontSize: 'calc(15px + 1.5vw)'}}><b>Project List:</b></Col>
-              <Col span={6} style={{ textAlign: 'end'}}><b>Sorted By:</b></Col>
-              <Col span={8} style={{ textAlignLast: 'center' }}>
+              <Col span={4} style={{ textAlign: 'end'}}><b>Sorted By:</b></Col>
+              <Col span={10} style={{ textAlignLast: 'center' }}>
                 <Select
                   onChange={this.onSortBy}
                   options={sort_by}

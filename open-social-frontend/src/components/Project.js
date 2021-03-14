@@ -1,5 +1,5 @@
 import React from "react";
-import "./Project.css";
+import "../styles/Project.css";
 import {Area, AreaChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis} from 'recharts';
 import moment from "moment";
 
