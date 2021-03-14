@@ -1,0 +1,18 @@
+.Page-header {
+    width: 100%;
+    position: fixed;
+    z-index: 20;
+    padding-left: 4vw;
+}
+
+.Logo-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.Logo-title {
+    margin: 0;
+    color: white;
+    padding-left: 10px;
+}

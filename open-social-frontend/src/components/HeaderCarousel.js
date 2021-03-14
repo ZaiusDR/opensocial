@@ -26,8 +26,38 @@ function HeaderCarousel() {
           src={'../images/collaboration.jpg'}
         />
       </div>
-      {/*<StaticImage alt={'open-source'} src={'../images/open-source.jpg'}/>*/}
-      {/*<StaticImage alt={'community'} src={'../images/community.jpg'}/>*/}
+      <div>
+        <h1 className="Image-text">
+            <span className="Text-span">
+                Welcome to Open Social!!<br/>
+            </span>
+        </h1>
+        <p className="Image-subtext">
+            <span className="Text-span">
+              An Humanitarian Open Source Projects Aggregator
+            </span>
+        </p>
+        <StaticImage
+          alt={'open-source'}
+          src={'../images/open-source.jpg'}
+        />
+      </div>
+      <div>
+        <h1 className="Image-text">
+            <span className="Text-span">
+                Welcome to Open Social!!<br/>
+            </span>
+        </h1>
+        <p className="Image-subtext">
+            <span className="Text-span">
+              An Humanitarian Open Source Projects Aggregator
+            </span>
+        </p>
+        <StaticImage
+          alt={'community'}
+          src={'../images/community.jpg'}
+        />
+      </div>
     </Carousel>
 }
 

@@ -7,9 +7,9 @@ import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import 'antd/dist/antd.css';
 import { Layout, Row, Col } from 'antd';
 import HeaderCarousel from "./HeaderCarousel";
-import {StaticImage} from "gatsby-plugin-image";
+import PageHeader from "./PageHeader";
 
-const { Header, Content } = Layout;
+const { Content } = Layout;
 
 const InfiniteScroll = loadable(() => import('react-infinite-scroll-component'));
 const Loader = loadable(() => import('react-loader-spinner'));
@@ -85,17 +85,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <Layout style={{ alignItems: 'center' }}>
-          <Header style={{ width: '100%', position: 'fixed', zIndex: 20 }}>
-            <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center'}}>
-              <StaticImage
-                src={'../images/icon.png'}
-                alt={'unicorn'}
-                height={44}
-                layout='fixed'
-              />
-              <h1 style={{ margin: 0, color: 'white', paddingLeft: 10 }}>Open Social</h1>
-            </div>
-          </Header>
+          <PageHeader/>
           <Content className="site-layout" style={{ width: '100%', maxWidth: '980px' }} >
             <HeaderCarousel style={{ width: '100%' }} />
             <Row
