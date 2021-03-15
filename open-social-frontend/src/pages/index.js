@@ -1,11 +1,13 @@
 import * as React from "react"
 import { graphql } from "gatsby";
 import App from "../components/App"
+import SEO from "../components/SEO";
 
 
 const IndexPage = ({ data }) => {
   return (
     <main>
+      <SEO/>
       <App initialProjects={data} />
     </main>
   )

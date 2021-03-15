@@ -1,7 +1,8 @@
 module.exports = {
   siteMetadata: {
     title: "Open Social",
-    siteUrl: "https://open-social.net",
+    description: "An humanitarian Open Source projects aggregator",
+    siteUrl: "https://www.open-social.net",
   },
   plugins: [
     "gatsby-plugin-antd",
@@ -24,6 +25,12 @@ module.exports = {
       resolve: "gatsby-plugin-manifest",
       options: {
         icon: "src/images/icon.png",
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-robots-txt',
+      options: {
+        policy: [{ userAgent: '*', allow: '/' }]
       },
     },
     "gatsby-plugin-sharp",
