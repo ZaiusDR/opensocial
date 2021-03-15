@@ -17,7 +17,7 @@
   },
   "dependencies": {
     "@loadable/component": "^5.14.1",
-    "antd": "^4.13.1",
+    "antd": "^4.14.0",
     "gatsby": "^3.0.1",
     "gatsby-plugin-antd": "^2.2.0",
     "gatsby-plugin-google-analytics": "^3.0.0",
