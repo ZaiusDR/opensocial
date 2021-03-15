@@ -5,3 +5,23 @@ updates:
     directory: "/"
     schedule:
       interval: "daily"
+  # Maintain dependencies for JS
+  - package-ecosystem: "npm"
+    directory: "/open-social-frontend"
+    schedule:
+      interval: "daily"
+  # Maintain dependencies for Python
+  - package-ecosystem: "pip"
+    directory: "/open-social"
+    schedule:
+      interval: "daily"
+  # Maintain dependencies for Terraform
+  - package-ecosystem: "terraform"
+    directory: "/infrastructure"
+    schedule:
+      interval: "daily"
+  # Maintain dependencies for Docker
+  - package-ecosystem: "terraform"
+    directory: "/actions/aws-sam"
+    schedule:
+      interval: "daily"
