@@ -5,7 +5,7 @@ import loadable from '@loadable/component'
 import '../styles/App.css';
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import 'antd/dist/antd.css';
-import { Layout, Row, Col } from 'antd';
+import {Layout, Row, Col, BackTop} from 'antd';
 import HeaderCarousel from "./HeaderCarousel";
 import PageHeader from "./PageHeader";
 
@@ -124,6 +124,7 @@ class App extends React.Component {
                       <Project key={project.full_name} project={project}/>
                     )
                   )}
+                <BackTop/>
                 </InfiniteScroll>
                 :
                 <Loader type="ThreeDots" color="#DCDCDC" height={80} width={80}/>
