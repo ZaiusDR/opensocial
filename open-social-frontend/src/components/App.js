@@ -103,29 +103,26 @@ class App extends React.Component {
                 />
               </Col>
             </Row>
-            <Row>
               {this.state.projects.length > 0 ?
-                <div>
-                  <InfiniteScroll
-                    dataLength={this.state.projects.length}
-                    next={this.fetchData}
-                    hasMore={this.state.hasMore}
-                    loader={<h4>Loading...</h4>}
-                    endMessage={
-                      <p style={{ textAlign: 'center' }}>
-                        <b>Yay! You have seen it all</b>
-                      </p>
-                    }
-                  >
-                    {this.state.projects.map((project) => (
-                        <Project key={project.full_name} project={project}/>
-                      )
-                    )}
-                  </InfiniteScroll>
-                </div> :
+                <InfiniteScroll
+                  dataLength={this.state.projects.length}
+                  next={this.fetchData}
+                  hasMore={this.state.hasMore}
+                  loader={<h4>Loading...</h4>}
+                  endMessage={
+                    <p style={{ textAlign: 'center' }}>
+                      <b>Yay! You have seen it all</b>
+                    </p>
+                  }
+                >
+                  {this.state.projects.map((project) => (
+                      <Project key={project.full_name} project={project}/>
+                    )
+                  )}
+                </InfiniteScroll>
+                :
                 <Loader type="ThreeDots" color="#DCDCDC" height={80} width={80}/>
               }
-            </Row>
           </Content>
           {/*<Footer style={{ position: 'fixed', bottom: 0, zIndex: 1, textAlign: 'center', width: '100%' }}>*/}
           {/*  Open Social*/}
