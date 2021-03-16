@@ -22,8 +22,10 @@ function HeaderCarousel() {
           </span>
         </p>
         <StaticImage
+          className="Carousel-img-wrapper"
           alt={'collaboration'}
           src={'../images/collaboration.jpg'}
+          placeholder="blurred"
         />
       </div>
       <div>
@@ -38,8 +40,10 @@ function HeaderCarousel() {
             </span>
         </p>
         <StaticImage
+          className="Carousel-img-wrapper"
           alt={'open-source'}
           src={'../images/open-source.jpg'}
+          placeholder="blurred"
         />
       </div>
       <div>
@@ -54,8 +58,10 @@ function HeaderCarousel() {
             </span>
         </p>
         <StaticImage
+          className="Carousel-img-wrapper"
           alt={'community'}
           src={'../images/community.jpg'}
+          placeholder="blurred"
         />
       </div>
     </Carousel>

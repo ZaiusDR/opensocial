@@ -1,6 +1,10 @@
 .Header-carousel {
     margin-top: 64px;
     width: 100%;
+    height: auto;
+}
+
+.Carousel-img-wrapper {
     height: 35vw;
 }
 
@@ -9,7 +13,7 @@
     font-weight: bold;
     position: absolute;
     z-index: 2;
-    top: 50%;
+    top: 18vw;
     left: 0;
 }
 
@@ -17,7 +21,7 @@
     font-size: 1.3vw;
     font-weight: bold;
     position: absolute;
-    top: 60%;
+    top: 23vw;
     left: 0;
     z-index: 2;
 }
@@ -30,17 +34,17 @@
 
 
 @media only screen and (max-width: 600px) {
-    .Header-carousel {
-        height: 70vh;
-        max-height: 70vw;
+    .Carousel-img-wrapper {
+        height: 70vw;
     }
 
     .Image-text {
+        top: 35vw;
         font-size: 6vw;
     }
 
     .Image-subtext {
         font-size: 3vw;
-        top: 70%;
+        top: 49vw;
     }
 }
