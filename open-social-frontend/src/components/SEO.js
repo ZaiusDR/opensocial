@@ -13,6 +13,8 @@ const SEO = () => {
       {site.siteMetadata.description && (
         <meta property="og:description" content={site.siteMetadata.description} />
       )}
+      {site.siteMetadata.lang && <html lang={site.siteMetadata.lang} />}
+      <link rel="canonical" href={site.siteMetadata.siteUrl} />
     </Helmet>
   )
 }
@@ -26,6 +28,7 @@ const query = graphql`
         title
         description
         siteUrl
+        lang
       }
     }
   }

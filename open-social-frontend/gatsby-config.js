@@ -3,6 +3,7 @@ module.exports = {
     title: "Open Social",
     description: "An humanitarian Open Source projects aggregator",
     siteUrl: "https://www.open-social.net",
+    lang: "en"
   },
   plugins: [
     "gatsby-plugin-antd",
