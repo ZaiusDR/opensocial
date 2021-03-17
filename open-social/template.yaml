@@ -38,20 +38,12 @@ Resources:
           Type: Schedule
           Properties:
             Schedule: 'cron(0 4 * * ? *)'
-            Input:
-              !Sub |
-                {
-                  topic, "humanitarian"
-                }
+            Input: "{\"topic\": \"humanitarian\"}"
         ScrapeNonProfitEvent:
           Type: Schedule
           Properties:
             Schedule: 'cron(0 5 * * ? *)'
-            Input:
-              !Sub |
-                {
-                  topic, "non-profit"
-                }
+            Input: "{\"topic\": \"non-profit\"}"
 
   ApiCrudLambdaFunction:
     Type: AWS::Serverless::Function
