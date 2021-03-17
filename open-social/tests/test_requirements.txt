@@ -1,8 +1,6 @@
 -r ../project_scrapper/requirements.txt
 -r ../open_social_core/requirements.txt
 freezegun
-mock==4.0.2
 moto
 pytest
-pytest-mock
 pyyaml
