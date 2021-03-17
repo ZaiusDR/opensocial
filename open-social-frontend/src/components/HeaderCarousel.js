@@ -31,12 +31,12 @@ function HeaderCarousel() {
       <div>
         <h1 className="Image-text">
             <span className="Text-span">
-                Welcome to Open Social!!<br/>
+                Into making Social Impact? <br/>
             </span>
         </h1>
         <p className="Image-subtext">
             <span className="Text-span">
-              An Humanitarian Open Source Projects Aggregator
+              Contribute with a Non-profit Open Source Project
             </span>
         </p>
         <StaticImage
@@ -49,12 +49,12 @@ function HeaderCarousel() {
       <div>
         <h1 className="Image-text">
             <span className="Text-span">
-                Welcome to Open Social!!<br/>
+                Explore!<br/>
             </span>
         </h1>
         <p className="Image-subtext">
             <span className="Text-span">
-              An Humanitarian Open Source Projects Aggregator
+              Find projects by Topics or the Language you love!
             </span>
         </p>
         <StaticImage
