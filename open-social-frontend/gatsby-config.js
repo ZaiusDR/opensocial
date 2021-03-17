@@ -9,9 +9,19 @@ module.exports = {
     "gatsby-plugin-antd",
     "gatsby-plugin-image",
     {
-      resolve: "gatsby-plugin-google-analytics",
+      resolve: `gatsby-plugin-google-gtag`,
       options: {
-        trackingId: "G-T30WTJGH3Y",
+        trackingIds: [
+          "G-T30WTJGH3Y",
+        ],
+        gtagConfig: {
+          anonymize_ip: true,
+          cookie_expires: 0,
+        },
+        pluginConfig: {
+          head: false,
+          respectDNT: true,
+        },
       },
     },
     "gatsby-plugin-react-helmet",
