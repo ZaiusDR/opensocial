@@ -33,7 +33,6 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    console.log(this.props)
     this.setState({
       projects: this.state.projects.concat(this.props.initialProjects.internalProjects.projects),
       hasMore: !!this.props.initialProjects.internalProjects.page_identifier,
