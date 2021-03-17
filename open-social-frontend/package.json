@@ -40,6 +40,7 @@
     "recharts": "^2.0.8"
   },
   "devDependencies": {
+    "eslint-config-airbnb-base": "^14.2.1",
     "gatsby-plugin-s3": "^0.3.8"
   }
 }

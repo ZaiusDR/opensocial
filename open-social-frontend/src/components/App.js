@@ -83,11 +83,7 @@ class App extends React.Component {
         <Layout style={{ alignItems: 'center' }}>
           <PageHeader/>
           <Content className="site-layout" style={{ width: '100%', maxWidth: '980px' }} >
-            <Row>
-              <Col span={24}>
-                <HeaderCarousel style={{ width: '100%' }} />
-              </Col>
-            </Row>
+            <HeaderCarousel style={{ width: '100%' }} />
             <Row
               style={{paddingLeft: '4px', paddingRight: '4px'}}
               align={'middle'}
