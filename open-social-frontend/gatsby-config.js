@@ -8,6 +8,7 @@ module.exports = {
   plugins: [
     "gatsby-plugin-antd",
     "gatsby-plugin-image",
+    "gatsby-plugin-react-helmet",
     {
       resolve: `gatsby-plugin-google-gtag`,
       options: {
@@ -20,11 +21,9 @@ module.exports = {
         },
         pluginConfig: {
           head: true,
-          respectDNT: true,
         },
       },
     },
-    "gatsby-plugin-react-helmet",
     {
       resolve: "gatsby-plugin-s3",
       options: {
