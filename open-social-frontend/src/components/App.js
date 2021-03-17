@@ -1,23 +1,19 @@
 import React from 'react';
-import loadable from '@loadable/component'
 
-
-import '../styles/App.css';
-import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
-import 'antd/dist/antd.css';
 import {Layout, Row, Col, BackTop} from 'antd';
+import Loader from "react-loader-spinner";
+import InfiniteScroll from "react-infinite-scroll-component";
+import Select from "react-select";
+
 import HeaderCarousel from "./HeaderCarousel";
 import PageHeader from "./PageHeader";
+import Project from "./Project";
+
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+import 'antd/dist/antd.css';
+import '../styles/App.css';
 
 const { Content } = Layout;
-
-const InfiniteScroll = loadable(() => import('react-infinite-scroll-component'));
-const Loader = loadable(() => import('react-loader-spinner'));
-const Project = loadable(() => import('./Project'));
-const Select = loadable(() => import ('react-select'));
-
-
-
 const api_url = 'https://01ruue3xk0.execute-api.eu-west-1.amazonaws.com/dev/projects';
 const sort_by = [
   { value: 'total_commits', label: 'Total Commits' },
