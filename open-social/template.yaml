@@ -25,7 +25,7 @@ Resources:
       CodeUri: project_scrapper/
       Handler: app.lambda_handler
       Runtime: python3.8
-      Timeout: 60
+      Timeout: 120
       Policies:
         - DynamoDBCrudPolicy:
             TableName: !Ref ProjectDynamoDBTable
@@ -33,6 +33,17 @@ Resources:
             ParameterName: "github/open-social-token"
       Layers:
         - Ref: OpenSocialCoreLayer
+      Events:
+        ScrapeHumanitarianEvent:
+          Type: Schedule
+          Properties:
+            Schedule: cron(0 4 * * * *)
+            Input: '{"topic", "humanitarian"}'
+        ScrapeNonProfitEvent:
+          Type: Schedule
+          Properties:
+            Schedule: cron(0 5 * * * *)
+            Input: '{"topic", "non-profit"}'
 
   ApiCrudLambdaFunction:
     Type: AWS::Serverless::Function
