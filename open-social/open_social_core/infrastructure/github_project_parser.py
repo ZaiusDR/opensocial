@@ -9,7 +9,7 @@ def parse_project_activity(project):
     return github_project.GithubProject(
         project_name=project['name'],
         full_name=project['nameWithOwner'],
-        description=project['description'],
+        description=_get_ellipsized_description(project['description']),
         contributors=_get_contributors(project),
         open_issues=project['issues']['totalCount'],
         watchers=project['watchers']['totalCount'],
@@ -25,6 +25,12 @@ def parse_project_activity(project):
         sorting=0,
         ttl=int((datetime.today() + timedelta(days=7)).timestamp())
     )
+
+
+def _get_ellipsized_description(description):
+    if description and len(description) > 600:
+        description = description[:600] + '...'
+    return description
 
 
 def _get_commits_graph_data(project):

@@ -53,7 +53,15 @@ PROJECTS_FIRST_PAGE = {
                         }
                     },
                     'createdAt': '2020-02-28T01:21:26Z',
-                    'description': 'town of pepin walking app',
+                    'description': ('This is a project with a very looooooong description. Veeeeeeeeery looooooong'
+                                    'descriptioooooooooooooon. An international '
+                                    'humanitarian NGO that is committed to fighting poverty and providing '
+                                    'the people of backward countries with basic amenities and relief during the'
+                                    ' time of disasters and natural calamities. It runs a lot of operational'
+                                    ' projects from time to time along with advocacy drives to raise awareness'
+                                    ' as well as for funding purposes. - Identifying the countries which are having'
+                                    ' significant issues like socio-economic and health factors so that we will'
+                                    ' make the decision is mostly related to the direst need of aid.'),
                     'forkCount': 0,
                     'issues': {'totalCount': 0},
                     'languages': {'nodes': [{'name': 'Java'}]},

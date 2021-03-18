@@ -74,3 +74,13 @@ class TestProjectParser(unittest.TestCase):
 
         self.assertEqual(project_information.project_name, 'pepinierePHP')
         self.assertEqual(project_information.commits_graph_data, expected_commit_graph_data)
+
+    def test_should_ellipsize_description(self):
+        ellipsized_description_length = 603
+
+        project_information = github_project_parser.parse_project_activity(
+            constants.PROJECTS_FIRST_PAGE['search']['repos'][1]['repo']
+        )
+
+        self.assertEqual(len(project_information.description), ellipsized_description_length)
+        self.assertTrue(project_information.description.endswith('...'))
