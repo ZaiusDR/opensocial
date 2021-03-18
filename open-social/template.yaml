@@ -90,8 +90,8 @@ Resources:
           Projection:
             ProjectionType: 'ALL'
           ProvisionedThroughput:
-            ReadCapacityUnits: 25
-            WriteCapacityUnits: 25
+            ReadCapacityUnits: 5
+            WriteCapacityUnits: 5
         - IndexName: 'ContributorsIndex'
           KeySchema:
             - AttributeName: 'sorting'
@@ -101,13 +101,16 @@ Resources:
           Projection:
             ProjectionType: 'ALL'
           ProvisionedThroughput:
-            ReadCapacityUnits: 25
-            WriteCapacityUnits: 25
+            ReadCapacityUnits: 5
+            WriteCapacityUnits: 5
       TableName: open-social-projects
       BillingMode: 'PROVISIONED'
       ProvisionedThroughput:
-        ReadCapacityUnits: 25
-        WriteCapacityUnits: 25
+        ReadCapacityUnits: 15
+        WriteCapacityUnits: 15
+      TimeToLiveSpecification:
+        Enabled: true
+        AttributeName: 'ttl'
 
   OpenSocialAPI:
     Type: AWS::Serverless::Api
