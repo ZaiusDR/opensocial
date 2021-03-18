@@ -1,5 +1,5 @@
-import {StaticImage} from "gatsby-plugin-image";
 import React from "react";
+import {StaticImage} from "gatsby-plugin-image";
 import {Header} from "antd/es/layout/layout";
 
 import '../styles/PageHeader.css'
