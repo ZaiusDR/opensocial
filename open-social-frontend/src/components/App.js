@@ -88,14 +88,14 @@ class App extends React.Component {
               align={'middle'}
               gutter={{ xs: 8, sm: 16, md: 24}}
             >
-              <Col span={10} style={{ fontSize: 'calc(15px + 1.5vw)'}}><b>Project List:</b></Col>
-              <Col span={4} style={{ textAlign: 'end'}}><b>Sorted By:</b></Col>
-              <Col span={10} style={{ textAlignLast: 'center' }}>
+              <Col span={14} xs={10} md={14} style={{ fontSize: 'calc(15px + 1.5vw)'}}><b>Project List:</b></Col>
+              <Col span={10} xs={14} md={10} style={{ textAlignLast: 'center' }}>
                 <Select
                   onChange={this.onSortBy}
                   options={sort_by}
                   isClearable={true}
                   isSearchable={false}
+                  placeholder="Sort by..."
                 />
               </Col>
             </Row>
