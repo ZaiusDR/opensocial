@@ -1,9 +1,11 @@
 import React from "react";
-import "../styles/Project.css";
+
 import {Area, AreaChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis} from 'recharts';
+import { Row, Col } from "antd";
+
 import 'antd/dist/antd.css';
-import { Row, Col } from 'antd';
-import moment from "moment";
+import "../styles/Project.css";
+
 
 function Project(props) {
   return (
@@ -28,9 +30,9 @@ function Project(props) {
               <div><b>Forks:</b> {props.project.forks}</div>
             </div>
             <div className="Stats-dates">
-              <div><b>Pushed:</b> {moment(props.project.pushed).format('YYYY-MM-DD')}</div>
-              <div><b>Created:</b> {moment(props.project.created).format('YYYY-MM-DD')}</div>
-              <div><b>Updated:</b> {moment(props.project.updated).format('YYYY-MM-DD')}</div>
+              <div><b>Pushed:</b> {new Date(props.project.pushed).toLocaleDateString()}</div>
+              <div><b>Created:</b> {new Date(props.project.created).toLocaleDateString()}</div>
+              <div><b>Updated:</b> {new Date(props.project.updated).toLocaleDateString()}</div>
             </div>
           </div>
           <div className="Graph-data">
