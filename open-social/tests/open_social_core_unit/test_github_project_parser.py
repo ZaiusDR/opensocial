@@ -8,6 +8,7 @@ from tests import constants
 
 
 class TestProjectParser(unittest.TestCase):
+    @freezegun.freeze_time('2021-02-21')
     def test_should_parse_project_activity(self):
         project_information = github_project_parser.parse_project_activity(
             constants.PROJECTS_FIRST_PAGE['search']['repos'][0]['repo']
@@ -28,6 +29,7 @@ class TestProjectParser(unittest.TestCase):
         self.assertEqual(project_information.language, 'Java')
         self.assertEqual(project_information.total_commits, 2)
         self.assertEqual(project_information.sorting, 0)
+        self.assertEqual(project_information.ttl, 1614470400)
 
     def test_should_parse_project_activity_with_no_primary_language(self):
         project_information = github_project_parser.parse_project_activity(

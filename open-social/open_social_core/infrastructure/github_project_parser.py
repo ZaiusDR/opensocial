@@ -1,5 +1,6 @@
 from datetime import datetime
 from dateutil import relativedelta
+from datetime import timedelta
 
 from domain import github_project
 
@@ -21,7 +22,8 @@ def parse_project_activity(project):
         language=project['primaryLanguage']['name'] if project['primaryLanguage'] else None,
         total_commits=project['commitsCount']['history']['totalCount'] if project['commitsCount'] else 0,
         commits_graph_data=_get_commits_graph_data(project),
-        sorting=0
+        sorting=0,
+        ttl=int((datetime.today() + timedelta(days=7)).timestamp())
     )
 
 

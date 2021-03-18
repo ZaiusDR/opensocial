@@ -27,7 +27,8 @@ def save(projects):
                 'language': project.language,
                 'total_commits': project.total_commits,
                 'commits_graph_data': project.commits_graph_data,
-                'sorting': project.sorting
+                'sorting': project.sorting,
+                'ttl': project.ttl
             }
         )
 
