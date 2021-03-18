@@ -30,20 +30,12 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      projects: [],
-      hasMore: false,
-      nextKey: null,
+      projects: this.props.initialProjects.internalProjects.projects,
+      hasMore: !!this.props.initialProjects.internalProjects.page_identifier,
+      nextKey: this.props.initialProjects.internalProjects.page_identifier,
       sortedBy: null
     }
     this.onSortBy = this.onSortBy.bind(this);
-  }
-
-  componentDidMount() {
-    this.setState({
-      projects: this.state.projects.concat(this.props.initialProjects.internalProjects.projects),
-      hasMore: !!this.props.initialProjects.internalProjects.page_identifier,
-      nextKey: this.props.initialProjects.internalProjects.page_identifier
-    })
   }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
