@@ -14,33 +14,33 @@ function Project(props) {
     <li key={props.project.full_name} className="Project-item">
       <Row>
         <Col span={24} className="Project">
-          <div className="Project-name">
+          <Col span={24} className="Project-name">
             <a href={props.project.project_url}><b>{props.project.project_name}</b></a>
-          </div>
-          <div className="Project-details">
+          </Col>
+          <Col span={24} className="Project-details">
             <div><b>Full Name:</b> {props.project.full_name}</div>
             <div><b>Description:</b> {props.project.description}</div>
             <div><b>Language:</b> {props.project.language ? props.project.language : 'N/A'}</div>
-          </div>
-          <div className="Stats">
-            <div className="Stats-activity">
+          </Col>
+          <Row className="Stats">
+            <Col span={12} className="Stats-activity">
               <div><b>Contributors:</b> {props.project.contributors}</div>
               <div><b>Open Issues:</b> {props.project.open_issues}</div>
               <div><b>Total Commits:</b> {props.project.total_commits}</div>
               <div><b>Watchers:</b> {props.project.watchers}</div>
               <div><b>Stargazers:</b> {props.project.stargazers}</div>
               <div><b>Forks:</b> {props.project.forks}</div>
-            </div>
-            <div className="Stats-dates">
+            </Col>
+            <Col span={12} className="Stats-dates">
               <div><b>Pushed:</b> {new Date(props.project.pushed).toLocaleDateString()}</div>
               <div><b>Created:</b> {new Date(props.project.created).toLocaleDateString()}</div>
               <div><b>Updated:</b> {new Date(props.project.updated).toLocaleDateString()}</div>
-            </div>
-          </div>
-          <div className="Graph-data">
+            </Col>
+          </Row>
+          <Col span={24} className="Graph-data">
             <div><b>Recent Commits Activity:</b></div>
             <ProjectGraph data={props.project.commits_graph_data}/>
-          </div>
+          </Col>
         </Col>
       </Row>
     </li>
