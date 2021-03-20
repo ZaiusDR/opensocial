@@ -5,7 +5,7 @@ import handleViewport from "react-in-viewport";
 
 
 const Graph = (props) => {
-  return props.inViewport ?
+  return props.inViewport || props.enterCount >= 1 ?
     <ResponsiveContainer width="100%" height={200} ref={props.forwardedRef}>
       <AreaChart
         test-id='CommitGraph'
