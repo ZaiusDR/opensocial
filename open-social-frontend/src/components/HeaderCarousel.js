@@ -49,7 +49,7 @@ function HeaderCarousel() {
       <div>
         <h1 className="Image-text">
             <span className="Text-span">
-                Explore!<br/>
+                Explore and Collaborate!<br/>
             </span>
         </h1>
         <p className="Image-subtext">
