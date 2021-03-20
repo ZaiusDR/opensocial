@@ -2,7 +2,7 @@ import React from "react";
 import {StaticImage} from "gatsby-plugin-image";
 import {Header} from "antd/es/layout/layout";
 
-import "@fontsource/merienda/700.css"
+import "@fontsource/sedgwick-ave/400.css"
 
 import '../styles/PageHeader.css'
 

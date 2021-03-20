@@ -16,7 +16,7 @@
     "clean": "gatsby clean"
   },
   "dependencies": {
-    "@fontsource/merienda": "^4.2.2",
+    "@fontsource/sedgwick-ave": "^4.2.2",
     "@loadable/component": "^5.14.1",
     "@loadable/server": "^5.14.2",
     "antd": "^4.14.0",
