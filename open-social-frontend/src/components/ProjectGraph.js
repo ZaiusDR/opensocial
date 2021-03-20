@@ -1,9 +1,12 @@
 import React from "react";
+
 import {Area, AreaChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis} from "recharts";
+import handleViewport from "react-in-viewport";
 
 
-function ProjectGraph(props) {
-  return <ResponsiveContainer className={"graphContainer"} width="100%" height={200}>
+const Graph = (props) => {
+  return props.inViewport ?
+    <ResponsiveContainer width="100%" height={200} ref={props.forwardedRef}>
       <AreaChart
         test-id='CommitGraph'
         width={600}
@@ -23,6 +26,14 @@ function ProjectGraph(props) {
         <Area type="monotone" dataKey={"commits"} stroke={"#001529"} fill={"#365d8c"}/>
       </AreaChart>
     </ResponsiveContainer>
+    :
+    <div style={{height: 200}} ref={props.forwardedRef}/>
+};
+
+const ViewportGraph = handleViewport(Graph);
+
+function ProjectGraph(props) {
+  return <ViewportGraph data={props.data} />
 }
 
 export default ProjectGraph
