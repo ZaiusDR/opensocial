@@ -6,7 +6,7 @@ import handleViewport from "react-in-viewport";
 
 const Graph = (props) => {
   return props.inViewport || props.enterCount >= 1 ?
-    <ResponsiveContainer width="100%" height={200} ref={props.forwardedRef}>
+    <ResponsiveContainer className="Graph-container" width="100%" height={200} ref={props.forwardedRef}>
       <AreaChart
         test-id='CommitGraph'
         width={600}
@@ -23,7 +23,7 @@ const Graph = (props) => {
         <XAxis dataKey="month" />
         <YAxis />
         <Tooltip />
-        <Area type="monotone" dataKey={"commits"} stroke={"#001529"} fill={"#365d8c"}/>
+        <Area isAnimationActive={false} type="monotone" dataKey={"commits"} stroke={"#001529"} fill={"#365d8c"}/>
       </AreaChart>
     </ResponsiveContainer>
     :
