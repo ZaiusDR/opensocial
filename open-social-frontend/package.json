@@ -40,7 +40,7 @@
     "react-infinite-scroll-component": "^6.0.0",
     "react-loader-spinner": "^4.0.0",
     "react-select": "^4.3.0",
-    "recharts": "^2.0.8"
+    "recharts": "^2.0.9"
   },
   "devDependencies": {
     "@loadable/babel-plugin": "^5.13.2",
