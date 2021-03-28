@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
-    title: "Open Social",
-    description: "OpenSocial is a social impact open-source projects aggregator. Easily find active non-profit projects and start coding a better world.",
+    title: "OpenSocial",
+    description: "OpenSocial is a social impact open source projects aggregator. Easily find active non profit projects and start coding a better world.",
     siteUrl: "https://www.open-social.net",
     lang: "en"
   },
