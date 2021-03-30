@@ -28,6 +28,7 @@ class TestProjectParser(unittest.TestCase):
         self.assertEqual(project_information.updated, '2021-01-16T01:32:01Z')
         self.assertEqual(project_information.language, 'Java')
         self.assertEqual(project_information.total_commits, 2)
+        self.assertEqual(project_information.rate, 0.32)
         self.assertEqual(project_information.sorting, 0)
         self.assertEqual(project_information.ttl, 1614470400)
 

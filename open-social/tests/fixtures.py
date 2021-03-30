@@ -18,6 +18,7 @@ github_projects = [
         language='Python',
         total_commits=24,
         commits_graph_data={},
+        rate=0.8,
         sorting=0,
         ttl=1616659119
     ),
@@ -37,6 +38,7 @@ github_projects = [
         language='Javascript',
         total_commits=59,
         commits_graph_data={},
+        rate=0.23,
         sorting=0,
         ttl=1616659119
     )
@@ -59,6 +61,7 @@ github_projects_pagination = [
         language='Python',
         total_commits=38,
         commits_graph_data={},
+        rate=0.12,
         sorting=0,
         ttl=1616659119
     ),
@@ -78,6 +81,7 @@ github_projects_pagination = [
         language='Javascript',
         total_commits=59,
         commits_graph_data={},
+        rate=0.43,
         sorting=0,
         ttl=1616659119
     ),
@@ -97,6 +101,7 @@ github_projects_pagination = [
         language='Python',
         total_commits=24,
         commits_graph_data={},
+        rate=0.23,
         sorting=0,
         ttl=1616659119
     ),
@@ -116,6 +121,7 @@ github_projects_pagination = [
         language='Javascript',
         total_commits=61,
         commits_graph_data={},
+        rate=0.46,
         sorting=0,
         ttl=1616659119
     ),
@@ -135,6 +141,7 @@ github_projects_pagination = [
         language='Python',
         total_commits=5,
         commits_graph_data={},
+        rate=0.98,
         sorting=0,
         ttl=1616659119
     ),
@@ -154,6 +161,7 @@ github_projects_pagination = [
         language='Javascript',
         total_commits=0,
         commits_graph_data={},
+        rate=0.56,
         sorting=0,
         ttl=1616659119
     )

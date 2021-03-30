@@ -3,14 +3,18 @@ from dateutil import relativedelta
 from datetime import timedelta
 
 from domain import github_project
+from infrastructure import rate_calculator
 
 
 def parse_project_activity(project):
+    contributors = _get_contributors(project)
+    total_commits = project['commitsCount']['history']['totalCount'] if project['commitsCount'] else 0
+
     return github_project.GithubProject(
         project_name=project['name'],
         full_name=project['nameWithOwner'],
         description=_get_ellipsized_description(project['description']),
-        contributors=_get_contributors(project),
+        contributors=contributors,
         open_issues=project['issues']['totalCount'],
         watchers=project['watchers']['totalCount'],
         stargazers=project['stargazerCount'],
@@ -20,8 +24,11 @@ def parse_project_activity(project):
         created=project['createdAt'],
         updated=project['updatedAt'],
         language=project['primaryLanguage']['name'] if project['primaryLanguage'] else None,
-        total_commits=project['commitsCount']['history']['totalCount'] if project['commitsCount'] else 0,
+        total_commits=total_commits,
         commits_graph_data=_get_commits_graph_data(project),
+        rate=rate_calculator.get_project_rating(
+            project['createdAt'], project['pushedAt'], contributors, total_commits
+        ),
         sorting=0,
         ttl=int((datetime.today() + timedelta(days=7)).timestamp())
     )
