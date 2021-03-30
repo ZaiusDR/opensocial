@@ -44,6 +44,26 @@ Resources:
           Properties:
             Schedule: 'cron(0 5 * * ? *)'
             Input: "{\"topic\": \"non-profit\"}"
+        ScrapeSocialJusticeEvent:
+          Type: Schedule
+          Properties:
+            Schedule: 'cron(0 6 * * ? *)'
+            Input: "{\"topic\": \"social justice\"}"
+        ScrapeSocialChangeEvent:
+          Type: Schedule
+          Properties:
+            Schedule: 'cron(0 7 * * ? *)'
+            Input: "{\"topic\": \"social change\"}"
+        ScrapeClimateChangeEvent:
+          Type: Schedule
+          Properties:
+            Schedule: 'cron(0 8 * * ? *)'
+            Input: "{\"topic\": \"climate change\"}"
+        ScrapePovertyEvent:
+          Type: Schedule
+          Properties:
+            Schedule: 'cron(0 9 * * ? *)'
+            Input: "{\"topic\": \"poverty\"}"
 
   ApiCrudLambdaFunction:
     Type: AWS::Serverless::Function
