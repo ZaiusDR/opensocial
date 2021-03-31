@@ -8,7 +8,7 @@ from infrastructure import rate_calculator
 
 def parse_project_activity(project):
     contributors = _get_contributors(project)
-    total_commits = project['commitsCount']['history']['totalCount'] if project['commitsCount'] else 0
+    total_commits = project['defaultBranchRef']['target']['history']['totalCount']
 
     return github_project.GithubProject(
         project_name=project['name'],
@@ -57,12 +57,12 @@ def _get_commits_graph_data(project):
 def _get_commits(project):
     return [
         commit['node']['author']['date']
-        for commit in project['commitsCount']['history']['edges']
-    ] if project['commitsCount'] else []
+        for commit in project['defaultBranchRef']['target']['history']['edges']
+    ]
 
 
 def _get_contributors(project):
     return len({
         commit['node']['author']['name']
-        for commit in project['commitsCount']['history']['edges']
-    }) if project['commitsCount'] else 0
+        for commit in project['defaultBranchRef']['target']['history']['edges']
+    })

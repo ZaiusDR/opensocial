@@ -27,28 +27,30 @@ query recentRepos($query: String!, $date_limit: GitTimestamp!, $after: String) {
           primaryLanguage {
             name
           }
-          commitsCount: object(expression: "HEAD") {
-            ... on Commit {
-              history(since: $date_limit) {
-                pageInfo {
-                  endCursor
-                  hasNextPage
-                }
-                totalCount
-                edges {
-                  node {
-                    author {
-                      name
-                      date
-                    }
-                  }
-                }
-              }
-            }
-          }
           languages(first: 10) {
             nodes {
               name
+            }
+          }
+          defaultBranchRef {
+            target {
+              ... on Commit {
+                history(since: $date_limit) {
+                  totalCount
+                  edges {
+                    node {
+                      author {
+                        name
+                        date
+                      }
+                    }
+                  }
+                  pageInfo {
+                    hasNextPage
+                    endCursor
+                  }
+                }
+              }
             }
           }
         }

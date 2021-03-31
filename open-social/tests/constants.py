@@ -10,17 +10,19 @@ PROJECTS_FIRST_PAGE = {
                 'repo': {
                     'name': 'pepinazo',
                     'nameWithOwner': 'jomarnavarro/pepinazo',
-                    'commitsCount': {
-                        'history': {
-                            'pageInfo': {
-                                'endCursor': '7dc66c244d2ca4471933e2069706f017818eda66 8',
-                                'hasNextPage': False
-                            },
-                            'edges': [
-                                {'node': {'author': {'name': 'John Cleese', 'date': '2020-08-21T19:53:19-04:00'}}},
-                                {'node': {'author': {'name': 'Eric Idle', 'date': '2021-02-03T10:10:19-06:00'}}}
-                            ],
-                            'totalCount': 2
+                    'defaultBranchRef': {
+                        'target': {
+                            'history': {
+                                'pageInfo': {
+                                    'endCursor': '7dc66c244d2ca4471933e2069706f017818eda66 8',
+                                    'hasNextPage': False
+                                },
+                                'edges': [
+                                    {'node': {'author': {'name': 'John Cleese', 'date': '2020-08-21T19:53:19-04:00'}}},
+                                    {'node': {'author': {'name': 'Eric Idle', 'date': '2021-02-03T10:10:19-06:00'}}}
+                                ],
+                                'totalCount': 2
+                            }
                         }
                     },
                     'createdAt': '2019-05-08T23:51:02Z',
@@ -42,14 +44,16 @@ PROJECTS_FIRST_PAGE = {
                 'repo': {
                     'name': 'PepinTour',
                     'nameWithOwner': 'yukunl/PepinTour',
-                    'commitsCount': {
-                        'history': {
-                            'pageInfo': {
-                                'endCursor': None,
-                                'hasNextPage': False
-                            },
-                            'edges': [],
-                            'totalCount': 0
+                    'defaultBranchRef': {
+                        'target': {
+                            'history': {
+                                'pageInfo': {
+                                    'endCursor': None,
+                                    'hasNextPage': False
+                                },
+                                'edges': [],
+                                'totalCount': 0
+                            }
                         }
                     },
                     'createdAt': '2020-02-28T01:21:26Z',
@@ -77,7 +81,18 @@ PROJECTS_FIRST_PAGE = {
                 'repo': {
                     'name': 'pepinierePHP',
                     'nameWithOwner': 'sebLaLa80/pepinierePHP',
-                    'commitsCount': None,
+                    'defaultBranchRef': {
+                        'target': {
+                            'history': {
+                                'pageInfo': {
+                                    'endCursor': None,
+                                    'hasNextPage': False
+                                },
+                                'edges': [],
+                                'totalCount': 0
+                            }
+                        }
+                    },
                     'createdAt': '2020-12-06T14:27:39Z',
                     'description': "Application web d'un panier "
                                    "d'achats lié à une DB.",
@@ -109,23 +124,25 @@ PROJECTS_SECOND_PAGE = {
                 'repo': {
                     'name': 'pepiniereLabranche',
                     'nameWithOwner': 'Louisppotvin/pepiniereLabranche',
-                    'commitsCount': {
-                        'history': {
-                            'pageInfo': {
-                                'endCursor': '7dc66c244d2ca4471933e2069706f017818eda66 8',
-                                'hasNextPage': True
-                            },
-                            'edges': [
-                                {'node': {'author': {'name': 'John Cleese', 'date': '2021-02-21T22:11:37-04:00'}}},
-                                {'node': {'author': {'name': 'Eric Idle', 'date': '2021-02-21T19:53:19-04:00'}}},
-                                {'node': {'author': {'name': 'John Cleese', 'date': '2021-01-21T16:07:20-04:00'}}},
-                                {'node': {'author': {'name': 'Terry Gilliam', 'date': '2020-12-20T23:11:45-04:00'}}},
-                                {'node': {'author': {'name': 'Terry Gilliam', 'date': '2020-10-20T19:27:10-04:00'}}},
-                                {'node': {'author': {'name': 'John Cleese', 'date': '2020-09-20T14:38:46-04:00'}}},
-                                {'node': {'author': {'name': 'John Cleese', 'date': '2020-09-19T15:20:53-04:00'}}},
-                                {'node': {'author': {'name': 'Eric Idle', 'date': '2020-09-19T02:53:33-04:00'}}}
-                            ],
-                            'totalCount': 8
+                    'defaultBranchRef': {
+                        'target': {
+                            'history': {
+                                'pageInfo': {
+                                    'endCursor': '7dc66c244d2ca4471933e2069706f017818eda66 8',
+                                    'hasNextPage': True
+                                },
+                                'edges': [
+                                    {'node': {'author': {'name': 'John Cleese', 'date': '2021-02-21T22:11:37-04:00'}}},
+                                    {'node': {'author': {'name': 'Eric Idle', 'date': '2021-02-21T19:53:19-04:00'}}},
+                                    {'node': {'author': {'name': 'John Cleese', 'date': '2021-01-21T16:07:20-04:00'}}},
+                                    {'node': {'author': {'name': 'Terry Gilliam', 'date': '2020-12-20T23:11:45-04:00'}}},
+                                    {'node': {'author': {'name': 'Terry Gilliam', 'date': '2020-10-20T19:27:10-04:00'}}},
+                                    {'node': {'author': {'name': 'John Cleese', 'date': '2020-09-20T14:38:46-04:00'}}},
+                                    {'node': {'author': {'name': 'John Cleese', 'date': '2020-09-19T15:20:53-04:00'}}},
+                                    {'node': {'author': {'name': 'Eric Idle', 'date': '2020-09-19T02:53:33-04:00'}}}
+                                ],
+                                'totalCount': 8
+                            }
                         }
                     },
                     'createdAt': '2020-08-05T13:25:09Z',
