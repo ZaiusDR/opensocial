@@ -34,7 +34,7 @@ def get_project_rating(created, pushed, contributors_count, commits):
         _get_metric_score(commits_frequency, commits_frequency_threshold, commits_frequency_weight)
     ) / total_weight, 2)
 
-    return rating
+    return min(rating, 1.00)
 
 
 def _get_metric_score(metric, max_value, weight):
