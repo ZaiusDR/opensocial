@@ -27,7 +27,7 @@ query recentRepos($query: String!, $date_limit: GitTimestamp!, $after: String) {
           primaryLanguage {
             name
           }
-          commitsCount: object(expression: "master") {
+          commitsCount: object(expression: "HEAD") {
             ... on Commit {
               history(since: $date_limit) {
                 pageInfo {
