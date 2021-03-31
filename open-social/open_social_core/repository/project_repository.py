@@ -53,6 +53,7 @@ def get_sorted_projects(sorted_by, scan_index_forward, exclusive_start_key=None)
     sorted_to_index = {
         'total_commits': 'TotalCommitsIndex',
         'contributors': 'ContributorsIndex',
+        'rate': 'RateIndex',
     }
     table = _get_table()
     if exclusive_start_key:

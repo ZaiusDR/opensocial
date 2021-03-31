@@ -97,6 +97,8 @@ Resources:
           AttributeType: 'N'
         - AttributeName: 'contributors'
           AttributeType: 'N'
+        - AttributeName: 'contributors'
+          AttributeType: 'S'
       KeySchema:
         - AttributeName: 'full_name'
           KeyType: 'HASH'
@@ -111,7 +113,7 @@ Resources:
             ProjectionType: 'ALL'
           ProvisionedThroughput:
             ReadCapacityUnits: 5
-            WriteCapacityUnits: 5
+            WriteCapacityUnits: 0
         - IndexName: 'ContributorsIndex'
           KeySchema:
             - AttributeName: 'sorting'
@@ -122,12 +124,23 @@ Resources:
             ProjectionType: 'ALL'
           ProvisionedThroughput:
             ReadCapacityUnits: 5
-            WriteCapacityUnits: 5
+            WriteCapacityUnits: 0
+        - IndexName: 'RateIndex'
+          KeySchema:
+            - AttributeName: 'sorting'
+              KeyType: 'HASH'
+            - AttributeName: 'rate'
+              KeyType: 'RANGE'
+          Projection:
+            ProjectionType: 'ALL'
+          ProvisionedThroughput:
+            ReadCapacityUnits: 5
+            WriteCapacityUnits: 0
       TableName: open-social-projects
       BillingMode: 'PROVISIONED'
       ProvisionedThroughput:
-        ReadCapacityUnits: 15
-        WriteCapacityUnits: 15
+        ReadCapacityUnits: 10
+        WriteCapacityUnits: 25
       TimeToLiveSpecification:
         Enabled: true
         AttributeName: 'ttl'

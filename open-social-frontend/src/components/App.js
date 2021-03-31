@@ -24,6 +24,7 @@ const api_url = 'https://01ruue3xk0.execute-api.eu-west-1.amazonaws.com/dev/proj
 const sort_by = [
   { value: 'total_commits', label: 'Total Commits' },
   { value: 'contributors', label: 'Contributors' },
+  { value: 'rate', label: 'Project Rate' },
 ]
 
 class App extends React.Component {
