@@ -64,7 +64,7 @@ Resources:
           Properties:
             Schedule: 'cron(25 4 * * ? *)'
             Input: "{\"topic\": \"poverty\"}"
-        ScrapeParticipatoryDemocracyEvent:
+        ScrapePartpDemocracyEvent:
           Type: Schedule
           Properties:
             Schedule: 'cron(30 4 * * ? *)'
