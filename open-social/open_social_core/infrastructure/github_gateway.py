@@ -74,7 +74,11 @@ def _get_next_page_marker(result):
 
 
 def _paginate_commits(project):
-    commits = project['repo']['defaultBranchRef']['target']['history']
+    try:
+        commits = project['repo']['defaultBranchRef']['target']['history']
+    except Exception as e:
+        print(project)
+        raise e
     if commits['pageInfo']['hasNextPage']:
         date_limit = _get_date_limit()
         after = commits['pageInfo']['endCursor']
