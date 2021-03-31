@@ -42,28 +42,33 @@ Resources:
         ScrapeNonProfitEvent:
           Type: Schedule
           Properties:
-            Schedule: 'cron(0 5 * * ? *)'
+            Schedule: 'cron(5 4 * * ? *)'
             Input: "{\"topic\": \"non-profit\"}"
         ScrapeSocialJusticeEvent:
           Type: Schedule
           Properties:
-            Schedule: 'cron(0 6 * * ? *)'
+            Schedule: 'cron(10 4 * * ? *)'
             Input: "{\"topic\": \"social justice\"}"
         ScrapeSocialChangeEvent:
           Type: Schedule
           Properties:
-            Schedule: 'cron(0 7 * * ? *)'
+            Schedule: 'cron(15 4 * * ? *)'
             Input: "{\"topic\": \"social change\"}"
         ScrapeClimateChangeEvent:
           Type: Schedule
           Properties:
-            Schedule: 'cron(0 8 * * ? *)'
+            Schedule: 'cron(20 4 * * ? *)'
             Input: "{\"topic\": \"climate change\"}"
         ScrapePovertyEvent:
           Type: Schedule
           Properties:
-            Schedule: 'cron(0 9 * * ? *)'
+            Schedule: 'cron(25 4 * * ? *)'
             Input: "{\"topic\": \"poverty\"}"
+        ScrapeParticipatoryDemocracyEvent:
+          Type: Schedule
+          Properties:
+            Schedule: 'cron(30 4 * * ? *)'
+            Input: "{\"topic\": \"participatory democracy\"}"
 
   ApiCrudLambdaFunction:
     Type: AWS::Serverless::Function
