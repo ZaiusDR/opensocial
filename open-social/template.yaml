@@ -3,7 +3,7 @@ Transform: AWS::Serverless-2016-10-31
 Description: >
   open-social
 
-  Sample SAM Template for open-social
+  open-social SAM Infrastructure
 
 Globals:
   Function:
@@ -113,7 +113,7 @@ Resources:
             ProjectionType: 'ALL'
           ProvisionedThroughput:
             ReadCapacityUnits: 5
-            WriteCapacityUnits: 0
+            WriteCapacityUnits: 1
         - IndexName: 'ContributorsIndex'
           KeySchema:
             - AttributeName: 'sorting'
@@ -124,7 +124,7 @@ Resources:
             ProjectionType: 'ALL'
           ProvisionedThroughput:
             ReadCapacityUnits: 5
-            WriteCapacityUnits: 0
+            WriteCapacityUnits: 1
         - IndexName: 'RateIndex'
           KeySchema:
             - AttributeName: 'sorting'
@@ -135,7 +135,7 @@ Resources:
             ProjectionType: 'ALL'
           ProvisionedThroughput:
             ReadCapacityUnits: 5
-            WriteCapacityUnits: 0
+            WriteCapacityUnits: 1
       TableName: open-social-projects
       BillingMode: 'PROVISIONED'
       ProvisionedThroughput:
