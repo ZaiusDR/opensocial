@@ -92,12 +92,12 @@ def _paginate_commits(project):
             has_next_page = True
             while has_next_page:
                 result = client.execute(gql_query, variable_values=gql_query_params)
-                page_info = result['repository']['ref']['target']['history']['pageInfo']
+                page_info = result['repository']['defaultBranchRef']['target']['history']['pageInfo']
                 if not page_info['hasNextPage']:
                     has_next_page = False
                 gql_query_params.update(after=page_info['endCursor'])
                 project['repo']['commitsCount']['history']['edges'].extend(
-                    result['repository']['ref']['target']['history']['edges']
+                    result['repository']['defaultBranchRef']['target']['history']['edges']
                 )
     return project
 

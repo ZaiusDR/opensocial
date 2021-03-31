@@ -152,7 +152,7 @@ PROJECTS_SECOND_PAGE = {
 
 COMMITS_PAGE = {
     'repository': {
-        'ref': {
+        'defaultBranchRef': {
             'target': {
                 'history': {
                     'pageInfo': {

@@ -59,7 +59,7 @@ query recentRepos($query: String!, $date_limit: GitTimestamp!, $after: String) {
 '''
 
 commit_query = '''
-query recentRepos($repo_name: String!, $repo_owner: String!, $date_limit: GitTimestamp!, $after: String) {
+query recentCommits($repo_name: String!, $repo_owner: String!, $date_limit: GitTimestamp!, $after: String) {
   repository(name: $repo_name, owner: $repo_owner) {
     defaultBranchRef {
       target {
