@@ -35,6 +35,7 @@ function Project(props) {
               <div><b>Pushed:</b> {new Date(props.project.pushed).toLocaleDateString()}</div>
               <div><b>Created:</b> {new Date(props.project.created).toLocaleDateString()}</div>
               <div><b>Updated:</b> {new Date(props.project.updated).toLocaleDateString()}</div>
+              <div><b>Rate:</b> {props.project.rate}</div>
             </Col>
           </Row>
           <Col span={24} className="Graph-data">
