@@ -97,7 +97,7 @@ Resources:
           AttributeType: 'N'
         - AttributeName: 'contributors'
           AttributeType: 'N'
-        - AttributeName: 'contributors'
+        - AttributeName: 'rate'
           AttributeType: 'S'
       KeySchema:
         - AttributeName: 'full_name'
