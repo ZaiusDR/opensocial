@@ -81,18 +81,7 @@ PROJECTS_FIRST_PAGE = {
                 'repo': {
                     'name': 'pepinierePHP',
                     'nameWithOwner': 'sebLaLa80/pepinierePHP',
-                    'defaultBranchRef': {
-                        'target': {
-                            'history': {
-                                'pageInfo': {
-                                    'endCursor': None,
-                                    'hasNextPage': False
-                                },
-                                'edges': [],
-                                'totalCount': 0
-                            }
-                        }
-                    },
+                    'defaultBranchRef': None,
                     'createdAt': '2020-12-06T14:27:39Z',
                     'description': "Application web d'un panier "
                                    "d'achats lié à une DB.",

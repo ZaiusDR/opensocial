@@ -74,34 +74,31 @@ def _get_next_page_marker(result):
 
 
 def _paginate_commits(project):
-    try:
+    if project['repo']['defaultBranchRef']:
         commits = project['repo']['defaultBranchRef']['target']['history']
-    except Exception as e:
-        print(project)
-        raise e
-    if commits['pageInfo']['hasNextPage']:
-        date_limit = _get_date_limit()
-        after = commits['pageInfo']['endCursor']
-        gql_query_params = {
-            'repo_name': project['repo']['nameWithOwner'].split('/')[1],
-            'repo_owner': project['repo']['nameWithOwner'].split('/')[0],
-            'after': after,
-            'date_limit': date_limit
-        }
-        gql_query = gql.gql(github_queries.commit_query)
+        if commits['pageInfo']['hasNextPage']:
+            date_limit = _get_date_limit()
+            after = commits['pageInfo']['endCursor']
+            gql_query_params = {
+                'repo_name': project['repo']['nameWithOwner'].split('/')[1],
+                'repo_owner': project['repo']['nameWithOwner'].split('/')[0],
+                'after': after,
+                'date_limit': date_limit
+            }
+            gql_query = gql.gql(github_queries.commit_query)
 
-        client = _get_gql_client()
+            client = _get_gql_client()
 
-        has_next_page = True
-        while has_next_page:
-            result = client.execute(gql_query, variable_values=gql_query_params)
-            page_info = result['repository']['defaultBranchRef']['target']['history']['pageInfo']
-            if not page_info['hasNextPage']:
-                has_next_page = False
-            gql_query_params.update(after=page_info['endCursor'])
-            project['repo']['defaultBranchRef']['target']['history']['edges'].extend(
-                result['repository']['defaultBranchRef']['target']['history']['edges']
-            )
+            has_next_page = True
+            while has_next_page:
+                result = client.execute(gql_query, variable_values=gql_query_params)
+                page_info = result['repository']['defaultBranchRef']['target']['history']['pageInfo']
+                if not page_info['hasNextPage']:
+                    has_next_page = False
+                gql_query_params.update(after=page_info['endCursor'])
+                project['repo']['defaultBranchRef']['target']['history']['edges'].extend(
+                    result['repository']['defaultBranchRef']['target']['history']['edges']
+                )
     return project
 
 
