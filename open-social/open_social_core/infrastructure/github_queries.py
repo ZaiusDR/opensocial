@@ -1,6 +1,6 @@
 initial_query = '''
 query recentRepos($query: String!, $date_limit: GitTimestamp!, $after: String) {
-  search(type: REPOSITORY, query: $query, first: 100, after: $after) {
+  search(type: REPOSITORY, query: $query, first: 50, after: $after) {
     pageInfo {
       startCursor
       hasNextPage
