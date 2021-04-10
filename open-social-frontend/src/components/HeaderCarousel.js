@@ -13,7 +13,7 @@ function HeaderCarousel() {
       <div>
         <h1 className="Image-text">
           <span className="Text-span">
-              Welcome to Open Social!!<br/>
+              Welcome to OpenSocial!!<br/>
           </span>
         </h1>
         <p className="Image-subtext">

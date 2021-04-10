@@ -22,7 +22,7 @@ const Graph = (props) => {
         <defs>
           <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
             <stop offset="60%" stopColor="#00334E" stopOpacity={1}/>
-            <stop offset="100%" stopColor="#000000" stopOpacity={0}/>
+            <stop offset="100%" stopColor="#00334E" stopOpacity={0.4}/>
           </linearGradient>
         </defs>
         <CartesianGrid strokeDasharray="3 3" />
