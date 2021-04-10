@@ -78,7 +78,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <Layout style={{ alignItems: 'center' }}>
+        <Layout style={{ alignItems: 'center', backgroundColor: '#F1F1E6' }}>
           <PageHeader/>
           <Content className="site-layout" style={{ width: '100%', maxWidth: '980px' }} >
             <HeaderCarousel style={{ width: '100%' }} />

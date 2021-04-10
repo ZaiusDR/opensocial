@@ -8,7 +8,7 @@ import '../styles/PageHeader.css'
 
 
 function PageHeader() {
-  return <Header className="Page-header" >
+  return <Header className="Page-header" style={{backgroundColor: '#00334e'}}>
     <a href="https://www.open-social.net">
       <div className="Logo-container" >
         <StaticImage
@@ -17,7 +17,7 @@ function PageHeader() {
           height={44}
           layout='fixed'
         />
-        <h1 className="Logo-title">Open Social</h1>
+        <h1 className="Logo-title">OpenSocial</h1>
       </div>
     </a>
   </Header>

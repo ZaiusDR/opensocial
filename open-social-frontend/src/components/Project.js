@@ -13,10 +13,15 @@ function Project(props) {
   return (
     <li key={props.project.full_name} className="Project-item">
       <Row>
-        <Col span={24} className="Project">
-          <Col span={24} className="Project-name">
-            <a href={props.project.project_url}><b>{props.project.project_name}</b></a>
-          </Col>
+        <Col span={24} className="Project" align='middle'>
+          <Row align={'middle'}>
+            <Col span={21} className="Project-name">
+              <a href={props.project.project_url}><b>{props.project.project_name}</b></a>
+            </Col>
+            <Col span={3} style={{ backgroundColor: props.project.rate >= 0.6 ? '#90D97A': '#F9F871', textAlign: 'center'}}>
+                <b>Rate:</b> {props.project.rate}
+            </Col>
+          </Row>
           <Col span={24} className="Project-details">
             <div><b>Full Name:</b> {props.project.full_name}</div>
             <div><b>Description:</b> {props.project.description}</div>
@@ -35,7 +40,6 @@ function Project(props) {
               <div><b>Pushed:</b> {new Date(props.project.pushed).toLocaleDateString()}</div>
               <div><b>Created:</b> {new Date(props.project.created).toLocaleDateString()}</div>
               <div><b>Updated:</b> {new Date(props.project.updated).toLocaleDateString()}</div>
-              <div><b>Rate:</b> {props.project.rate}</div>
             </Col>
           </Row>
           <Col span={24} className="Graph-data">
