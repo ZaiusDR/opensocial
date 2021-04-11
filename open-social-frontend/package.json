@@ -16,6 +16,7 @@
     "clean": "gatsby clean"
   },
   "dependencies": {
+    "@ant-design/icons": "^4.6.2",
     "@fontsource/sedgwick-ave": "^4.2.2",
     "@loadable/component": "^5.14.1",
     "@loadable/server": "^5.14.2",
