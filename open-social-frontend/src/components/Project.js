@@ -1,7 +1,7 @@
 import React from "react";
 
 import loadable from "@loadable/component";
-import { Row, Col } from "antd";
+import {Row, Col, Rate} from "antd";
 
 import 'antd/dist/antd.css';
 import "../styles/Project.css";
@@ -15,16 +15,27 @@ function Project(props) {
       <Row>
         <Col span={24} className="Project" align='middle'>
           <Row align={'middle'}>
-            <Col span={21} className="Project-name">
+            <Col span={24} className="Project-name">
               <a href={props.project.project_url}><b>{props.project.project_name}</b></a>
-            </Col>
-            <Col span={3} style={{ backgroundColor: props.project.rate >= 0.6 ? '#90D97A': '#F9F871', textAlign: 'center'}}>
-                <b>Rate:</b> {props.project.rate}
             </Col>
           </Row>
           <Col span={24} className="Project-details">
-            <div><b>Full Name:</b> {props.project.full_name}</div>
+            <Row align='middle'>
+              <Col style={{paddingRight: '5px'}}>
+              <b>Project Rate: </b>
+              </Col>
+              <Col>
+              <Rate
+                className="Project-rate"
+                disabled
+                allowHalf
+                defaultValue={(props.project.rate * 10) / 2}
+                character={<span className="icon-unicorn_rate"/>}
+              />
+              </Col>
+            </Row>
             <div><b>Description:</b> {props.project.description}</div>
+            <div><b>Full Name:</b> {props.project.full_name}</div>
             <div><b>Language:</b> {props.project.language ? props.project.language : 'N/A'}</div>
           </Col>
           <Row className="Stats">
