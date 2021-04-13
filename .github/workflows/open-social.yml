@@ -52,7 +52,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: 'Cache dependencies'
-        uses: actions/cache@v2.1.4
+        uses: actions/cache@v2.1.5
         with:
           path: ~/.cache/pip
           key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
@@ -167,7 +167,7 @@ jobs:
           node-version: '14'
 
       - name: 'Node Cache'
-        uses: actions/cache@v2
+        uses: actions/cache@v2.1.5
         with:
           path: ~/.npm
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
