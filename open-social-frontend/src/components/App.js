@@ -103,7 +103,7 @@ class App extends React.Component {
                   dataLength={this.state.projects.length}
                   next={this.fetchData}
                   hasMore={this.state.hasMore}
-                  loader={<h4>Loading...</h4>}
+                  loader={<Loader style={{textAlign: 'center'}} type="ThreeDots" color="#00334E" height={80} width={80}/>}
                   endMessage={
                     <p style={{ textAlign: 'center' }}>
                       <b>Yay! You have seen it all</b>
@@ -117,12 +117,9 @@ class App extends React.Component {
                 <BackTop/>
                 </InfiniteScroll>
                 :
-                <Loader type="ThreeDots" color="#DCDCDC" height={80} width={80}/>
+                <Loader style={{textAlign: 'center'}} type="ThreeDots" color="#00334E" height={80} width={80}/>
               }
           </Content>
-          {/*<Footer style={{ position: 'fixed', bottom: 0, zIndex: 1, textAlign: 'center', width: '100%' }}>*/}
-          {/*  Open Social*/}
-          {/*</Footer>*/}
         </Layout>
       </div>
     );

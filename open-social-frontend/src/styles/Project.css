@@ -9,6 +9,7 @@
     font-size: 1.3vw;
     background: white;
     border: 1px solid #00334E;
+    border-radius: 5px;
     box-shadow: 2px 2px 7px lightslategray;
     padding: 1%;
     -webkit-animation: fadein 0.5s ease-in;
