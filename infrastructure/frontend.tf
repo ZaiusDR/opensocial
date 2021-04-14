@@ -91,7 +91,7 @@ resource "aws_cloudfront_distribution" "open_social_front_cloud_front" {
 
 resource "null_resource" "zip_lambda" {
   provisioner "local-exec" {
-    command     = "zip index.py"
+    command     = "zip index.zip index.py"
     working_dir = "${abspath(path.cwd)}/lambda_files"
   }
 }
