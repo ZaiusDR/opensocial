@@ -20,7 +20,7 @@ const Project = loadable(() => import("./Project"));
 const { Content } = Layout;
 
 
-const api_url = 'https://01ruue3xk0.execute-api.eu-west-1.amazonaws.com/dev/projects';
+const api_url = 'https://api.open-social.net/projects';
 const sort_by = [
   { value: 'total_commits', label: 'Total Commits' },
   { value: 'contributors', label: 'Contributors' },
