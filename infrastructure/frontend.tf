@@ -114,6 +114,8 @@ resource "aws_lambda_function" "lambda_edge_headers" {
 }
 
 resource "aws_iam_role" "lambda_edge_headers_role" {
+  name = "open-social-lambda-edge-headers"
+
   assume_role_policy = <<EOF
 {
   "Version": "2012-10-17",
