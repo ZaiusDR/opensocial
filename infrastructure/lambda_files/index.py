@@ -20,7 +20,7 @@ def lambda_handler(event, context):
     headers["permissions-policy"] = [
         {
             "key": "Permissions-Policy",
-            "value": ("accelerometer=(); ambient-light-sensor=(), autoplay=(), camera=(), "
+            "value": ("accelerometer=(), ambient-light-sensor=(), autoplay=(), camera=(), "
                       "encrypted-media=(), focus-without-user-activation=(), fullscreen=(), "
                       "geolocation=(), gyroscope=(), magnetometer=(), microphone=(), midi=(), "
                       "payment=(), picture-in-picture=(), speaker=(), sync-xhr=(), usb=(), vr=()")
