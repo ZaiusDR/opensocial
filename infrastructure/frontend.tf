@@ -97,8 +97,6 @@ resource "aws_lambda_function" "lambda_edge_headers" {
   timeout       = 1
   filename      = "${abspath(path.cwd)}/lambda_files/index.zip"
 
-  publish = true
-
   source_code_hash = filebase64sha256("${abspath(path.cwd)}/lambda_files/index.zip")
 
   provider = aws.us-east-1
