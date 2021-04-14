@@ -1,0 +1,38 @@
+name: 'DependaBot Pull Requests'
+
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  run_backend_tests:
+    name: 'Sam App Build Docker Image'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: 'Cache dependencies'
+        uses: actions/cache@v2.1.5
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+
+      - name: 'Setup Python'
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.8'
+
+      - name: 'Install Pip Dependencies'
+        run: pip install -r open-social/tests/test_requirements.txt
+
+      - name: 'Run Unittests'
+        working-directory: ./open-social
+        run: |
+          pytest
+        env:
+          AWS_DEFAULT_REGION: 'eu-central-1'
