@@ -161,6 +161,11 @@ Resources:
         AllowMethods: "'GET'"
         AllowHeaders: "'X-Forwarded-For'"
         AllowOrigin: "'*'"
+      Domain:
+        DomainName: api.open-social.net
+        CertificateArn: "arn:aws:acm:us-east-1:326499071401:certificate/fbb86ee3-ce15-441b-9186-0ebd59ce232a"
+        Route53:
+          HostedZoneId: Z056117665GXDL3UXFF7
 
 
 Outputs:
