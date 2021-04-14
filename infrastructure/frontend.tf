@@ -102,7 +102,7 @@ resource "aws_lambda_function" "lambda_edge_headers" {
   role          = aws_iam_role.lambda_edge_headers_role.arn
   runtime       = "python3.8"
   timeout       = 1
-  filename      = "${abspath(path.cwd)}/lambda_files/lambda.zip"
+  filename      = "${abspath(path.cwd)}/lambda_files/index.zip"
 
   publish = true
 
