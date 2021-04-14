@@ -63,6 +63,11 @@ resource "aws_cloudfront_distribution" "open_social_front_cloud_front" {
         forward = "none"
       }
     }
+
+    lambda_function_association {
+      event_type = "viewer-response"
+      lambda_arn = aws_lambda_function.lambda_edge_headers.arn
+    }
   }
   origin {
     domain_name = aws_s3_bucket.open-social-front.bucket_domain_name
@@ -82,4 +87,47 @@ resource "aws_cloudfront_distribution" "open_social_front_cloud_front" {
     ssl_support_method       = "sni-only"
     minimum_protocol_version = "TLSv1.2_2019"
   }
+}
+
+resource "null_resource" "zip_lambda" {
+  provisioner "local-exec" {
+    command     = "zip index.py"
+    working_dir = "${abspath(path.cwd)}/lambda_files"
+  }
+}
+
+resource "aws_lambda_function" "lambda_edge_headers" {
+  function_name = "lambda-edge-headers"
+  handler       = "index.lambda_handler"
+  role          = aws_iam_role.lambda_edge_headers_role.arn
+  runtime       = "python3.8"
+  timeout       = 1
+  filename      = "${abspath(path.cwd)}/lambda_files/lambda.zip"
+
+  publish = true
+
+  provider = aws.us-east-1
+
+  depends_on = [
+    null_resource.zip_lambda
+  ]
+}
+
+resource "aws_iam_role" "lambda_edge_headers_role" {
+  assume_role_policy = <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Action": "sts:AssumeRole",
+      "Principal": {
+        "Service": ["lambda.amazonaws.com", "edgelambda.amazonaws.com"]
+      },
+      "Effect": "Allow"
+    }
+  ]
+}
+EOF
+
+  provider = aws.us-east-1
 }
