@@ -17,14 +17,13 @@ def lambda_handler(event, context):
     headers["x-frame-options"] = [{"key": "X-Frame-Options", "value": "DENY"}]
     headers["x-xss-protection"] = [{"key": "X-XSS-Protection", "value": "1; mode=block"}]
     headers["referrer-policy"] = [{"key": "Referrer-Policy", "value": "same-origin"}]
-    headers["feature-policy"] = [
+    headers["permissions-policy"] = [
         {
-            "key": "Feature-Policy",
-            "value": ("accelerometer 'none'; ambient-light-sensor 'none'; autoplay 'none'; camera 'none'; "
-                      "encrypted-media 'none'; focus-without-user-activation 'none'; fullscreen 'none'; "
-                      "geolocation 'none'; gyroscope 'none'; magnetometer 'none'; microphone 'none'; midi 'none'; "
-                      "payment 'none'; picture-in-picture 'none'; speaker 'none'; sync-xhr 'none'; "
-                      "usb  'none'; vr 'none'")
+            "key": "Permissions-Policy",
+            "value": ("accelerometer=(); ambient-light-sensor=(), autoplay=(), camera=(), "
+                      "encrypted-media=(), focus-without-user-activation=(), fullscreen=(), "
+                      "geolocation=(), gyroscope=(), magnetometer=(), microphone=(), midi=(), "
+                      "payment=(), picture-in-picture=(), speaker=(), sync-xhr=(), usb=(), vr=()")
         }
     ]
 
