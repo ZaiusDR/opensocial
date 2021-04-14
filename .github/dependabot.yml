@@ -20,8 +20,3 @@ updates:
     directory: "/infrastructure"
     schedule:
       interval: "daily"
-  # Maintain dependencies for Docker
-  - package-ecosystem: "docker"
-    directory: "/actions/aws-sam"
-    schedule:
-      interval: "daily"
