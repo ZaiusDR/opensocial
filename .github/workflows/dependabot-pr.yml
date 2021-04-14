@@ -7,7 +7,7 @@ on:
 
 jobs:
   run_backend_tests:
-    name: 'Sam App Build Docker Image'
+    name: 'Run Backend Tests'
     runs-on: ubuntu-latest
 
     steps:
