@@ -66,7 +66,7 @@ resource "aws_cloudfront_distribution" "open_social_front_cloud_front" {
 
     lambda_function_association {
       event_type = "viewer-response"
-      lambda_arn = aws_lambda_function.lambda_edge_headers.arn
+      lambda_arn = aws_lambda_function.lambda_edge_headers.qualified_arn
     }
   }
   origin {
@@ -89,13 +89,6 @@ resource "aws_cloudfront_distribution" "open_social_front_cloud_front" {
   }
 }
 
-resource "null_resource" "zip_lambda" {
-  provisioner "local-exec" {
-    command     = "zip index.zip index.py"
-    working_dir = "${abspath(path.cwd)}/lambda_files"
-  }
-}
-
 resource "aws_lambda_function" "lambda_edge_headers" {
   function_name = "lambda-edge-headers"
   handler       = "index.lambda_handler"
@@ -107,10 +100,6 @@ resource "aws_lambda_function" "lambda_edge_headers" {
   publish = true
 
   provider = aws.us-east-1
-
-  depends_on = [
-    null_resource.zip_lambda
-  ]
 }
 
 resource "aws_iam_role" "lambda_edge_headers_role" {
