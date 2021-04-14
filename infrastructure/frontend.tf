@@ -122,3 +122,24 @@ EOF
 
   provider = aws.us-east-1
 }
+
+data "aws_iam_policy_document" "lambda_edge_headers_policy_document" {
+  statement {
+    effect = "Allow"
+    actions = [
+      "logs:CreateLogGroup",
+      "logs:CreateLogStream",
+      "logs:PutLogEvents",
+    ]
+    resources = [
+      "*",
+    ]
+  }
+}
+
+resource "aws_iam_role_policy" "lambda_edge_headers_policy" {
+  policy = data.aws_iam_policy_document.lambda_edge_headers_policy_document.json
+  role   = aws_iam_role.lambda_edge_headers_role.id
+
+  provider = aws.us-east-1
+}
