@@ -80,7 +80,7 @@ class App extends React.Component {
       <div className="App">
         <Layout style={{ alignItems: 'center', backgroundColor: '#F1F1E6' }}>
           <PageHeader/>
-          <Content className="site-layout" style={{ width: '100%', maxWidth: '980px' }} >
+          <Content className="site-layout" style={{ width: '100%', maxWidth: '980px', minHeight: '100vh' }} >
             <HeaderCarousel style={{ width: '100%' }} />
             <Row
               style={{paddingLeft: '4px', paddingRight: '4px'}}
