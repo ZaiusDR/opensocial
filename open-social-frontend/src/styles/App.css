@@ -5,6 +5,8 @@
     -o-animation: fadein 0.5s ease-in;
     animation: fadein 0.5s ease-in;
     margin: 0 !important;
+    width: 100vw;
+    overflow-x: hidden;
 }
 
 @keyframes fadein {
