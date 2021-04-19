@@ -40,6 +40,9 @@ jobs:
   run_frontend_tests:
     name: 'Run Frontend Tests'
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./open-social-frontend
 
     steps:
       - name: Checkout
