@@ -181,6 +181,9 @@ jobs:
       - name: 'Install Gatsby S3 Plugin'
         run: npm install gatsby-plugin-s3
 
+      - name: 'Run Unit Tests'
+        run: npm test
+
       - name: 'Build App'
         run: npm run build
 

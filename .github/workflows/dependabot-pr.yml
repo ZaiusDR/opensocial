@@ -36,3 +36,30 @@ jobs:
           pytest
         env:
           AWS_DEFAULT_REGION: 'eu-central-1'
+
+  run_frontend_tests:
+    name: 'Run Frontend Tests'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: 'Configure Node'
+        uses: actions/setup-node@v2.1.5
+        with:
+          node-version: '14'
+
+      - name: 'Node Cache'
+        uses: actions/cache@v2.1.5
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: 'Install Dependencies'
+        run: npm install
+
+      - name: 'Run Unit Tests'
+        run: npm test

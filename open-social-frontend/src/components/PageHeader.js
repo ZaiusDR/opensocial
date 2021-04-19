@@ -8,7 +8,7 @@ import "../styles/PageHeader.css"
 
 function PageHeader() {
   return (
-    <Header className="Page-header" style={{ backgroundColor: "#00334e" }}>
+    <Header data-testid="PageHeader" className="Page-header" style={{ backgroundColor: "#00334e" }}>
       <a href="https://www.open-social.net">
         <div className="Logo-container">
           <StaticImage
