@@ -1,9 +1,10 @@
 module.exports = {
   siteMetadata: {
     title: "OpenSocial",
-    description: "OpenSocial is a social impact open source projects aggregator. Easily find active non profit projects and start coding a better world.",
+    description:
+      "OpenSocial is a social impact open source projects aggregator. Easily find active non profit projects and start coding a better world.",
     siteUrl: "https://www.open-social.net",
-    lang: "en"
+    lang: "en",
   },
   plugins: [
     "gatsby-plugin-antd",
@@ -12,9 +13,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-gtag`,
       options: {
-        trackingIds: [
-          "G-T30WTJGH3Y",
-        ],
+        trackingIds: ["G-T30WTJGH3Y"],
         gtagConfig: {
           anonymize_ip: true,
           cookie_expires: 0,
@@ -35,9 +34,9 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-plugin-robots-txt',
+      resolve: "gatsby-plugin-robots-txt",
       options: {
-        policy: [{userAgent: '*', allow: '/'}]
+        policy: [{ userAgent: "*", allow: "/" }],
       },
     },
     "gatsby-plugin-sharp",
@@ -54,10 +53,11 @@ module.exports = {
       resolve: "gatsby-source-apiserver",
       options: {
         typePrefix: "internal__",
-        url: "https://01ruue3xk0.execute-api.eu-west-1.amazonaws.com/dev/projects",
+        url:
+          "https://01ruue3xk0.execute-api.eu-west-1.amazonaws.com/dev/projects",
         method: "get",
         name: `projects`,
       },
     },
   ],
-};
+}

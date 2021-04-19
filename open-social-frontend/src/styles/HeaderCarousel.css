@@ -1,50 +1,49 @@
 .Header-carousel {
-    margin-top: 64px;
-    width: 100%;
-    height: auto;
+  margin-top: 64px;
+  width: 100%;
+  height: auto;
 }
 
 .Carousel-img-wrapper {
-    height: 35vw;
+  height: 35vw;
 }
 
 .Image-text {
-    font-size: 2.3vw;
-    font-weight: bold;
-    position: absolute;
-    z-index: 2;
-    top: 18vw;
-    left: 0;
+  font-size: 2.3vw;
+  font-weight: bold;
+  position: absolute;
+  z-index: 2;
+  top: 18vw;
+  left: 0;
 }
 
 .Image-subtext {
-    font-size: 1.3vw;
-    font-weight: bold;
-    position: absolute;
-    top: 23vw;
-    left: 0;
-    z-index: 2;
+  font-size: 1.3vw;
+  font-weight: bold;
+  position: absolute;
+  top: 23vw;
+  left: 0;
+  z-index: 2;
 }
 
 .Text-span {
-    background: rgba(0, 0, 0, 0.7);
-    color: white;
-    padding: 10px;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 10px;
 }
 
-
 @media only screen and (max-width: 600px) {
-    .Carousel-img-wrapper {
-        height: 70vw;
-    }
+  .Carousel-img-wrapper {
+    height: 70vw;
+  }
 
-    .Image-text {
-        top: 35vw;
-        font-size: 6vw;
-    }
+  .Image-text {
+    top: 35vw;
+    font-size: 6vw;
+  }
 
-    .Image-subtext {
-        font-size: 3vw;
-        top: 49vw;
-    }
+  .Image-subtext {
+    font-size: 3vw;
+    top: 49vw;
+  }
 }

@@ -1,17 +1,16 @@
 import * as React from "react"
-import { graphql } from "gatsby";
+import { graphql } from "gatsby"
 import App from "../components/App"
-import Seo from "../components/SEO";
-
+import Seo from "../components/SEO"
 
 const IndexPage = ({ data }) => {
   return (
     <main>
-      <Seo/>
+      <Seo />
       <App initialProjects={data} />
     </main>
   )
-};
+}
 
 export const query = graphql`
   {
