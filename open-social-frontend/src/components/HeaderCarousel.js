@@ -7,7 +7,7 @@ import "../styles/HeaderCarousel.css"
 function HeaderCarousel() {
   return (
     <Carousel className="Header-carousel" autoplay effect={"fade"}>
-      <div>
+      <div data-testid="HeaderCarousel">
         <h1 className="Image-text">
           <span className="Text-span">
             Welcome to OpenSocial!!
