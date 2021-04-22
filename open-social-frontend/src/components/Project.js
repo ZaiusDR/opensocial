@@ -20,7 +20,7 @@ const { Panel } = Collapse
 
 function Project(props) {
   return (
-    <li key={props.project.full_name} className="Project-item">
+    <li data-testid="Project" key={props.project.full_name} className="Project-item">
       <Row>
         <Col span={24} className="Project" align="middle">
           <Row align={"middle"}>

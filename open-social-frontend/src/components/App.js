@@ -87,7 +87,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="App">
+      <div data-testid="App" className="App">
         <Layout style={{ alignItems: "center", backgroundColor: "#F1F1E6" }}>
           <PageHeader />
           <Content
