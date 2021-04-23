@@ -184,6 +184,9 @@ jobs:
       - name: 'Run Unit Tests'
         run: npm test
 
+      - name: 'Run e2e Tests'
+        run: npm run test:e2e:ci
+
       - name: 'Build App'
         run: npm run build
 
