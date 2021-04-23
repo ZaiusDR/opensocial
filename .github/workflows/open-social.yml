@@ -187,6 +187,9 @@ jobs:
       - name: 'Run e2e Tests'
         run: npm run test:e2e:ci
 
+      - name: 'Clean before build'
+        run: npm run clean
+
       - name: 'Build App'
         run: npm run build
 
