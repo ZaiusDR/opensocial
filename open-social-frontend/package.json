@@ -30,7 +30,7 @@
     "gatsby-plugin-google-gtag": "^3.3.0",
     "gatsby-plugin-image": "^1.5.0",
     "gatsby-plugin-manifest": "^3.5.0",
-    "gatsby-plugin-react-helmet": "^4.3.0",
+    "gatsby-plugin-react-helmet": "^4.5.0",
     "gatsby-plugin-robots-txt": "^1.6.2",
     "gatsby-plugin-sharp": "^3.3.1",
     "gatsby-plugin-sitemap": "^3.3.0",
@@ -44,7 +44,7 @@
     "react-in-viewport": "^1.0.0-alpha.16",
     "react-infinite-scroll-component": "^6.1.0",
     "react-loader-spinner": "^4.0.0",
-    "react-select": "^4.3.0",
+    "react-select": "^4.3.1",
     "recharts": "^2.0.9"
   },
   "devDependencies": {
