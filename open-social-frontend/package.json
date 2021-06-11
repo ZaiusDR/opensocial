@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "@ant-design/icons": "^4.6.2",
-    "@fontsource/sedgwick-ave": "^4.3.0",
+    "@fontsource/sedgwick-ave": "^4.4.5",
     "@loadable/component": "^5.15.0",
     "@loadable/server": "^5.15.0",
     "antd": "^4.16.2",
