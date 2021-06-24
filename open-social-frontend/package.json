@@ -27,7 +27,7 @@
     "antd": "^4.16.3",
     "gatsby": "^3.7.2",
     "gatsby-plugin-antd": "^2.2.0",
-    "gatsby-plugin-google-gtag": "^3.7.1",
+    "gatsby-plugin-google-gtag": "^3.8.0",
     "gatsby-plugin-image": "^1.7.1",
     "gatsby-plugin-manifest": "^3.7.1",
     "gatsby-plugin-react-helmet": "^4.7.1",
