@@ -18,6 +18,9 @@ module.exports = {
           anonymize_ip: true,
           cookie_expires: 0,
         },
+        pluginConfig: {
+          head: true,
+        },
       },
     },
     {
