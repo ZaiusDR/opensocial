@@ -163,7 +163,7 @@ jobs:
           aws-region: ${{ secrets.AWS_REGION }}
 
       - name: 'Configure Node'
-        uses: actions/setup-node@v2.1.5
+        uses: actions/setup-node@v2.3.1
         with:
           node-version: '14'
 
