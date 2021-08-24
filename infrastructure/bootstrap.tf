@@ -1,5 +1,5 @@
 module "terraform_state_backend" {
-  source     = "git::https://github.com/cloudposse/terraform-aws-tfstate-backend.git?ref=tags/0.33.0"
+  source     = "git::https://github.com/cloudposse/terraform-aws-tfstate-backend.git?ref=tags/0.37.0"
   namespace  = "Open Social"
   stage      = "base"
   name       = "open-social"
