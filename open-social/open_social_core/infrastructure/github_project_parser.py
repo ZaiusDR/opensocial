@@ -11,6 +11,9 @@ def parse_project_activity(project):
     total_commits = project['defaultBranchRef']['target']['history']['totalCount'] \
         if project['defaultBranchRef'] else 0
 
+    if total_commits == 0:
+        return None
+
     return github_project.GithubProject(
         project_name=project['name'],
         full_name=project['nameWithOwner'],

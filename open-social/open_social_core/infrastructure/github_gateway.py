@@ -48,7 +48,8 @@ def _parse_projects(result):
     for project in result['search']['repos']:
         project = _paginate_commits(project)
         parsed_project = github_project_parser.parse_project_activity(project['repo'])
-        parsed_projects.append(parsed_project)
+        if parsed_project:
+            parsed_projects.append(parsed_project)
     return parsed_projects
 
 

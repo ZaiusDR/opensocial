@@ -48,11 +48,14 @@ PROJECTS_FIRST_PAGE = {
                         'target': {
                             'history': {
                                 'pageInfo': {
-                                    'endCursor': None,
+                                    'endCursor': '7dc66c244d2ca4471933e2069706f017818eda66 8',
                                     'hasNextPage': False
                                 },
-                                'edges': [],
-                                'totalCount': 0
+                                'edges': [
+                                    {'node': {'author': {'name': 'John Cleese', 'date': '2020-08-21T19:53:19-04:00'}}},
+                                    {'node': {'author': {'name': 'Eric Idle', 'date': '2021-02-03T10:10:19-06:00'}}}
+                                ],
+                                'totalCount': 2
                             }
                         }
                     },
