@@ -16,7 +16,7 @@ function HeaderCarousel() {
         </h1>
         <p className="Image-subtext">
           <span className="Text-span">
-            An Social Impact Open Source Projects Aggregator
+            A Social Impact Open Source Projects Aggregator
           </span>
         </p>
         <StaticImage

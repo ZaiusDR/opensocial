@@ -12,8 +12,8 @@ import {
 
 
 const Graph = (props) => {
-  return props.inViewport || props.enterCount >= 1 ? (
-    <div data-testid="Graph">
+  return (
+    <div data-testid="Graph" className="Graph">
       <ResponsiveContainer
         className="Graph-container"
         width="100%"
@@ -51,8 +51,6 @@ const Graph = (props) => {
         </AreaChart>
       </ResponsiveContainer>
     </div>
-  ) : (
-    <div style={{ height: 200 }} ref={props.forwardedRef} />
   )
 }
 

@@ -1,6 +1,5 @@
 import React from "react"
 
-import loadable from "@loadable/component"
 import { Row, Col, Rate, Collapse, Divider } from "antd"
 import {
   EyeOutlined,
@@ -14,7 +13,7 @@ import {
 import "antd/dist/antd.css"
 import "../styles/Project.css"
 
-const ProjectGraph = loadable(() => import("./ProjectGraph.js"))
+import ProjectGraph from "./Graph"
 
 const { Panel } = Collapse
 
