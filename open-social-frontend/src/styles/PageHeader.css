@@ -3,6 +3,7 @@
   position: fixed;
   z-index: 20;
   padding-left: 3vw;
+  background-color: #00334e;
 }
 
 .Logo-container {

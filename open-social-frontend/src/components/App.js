@@ -87,18 +87,17 @@ class App extends React.Component {
 
   render() {
     return (
-      <div data-testid="App" className="App">
-        <Layout style={{ alignItems: "center", backgroundColor: "#F1F1E6" }}>
+        <Layout data-testid="App" className="App">
           <PageHeader />
           <Content
             className="site-layout"
-            style={{ width: "100%", maxWidth: "980px", minHeight: "100vh" }}
+            style={{ width: "100%", minHeight: "100vh" }}
           >
-            <HeaderCarousel style={{ width: "100%" }} />
+            <HeaderCarousel />
             <Row
-              style={{ paddingLeft: "4px", paddingRight: "4px" }}
+              style={{ margin: "auto", maxWidth: "980px", padding: "15px", paddingTop: "50px" }}
               align={"middle"}
-              gutter={{ xs: 8, sm: 16, md: 24 }}
+              // gutter={{ xs: 8, sm: 16, md: 24 }}
             >
               <Col
                 span={14}
@@ -106,7 +105,7 @@ class App extends React.Component {
                 md={14}
                 style={{ fontSize: "calc(15px + 1.5vw)" }}
               >
-                <b>Project List:</b>
+                <b>Project List</b>
               </Col>
               <Col
                 span={10}
@@ -125,6 +124,7 @@ class App extends React.Component {
             </Row>
             {this.state.projects.length > 0 ? (
               <InfiniteScroll
+                className="ProjectsContainer"
                 dataLength={this.state.projects.length}
                 next={this.fetchData}
                 hasMore={this.state.hasMore}
@@ -159,7 +159,6 @@ class App extends React.Component {
             )}
           </Content>
         </Layout>
-      </div>
     )
   }
 }

@@ -1,11 +1,12 @@
 .App {
+  align-items: center;
+  background-color: #F1F1E6;
   opacity: 1;
   -webkit-animation: fadein 0.5s ease-in;
   -moz-animation: fadein 0.5s ease-in;
   -o-animation: fadein 0.5s ease-in;
   animation: fadein 0.5s ease-in;
   margin: 0 !important;
-  width: 100vw;
   overflow-x: hidden;
 }
 
@@ -51,10 +52,11 @@
   background: #ffffff;
 }
 
-[data-theme="dark"] .site-layout .site-layout-background {
-  background: #141414;
-}
-
 .slick-list {
   height: 100%;
+}
+
+.ProjectsContainer {
+  max-width: 980px;
+  margin: auto;
 }

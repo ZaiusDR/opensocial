@@ -6,7 +6,13 @@ import "../styles/HeaderCarousel.css"
 
 function HeaderCarousel() {
   return (
-    <Carousel className="Header-carousel" autoplay effect={"fade"}>
+    <Carousel
+      className="Header-carousel"
+      autoplay
+      autoplaySpeed={5000}
+      effect={"fade"}
+      lazyLoad="progressive"
+    >
       <div data-testid="HeaderCarousel">
         <h1 className="Image-text">
           <span className="Text-span">
