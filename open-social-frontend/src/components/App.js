@@ -97,7 +97,6 @@ class App extends React.Component {
             <Row
               style={{ margin: "auto", maxWidth: "980px", padding: "15px", paddingTop: "50px" }}
               align={"middle"}
-              // gutter={{ xs: 8, sm: 16, md: 24 }}
             >
               <Col
                 span={14}
