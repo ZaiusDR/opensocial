@@ -24,6 +24,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  white-space: nowrap;
 }
 
 .Image-subtext {
@@ -34,6 +35,7 @@
   top: 65%;
   left: 50%;
   transform: translate(-50%, -50%);
+  white-space: nowrap;
 }
 
 .Text-span {
@@ -42,9 +44,18 @@
   padding: 10px;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 768px) {
   .Carousel-img-wrapper {
     height: 70vw;
+  }
+
+  .Image-text {
+    font-size: clamp(1rem, 4vw, 3rem);
+  }
+
+  .Image-subtext {
+    font-size: clamp(0.7rem, 1.6vw, 2rem);
+    top: 60%;
   }
 
   .Text-span {
