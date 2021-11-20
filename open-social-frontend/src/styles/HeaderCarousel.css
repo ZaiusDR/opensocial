@@ -8,14 +8,6 @@
   height: 35vw;
 }
 
-/*.Image-text {*/
-/*  font-size: 3rem;*/
-/*  font-weight: bold;*/
-/*  position: absolute;*/
-/*  z-index: 2;*/
-/*  top: 18vw;*/
-/*  left: 0;*/
-/*}*/
 .Image-text {
   font-size: clamp(0.1rem, 4vw, 3rem);
   font-weight: bold;
@@ -28,7 +20,7 @@
 }
 
 .Image-subtext {
-  font-size: clamp(0.1rem, 1.5vw, 2rem);
+  font-size: clamp(0.7rem, 2vw, 2.6rem);
   font-weight: bold;
   position: absolute;
   z-index: 2;
@@ -41,7 +33,7 @@
 .Text-span {
   background: rgba(0, 0, 0, 0.7);
   color: white;
-  padding: 10px;
+  padding: 8px;
 }
 
 @media only screen and (max-width: 768px) {
@@ -54,8 +46,8 @@
   }
 
   .Image-subtext {
-    font-size: clamp(0.7rem, 1.6vw, 2rem);
-    top: 60%;
+    font-size: clamp(0.7rem, 1.6vw, 2em);
+    top: 65%;
   }
 
   .Text-span {
