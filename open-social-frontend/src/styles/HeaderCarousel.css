@@ -8,22 +8,32 @@
   height: 35vw;
 }
 
+/*.Image-text {*/
+/*  font-size: 3rem;*/
+/*  font-weight: bold;*/
+/*  position: absolute;*/
+/*  z-index: 2;*/
+/*  top: 18vw;*/
+/*  left: 0;*/
+/*}*/
 .Image-text {
-  font-size: 3rem;
+  font-size: clamp(0.1rem, 4vw, 3rem);
   font-weight: bold;
   position: absolute;
   z-index: 2;
-  top: 18vw;
-  left: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .Image-subtext {
-  font-size: 1.2rem;
+  font-size: clamp(0.1rem, 1.5vw, 2rem);
   font-weight: bold;
   position: absolute;
-  top: 24vw;
-  left: 0;
   z-index: 2;
+  top: 65%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .Text-span {
@@ -35,5 +45,9 @@
 @media only screen and (max-width: 600px) {
   .Carousel-img-wrapper {
     height: 70vw;
+  }
+
+  .Text-span {
+    padding: 3px;
   }
 }

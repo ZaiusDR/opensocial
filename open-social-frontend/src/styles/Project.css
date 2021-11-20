@@ -6,7 +6,6 @@
 .Project {
   text-align: start;
   background: white;
-  /*border-radius: 2px;*/
   box-shadow: 1px 1px 4px lightslategray;
   padding: 1%;
   -webkit-animation: fadein 0.5s ease-in;
