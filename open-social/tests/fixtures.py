@@ -5,6 +5,7 @@ github_projects = [
     github_project.GithubProject(
         project_name='project_1',
         full_name='user1/project_1',
+        avatar_url='fake_url_1',
         description='description1',
         contributors=18,
         open_issues=30,
@@ -25,6 +26,7 @@ github_projects = [
     github_project.GithubProject(
         project_name='project_2',
         full_name='user2/project_2',
+        avatar_url='fake_url_2',
         description='description2',
         contributors=23,
         open_issues=239,
@@ -48,6 +50,7 @@ github_projects_pagination = [
     github_project.GithubProject(
         project_name='project_1',
         full_name='user1/project_1',
+        avatar_url='fake_url_1',
         description='description1',
         contributors=1,
         open_issues=30,
@@ -68,6 +71,7 @@ github_projects_pagination = [
     github_project.GithubProject(
         project_name='project_2',
         full_name='user2/project_2',
+        avatar_url='fake_url_2',
         description='description2',
         contributors=15,
         open_issues=239,
@@ -88,6 +92,7 @@ github_projects_pagination = [
     github_project.GithubProject(
         project_name='project_3',
         full_name='user1/project_3',
+        avatar_url='fake_url_3',
         description='description1',
         contributors=0,
         open_issues=30,
@@ -108,6 +113,7 @@ github_projects_pagination = [
     github_project.GithubProject(
         project_name='project_4',
         full_name='user2/project_4',
+        avatar_url='fake_url_4',
         description='description2',
         contributors=19,
         open_issues=239,
@@ -128,6 +134,7 @@ github_projects_pagination = [
     github_project.GithubProject(
         project_name='project_5',
         full_name='user1/project_5',
+        avatar_url='fake_url_5',
         description='description1',
         contributors=30,
         open_issues=30,
@@ -148,6 +155,7 @@ github_projects_pagination = [
     github_project.GithubProject(
         project_name='project_6',
         full_name='user2/project_6',
+        avatar_url='fake_url_6',
         description='description2',
         contributors=3,
         open_issues=239,

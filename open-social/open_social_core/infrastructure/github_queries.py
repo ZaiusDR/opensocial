@@ -11,6 +11,9 @@ query recentRepos($query: String!, $date_limit: GitTimestamp!, $after: String) {
         ... on Repository {
           nameWithOwner
           name
+          owner {
+            avatarUrl
+          }
           description
           issues(states: OPEN) {
             totalCount

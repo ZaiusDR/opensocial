@@ -17,6 +17,7 @@ def parse_project_activity(project):
     return github_project.GithubProject(
         project_name=project['name'],
         full_name=project['nameWithOwner'],
+        avatar_url=project['owner']['avatar_url'],
         description=_get_ellipsized_description(project['description']),
         contributors=contributors,
         open_issues=project['issues']['totalCount'],

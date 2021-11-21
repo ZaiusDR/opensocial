@@ -16,6 +16,7 @@ class TestProjectParser(unittest.TestCase):
 
         self.assertEqual(project_information.project_name, 'pepinazo')
         self.assertEqual(project_information.full_name, 'jomarnavarro/pepinazo')
+        self.assertEqual(project_information.avatar_url, 'https://fake_url.com')
         self.assertEqual(project_information.description, 'Introduces cucumber with page objects.')
         self.assertEqual(project_information.contributors, 2)
         self.assertEqual(project_information.open_issues, 0)

@@ -13,6 +13,7 @@ def save(projects):
             Item={
                 'full_name': project.full_name,
                 'project_name': project.project_name,
+                'avatar_url': project.avatar_url,
                 'description': project.description,
                 'contributors': project.contributors,
                 'open_issues': project.open_issues,
