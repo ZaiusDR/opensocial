@@ -36,7 +36,7 @@ function Project(props) {
               </a>
             </Col>
           </Row>
-          <Row className="Project-details" gutter={30}>
+          <Row className="Project-details">
             <Col span={16} xs={24} md={16}>
               <b>Project Rate: </b>
               <Rate
