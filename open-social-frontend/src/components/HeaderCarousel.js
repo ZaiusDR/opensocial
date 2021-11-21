@@ -11,7 +11,6 @@ function HeaderCarousel() {
       autoplay
       autoplaySpeed={5000}
       effect={"fade"}
-      lazyLoad="progressive"
     >
       <div data-testid="HeaderCarousel">
         <h1 className="Image-text">
@@ -45,8 +44,8 @@ function HeaderCarousel() {
         </p>
         <StaticImage
           className="Carousel-img-wrapper"
-          alt={"open-source"}
-          src={"../images/open-source.jpg"}
+          alt={"cooperation"}
+          src={"../images/cooperation.jpg"}
           placeholder="blurred"
         />
       </div>

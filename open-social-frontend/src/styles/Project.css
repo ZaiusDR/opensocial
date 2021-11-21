@@ -15,41 +15,37 @@
 }
 
 .Project-name {
-  font-size: 1.8vw;
-  padding: 2px;
+  font-size: 1.8rem;
   margin-bottom: 5px;
+  padding: 2px 2px 24px;
 }
 
 .Project-rate {
   color: #00334e;
-  font-size: 2.5vw;
+  font-size: 1.2rem;
 }
 
 .Project-details {
+  line-height: 170%;
+  font-size: 1rem;
   padding: 2px;
   margin-bottom: 5px;
 }
 
 .Stats {
   padding: 2px;
-  display: flex;
-  flex-direction: row;
 }
 
 .Stats-activity {
   border: #00334e solid 1px;
   padding: 15px;
   width: 50%;
-  display: flex;
-  flex-direction: column;
 }
 
 .Stats-dates {
   border: #00334e solid 1px;
   padding: 15px;
   width: 50%;
-  display: flex;
-  flex-direction: column;
 }
 
 .Graph-data {
@@ -131,7 +127,7 @@
 [class^="icon-"],
 [class*=" icon-"] {
   /* use !important to prevent issues with browser extensions that change fonts */
-  font-family: "icomoon" !important;
+  font-family: "icomoon", serif !important;
   speak: never;
   font-style: normal;
   font-weight: normal;

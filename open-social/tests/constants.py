@@ -11,7 +11,7 @@ PROJECTS_FIRST_PAGE = {
                     'name': 'pepinazo',
                     'nameWithOwner': 'jomarnavarro/pepinazo',
                     'owner': {
-                        'avatar_url': 'https://fake_url.com'
+                        'avatarUrl': 'https://fake_url.com'
                     },
                     'defaultBranchRef': {
                         'target': {
@@ -48,7 +48,7 @@ PROJECTS_FIRST_PAGE = {
                     'name': 'PepinTour',
                     'nameWithOwner': 'yukunl/PepinTour',
                     'owner': {
-                        'avatar_url': 'https://another_fake_url.com'
+                        'avatarUrl': 'https://another_fake_url.com'
                     },
                     'defaultBranchRef': {
                         'target': {
@@ -91,7 +91,7 @@ PROJECTS_FIRST_PAGE = {
                     'name': 'pepinierePHP',
                     'nameWithOwner': 'sebLaLa80/pepinierePHP',
                     'owner': {
-                        'avatar_url': 'https://more_fake_url.com'
+                        'avatarUrl': 'https://more_fake_url.com'
                     },
                     'defaultBranchRef': None,
                     'createdAt': '2020-12-06T14:27:39Z',
@@ -126,7 +126,7 @@ PROJECTS_SECOND_PAGE = {
                     'name': 'pepiniereLabranche',
                     'nameWithOwner': 'Louisppotvin/pepiniereLabranche',
                     'owner': {
-                        'avatar_url': 'https://yet_another_fake_url.com'
+                        'avatarUrl': 'https://yet_another_fake_url.com'
                     },
                     'defaultBranchRef': {
                         'target': {

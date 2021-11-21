@@ -30,88 +30,64 @@ function Project(props) {
             </Col>
           </Row>
           <Col span={24} className="Project-details">
-            <Row align="middle">
-              <Col style={{ paddingRight: "5px" }}>
+            <Row>
+              <Col span={16}>
                 <b>Project Rate: </b>
-              </Col>
-              <Col>
                 <Rate
                   className="Project-rate"
                   disabled
                   allowHalf
                   defaultValue={(props.project.rate * 10) / 2}
                   character={<span className="icon-unicorn_rate" />}
-                />
+                /><br/>
+                <b>Description:</b> {props.project.description}<br/>
+                <b>Full Name:</b> {props.project.full_name}<br/>
+                <b>Language:</b>{" "}
+                {props.project.language ? props.project.language : "N/A"}
+              </Col>
+              <Col span={8}>
+                <b>
+                  <TeamOutlined style={{ color: "#00334e" }} /> Contributors:
+                </b>{" "}
+                {props.project.contributors}<br/>
+                <b>
+                  <ExclamationCircleOutlined style={{ color: "red" }} /> Open
+                  Issues:
+                </b>{" "}
+                {props.project.open_issues}<br/>
+                <b>
+                  <PullRequestOutlined style={{ color: "green" }} /> Total
+                  Commits:
+                </b>{" "}
+                {props.project.total_commits}<br/>
               </Col>
             </Row>
-            <div>
-              <b>Description:</b> {props.project.description}
-            </div>
-            <div>
-              <b>Full Name:</b> {props.project.full_name}
-            </div>
-            <div>
-              <b>Language:</b>{" "}
-              {props.project.language ? props.project.language : "N/A"}
-            </div>
             <Divider />
-            <div>
-              <b>
-                <TeamOutlined style={{ color: "#00334e" }} /> Contributors:
-              </b>{" "}
-              {props.project.contributors}
-            </div>
-            <div>
-              <b>
-                <ExclamationCircleOutlined style={{ color: "red" }} /> Open
-                Issues:
-              </b>{" "}
-              {props.project.open_issues}
-            </div>
-            <div>
-              <b>
-                <PullRequestOutlined style={{ color: "green" }} /> Total
-                Commits:
-              </b>{" "}
-              {props.project.total_commits}
-            </div>
           </Col>
           <Collapse ghost>
             <Panel header={<b>More details</b>} key={1}>
               <Row className="Stats">
                 <Col span={12} className="Stats-activity">
-                  <div>
                     <b>
                       <EyeOutlined style={{ color: "#00334e" }} /> Watchers:
                     </b>{" "}
-                    {props.project.watchers}
-                  </div>
-                  <div>
+                    {props.project.watchers}<br/>
                     <b>
                       <StarOutlined style={{ color: "#00334e" }} /> Stargazers:
                     </b>{" "}
-                    {props.project.stargazers}
-                  </div>
-                  <div>
+                    {props.project.stargazers}<br/>
                     <b>
                       <ForkOutlined style={{ color: "#00334e" }} /> Forks:
                     </b>{" "}
-                    {props.project.forks}
-                  </div>
+                    {props.project.forks}<br/>
                 </Col>
                 <Col span={12} className="Stats-dates">
-                  <div>
                     <b>Pushed:</b>{" "}
                     {new Date(props.project.pushed).toLocaleDateString()}
-                  </div>
-                  <div>
-                    <b>Created:</b>{" "}
+                    <br/><b>Created:</b>{" "}
                     {new Date(props.project.created).toLocaleDateString()}
-                  </div>
-                  <div>
-                    <b>Updated:</b>{" "}
+                    <br/><b>Updated:</b>{" "}
                     {new Date(props.project.updated).toLocaleDateString()}
-                  </div>
                 </Col>
               </Row>
             </Panel>
