@@ -16,14 +16,12 @@
 
 .Project-name {
   font-size: 1.8rem;
-  margin-bottom: 5px;
   padding: 2px 2px 24px;
 }
 
 .Avatar-img {
   border-radius: 50%;
   max-height: 4vw;
-  padding: 5px;
   margin: 15px 15px 15px 10px;
 }
 
@@ -67,11 +65,11 @@
   }
 
   .Project-name {
-    font-size: 8vw;
+    font-size: 6vw;
   }
 
   .Avatar-img {
-    max-height: 15vw;
+    max-height: 12vw;
   }
 
   .Project-rate {
