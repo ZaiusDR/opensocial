@@ -39,6 +39,7 @@ const project = {
     }
   ],
   "created": "2020-10-19T16:55:35Z",
+  "avatar_url": "https://avatars.githubusercontent.com/u/22863380?v=4",
   "ttl": 1619151682,
   "stargazers": 0,
   "full_name": "Achmat1/Achmat-Isaacs---climate_change",

@@ -57,7 +57,7 @@ module.exports = {
       options: {
         typePrefix: "internal__",
         url:
-          "https://01ruue3xk0.execute-api.eu-west-1.amazonaws.com/dev/projects",
+          "https://api.open-social.net/projects",
         method: "get",
         name: `projects`,
       },

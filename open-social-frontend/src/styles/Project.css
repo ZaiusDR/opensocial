@@ -20,12 +20,20 @@
   padding: 2px 2px 24px;
 }
 
+.Avatar-img {
+  border-radius: 50%;
+  max-height: 4vw;
+  padding: 5px;
+  margin: 15px 15px 15px 10px;
+}
+
 .Project-rate {
   color: #00334e;
   font-size: 1.2rem;
 }
 
 .Project-details {
+  margin: 15px;
   line-height: 170%;
   font-size: 1rem;
   padding: 2px;
@@ -61,6 +69,10 @@
 
   .Project-name {
     font-size: 4vw;
+  }
+
+  .Avatar-img {
+    max-height: 10vw;
   }
 
   .Project-rate {

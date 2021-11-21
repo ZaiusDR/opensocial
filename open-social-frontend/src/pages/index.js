@@ -28,6 +28,7 @@ export const query = graphql`
         pushed
         project_url
         project_name
+        avatar_url
         open_issues
         language
         full_name
