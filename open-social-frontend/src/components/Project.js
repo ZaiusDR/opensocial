@@ -20,9 +20,9 @@ const { Panel } = Collapse
 function Project(props) {
   return (
     <li data-testid="Project" key={props.project.full_name} className="Project-item">
-      <Row>
-        <Col span={24} className="Project" align="middle">
-          <Row align={"middle"}>
+      <Row style={{ marginBottom: "16px" }}>
+        <Col span={24} className="Project">
+          <Row align={"middle"} >
             <Col span={22} className="Project-name">
               <img
                 className="Avatar-img"
@@ -34,41 +34,39 @@ function Project(props) {
               </a>
             </Col>
           </Row>
-          <Col span={24} className="Project-details">
-            <Row>
-              <Col span={16} xs={24} md={16}>
-                <b>Project Rate: </b>
-                <Rate
-                  className="Project-rate"
-                  disabled
-                  allowHalf
-                  defaultValue={(props.project.rate * 10) / 2}
-                  character={<span className="icon-unicorn_rate" />}
-                /><br/>
-                <b>Description:</b> {props.project.description}<br/>
-                <b>Full Name:</b> {props.project.full_name}<br/>
-                <b>Language:</b>{" "}
-                {props.project.language ? props.project.language : "N/A"}
-              </Col>
-              <Col span={8} xs={24} md={8}>
-                <b>
-                  <TeamOutlined style={{ color: "#00334e" }} /> Contributors:
-                </b>{" "}
-                {props.project.contributors}<br/>
-                <b>
-                  <ExclamationCircleOutlined style={{ color: "red" }} /> Open
-                  Issues:
-                </b>{" "}
-                {props.project.open_issues}<br/>
-                <b>
-                  <PullRequestOutlined style={{ color: "green" }} /> Total
-                  Commits:
-                </b>{" "}
-                {props.project.total_commits}<br/>
-              </Col>
-            </Row>
-            <Divider />
-          </Col>
+          <Row className="Project-details">
+            <Col span={16} xs={24} md={16}>
+              <b>Project Rate: </b>
+              <Rate
+                className="Project-rate"
+                disabled
+                allowHalf
+                defaultValue={(props.project.rate * 10) / 2}
+                character={<span className="icon-unicorn_rate" />}
+              /><br/>
+              <b>Description:</b> {props.project.description}<br/>
+              <b>Full Name:</b> {props.project.full_name}<br/>
+              <b>Language:</b>{" "}
+              {props.project.language ? props.project.language : "N/A"}
+            </Col>
+            <Col span={8} xs={24} md={8}>
+              <b>
+                <TeamOutlined style={{ color: "#00334e" }} /> Contributors:
+              </b>{" "}
+              {props.project.contributors}<br/>
+              <b>
+                <ExclamationCircleOutlined style={{ color: "red" }} /> Open
+                Issues:
+              </b>{" "}
+              {props.project.open_issues}<br/>
+              <b>
+                <PullRequestOutlined style={{ color: "green" }} /> Total
+                Commits:
+              </b>{" "}
+              {props.project.total_commits}<br/>
+            </Col>
+          </Row>
+          <Divider />
           <Collapse ghost>
             <Panel header={<b>More details</b>} key={1}>
               <Row className="Stats">
@@ -97,16 +95,12 @@ function Project(props) {
               </Row>
             </Panel>
           </Collapse>
-          <Col
-            span={24}
-            className="Graph-data"
-            style={{ marginBottom: "16px" }}
-          >
-            <div>
+          <Row>
+            <Col span={24} className="Graph-title">
               <b>Recent Commits Activity:</b>
-            </div>
-            <ProjectGraph data={props.project.commits_graph_data} />
-          </Col>
+            </Col>
+          </Row>
+          <ProjectGraph data={props.project.commits_graph_data} />
         </Col>
       </Row>
     </li>

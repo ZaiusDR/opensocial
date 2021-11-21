@@ -24,7 +24,7 @@
 
 .Avatar-img {
   border-radius: 50%;
-  max-height: 4vw;
+  max-height: 3.5vw;
   margin: 15px 15px 15px 10px;
 }
 
@@ -54,6 +54,11 @@
   border: #00334e solid 1px;
   padding: 15px;
   width: 50%;
+}
+
+.Graph-title {
+  font-size: 1rem;
+  margin: 30px 15px 5px;
 }
 
 .Graph-data {
