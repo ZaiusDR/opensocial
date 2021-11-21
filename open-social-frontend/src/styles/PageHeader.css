@@ -16,9 +16,8 @@
   margin: 0;
   color: white;
   padding-left: 10px;
-  font-family: -apple-system, "Sedgwick Ave", cursive;
+  font-family: "Sedgwick Ave", sans-serif;
   font-size: 1.8em;
-  font-display: swap;
 }
 
 @media only screen and (max-width: 768px) {
