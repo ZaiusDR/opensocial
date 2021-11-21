@@ -33,11 +33,10 @@
 }
 
 .Project-details {
-  margin: 15px;
   line-height: 170%;
   font-size: 1rem;
   padding: 2px;
-  margin-bottom: 5px;
+  margin: 15px 15px 5px;
 }
 
 .Stats {
@@ -68,11 +67,11 @@
   }
 
   .Project-name {
-    font-size: 4vw;
+    font-size: 8vw;
   }
 
   .Avatar-img {
-    max-height: 10vw;
+    max-height: 15vw;
   }
 
   .Project-rate {

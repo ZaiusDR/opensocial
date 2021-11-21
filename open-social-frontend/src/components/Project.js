@@ -36,7 +36,7 @@ function Project(props) {
           </Row>
           <Col span={24} className="Project-details">
             <Row>
-              <Col span={16}>
+              <Col span={16} xs={24} md={16}>
                 <b>Project Rate: </b>
                 <Rate
                   className="Project-rate"
@@ -50,7 +50,7 @@ function Project(props) {
                 <b>Language:</b>{" "}
                 {props.project.language ? props.project.language : "N/A"}
               </Col>
-              <Col span={8}>
+              <Col span={8} xs={24} md={8}>
                 <b>
                   <TeamOutlined style={{ color: "#00334e" }} /> Contributors:
                 </b>{" "}

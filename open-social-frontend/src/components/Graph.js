@@ -31,13 +31,7 @@ const Graph = (props) => {
             bottom: 0,
           }}
         >
-          <defs>
-            <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="60%" stopColor="#00334E" stopOpacity={1} />
-              <stop offset="100%" stopColor="#00334E" stopOpacity={0.4} />
-            </linearGradient>
-          </defs>
-          <CartesianGrid strokeDasharray="3 3" />
+          <CartesianGrid strokeDasharray="3 3" color={"gray"}/>
           <XAxis dataKey="month" />
           <YAxis />
           <Tooltip />
@@ -46,7 +40,7 @@ const Graph = (props) => {
             type="monotone"
             dataKey={"commits"}
             stroke={"#00334E"}
-            fill="url(#colorUv)"
+            fill={"#00334E"}
           />
         </AreaChart>
       </ResponsiveContainer>
