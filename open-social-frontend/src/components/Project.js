@@ -23,7 +23,7 @@ function Project(props) {
       <Row>
         <Col span={24} className="Project" align="middle">
           <Row align={"middle"}>
-            <Col span={18} className="Project-name">
+            <Col span={22} className="Project-name">
               <img
                 className="Avatar-img"
                 alt="avatar"
