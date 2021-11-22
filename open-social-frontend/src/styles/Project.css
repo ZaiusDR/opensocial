@@ -24,6 +24,7 @@
 
 .Avatar-img {
   border-radius: 50%;
+  /*height: 3.5vw;*/
   max-height: 3.5vw;
   margin: 15px 15px 15px 10px;
 }
@@ -67,7 +68,7 @@
   height: 220px;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 768px) {
   .Project {
     font-size: 3.5vw;
   }
@@ -77,6 +78,7 @@
   }
 
   .Avatar-img {
+    height: 12vw;
     max-height: 12vw;
   }
 
