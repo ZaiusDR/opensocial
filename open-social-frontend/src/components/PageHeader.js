@@ -14,7 +14,7 @@ const PageHeader = (props) => {
   return(
     <Header data-testid="PageHeader" className="Page-header">
       <Row align={"middle"} >
-        <Col span={6} className="Logo-container">
+        <Col span={18} className="Logo-container">
           <StaticImage
             src={"../images/icon.png"}
             alt={"unicorn"}
@@ -25,7 +25,7 @@ const PageHeader = (props) => {
               <h1 className="Logo-title">OpenSocial</h1>
           </a>
         </Col>
-        <Col span={1} offset={17}>
+        <Col span={1} offset={5}>
           <Tooltip title="Why OpenSocial?">
             <Button
               onClick={() => props.onClick()}
