@@ -31,16 +31,17 @@ const WhyModalContent = () => {
       </p>
       <p>
         The current keywords are:
-        <ul>
-          <li><i>Humanitarian</i></li>
-          <li><i>Non-profit</i></li>
-          <li><i>Social Justice</i></li>
-          <li><i>Social Change</i></li>
-          <li><i>Climate Change</i></li>
-          <li><i>Poverty</i></li>
-          <li><i>Participatory Democracy</i></li>
-        </ul>
-
+      </p>
+      <ul>
+        <li><i>Humanitarian</i></li>
+        <li><i>Non-profit</i></li>
+        <li><i>Social Justice</i></li>
+        <li><i>Social Change</i></li>
+        <li><i>Climate Change</i></li>
+        <li><i>Poverty</i></li>
+        <li><i>Participatory Democracy</i></li>
+      </ul>
+      <p>
         But the list will grow to include more.
       </p>
       <p>
