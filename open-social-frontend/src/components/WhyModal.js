@@ -1,6 +1,7 @@
 import React from "react"
 
 import { Modal } from "antd"
+import WhyModalContent from "./WhyModalContent"
 
 const WhyModal = (props) => {
   return(
@@ -12,7 +13,7 @@ const WhyModal = (props) => {
       visible={props.open}
       footer={null}
     >
-      <p>This is a fake modal</p>
+      <WhyModalContent/>
     </Modal>
   )
 }
