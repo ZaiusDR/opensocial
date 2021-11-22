@@ -15,6 +15,7 @@ const Select = loadable(() => import("react-select"))
 
 const HeaderCarousel = loadable(() => import("./HeaderCarousel"))
 const Project = loadable(() => import("./Project"))
+const WhyModal = loadable(() => import("./WhyModal"))
 
 const { Content } = Layout
 
@@ -33,6 +34,7 @@ class App extends React.Component {
       hasMore: !!this.props.initialProjects.internalProjects.page_identifier,
       nextKey: this.props.initialProjects.internalProjects.page_identifier,
       sortedBy: null,
+      whyModalOpen: false,
     }
     this.onSortBy = this.onSortBy.bind(this)
   }
@@ -85,79 +87,87 @@ class App extends React.Component {
     return `${api_url}?${new URLSearchParams(queryParams).toString()}`
   }
 
+  changeWhyModalVisibility = () => {
+    this.setState({whyModalOpen: !this.state.whyModalOpen})
+  }
+
   render() {
     return (
-        <Layout data-testid="App" className="App">
-          <PageHeader />
-          <Content
-            className="site-layout"
-            style={{ width: "100%", minHeight: "100vh" }}
+      <Layout data-testid="App" className="App">
+        <PageHeader onClick={this.changeWhyModalVisibility}/>
+        <Content
+          className="site-layout"
+          style={{ width: "100%", minHeight: "100vh" }}
+        >
+          <HeaderCarousel />
+          <Row
+            style={{ margin: "auto", maxWidth: "980px", padding: "15px", paddingTop: "50px" }}
+            align={"middle"}
           >
-            <HeaderCarousel />
-            <Row
-              style={{ margin: "auto", maxWidth: "980px", padding: "15px", paddingTop: "50px" }}
-              align={"middle"}
+            <Col
+              span={14}
+              xs={10}
+              md={14}
+              style={{ fontSize: "calc(15px + 1.5vw)" }}
             >
-              <Col
-                span={14}
-                xs={10}
-                md={14}
-                style={{ fontSize: "calc(15px + 1.5vw)" }}
-              >
-                <b>Project List</b>
-              </Col>
-              <Col
-                span={10}
-                xs={14}
-                md={10}
-                style={{ textAlignLast: "center" }}
-              >
-                <Select
-                  onChange={this.onSortBy}
-                  options={sort_by}
-                  isClearable={true}
-                  isSearchable={false}
-                  placeholder="Sort by..."
-                />
-              </Col>
-            </Row>
-            {this.state.projects.length > 0 ? (
-              <InfiniteScroll
-                className="ProjectsContainer"
-                dataLength={this.state.projects.length}
-                next={this.fetchData}
-                hasMore={this.state.hasMore}
-                loader={
-                  <Loader
-                    style={{ textAlign: "center" }}
-                    type="ThreeDots"
-                    color="#00334E"
-                    height={80}
-                    width={80}
-                  />
-                }
-                endMessage={
-                  <p style={{ textAlign: "center" }}>
-                    <b>Yay! You have seen it all</b>
-                  </p>
-                }
-              >
-                {this.state.projects.map((project) => (
-                  <Project key={project.full_name} project={project} />
-                ))}
-                <BackTop />
-              </InfiniteScroll>
-            ) : (
-              <Loader
-                style={{ textAlign: "center" }}
-                type="ThreeDots"
-                color="#00334E"
-                height={80}
-                width={80}
+              <b>Project List</b>
+            </Col>
+            <Col
+              span={10}
+              xs={14}
+              md={10}
+              style={{ textAlignLast: "center" }}
+            >
+              <Select
+                onChange={this.onSortBy}
+                options={sort_by}
+                isClearable={true}
+                isSearchable={false}
+                placeholder="Sort by..."
               />
-            )}
-          </Content>
-        </Layout>
+            </Col>
+          </Row>
+          {this.state.projects.length > 0 ? (
+            <InfiniteScroll
+              className="ProjectsContainer"
+              dataLength={this.state.projects.length}
+              next={this.fetchData}
+              hasMore={this.state.hasMore}
+              loader={
+                <Loader
+                  style={{ textAlign: "center" }}
+                  type="ThreeDots"
+                  color="#00334E"
+                  height={80}
+                  width={80}
+                />
+              }
+              endMessage={
+                <p style={{ textAlign: "center" }}>
+                  <b>Yay! You have seen it all</b>
+                </p>
+              }
+            >
+              {this.state.projects.map((project) => (
+                <Project key={project.full_name} project={project} />
+              ))}
+              <BackTop />
+            </InfiniteScroll>
+          ) : (
+            <Loader
+              style={{ textAlign: "center" }}
+              type="ThreeDots"
+              color="#00334E"
+              height={80}
+              width={80}
+            />
+          )}
+        </Content>
+        <WhyModal
+          onClose={this.changeWhyModalVisibility}
+          open={this.state.whyModalOpen}
+        />
+      </Layout>
     )
   }
 }

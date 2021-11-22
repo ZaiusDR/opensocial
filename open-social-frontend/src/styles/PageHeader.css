@@ -6,7 +6,7 @@
   background-color: #00334e;
 }
 
-.Logo-container {
+.ant-col.Logo-container {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -18,6 +18,11 @@
   padding-left: 10px;
   font-family: "Sedgwick Ave", sans-serif;
   font-size: 1.8em;
+}
+
+.Modal-button {
+  background-color: #00334e;
+  border-color: #00334e;
 }
 
 @media only screen and (max-width: 768px) {
