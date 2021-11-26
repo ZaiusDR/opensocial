@@ -2,6 +2,7 @@ import React from "react"
 
 import loadable from "@loadable/component"
 import { Layout, Row, Col, BackTop } from "antd"
+import { Element } from "react-scroll"
 
 import PageHeader from "./PageHeader"
 
@@ -101,23 +102,16 @@ class App extends React.Component {
         >
           <HeaderCarousel />
           <Row
-            style={{ margin: "auto", maxWidth: "980px", padding: "15px", paddingTop: "50px" }}
+            style={{ margin: "auto", maxWidth: "768px", padding: "15px", paddingTop: "50px" }}
             align={"middle"}
+            justify={"end"}
           >
             <Col
-              span={14}
-              xs={10}
-              md={14}
-              style={{ fontSize: "calc(15px + 1.5vw)" }}
-            >
-              <b>Project List</b>
-            </Col>
-            <Col
-              span={10}
+              span={24}
               xs={14}
               md={10}
-              style={{ textAlignLast: "center" }}
             >
+              <Element name="projects"/>
               <Select
                 onChange={this.onSortBy}
                 options={sort_by}

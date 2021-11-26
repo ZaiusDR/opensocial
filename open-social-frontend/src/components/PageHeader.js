@@ -1,4 +1,6 @@
 import React from "react"
+
+import { Button, Col, Row, Tooltip } from "antd"
 import { StaticImage } from "gatsby-plugin-image"
 import { Header } from "antd/es/layout/layout"
 import {
@@ -8,24 +10,25 @@ import {
 import "@fontsource/sedgwick-ave/latin-400.css"
 
 import "../styles/PageHeader.css"
-import { Button, Col, Row, Tooltip } from "antd"
 
 const PageHeader = (props) => {
   return(
-    <Header data-testid="PageHeader" className="Page-header">
-      <Row align={"middle"} >
-        <Col span={18} className="Logo-container">
+    // <Header data-testid="PageHeader" className="Page-header">
+      <Row data-testid="PageHeader" align={"middle"} gutter={[14, 14]} className="Page-header">
+        <Col flex="0 1 auto">
           <StaticImage
             src={"../images/icon.png"}
             alt={"unicorn"}
             height={44}
             layout="fixed"
           />
-          <a href="https://www.open-social.net">
-              <h1 className="Logo-title">OpenSocial</h1>
+        </Col>
+        <Col span="auto">
+          <a className="Logo-title" href="https://www.open-social.net">
+              OpenSocial
           </a>
         </Col>
-        <Col span={1} offset={5}>
+        <Col span="auto" style={{ marginLeft: "auto" }}>
           <Tooltip title="Why OpenSocial?">
             <Button
               onClick={() => props.onClick()}
@@ -42,7 +45,7 @@ const PageHeader = (props) => {
           </Tooltip>
         </Col>
       </Row>
-    </Header>
+    // </Header>
   )
 }
 

@@ -16,22 +16,17 @@
 
 .Project-name {
   font-size: 1.8rem;
-  padding: 2px 2px 2px 10px;
+  font-weight: bold;
+  padding-left: 10px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.Avatar-img {
-  border-radius: 50%;
-  /*height: 3.5vw;*/
-  max-height: 3.5vw;
-  margin: 15px 15px 15px 10px;
-}
-
 .Project-rate {
-  color: #00334e;
-  font-size: 1.2rem;
+  /*color: #00334e;*/
+  color: #1890ff;
+  font-size: 1.4rem;
 }
 
 .Project-details {

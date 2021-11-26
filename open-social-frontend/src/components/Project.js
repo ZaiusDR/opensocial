@@ -2,7 +2,7 @@ import React from "react"
 
 import loadable from "@loadable/component"
 
-import { Row, Col, Rate, Collapse, Divider } from "antd"
+import { Typography, Row, Col, Rate, Collapse, Divider, Avatar, Image, Card } from "antd"
 import {
   EyeOutlined,
   ExclamationCircleOutlined,
@@ -18,22 +18,30 @@ import "../styles/Project.css"
 const ProjectGraph = loadable(() => import("./Graph"))
 
 const { Panel } = Collapse
+const { Link } = Typography
+
 
 function Project(props) {
   return (
     <li data-testid="Project" key={props.project.full_name} className="Project-item">
-      <Row style={{ marginBottom: "16px" }}>
-        <Col span={24} className="Project">
-          <Row align={"middle"} >
-            <Col span={22} className="Project-name">
-              <img
-                className="Avatar-img"
-                alt="avatar"
-                src={props.project.avatar_url}
+      <Card className="Project">
+          <Row align={"middle"} wrap={false}>
+            <Col flex="none">
+              <Avatar
+                size={{ xs: 40, sm: 40, md: 40, lg: 40, xl: 40 }}
+                src={
+                  <Image
+                    alt="Avatar"
+                    src={props.project.avatar_url}
+                    preview={false}
+                  />
+              }
               />
-              <a href={props.project.project_url}>
-                <b>{props.project.project_name}</b>
-              </a>
+            </Col>
+            <Col flex="auto" className="Project-name">
+              <Link href={props.project.project_url} target="_blank" rel="noreferrer">
+                {props.project.project_name}
+              </Link>
             </Col>
           </Row>
           <Row className="Project-details">
@@ -103,8 +111,7 @@ function Project(props) {
             </Col>
           </Row>
           <ProjectGraph data={props.project.commits_graph_data} />
-        </Col>
-      </Row>
+      </Card>
     </li>
   )
 }

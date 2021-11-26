@@ -1,6 +1,7 @@
 import React from "react"
 import { Carousel } from "antd"
 import { StaticImage } from "gatsby-plugin-image"
+import { Button } from "react-scroll"
 
 import "../styles/HeaderCarousel.css"
 
@@ -11,6 +12,8 @@ function HeaderCarousel() {
       autoplay
       autoplaySpeed={5000}
       effect={"fade"}
+      pauseOnHover={false}
+      dots={false}
     >
       <div data-testid="HeaderCarousel">
         <h1 className="Image-text">
@@ -24,6 +27,14 @@ function HeaderCarousel() {
             A Social Impact Open Source Projects Aggregator
           </span>
         </p>
+        <Button
+          className="Start-button"
+          type="submit"
+          value="Start Exploring"
+          to="projects"
+          offset={-16}
+          smooth={true}
+        />
         <StaticImage
           className="Carousel-img-wrapper"
           alt={"collaboration"}
@@ -42,6 +53,14 @@ function HeaderCarousel() {
             Contribute with Non-profit Open Source Projects
           </span>
         </p>
+        <Button
+          className="Start-button"
+          type="submit"
+          value="Start Exploring"
+          to="projects"
+          offset={-16}
+          smooth={true}
+        />
         <StaticImage
           className="Carousel-img-wrapper"
           alt={"cooperation"}
@@ -61,6 +80,14 @@ function HeaderCarousel() {
             Find projects by Topics or the Language you love!
           </span>
         </p>
+        <Button
+          className="Start-button"
+          type="submit"
+          value="Start Exploring"
+          to="projects"
+          offset={-16}
+          smooth={true}
+        />
         <StaticImage
           className="Carousel-img-wrapper"
           alt={"community"}
