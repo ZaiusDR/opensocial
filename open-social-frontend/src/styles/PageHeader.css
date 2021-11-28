@@ -1,29 +1,3 @@
-/*.ant-layout-header.Page-header {*/
-/*  width: 100%;*/
-/*  position: fixed;*/
-/*  z-index: 20;*/
-/*  padding-left: 3vw;*/
-/*  background-color: #00334e;*/
-/*}*/
-
-/*.ant-col.Logo-container {*/
-/*  display: flex;*/
-/*  flex-direction: row;*/
-/*  align-items: center;*/
-/*}*/
-
-/*.Logo-title {*/
-/*  margin: 0;*/
-/*  color: white;*/
-/*  padding-left: 10px;*/
-/*  font-family: "Sedgwick Ave", sans-serif;*/
-/*  font-size: 1.8em;*/
-/*}*/
-
-/*.Modal-button {*/
-/*  background-color: #00334e;*/
-/*  border-color: #00334e;*/
-/*}*/
 .Page-header {
     position: absolute;
     background-color: transparent !important;

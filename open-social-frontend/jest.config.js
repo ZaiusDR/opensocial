@@ -8,10 +8,13 @@ module.exports = {
   },
   testPathIgnorePatterns: [`node_modules`, `\\.cache`, `<rootDir>.*/public`],
   transformIgnorePatterns: [
-    `node_modules/(?!gatsby|antd|@ant-design|rc-.+?|@babel/runtime).+(js|jsx)$`,
+    `node_modules/(?!gatsby|antd|@ant-design|rc-.+?|@babel/runtime|lodash-es|@antv).+(js|jsx)$`,
   ],
   globals: {
     __PATH_PREFIX__: ``,
   },
   testURL: `http://localhost`,
+  setupFiles: [
+    `<rootDir>/tests/__mocks__/graph-mocks.js`
+  ]
 }
