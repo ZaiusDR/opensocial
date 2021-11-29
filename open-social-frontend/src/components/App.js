@@ -40,6 +40,7 @@ class App extends React.Component {
       whyModalOpen: false,
     }
     this.onSortBy = this.onSortBy.bind(this)
+    this.onChangeInView = this.onChangeInView.bind(this)
   }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
@@ -79,8 +80,8 @@ class App extends React.Component {
     }
   }
 
-  onChangeInView = () => {
-    this.setState({projectListVisible: !this.state.projectListVisible})
+  onChangeInView(visible) {
+    this.setState({projectListVisible: visible})
   }
 
   buildUrl = () => {
@@ -142,11 +143,6 @@ class App extends React.Component {
                   height={80}
                   width={80}
                 />
-              }
-              endMessage={
-                <p style={{ textAlign: "center" }}>
-                  <b>Yay! You have seen it all</b>
-                </p>
               }
             >
               {this.state.projects.map((project) => (
