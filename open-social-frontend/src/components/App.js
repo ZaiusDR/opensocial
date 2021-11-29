@@ -80,7 +80,6 @@ class App extends React.Component {
   }
 
   onChangeInView = () => {
-    console.log("Changing InView")
     this.setState({projectListVisible: !this.state.projectListVisible})
   }
 
