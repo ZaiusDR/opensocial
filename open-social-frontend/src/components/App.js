@@ -3,6 +3,7 @@ import React from "react"
 import loadable from "@loadable/component"
 import { Layout, Row, Col, BackTop } from "antd"
 import { Element } from "react-scroll"
+import { InView } from "react-intersection-observer"
 
 import PageHeader from "./PageHeader"
 
@@ -34,6 +35,7 @@ class App extends React.Component {
       projects: this.props.initialProjects.internalProjects.projects,
       hasMore: !!this.props.initialProjects.internalProjects.page_identifier,
       nextKey: this.props.initialProjects.internalProjects.page_identifier,
+      projectListVisible: false,
       sortedBy: null,
       whyModalOpen: false,
     }
@@ -77,6 +79,11 @@ class App extends React.Component {
     }
   }
 
+  onChangeInView = () => {
+    console.log("Changing InView")
+    this.setState({projectListVisible: !this.state.projectListVisible})
+  }
+
   buildUrl = () => {
     let queryParams = {}
     if (this.state.nextKey) {
@@ -98,7 +105,7 @@ class App extends React.Component {
         <PageHeader onClick={this.changeWhyModalVisibility}/>
         <Content
           className="site-layout"
-          style={{ width: "100%", minHeight: "100vh" }}
+          style={{ width: "100%", minHeight: "200vh" }}
         >
           <HeaderCarousel />
           <Row
@@ -121,7 +128,8 @@ class App extends React.Component {
               />
             </Col>
           </Row>
-          {this.state.projects.length > 0 ? (
+          <InView as="div" onChange={this.onChangeInView}>
+          {this.state.projects.length > 0 && this.state.projectListVisible ? (
             <InfiniteScroll
               className="ProjectsContainer"
               dataLength={this.state.projects.length}
@@ -156,6 +164,7 @@ class App extends React.Component {
               width={80}
             />
           )}
+          </InView>
         </Content>
         <WhyModal
           onClose={this.changeWhyModalVisibility}
