@@ -32,7 +32,6 @@ function HeaderCarousel() {
           type="submit"
           value="Start Exploring"
           to="projects"
-          offset={-16}
           smooth={true}
         />
         <StaticImage
@@ -58,7 +57,6 @@ function HeaderCarousel() {
           type="submit"
           value="Start Exploring"
           to="projects"
-          offset={-16}
           smooth={true}
         />
         <StaticImage
@@ -85,7 +83,6 @@ function HeaderCarousel() {
           type="submit"
           value="Start Exploring"
           to="projects"
-          offset={-16}
           smooth={true}
         />
         <StaticImage

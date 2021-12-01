@@ -5,8 +5,6 @@ import { Layout, Row, Col, BackTop } from "antd"
 import { Element } from "react-scroll"
 import { InView } from "react-intersection-observer"
 
-import PageHeader from "./PageHeader"
-
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
 import "antd/dist/antd.css"
 import "../styles/App.css"
@@ -18,6 +16,7 @@ const Select = loadable(() => import("react-select"))
 const HeaderCarousel = loadable(() => import("./HeaderCarousel"))
 const Project = loadable(() => import("./Project"))
 const WhyModal = loadable(() => import("./WhyModal"))
+const PageHeader = loadable(() => import("./PageHeader"))
 
 const { Content } = Layout
 
@@ -35,7 +34,7 @@ class App extends React.Component {
       projects: this.props.initialProjects.internalProjects.projects,
       hasMore: !!this.props.initialProjects.internalProjects.page_identifier,
       nextKey: this.props.initialProjects.internalProjects.page_identifier,
-      projectListVisible: false,
+      projectsHaveBeenVisible: false,
       sortedBy: null,
       whyModalOpen: false,
     }
@@ -81,7 +80,10 @@ class App extends React.Component {
   }
 
   onChangeInView(visible) {
-    this.setState({projectListVisible: visible})
+    if (visible === true) {
+      console.log("setting state")
+      this.setState({ projectsHaveBeenVisible: true })
+    }
   }
 
   buildUrl = () => {
@@ -128,8 +130,7 @@ class App extends React.Component {
               />
             </Col>
           </Row>
-          <InView as="div" onChange={this.onChangeInView}>
-          {this.state.projects.length > 0 && this.state.projectListVisible ? (
+          {this.state.projects.length > 0 ? (
             <InfiniteScroll
               className="ProjectsContainer"
               dataLength={this.state.projects.length}
@@ -145,10 +146,14 @@ class App extends React.Component {
                 />
               }
             >
-              {this.state.projects.map((project) => (
-                <Project key={project.full_name} project={project} />
-              ))}
-              <BackTop />
+              {this.state.projectsHaveBeenVisible ? (
+                this.state.projects.map((project) => (
+                  <Project key={project.full_name} project={project} />
+                ))
+              ) : null}
+              <InView as="div" onChange={this.onChangeInView}>
+                <BackTop />
+              </InView>
             </InfiniteScroll>
           ) : (
             <Loader
@@ -159,7 +164,6 @@ class App extends React.Component {
               width={80}
             />
           )}
-          </InView>
         </Content>
         <WhyModal
           onClose={this.changeWhyModalVisibility}
