@@ -12,7 +12,12 @@ import "../styles/PageHeader.css"
 
 const PageHeader = (props) => {
   return(
-    <Row data-testid="PageHeader" align={"middle"} gutter={[14, 14]} className="Page-header">
+    <Row
+      data-testid="PageHeader"
+      align={"middle"}
+      gutter={[14, 14]}
+      className={props.isFixed ? "Page-header" : "Page-header fixed"}
+    >
       <Col flex="0 1 auto">
         <StaticImage
           src={"../images/icon.png"}

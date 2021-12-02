@@ -32,11 +32,13 @@ class App extends React.Component {
       hasMore: !!this.props.initialProjects.internalProjects.page_identifier,
       nextKey: this.props.initialProjects.internalProjects.page_identifier,
       projectsHaveBeenVisible: false,
+      headerFixed: false,
       sortedBy: null,
       whyModalOpen: false,
     }
     this.onSortBy = this.onSortBy.bind(this)
-    this.onChangeInView = this.onChangeInView.bind(this)
+    this.onChangeProjectsInView = this.onChangeProjectsInView.bind(this)
+    this.onChangeCarouselVisible = this.onChangeCarouselVisible.bind(this)
   }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
@@ -76,13 +78,6 @@ class App extends React.Component {
     }
   }
 
-  onChangeInView(visible) {
-    if (visible === true) {
-      console.log("setting state")
-      this.setState({ projectsHaveBeenVisible: true })
-    }
-  }
-
   buildUrl = () => {
     let queryParams = {}
     if (this.state.nextKey) {
@@ -94,6 +89,17 @@ class App extends React.Component {
     return `${api_url}?${new URLSearchParams(queryParams).toString()}`
   }
 
+  onChangeProjectsInView(visible) {
+    if (visible === true) {
+      this.setState({ projectsHaveBeenVisible: true })
+    }
+  }
+
+  onChangeCarouselVisible(visible) {
+    console.log(visible)
+    this.setState({ headerFixed: visible })
+  }
+
   changeWhyModalVisibility = () => {
     this.setState({whyModalOpen: !this.state.whyModalOpen})
   }
@@ -101,12 +107,15 @@ class App extends React.Component {
   render() {
     return (
       <Layout data-testid="App" className="App">
-        <PageHeader onClick={this.changeWhyModalVisibility}/>
+        <PageHeader
+          onClick={this.changeWhyModalVisibility}
+          isFixed={this.state.headerFixed}
+        />
         <Content
           className="site-layout"
           style={{ width: "100%", minHeight: "200vh" }}
         >
-          <HeaderCarousel />
+          <HeaderCarousel onCarouselVisible={this.onChangeCarouselVisible} />
           <Row
             style={{ margin: "auto", maxWidth: "768px", padding: "15px", paddingTop: "50px" }}
             align={"middle"}
@@ -129,7 +138,7 @@ class App extends React.Component {
           </Row>
           {this.state.projects.length > 0 ? (
             <ProjectsList
-              onChangeInView={this.onChangeInView}
+              onChangeInView={this.onChangeProjectsInView}
               projects={this.state.projects}
               fetchData={this.fetchData}
               hasMore={this.state.hasMore}
