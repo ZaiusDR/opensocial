@@ -1,20 +1,17 @@
 import React from "react"
 
 import loadable from "@loadable/component"
-import { Layout, Row, Col, BackTop } from "antd"
+import { Layout, Row, Col } from "antd"
 import { Element } from "react-scroll"
-import { InView } from "react-intersection-observer"
 
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
 import "antd/dist/antd.css"
 import "../styles/App.css"
 
 const Loader = loadable(() => import("react-loader-spinner"))
-const InfiniteScroll = loadable(() => import("react-infinite-scroll-component"))
 const Select = loadable(() => import("react-select"))
-
 const HeaderCarousel = loadable(() => import("./HeaderCarousel"))
-const Project = loadable(() => import("./Project"))
+const ProjectsList = loadable(() => import("./ProjectsList"))
 const WhyModal = loadable(() => import("./WhyModal"))
 const PageHeader = loadable(() => import("./PageHeader"))
 
@@ -131,30 +128,13 @@ class App extends React.Component {
             </Col>
           </Row>
           {this.state.projects.length > 0 ? (
-            <InfiniteScroll
-              className="ProjectsContainer"
-              dataLength={this.state.projects.length}
-              next={this.fetchData}
+            <ProjectsList
+              onChangeInView={this.onChangeInView}
+              projects={this.state.projects}
+              fetchData={this.fetchData}
               hasMore={this.state.hasMore}
-              loader={
-                <Loader
-                  style={{ textAlign: "center" }}
-                  type="ThreeDots"
-                  color="#00334E"
-                  height={80}
-                  width={80}
-                />
-              }
-            >
-              {this.state.projectsHaveBeenVisible ? (
-                this.state.projects.map((project) => (
-                  <Project key={project.full_name} project={project} />
-                ))
-              ) : null}
-              <InView as="div" onChange={this.onChangeInView}>
-                <BackTop />
-              </InView>
-            </InfiniteScroll>
+              projectsHaveBeenVisible={this.state.projectsHaveBeenVisible}
+            />
           ) : (
             <Loader
               style={{ textAlign: "center" }}
