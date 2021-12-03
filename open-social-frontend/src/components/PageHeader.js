@@ -15,7 +15,7 @@ const PageHeader = (props) => {
     <Row
       data-testid="PageHeader"
       align={"middle"}
-      gutter={[14, 14]}
+      gutter={[14, 0]}
       className={props.isFixed ? "Page-header" : "Page-header fixed"}
     >
       <Col flex="0 1 auto">

@@ -3,7 +3,8 @@
     background-color: transparent !important;
     z-index: 3;
     width: 100%;
-    padding: 1.5vw;
+    padding: 0.5vw 1.5vw;
+    height: max-content;
 }
 
 .fixed {
