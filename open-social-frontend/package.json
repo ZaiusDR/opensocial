@@ -59,7 +59,7 @@
     "gatsby-plugin-s3": "^0.3.8",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^27.0.5",
-    "prettier": "2.5.0",
+    "prettier": "2.5.1",
     "start-server-and-test": "^1.12.5"
   }
 }
