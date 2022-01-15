@@ -18,6 +18,7 @@ query recentRepos($query: String!, $date_limit: GitTimestamp!, $after: String) {
           issues(states: OPEN) {
             totalCount
           }
+          homepageUrl
           watchers {
             totalCount
           }

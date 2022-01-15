@@ -31,6 +31,7 @@ PROJECTS_FIRST_PAGE = {
                     'createdAt': '2019-05-08T23:51:02Z',
                     'description': 'Introduces cucumber with page '
                                    'objects.',
+                    'homepageUrl': 'https://fake_homepage.com',
                     'forkCount': 81,
                     'issues': {'totalCount': 0},
                     'languages': {'nodes': [{'name': 'Java'},
@@ -75,6 +76,7 @@ PROJECTS_FIRST_PAGE = {
                                     ' as well as for funding purposes. - Identifying the countries which are having'
                                     ' significant issues like socio-economic and health factors so that we will'
                                     ' make the decision is mostly related to the direst need of aid.'),
+                    'homepageUrl': 'https://fake_homepage.com',
                     'forkCount': 0,
                     'issues': {'totalCount': 0},
                     'languages': {'nodes': [{'name': 'Java'}]},
@@ -97,6 +99,7 @@ PROJECTS_FIRST_PAGE = {
                     'createdAt': '2020-12-06T14:27:39Z',
                     'description': "Application web d'un panier "
                                    "d'achats lié à une DB.",
+                    'homepageUrl': 'https://fake_homepage.com',
                     'forkCount': 0,
                     'issues': {'totalCount': 0},
                     'languages': {'nodes': [{'name': 'PHP'},
@@ -151,6 +154,7 @@ PROJECTS_SECOND_PAGE = {
                     },
                     'createdAt': '2020-08-05T13:25:09Z',
                     'description': None,
+                    'homepageUrl': 'https://fake_homepage.com',
                     'forkCount': 0,
                     'issues': {'totalCount': 0},
                     'languages': {'nodes': [{'name': 'TSQL'},

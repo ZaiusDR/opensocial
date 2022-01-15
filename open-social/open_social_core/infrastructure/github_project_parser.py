@@ -19,6 +19,7 @@ def parse_project_activity(project):
         full_name=project['nameWithOwner'],
         avatar_url=project['owner']['avatarUrl'],
         description=_get_ellipsized_description(project['description']),
+        homepage=project['homepageUrl'],
         contributors=contributors,
         open_issues=project['issues']['totalCount'],
         watchers=project['watchers']['totalCount'],

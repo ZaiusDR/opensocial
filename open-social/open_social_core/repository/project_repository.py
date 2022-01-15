@@ -15,6 +15,7 @@ def save(projects):
                 'project_name': project.project_name,
                 'avatar_url': project.avatar_url,
                 'description': project.description,
+                'homepage': project.homepage,
                 'contributors': project.contributors,
                 'open_issues': project.open_issues,
                 'watchers': project.watchers,
