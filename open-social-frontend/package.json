@@ -28,12 +28,12 @@
     "antd": "^4.18.3",
     "gatsby": "^4.0.0",
     "gatsby-plugin-antd": "^2.2.0",
-    "gatsby-plugin-google-tagmanager": "^4.3.0",
+    "gatsby-plugin-google-tagmanager": "^4.5.0",
     "gatsby-plugin-image": "^2.0.0",
     "gatsby-plugin-manifest": "^4.0.0",
     "gatsby-plugin-react-helmet": "^5.0.0",
     "gatsby-plugin-robots-txt": "^1.6.2",
-    "gatsby-plugin-sharp": "^4.5.1",
+    "gatsby-plugin-sharp": "^4.5.2",
     "gatsby-plugin-sitemap": "^5.0.0",
     "gatsby-source-apiserver": "^2.1.8",
     "gatsby-source-filesystem": "^4.5.2",
@@ -50,7 +50,7 @@
   },
   "devDependencies": {
     "@loadable/babel-plugin": "^5.13.2",
-    "@loadable/webpack-plugin": "^5.15.0",
+    "@loadable/webpack-plugin": "^5.15.2",
     "@testing-library/react": "^12.0.0",
     "babel-jest": "^27.4.2",
     "babel-preset-gatsby": "^2.5.1",
@@ -58,8 +58,8 @@
     "eslint-config-airbnb-base": "^15.0.0",
     "gatsby-plugin-s3": "^0.3.8",
     "identity-obj-proxy": "^3.0.0",
-    "jest": "^27.0.5",
-    "prettier": "2.5.0",
+    "jest": "^27.4.7",
+    "prettier": "2.5.1",
     "start-server-and-test": "^1.12.5"
   }
 }
