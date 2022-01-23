@@ -1,14 +1,12 @@
 import React from "react"
 
 import loadable from "@loadable/component"
-import { Layout, Row, Col } from "antd"
+import { Layout, Row, Col, Spin } from "antd"
 import { Element } from "react-scroll"
 
-import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
 import "antd/dist/antd.css"
 import "../styles/App.css"
 
-const Loader = loadable(() => import("react-loader-spinner"))
 const Select = loadable(() => import("react-select"))
 const HeaderCarousel = loadable(() => import("./HeaderCarousel"))
 const ProjectsList = loadable(() => import("./ProjectsList"))
@@ -144,15 +142,11 @@ class App extends React.Component {
               hasMore={this.state.hasMore}
               projectsHaveBeenVisible={this.state.projectsHaveBeenVisible}
             />
-          ) : (
-            <Loader
-              style={{ textAlign: "center" }}
-              type="ThreeDots"
-              color="#00334E"
-              height={80}
-              width={80}
+           :
+            <Spin
+              size="large"
             />
-          )}
+          }
         </Content>
         <WhyModal
           onClose={this.changeWhyModalVisibility}
