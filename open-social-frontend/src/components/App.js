@@ -134,7 +134,7 @@ class App extends React.Component {
               />
             </Col>
           </Row>
-          {this.state.projects.length > 0 ? (
+          {this.state.projects.length > 0 ?
             <ProjectsList
               onChangeInView={this.onChangeProjectsInView}
               projects={this.state.projects}
