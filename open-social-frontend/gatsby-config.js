@@ -24,12 +24,6 @@ module.exports = {
       },
     },
     {
-      resolve: "gatsby-plugin-google-tagmanager",
-      options: {
-        id: "G-T30WTJGH3Y",
-      },
-    },
-    {
       resolve: "gatsby-plugin-s3",
       options: {
         bucketName: "open-social-front",
