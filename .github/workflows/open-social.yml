@@ -57,7 +57,7 @@ jobs:
             ${{ runner.os }}-pip-
 
       - name: 'Setup Python'
-        uses: actions/setup-python@v2.3.1
+        uses: actions/setup-python@v2.3.2
         with:
           python-version: '3.8'
 
