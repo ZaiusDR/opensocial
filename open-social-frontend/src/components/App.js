@@ -1,26 +1,21 @@
 import React from "react"
 
 import loadable from "@loadable/component"
-import { Layout, Row, Col, Spin } from "antd"
+import { Layout, Row, Col } from "antd"
 import { Element } from "react-scroll"
 
 import "antd/dist/antd.css"
 import "../styles/App.css"
 
-const Select = loadable(() => import("react-select"))
 const HeaderCarousel = loadable(() => import("./HeaderCarousel"))
+const PageHeader = loadable(() => import("./PageHeader"))
 const ProjectsList = loadable(() => import("./ProjectsList"))
 const WhyModal = loadable(() => import("./WhyModal"))
-const PageHeader = loadable(() => import("./PageHeader"))
+const Spinner = loadable(() => import("./Spinner"))
 
 const { Content } = Layout
 
 const api_url = "https://api.open-social.net/projects"
-const sort_by = [
-  { value: "total_commits", label: "Total Commits" },
-  { value: "contributors", label: "Contributors" },
-  { value: "rate", label: "Project Rate" },
-]
 
 class App extends React.Component {
   constructor(props) {
@@ -94,7 +89,6 @@ class App extends React.Component {
   }
 
   onChangeCarouselVisible(visible) {
-    console.log(visible)
     this.setState({ headerFixed: visible })
   }
 
@@ -108,6 +102,8 @@ class App extends React.Component {
         <PageHeader
           onClick={this.changeWhyModalVisibility}
           isFixed={this.state.headerFixed}
+          sortedBy={this.state.sortedBy}
+          onSortBy={this.onSortBy}
         />
         <Content
           className="site-layout"
@@ -125,13 +121,6 @@ class App extends React.Component {
               md={10}
             >
               <Element name="projects"/>
-              <Select
-                onChange={this.onSortBy}
-                options={sort_by}
-                isClearable={true}
-                isSearchable={false}
-                placeholder="Sort by..."
-              />
             </Col>
           </Row>
           {this.state.projects.length > 0 ?
@@ -143,9 +132,7 @@ class App extends React.Component {
               projectsHaveBeenVisible={this.state.projectsHaveBeenVisible}
             />
            :
-            <Spin
-              size="large"
-            />
+            <Spinner />
           }
         </Content>
         <WhyModal

@@ -9,7 +9,7 @@ import "../styles/HeaderCarousel.css"
 
 const HeaderCarousel = (props) => {
   return (
-    <InView as="div" onChange={props.onCarouselVisible}>
+    <InView as="div" threshold={0.08} onChange={props.onCarouselVisible}>
       <Carousel
         className="Header-carousel"
         autoplay

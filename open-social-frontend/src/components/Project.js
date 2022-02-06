@@ -55,7 +55,6 @@ function Project(props) {
                 character={<span className="icon-unicorn_rate" />}
               /><br/>
               <b>Homepage: </b><Link href={props.project.homepage} target="_blank">{props.project.homepage}</Link><br/>
-              <b>Description:</b> {props.project.description}<br/>
               <b>Full Name:</b> {props.project.full_name}<br/>
               <b>Language:</b>{" "}
               {props.project.language ? props.project.language : "N/A"}
@@ -75,6 +74,11 @@ function Project(props) {
                 Commits:
               </b>{" "}
               {props.project.total_commits}<br/>
+            </Col>
+          </Row>
+          <Row className="Project-details">
+            <Col>
+              <b>Description:</b> {props.project.description}<br/>
             </Col>
           </Row>
           <Divider />
