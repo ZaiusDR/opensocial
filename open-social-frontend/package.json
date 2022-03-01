@@ -26,7 +26,7 @@
     "@loadable/component": "^5.15.2",
     "@loadable/server": "^5.15.2",
     "antd": "^4.18.3",
-    "gatsby": "^4.0.0",
+    "gatsby": "^4.9.0",
     "gatsby-plugin-antd": "^2.2.0",
     "gatsby-plugin-google-gtag": "^4.5.0",
     "gatsby-plugin-image": "^2.5.2",
