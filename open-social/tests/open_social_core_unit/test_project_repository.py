@@ -95,7 +95,11 @@ class TestProjectRepository(unittest.TestCase):
                         'ProjectionType': 'ALL'
                     }
                 }
-            ]
+            ],
+            ProvisionedThroughput={
+                'ReadCapacityUnits': 123,
+                'WriteCapacityUnits': 123
+            }
         )
 
     def tearDown(self):

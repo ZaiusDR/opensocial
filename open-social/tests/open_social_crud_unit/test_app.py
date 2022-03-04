@@ -30,7 +30,11 @@ class TestApp(unittest.TestCase):
                     'AttributeName': 'full_name',
                     'AttributeType': 'S'
                 }
-            ]
+            ],
+            ProvisionedThroughput={
+                'ReadCapacityUnits': 123,
+                'WriteCapacityUnits': 123
+            }
         )
         projects = fixtures.github_projects
         project_repository.save(projects)
