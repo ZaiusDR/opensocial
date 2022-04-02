@@ -1,6 +1,4 @@
 terraform {
-  required_version = ">= 0.13.7"
-
   backend "s3" {
     region         = "eu-west-1"
     bucket         = "opensocial-base-open-social-state"

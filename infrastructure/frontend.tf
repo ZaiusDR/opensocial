@@ -1,11 +1,22 @@
 resource "aws_s3_bucket" "open-social-front" {
   bucket = var.frontend_bucket_name
-  acl    = "private"
+}
 
-  website {
+resource "aws_s3_bucket_website_configuration" "open-social-front" {
+  bucket = aws_s3_bucket.open-social-front.bucket
+
+  index_document {
     index_document = "index.html"
   }
+}
 
+resource "aws_s3_bucket_acl" "open-social-front" {
+  bucket = aws_s3_bucket.open-social-front.id
+  acl    = "private"
+}
+
+resource "aws_s3_bucket_policy" "open-social-front" {
+  bucket = aws_s3_bucket.open-social-front.bucket
   policy = <<EOF
 {
   "Version": "2008-10-17",
