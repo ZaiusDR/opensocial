@@ -146,7 +146,7 @@ jobs:
   static-host:
     name: 'Build Frontend'
     runs-on: ubuntu-latest
-    needs: ['sam-app']
+#    needs: ['sam-app']
     defaults:
       run:
         working-directory: ./open-social-frontend
