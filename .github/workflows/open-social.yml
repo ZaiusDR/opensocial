@@ -42,7 +42,8 @@ jobs:
   sam-app:
     name: 'SAM App Deploy'
     runs-on: ubuntu-latest
-    needs: ['sam-app-docker', 'infrastructure']
+#    needs: ['sam-app-docker', 'infrastructure']
+    needs: ['sam-app-docker']
 
     steps:
       - name: 'Checkout'
@@ -146,7 +147,7 @@ jobs:
   static-host:
     name: 'Build Frontend'
     runs-on: ubuntu-latest
-#    needs: ['sam-app']
+    needs: ['sam-app']
     defaults:
       run:
         working-directory: ./open-social-frontend
