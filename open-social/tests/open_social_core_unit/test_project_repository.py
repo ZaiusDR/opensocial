@@ -9,7 +9,7 @@ from tests import fixtures
 from open_social_core.repository import project_repository
 
 
-@moto.mock_dynamodb2
+@moto.mock_dynamodb
 class TestProjectRepository(unittest.TestCase):
 
     def setUp(self):
