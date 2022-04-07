@@ -14,7 +14,7 @@ from open_social_crud import app
 
 class TestApp(unittest.TestCase):
 
-    @moto.mock_dynamodb2
+    @moto.mock_dynamodb
     def test_should_return_a_list_of_projects(self):
         client = boto3.client('dynamodb')
         client.create_table(
