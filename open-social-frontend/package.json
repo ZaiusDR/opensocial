@@ -52,7 +52,7 @@
   "devDependencies": {
     "@loadable/babel-plugin": "^5.13.2",
     "@loadable/webpack-plugin": "^5.15.2",
-    "@testing-library/react": "^12.1.4",
+    "@testing-library/react": "^12.1.5",
     "babel-jest": "^27.5.1",
     "babel-preset-gatsby": "^2.14.0",
     "cypress": "^9.6.1",
