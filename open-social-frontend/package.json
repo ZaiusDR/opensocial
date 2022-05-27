@@ -54,7 +54,7 @@
     "@loadable/webpack-plugin": "^5.15.2",
     "@testing-library/react": "^12.1.5",
     "babel-jest": "^27.5.1",
-    "babel-preset-gatsby": "^2.14.0",
+    "babel-preset-gatsby": "^2.15.0",
     "cypress": "^9.6.1",
     "eslint-config-airbnb-base": "^15.0.0",
     "gatsby-plugin-s3": "^0.3.8",
