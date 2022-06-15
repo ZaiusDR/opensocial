@@ -28,7 +28,7 @@
     "antd": "^4.21.0",
     "gatsby": "^4.12.1",
     "gatsby-plugin-antd": "^2.2.0",
-    "gatsby-plugin-google-tagmanager": "^4.13.0",
+    "gatsby-plugin-google-tagmanager": "^4.16.0",
     "gatsby-plugin-image": "^2.15.0",
     "gatsby-plugin-manifest": "^4.16.0",
     "gatsby-plugin-preact": "^6.11.0",
