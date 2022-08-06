@@ -9,5 +9,6 @@ module.exports = defineConfig({
     },
     baseUrl: 'http://localhost:8000/',
     specPattern: 'tests/e2e/**/*.cy.{js,jsx,ts,tsx}',
+    supportFile: false,
   },
 })
