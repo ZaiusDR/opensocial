@@ -29,7 +29,7 @@
     "gatsby": "^4.20.0",
     "gatsby-plugin-antd": "^2.2.0",
     "gatsby-plugin-google-tagmanager": "^4.20.0",
-    "gatsby-plugin-image": "^2.18.0",
+    "gatsby-plugin-image": "^2.22.0",
     "gatsby-plugin-manifest": "^4.17.0",
     "gatsby-plugin-less": "^6.11.0",
     "gatsby-plugin-preact": "^6.17.0",
