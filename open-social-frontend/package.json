@@ -25,7 +25,7 @@
     "@fontsource/sedgwick-ave": "^4.5.10",
     "@loadable/component": "^5.15.2",
     "@loadable/server": "^5.15.2",
-    "antd": "^4.21.0",
+    "antd": "^4.24.2",
     "gatsby": "^4.24.1",
     "gatsby-plugin-antd": "^2.2.0",
     "gatsby-plugin-google-tagmanager": "^4.20.0",
