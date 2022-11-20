@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "@ant-design/charts": "^1.4.2",
-    "@ant-design/icons": "^4.7.0",
+    "@ant-design/icons": "^4.8.0",
     "@fontsource/sedgwick-ave": "^4.5.10",
     "@loadable/component": "^5.15.2",
     "@loadable/server": "^5.15.2",
