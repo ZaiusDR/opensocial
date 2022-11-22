@@ -10,7 +10,7 @@ const WhyModal = (props) => {
       title="Why OpenSocial?"
       onCancel={() => props.onClose()}
       destroyOnClose={true}
-      visible={props.open}
+      open={props.open}
       footer={null}
     >
       <WhyModalContent/>

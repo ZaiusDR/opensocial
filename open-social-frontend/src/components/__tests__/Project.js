@@ -9,6 +9,9 @@ import "../../../tests/__mocks__/browser-support-mocks"
 
 import Project from "../Project"
 
+jest.mock("../Graph", () => () => {
+  return <mock-graph />
+})
 
 const project = {
   "rate": "0.0",
