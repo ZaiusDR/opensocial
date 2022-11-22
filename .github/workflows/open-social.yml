@@ -182,7 +182,7 @@ jobs:
         run: npm install --legacy-peer-deps
 
       - name: 'Install Gatsby S3 Plugin'
-        run: npm install gatsby-plugin-s3
+        run: npm install gatsby-plugin-s3 --legacy-peer-deps
 
       - name: 'Run Unit Tests'
         run: npm test
