@@ -4,7 +4,6 @@ import loadable from "@loadable/component"
 import { Layout, Row, Col } from "antd"
 import { Element } from "react-scroll"
 
-import "antd/dist/antd.css"
 import "../styles/App.css"
 
 const HeaderCarousel = loadable(() => import("./HeaderCarousel"))

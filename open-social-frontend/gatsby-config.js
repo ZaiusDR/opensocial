@@ -8,7 +8,6 @@ module.exports = {
   },
   plugins: [
     `gatsby-plugin-preact`,
-    "gatsby-plugin-antd",
     "gatsby-plugin-image",
     "gatsby-plugin-react-helmet",
     {

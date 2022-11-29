@@ -12,7 +12,6 @@ import {
   StarOutlined,
 } from "@ant-design/icons"
 
-import "antd/dist/antd.css"
 import "../styles/Project.css"
 
 const ProjectGraph = loadable(() => import("./Graph"))

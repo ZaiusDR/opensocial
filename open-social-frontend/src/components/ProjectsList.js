@@ -1,7 +1,7 @@
 import React from "react"
 import loadable from "@loadable/component"
 
-import { BackTop } from "antd"
+import { FloatButton } from "antd"
 import { InView } from "react-intersection-observer"
 import Spinner from "./Spinner"
 
@@ -25,7 +25,7 @@ const ProjectsList = (props) => {
           <Project key={project.full_name} project={project} />
         ))
       ) : null}
-      <BackTop />
+      <FloatButton.BackTop />
     </InfiniteScroll>
     </InView>
   )

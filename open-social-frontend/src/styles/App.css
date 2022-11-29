@@ -1,3 +1,7 @@
+body {
+  margin: 0;
+}
+
 .App {
   align-items: center;
   background-color: #F1F1E6;
