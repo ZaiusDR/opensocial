@@ -40,7 +40,7 @@ const HeaderCarousel = (props) => {
           <StaticImage
             className="Carousel-img-wrapper"
             alt={"collaboration"}
-            src={"../images/collaboration.jpg"}
+            src={"../images/collaboration.webp"}
             placeholder="blurred"
           />
         </div>
@@ -65,7 +65,7 @@ const HeaderCarousel = (props) => {
           <StaticImage
             className="Carousel-img-wrapper"
             alt={"cooperation"}
-            src={"../images/cooperation.jpg"}
+            src={"../images/cooperation.webp"}
             placeholder="blurred"
           />
         </div>
@@ -91,7 +91,7 @@ const HeaderCarousel = (props) => {
           <StaticImage
             className="Carousel-img-wrapper"
             alt={"community"}
-            src={"../images/community.jpg"}
+            src={"../images/community.webp"}
             placeholder="blurred"
           />
         </div>

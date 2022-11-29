@@ -6,11 +6,10 @@ body {
   align-items: center;
   background-color: #F1F1E6;
   opacity: 1;
-  -webkit-animation: fadein 0.5s ease-in;
-  -moz-animation: fadein 0.5s ease-in;
-  -o-animation: fadein 0.5s ease-in;
-  animation: fadein 0.5s ease-in;
-  margin: 0 !important;
+  -webkit-animation: fadein 0.2s ease-in;
+  -moz-animation: fadein 0.2s ease-in;
+  -o-animation: fadein 0.2s ease-in;
+  animation: fadein 0.2s ease-in;
   overflow-x: hidden;
 }
 
