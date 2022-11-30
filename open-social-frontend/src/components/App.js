@@ -110,7 +110,7 @@ class App extends React.Component {
         >
           <HeaderCarousel onCarouselVisible={this.onChangeCarouselVisible} />
           <Row
-            style={{ margin: "auto", maxWidth: "768px", padding: "15px", paddingTop: "50px" }}
+            style={{ margin: "auto", maxWidth: "768px", padding: "15px" }}
             align={"middle"}
             justify={"end"}
           >

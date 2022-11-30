@@ -1,7 +1,6 @@
 import React from "react"
 
 import { Carousel } from "antd"
-import { StaticImage } from "gatsby-plugin-image"
 import { Button } from "react-scroll"
 import { InView } from "react-intersection-observer"
 
@@ -11,7 +10,7 @@ const HeaderCarousel = (props) => {
   return (
     <InView as="div" threshold={0.08} onChange={props.onCarouselVisible}>
       <Carousel
-        className="Header-carousel"
+        className="Header-carousel Background"
         autoplay
         autoplaySpeed={5000}
         effect={"fade"}
@@ -37,12 +36,7 @@ const HeaderCarousel = (props) => {
             to="projects"
             smooth={true}
           />
-          <StaticImage
-            className="Carousel-img-wrapper"
-            alt={"collaboration"}
-            src={"../images/collaboration.webp"}
-            placeholder="blurred"
-          />
+          <div className="Carousel-text-wrapper"/>
         </div>
         <div>
           <h1 className="Image-text">
@@ -62,12 +56,7 @@ const HeaderCarousel = (props) => {
             to="projects"
             smooth={true}
           />
-          <StaticImage
-            className="Carousel-img-wrapper"
-            alt={"cooperation"}
-            src={"../images/cooperation.webp"}
-            placeholder="blurred"
-          />
+          <div className="Carousel-text-wrapper"/>
         </div>
         <div>
           <h1 className="Image-text">
@@ -88,12 +77,7 @@ const HeaderCarousel = (props) => {
             to="projects"
             smooth={true}
           />
-          <StaticImage
-            className="Carousel-img-wrapper"
-            alt={"community"}
-            src={"../images/community.webp"}
-            placeholder="blurred"
-          />
+          <div className="Carousel-text-wrapper"/>
         </div>
       </Carousel>
     </InView>
