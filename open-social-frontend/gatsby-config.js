@@ -10,9 +10,10 @@ module.exports = {
     "gatsby-plugin-image",
     "gatsby-plugin-react-helmet",
     {
-      resolve: "gatsby-plugin-google-tagmanager",
+      resolve: "gatsby-plugin-google-tagmanager-timeout",
       options: {
         id: "GTM-MS7SCQ6",
+        timeout: 3000,
         enableWebVitalsTracking: true,
       },
     },
