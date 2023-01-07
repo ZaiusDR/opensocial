@@ -26,7 +26,7 @@
     "@loadable/component": "^5.15.2",
     "@loadable/server": "^5.15.2",
     "antd": "^5.1.1",
-    "gatsby": "^5.2.0",
+    "gatsby": "^5.3.3",
     "gatsby-plugin-google-tagmanager-timeout": "^2.2.5",
     "gatsby-plugin-image": "^3.2.0",
     "gatsby-plugin-manifest": "^5.3.1",
