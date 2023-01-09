@@ -28,7 +28,7 @@
     "antd": "^5.1.2",
     "gatsby": "^5.3.3",
     "gatsby-plugin-google-tagmanager-timeout": "^2.2.5",
-    "gatsby-plugin-image": "^3.2.0",
+    "gatsby-plugin-image": "^3.3.2",
     "gatsby-plugin-manifest": "^5.3.1",
     "gatsby-plugin-react-helmet": "^6.2.0",
     "gatsby-plugin-robots-txt": "^1.8.0",
