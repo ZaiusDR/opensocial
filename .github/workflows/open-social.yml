@@ -30,7 +30,7 @@ jobs:
 
       - name: Build and push
         id: docker_build
-        uses: docker/build-push-action@v3.2.0
+        uses: docker/build-push-action@v3.3.0
         with:
           context: ./actions/aws-sam
           file: ./actions/aws-sam/Dockerfile.build
