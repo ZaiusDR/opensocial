@@ -46,7 +46,7 @@
     "react-select": "^5.7.0"
   },
   "devDependencies": {
-    "@loadable/babel-plugin": "^5.13.2",
+    "@loadable/babel-plugin": "^5.15.3",
     "@loadable/webpack-plugin": "^5.15.2",
     "@testing-library/react": "^12.1.5",
     "babel-jest": "^29.3.1",
