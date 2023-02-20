@@ -24,7 +24,7 @@
     "@ant-design/icons": "^4.8.0",
     "@fontsource/sedgwick-ave": "^4.5.10",
     "@loadable/component": "^5.15.2",
-    "@loadable/server": "^5.15.2",
+    "@loadable/server": "^5.15.3",
     "antd": "^5.1.2",
     "gatsby": "^5.4.2",
     "gatsby-plugin-google-tagmanager-timeout": "^2.2.5",
