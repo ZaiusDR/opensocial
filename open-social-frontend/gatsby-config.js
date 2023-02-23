@@ -23,6 +23,7 @@ module.exports = {
         bucketName: "open-social-front",
       },
     },
+    "gatsby-plugin-preact",
     "gatsby-plugin-sitemap",
     {
       resolve: "gatsby-plugin-manifest",
