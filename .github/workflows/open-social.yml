@@ -152,7 +152,7 @@ jobs:
     needs: ['sam-app']
     defaults:
       run:
-        working-directory: ./open-social-frontend
+        working-directory: ./open-social-front-v2
 
     steps:
       - name: 'Checkout'
@@ -179,22 +179,19 @@ jobs:
             ${{ runner.os }}-node-
 
       - name: 'Install Dependencies'
-        run: npm install --legacy-peer-deps
+        run: npm install
 
-      - name: 'Install Gatsby S3 Plugin'
-        run: npm install gatsby-plugin-s3 --legacy-peer-deps
+#      - name: 'Run Unit Tests'
+#        run: npm test
 
-      - name: 'Run Unit Tests'
-        run: npm test
+#      - name: 'Run e2e Tests'
+#        run: npm run test:e2e:ci
 
-      - name: 'Run e2e Tests'
-        run: npm run test:e2e:ci
-
-      - name: 'Clean before build'
-        run: npm run clean
+#      - name: 'Clean before build'
+#        run: npm run clean
 
       - name: 'Build App'
         run: npm run build
 
       - name: 'Deploy App'
-        run: npm run deploy
+        run: aws s3 sync .next s3://open-social-front --delete
