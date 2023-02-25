@@ -193,4 +193,4 @@ jobs:
         run: npm run build && npm run export
 
       - name: 'Deploy App'
-        run: aws s3 sync .next s3://open-social-front --delete
+        run: aws s3 sync out s3://open-social-front --delete
