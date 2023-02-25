@@ -6,7 +6,7 @@ resource "aws_s3_bucket_website_configuration" "open-social-front" {
   bucket = aws_s3_bucket.open-social-front.bucket
 
   index_document {
-    index_document = "index.html"
+    index_document = "server/pages/index.html"
   }
 }
 
@@ -59,7 +59,7 @@ resource "aws_cloudfront_origin_access_identity" "open_social_cloud_front_identi
 resource "aws_cloudfront_distribution" "open_social_front_cloud_front" {
   enabled             = true
   aliases             = ["www.open-social.net"]
-  default_root_object = "index.html"
+  default_root_object = "server/pages/index.html"
 
   default_cache_behavior {
     allowed_methods        = ["GET", "HEAD"]
