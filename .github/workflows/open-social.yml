@@ -40,11 +40,49 @@ jobs:
           cache-from: type=registry,ref=${{ secrets.DOCKER_REGISTRY }}/aws-sam-action:latest
           tags: ${{ secrets.DOCKER_REGISTRY }}/aws-sam-action:latest
 
+  infrastructure:
+    name: 'Basic Infrastructure'
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./infrastructure
+
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v3
+
+      - name: 'Configure AWS credentials'
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      - name: 'Manually zip lambda file'
+        run: zip index.zip index.py
+        working-directory: /home/runner/work/opensocial/opensocial/infrastructure/lambda_files/
+
+      - name: 'Configure Terraform'
+        uses: hashicorp/setup-terraform@v1
+        with:
+          terraform_version: 1.1.4
+
+      - name: 'Terraform Init'
+        run: terraform init
+
+      - name: 'Terraform Validate'
+        run: terraform validate
+
+      - name: 'Terraform Format'
+        run: terraform fmt -check -diff
+
+      - name: 'Terraform Apply'
+        run: terraform apply -auto-approve
+
   sam-app:
     name: 'SAM App Deploy'
     runs-on: ubuntu-latest
-#    needs: ['sam-app-docker', 'infrastructure']
-    needs: ['sam-app-docker']
+    needs: ['sam-app-docker', 'infrastructure']
 
     steps:
       - name: 'Checkout'
@@ -107,45 +145,6 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_DEFAULT_REGION: ${{ secrets.AWS_REGION }}
 
-  infrastructure:
-    name: 'Basic Infrastructure'
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./infrastructure
-
-    steps:
-      - name: 'Checkout'
-        uses: actions/checkout@v3
-
-      - name: 'Configure AWS credentials'
-        uses: aws-actions/configure-aws-credentials@v1
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ${{ secrets.AWS_REGION }}
-
-      - name: 'Manually zip lambda file'
-        run: zip index.zip index.py
-        working-directory: /home/runner/work/opensocial/opensocial/infrastructure/lambda_files/
-
-      - name: 'Configure Terraform'
-        uses: hashicorp/setup-terraform@v1
-        with:
-          terraform_version: 1.1.4
-
-      - name: 'Terraform Init'
-        run: terraform init
-
-      - name: 'Terraform Validate'
-        run: terraform validate
-
-      - name: 'Terraform Format'
-        run: terraform fmt -check -diff
-
-      - name: 'Terraform Apply'
-        run: terraform apply -auto-approve
-
   static-host:
     name: 'Build Frontend'
     runs-on: ubuntu-latest
@@ -191,7 +190,7 @@ jobs:
 #        run: npm run clean
 
       - name: 'Build App'
-        run: npm run build
+        run: npm run build && npm run export
 
       - name: 'Deploy App'
         run: aws s3 sync .next s3://open-social-front --delete

@@ -6,7 +6,11 @@ resource "aws_s3_bucket_website_configuration" "open-social-front" {
   bucket = aws_s3_bucket.open-social-front.bucket
 
   index_document {
-    index_document = "server/pages/index.html"
+    suffix = "index.html"
+  }
+
+  error_document {
+    key = "404.html"
   }
 }
 
