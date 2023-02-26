@@ -1,17 +1,22 @@
-import Head from 'next/head'
+import { useState } from "react"
+
 import Hero from "@/components/home/Hero"
+import ProjectsLayout from "@/components/projects/ProjectsLayout"
+import HeadSection from "@/components/metadata/HeadSection"
 
 
 export default function Home() {
+  const [showProjects, setShowProjects] = useState(false)
+
+  const handleShowProjectsClicked = (event) => {
+    setShowProjects(true)
+  }
+
   return (
     <>
-      <Head>
-        <title>OpenSocial - Find Social Impact Open Source Projects</title>
-        <meta name="description" content="OpenSocial is a social impact open source projects aggregator. Easily find active non profit projects and start coding a better world." />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <Hero />
+      <HeadSection/>
+      {!showProjects && <Hero onClick={handleShowProjectsClicked}/>}
+      {showProjects && <ProjectsLayout />}
     </>
   )
 }
