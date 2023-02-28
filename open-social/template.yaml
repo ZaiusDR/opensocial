@@ -15,9 +15,9 @@ Resources:
     Properties:
       ContentUri: open_social_core
       CompatibleRuntimes:
-        - python3.11
+        - python3.9
     Metadata:
-      BuildMethod: python3.11
+      BuildMethod: python3.9
 
   ProjectScrapperFunction:
     Type: AWS::Serverless::Function
