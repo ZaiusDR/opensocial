@@ -32,6 +32,7 @@ class TestProjectParser(unittest.TestCase):
         self.assertEqual(project_information.language, 'Java')
         self.assertEqual(project_information.total_commits, 2)
         self.assertEqual(project_information.rate, 0.32)
+        self.assertEqual(project_information.topic, 'fake_topic')
         self.assertEqual(project_information.sorting, 0)
         self.assertEqual(project_information.ttl, 1614470400)
 
