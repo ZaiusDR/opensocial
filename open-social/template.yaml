@@ -24,7 +24,7 @@ Resources:
     Properties:
       CodeUri: project_scrapper/
       Handler: app.lambda_handler
-      Runtime: python3.11
+      Runtime: python3.9
       Timeout: 300
       Policies:
         - DynamoDBCrudPolicy:
@@ -80,7 +80,7 @@ Resources:
     Properties:
       CodeUri: open_social_crud/
       Handler: app.list_projects
-      Runtime: python3.8
+      Runtime: python3.9
       Policies:
         - DynamoDBCrudPolicy:
             TableName: !Ref ProjectDynamoDBTable
