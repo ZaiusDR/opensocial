@@ -109,8 +109,6 @@ Resources:
           AttributeType: 'N'
         - AttributeName: 'rate'
           AttributeType: 'S'
-        - AttributeName: 'topic'
-          AttributeType: 'S'
       KeySchema:
         - AttributeName: 'full_name'
           KeyType: 'HASH'
