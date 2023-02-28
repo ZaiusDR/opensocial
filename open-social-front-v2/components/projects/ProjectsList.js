@@ -1,12 +1,13 @@
 import useSWR from 'swr'
 import ProjectItem from "@/components/projects/ProjectItem"
+import Loader from "@/components/UI/Loader"
 const fetcher = (...args) => fetch(...args).then((res) => res.json())
 
 const ProjectsList = () => {
   const { data, error, isLoading } = useSWR('https://api.open-social.net/projects', fetcher)
 
   if (error) return <div>Failed to load projects</div>
-  if (isLoading) return <div>Loading...</div>
+  if (isLoading) return <Loader />
 
   return (
     <div className="container px-6 mx-auto max-w-screen mt-16">
