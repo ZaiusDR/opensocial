@@ -4,6 +4,7 @@ import simplejson
 from boto3.dynamodb.conditions import Key
 
 TABLE_NAME = 'open-social-projects'
+QUERY_LIMIT = 12
 
 
 def save(projects):
@@ -40,9 +41,9 @@ def save(projects):
 def get_projects(exclusive_start_key=None):
     table = _get_table()
     if exclusive_start_key:
-        response = table.scan(Limit=5, ExclusiveStartKey=simplejson.loads(exclusive_start_key))
+        response = table.scan(Limit=QUERY_LIMIT, ExclusiveStartKey=simplejson.loads(exclusive_start_key))
     else:
-        response = table.scan(Limit=5)
+        response = table.scan(Limit=QUERY_LIMIT)
     results = {
         'projects': response['Items'],
         'page_identifier': response['LastEvaluatedKey'] if 'LastEvaluatedKey' in response else None
@@ -61,7 +62,7 @@ def get_sorted_projects(sorted_by, scan_index_forward, exclusive_start_key=None)
         response = table.query(
             IndexName=sorted_to_index[sorted_by],
             KeyConditionExpression=Key('sorting').eq(0),
-            Limit=5,
+            Limit=QUERY_LIMIT,
             ScanIndexForward=scan_index_forward,
             ExclusiveStartKey=simplejson.loads(exclusive_start_key)
         )
@@ -69,7 +70,7 @@ def get_sorted_projects(sorted_by, scan_index_forward, exclusive_start_key=None)
         response = table.query(
             IndexName=sorted_to_index[sorted_by],
             KeyConditionExpression=Key('sorting').eq(0),
-            Limit=5,
+            Limit=QUERY_LIMIT,
             ScanIndexForward=scan_index_forward
         )
     results = {

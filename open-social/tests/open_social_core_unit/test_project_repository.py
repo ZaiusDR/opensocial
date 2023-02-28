@@ -128,62 +128,62 @@ class TestProjectRepository(unittest.TestCase):
         self.assertEqual(len(response['projects']), 2)
 
     def test_should_get_all_projects_with_pagination(self):
-        project_repository.save(fixtures.github_projects_pagination)
+        project_repository.save(fixtures.generate_github_projects_pagination())
 
         page1 = project_repository.get_projects()
         page2 = project_repository.get_projects(simplejson.dumps(page1['page_identifier']))
 
-        self.assertEqual(len(page1['projects']), 5)
-        self.assertEqual(len(page2['projects']), 1)
+        self.assertEqual(len(page1['projects']), 12)
+        self.assertEqual(len(page2['projects']), 2)
 
     def test_should_return_projects_sorted_by_total_commits_desc(self):
         sorted_by = 'total_commits'
-        project_repository.save(fixtures.github_projects_pagination)
+        project_repository.save(fixtures.generate_github_projects_pagination())
 
         page1 = project_repository.get_sorted_projects(sorted_by, False)
         page2 = project_repository.get_sorted_projects(sorted_by, False, simplejson.dumps(page1['page_identifier']))
 
-        self.assertEqual(page1['projects'][0]['total_commits'], 61)
-        self.assertEqual(page1['projects'][1]['total_commits'], 59)
-        self.assertEqual(len(page1['projects']), 5)
-        self.assertEqual(len(page2['projects']), 1)
+        self.assertEqual(page1['projects'][0]['total_commits'], 14)
+        self.assertEqual(page1['projects'][1]['total_commits'], 13)
+        self.assertEqual(len(page1['projects']), 12)
+        self.assertEqual(len(page2['projects']), 2)
 
     def test_should_return_projects_sorted_by_total_commits_asc(self):
         sorted_by = 'total_commits'
-        project_repository.save(fixtures.github_projects_pagination)
+        project_repository.save(fixtures.generate_github_projects_pagination())
 
         page1 = project_repository.get_sorted_projects(sorted_by, True)
         project_repository.get_sorted_projects(sorted_by, True, simplejson.dumps(page1['page_identifier']))
 
-        self.assertEqual(page1['projects'][0]['total_commits'], 0)
-        self.assertEqual(page1['projects'][1]['total_commits'], 5)
+        self.assertEqual(page1['projects'][0]['total_commits'], 1)
+        self.assertEqual(page1['projects'][1]['total_commits'], 2)
 
     def test_should_return_projects_sorted_by_contributors_desc(self):
         sorted_by = 'contributors'
-        project_repository.save(fixtures.github_projects_pagination)
+        project_repository.save(fixtures.generate_github_projects_pagination())
 
         page1 = project_repository.get_sorted_projects(sorted_by, False)
         project_repository.get_sorted_projects(sorted_by, False, simplejson.dumps(page1['page_identifier']))
 
-        self.assertEqual(page1['projects'][0]['contributors'], 30)
-        self.assertEqual(page1['projects'][1]['contributors'], 19)
+        self.assertEqual(page1['projects'][0]['contributors'], 14)
+        self.assertEqual(page1['projects'][1]['contributors'], 13)
 
     def test_should_return_projects_sorted_by_rate_asc(self):
         sorted_by = 'rate'
-        project_repository.save(fixtures.github_projects_pagination)
+        project_repository.save(fixtures.generate_github_projects_pagination())
 
         page1 = project_repository.get_sorted_projects(sorted_by, True)
         project_repository.get_sorted_projects(sorted_by, True, simplejson.dumps(page1['page_identifier']))
 
-        self.assertEqual(page1['projects'][0]['rate'], '0.12')
-        self.assertEqual(page1['projects'][1]['rate'], '0.23')
+        self.assertEqual(page1['projects'][0]['rate'], '0.1')
+        self.assertEqual(page1['projects'][1]['rate'], '0.10')
 
     def test_should_return_projects_sorted_by_rate_desc(self):
         sorted_by = 'rate'
-        project_repository.save(fixtures.github_projects_pagination)
+        project_repository.save(fixtures.generate_github_projects_pagination())
 
         page1 = project_repository.get_sorted_projects(sorted_by, False)
         project_repository.get_sorted_projects(sorted_by, False, simplejson.dumps(page1['page_identifier']))
 
-        self.assertEqual(page1['projects'][0]['rate'], '0.98')
-        self.assertEqual(page1['projects'][1]['rate'], '0.56')
+        self.assertEqual(page1['projects'][0]['rate'], '0.9')
+        self.assertEqual(page1['projects'][1]['rate'], '0.8')
