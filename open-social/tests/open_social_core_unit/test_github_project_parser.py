@@ -11,7 +11,8 @@ class TestProjectParser(unittest.TestCase):
     @freezegun.freeze_time('2021-02-21')
     def test_should_parse_project_activity(self):
         project_information = github_project_parser.parse_project_activity(
-            constants.PROJECTS_FIRST_PAGE['search']['repos'][0]['repo']
+            constants.PROJECTS_FIRST_PAGE['search']['repos'][0]['repo'],
+            'fake_topic'
         )
 
         self.assertEqual(project_information.project_name, 'pepinazo')
@@ -36,7 +37,8 @@ class TestProjectParser(unittest.TestCase):
 
     def test_should_parse_project_activity_with_no_primary_language(self):
         project_information = github_project_parser.parse_project_activity(
-            constants.PROJECTS_FIRST_PAGE['search']['repos'][1]['repo']
+            constants.PROJECTS_FIRST_PAGE['search']['repos'][1]['repo'],
+            'fake_topic'
         )
 
         self.assertEqual(project_information.project_name, 'PepinTour')
@@ -54,7 +56,8 @@ class TestProjectParser(unittest.TestCase):
         ]
 
         project_information = github_project_parser.parse_project_activity(
-            constants.PROJECTS_SECOND_PAGE['search']['repos'][0]['repo']
+            constants.PROJECTS_SECOND_PAGE['search']['repos'][0]['repo'],
+            'fake_topic'
         )
 
         self.assertEqual(project_information.project_name, 'pepiniereLabranche')
@@ -63,7 +66,8 @@ class TestProjectParser(unittest.TestCase):
     @freezegun.freeze_time('2021-02-21')
     def test_should_return_none_when_no_commits(self):
         project_information = github_project_parser.parse_project_activity(
-            constants.PROJECTS_FIRST_PAGE['search']['repos'][2]['repo']
+            constants.PROJECTS_FIRST_PAGE['search']['repos'][2]['repo'],
+            'fake_topic'
         )
 
         self.assertEqual(project_information, None)
@@ -72,7 +76,8 @@ class TestProjectParser(unittest.TestCase):
         ellipsized_description_length = 603
 
         project_information = github_project_parser.parse_project_activity(
-            constants.PROJECTS_FIRST_PAGE['search']['repos'][1]['repo']
+            constants.PROJECTS_FIRST_PAGE['search']['repos'][1]['repo'],
+            'fake_topic'
         )
 
         self.assertEqual(len(project_information.description), ellipsized_description_length)

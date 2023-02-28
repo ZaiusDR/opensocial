@@ -21,6 +21,7 @@ github_projects = [
         total_commits=24,
         commits_graph_data={},
         rate=0.8,
+        topic='feminism',
         sorting=0,
         ttl=1616659119
     ),
@@ -43,6 +44,7 @@ github_projects = [
         total_commits=59,
         commits_graph_data={},
         rate=0.23,
+        topic='feminism',
         sorting=0,
         ttl=1616659119
     )
@@ -72,6 +74,7 @@ def generate_github_projects_pagination():
                 total_commits=i,
                 commits_graph_data={},
                 rate=f'0.{i}',
+                topic='feminism',
                 sorting=0,
                 ttl=1616659119
             )

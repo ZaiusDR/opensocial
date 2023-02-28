@@ -30,6 +30,7 @@ def save(projects):
                 'total_commits': project.total_commits,
                 'commits_graph_data': project.commits_graph_data,
                 'rate': str(project.rate),
+                'topic': project.topic,
                 'sorting': project.sorting,
                 'ttl': project.ttl
             }

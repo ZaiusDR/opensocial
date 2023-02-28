@@ -21,6 +21,7 @@ GithubProject = collections.namedtuple(
         'total_commits',
         'commits_graph_data',
         'rate',
+        'topic',
         'sorting',
         'ttl'
     ]

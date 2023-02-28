@@ -6,7 +6,7 @@ from domain import github_project
 from infrastructure import rate_calculator
 
 
-def parse_project_activity(project):
+def parse_project_activity(project, topic):
     contributors = _get_contributors(project)
     total_commits = project['defaultBranchRef']['target']['history']['totalCount'] \
         if project['defaultBranchRef'] else 0
@@ -35,6 +35,7 @@ def parse_project_activity(project):
         rate=rate_calculator.get_project_rating(
             project['createdAt'], project['pushedAt'], contributors, total_commits
         ),
+        topic=topic,
         sorting=0,
         ttl=int((datetime.today() + timedelta(days=7)).timestamp())
     )

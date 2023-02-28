@@ -35,7 +35,7 @@ def get_project_list(topic):
     gql_query = gql.gql(github_queries.initial_query)
     while has_next_page:
         result = client.execute(gql_query, variable_values=gql_query_params)
-        projects.extend(_parse_projects(result))
+        projects.extend(_parse_projects(result, topic['topic']))
         if not _has_next_page(result):
             has_next_page = False
         else:
@@ -43,11 +43,11 @@ def get_project_list(topic):
     return projects
 
 
-def _parse_projects(result):
+def _parse_projects(result, topic):
     parsed_projects = []
     for project in result['search']['repos']:
         project = _paginate_commits(project)
-        parsed_project = github_project_parser.parse_project_activity(project['repo'])
+        parsed_project = github_project_parser.parse_project_activity(project['repo'], topic)
         if parsed_project:
             parsed_projects.append(parsed_project)
     return parsed_projects
