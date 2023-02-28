@@ -1,4 +1,4 @@
-import Logo from "@/components/projects/Logo"
+import Logo from "@/components/layout/Logo"
 
 const NavBar = () => {
   return (

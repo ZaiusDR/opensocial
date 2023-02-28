@@ -1,7 +1,7 @@
 import Link from "next/link"
 
-import NavBar from "@/components/projects/NavBar"
-import Logo from "@/components/projects/Logo"
+import NavBar from "@/components/layout/NavBar"
+import Logo from "@/components/layout/Logo"
 import ProjectsList from "@/components/projects/ProjectsList"
 
 const Drawer = () => {

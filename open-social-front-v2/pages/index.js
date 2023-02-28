@@ -1,7 +1,7 @@
 import { useState } from "react"
 
 import Hero from "@/components/home/Hero"
-import ProjectsLayout from "@/components/projects/ProjectsLayout"
+import MainLayout from "@/components/layout/MainLayout"
 import HeadSection from "@/components/metadata/HeadSection"
 
 
@@ -16,7 +16,7 @@ export default function Home() {
     <>
       <HeadSection/>
       {!showProjects && <Hero onClick={handleShowProjectsClicked}/>}
-      {showProjects && <ProjectsLayout />}
+      {showProjects && <MainLayout />}
     </>
   )
 }
