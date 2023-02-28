@@ -15,17 +15,17 @@ Resources:
     Properties:
       ContentUri: open_social_core
       CompatibleRuntimes:
-        - python3.8
+        - python3.11
     Metadata:
-      BuildMethod: python3.8
+      BuildMethod: python3.11
 
   ProjectScrapperFunction:
     Type: AWS::Serverless::Function
     Properties:
       CodeUri: project_scrapper/
       Handler: app.lambda_handler
-      Runtime: python3.8
-      Timeout: 180
+      Runtime: python3.11
+      Timeout: 300
       Policies:
         - DynamoDBCrudPolicy:
             TableName: !Ref ProjectDynamoDBTable
@@ -42,33 +42,38 @@ Resources:
         ScrapeNonProfitEvent:
           Type: Schedule
           Properties:
-            Schedule: 'cron(5 4 * * ? *)'
+            Schedule: 'cron(10 4 * * ? *)'
             Input: "{\"topic\": \"non-profit\"}"
         ScrapeSocialJusticeEvent:
           Type: Schedule
           Properties:
-            Schedule: 'cron(10 4 * * ? *)'
+            Schedule: 'cron(20 4 * * ? *)'
             Input: "{\"topic\": \"social justice\"}"
         ScrapeSocialChangeEvent:
           Type: Schedule
           Properties:
-            Schedule: 'cron(15 4 * * ? *)'
+            Schedule: 'cron(30 4 * * ? *)'
             Input: "{\"topic\": \"social change\"}"
         ScrapeClimateChangeEvent:
           Type: Schedule
           Properties:
-            Schedule: 'cron(20 4 * * ? *)'
+            Schedule: 'cron(40 4 * * ? *)'
             Input: "{\"topic\": \"climate change\"}"
         ScrapePovertyEvent:
           Type: Schedule
           Properties:
-            Schedule: 'cron(25 4 * * ? *)'
+            Schedule: 'cron(50 4 * * ? *)'
             Input: "{\"topic\": \"poverty\"}"
         ScrapePartpDemocracyEvent:
           Type: Schedule
           Properties:
-            Schedule: 'cron(30 4 * * ? *)'
+            Schedule: 'cron(0 5 * * ? *)'
             Input: "{\"topic\": \"participatory democracy\"}"
+        ScrapeFeminismEvent:
+          Type: Schedule
+          Properties:
+            Schedule: 'cron(10 5 * * ? *)'
+            Input: "{\"topic\": \"feminism\"}"
 
   ApiCrudLambdaFunction:
     Type: AWS::Serverless::Function
@@ -103,6 +108,8 @@ Resources:
         - AttributeName: 'contributors'
           AttributeType: 'N'
         - AttributeName: 'rate'
+          AttributeType: 'S'
+        - AttributeName: 'topic'
           AttributeType: 'S'
       KeySchema:
         - AttributeName: 'full_name'

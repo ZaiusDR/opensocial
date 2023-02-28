@@ -1,6 +1,6 @@
 -r ../project_scrapper/requirements.txt
 -r ../open_social_core/requirements.txt
-freezegun
-moto
-pytest
-pyyaml
+freezegun==1.2.2
+moto==4.1.3
+pytest==7.2.1
+pyyaml==6.0
