@@ -7,6 +7,7 @@ const mappings = {
   'humanitarian': `${getUrl('photo-1624638742121-32c6214bddd8')}`,
   'poverty': `${getUrl('photo-1622196464576-446a4a65b63c')}`,
   'non-profit': `${getUrl('photo-1643321611132-15f7b8a63347')}`,
+  'participatory democracy': `${getUrl('photo-1543087944-222eb2559a1a')}`,
 }
 
 export default mappings

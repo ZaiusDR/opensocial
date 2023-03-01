@@ -4,7 +4,7 @@ import Loader from "@/components/UI/Loader"
 const fetcher = (...args) => fetch(...args).then((res) => res.json())
 
 const ProjectsList = () => {
-  const { data, error, isLoading } = useSWR('https://api.open-social.net/projects', fetcher)
+  const { data, error, isLoading } = useSWR('https://api.open-social.net/projects?sorted_by=rate', fetcher)
 
   if (error) return <div>Failed to load projects</div>
   if (isLoading) return <Loader />
