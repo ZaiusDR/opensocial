@@ -2,11 +2,7 @@ import ChartBar from "@/components/charts/ChartBar"
 import { useEffect, useState } from "react"
 
 const Chart = (props) => {
-  const [max, setMax] = useState(0)
-
-  useEffect(() => {
-    setMax(Math.max(...props.data.map(item => item.commits)))
-  })
+  const max = Math.max(...props.data.map(item => item.commits))
 
   return (
     <div className="flex flex-col items-center w-full max-w-screen-md mt-4 p-6 pb-6 bg-white rounded-lg shadow-sm sm:p-8">
