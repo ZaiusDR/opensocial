@@ -11,9 +11,9 @@ const ProjectsList = () => {
 
   return (
     <div className="container px-6 mx-auto max-w-screen mt-16">
-      <div className="grid grid-cols-1 gap-8 my-8 md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-8 my-8 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
         {data.projects.map(project =>
-          <ProjectItem key={project.project_name} projectData={project} />
+          <ProjectItem key={project.full_name} projectData={project} />
         )}
       </div>
     </div>

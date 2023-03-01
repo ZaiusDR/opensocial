@@ -5,7 +5,7 @@ const ChartBar = (props) => {
   const number = props.dataPoint.commits > 0 ? props.dataPoint.commits : ""
 
   return (
-    <div className="relative flex flex-col items-center flex-grow h-48 pb-5">
+    <div className="relative flex flex-col items-center flex-grow h-36 pb-5">
       <div className="relative flex flex-col justify-end w-full h-full flex-grow text-secondary-content bg-white items-center">
         <div className={`flex flex-col w-full bg-primary justify-center items-center`} style={{ height: barHeight}}>{number}</div>
       </div>
