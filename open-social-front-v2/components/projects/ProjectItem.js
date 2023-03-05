@@ -3,6 +3,7 @@ import Image from "next/image"
 import mappings from "@/components/projects/TopicMappings"
 import Chart from "@/components/charts/Chart"
 import ProjectRating from "@/components/projects/ProjectRating"
+import ProjectStats from "@/components/projects/ProjectStats"
 
 const ProjectItem = (props) => {
   return(
@@ -19,6 +20,11 @@ const ProjectItem = (props) => {
         <h2 className="card-title">{props.projectData.project_name}</h2>
         <ProjectRating id={props.projectData.full_name} rating={props.projectData.rate}/>
         <p className="font-bold">{props.projectData.language}</p>
+        <ProjectStats
+          commits={props.projectData.total_commits}
+          stargazers={props.projectData.stargazers}
+          contributors={props.projectData.contributors}
+        />
         <div className="divider m-1" />
         <p>{props.projectData.description}</p>
         <Chart data={props.projectData.commits_graph_data}/>
