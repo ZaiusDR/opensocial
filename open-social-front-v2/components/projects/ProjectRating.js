@@ -1,16 +1,18 @@
 const ProjectRating = (props) => {
+  const getIsChecked = (rating, index) => {
+    return rating >= (index + 1) / 10 && rating < (index + 2) / 10 ? { defaultChecked : true } : { defaultChecked : false }
+  }
+
   return(
     <div className="rating rating-half">
       {Array.apply(0, Array(10)).map(function (x, i) {
-        const isChecked = props.rating >= (i + 1) / 10 && props.rating < (i + 2) / 10 ? { defaultChecked : true } : { defaultChecked : false }
-        const halfType = (i % 2) + 1
         return <input
           key={i}
           type="radio"
           name={`rating-${props.id}`}
           disabled
-          className={`bg-primary mask mask-star-2 mask-half-${halfType}`}
-          {...isChecked}
+          className={`bg-primary mask mask-star-2 mask-half-${(i % 2) + 1}`}
+          {...getIsChecked(props.rating, i)}
         />;
       })}
     </div>
