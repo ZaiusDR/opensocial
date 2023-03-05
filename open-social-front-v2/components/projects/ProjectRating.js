@@ -1,16 +1,17 @@
+import ProjectRatingStar from "@/components/projects/ProjectRatingStar"
+
 const ProjectRating = (props) => {
   return(
     <div className="rating rating-half">
-      {Array.apply(0, Array(10)).map(function (x, i) {
+      {Array.apply(0, Array(10)).map((x, i) => {
         const isChecked = props.rating >= (i + 1) / 10 && props.rating < (i + 2) / 10 ? { defaultChecked : true } : { defaultChecked : false }
 
-        return <input
+        return <ProjectRatingStar
           key={i}
-          type="radio"
-          name={`rating-${props.id}`}
-          disabled
-          className={`bg-primary mask mask-star-2 mask-half-${i % 2 + 1}`}
-          {...isChecked}
+          id={`rating-${props.id}`}
+          index={i}
+          classType={`mask-half-${(i % 2) + 1}`}
+          isChecked={isChecked}
         />;
       })}
     </div>
