@@ -9,7 +9,7 @@ const ProjectRating = (props) => {
           type="radio"
           name={`rating-${props.id}`}
           disabled
-          className={`mask bg-primary mask-star-2 mask-half-${i % 2 + 1}`}
+          className={`bg-primary mask mask-star-2 mask-half-${i % 2 + 1}`}
           {...isChecked}
         />;
       })}
