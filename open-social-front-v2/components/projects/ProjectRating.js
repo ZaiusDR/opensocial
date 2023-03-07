@@ -4,7 +4,7 @@ const ProjectRating = (props) => {
   }
 
   const getHalfType = (index) => {
-    return `mask-half-${(index % 2) + 1}`
+    return index % 2 === 0 ? "mask-half-1" : "mask-half-2"
   }
 
   return(
@@ -14,10 +14,10 @@ const ProjectRating = (props) => {
           key={i}
           type="radio"
           name={`rating-${props.id}`}
-          disabled
+          disabled={true}
           className={`bg-primary mask mask-star-2 ${getHalfType(i)}`}
           {...getIsChecked(props.rating, i)}
-        />;
+        />
       })}
     </div>
   )

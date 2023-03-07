@@ -15,11 +15,6 @@ export default function Home() {
   return (
     <>
       <HeadSection/>
-      {/*Please don't ask*/}
-      {/*<div className="rating rating-lg rating-half">*/}
-      {/*  <input type="radio" name="rating-10" disabled className="bg-green-500 mask mask-star-2 mask-half-1" defaultChecked={true}/>*/}
-      {/*  <input type="radio" name="rating-10" disabled className="bg-green-500 mask mask-star-2 mask-half-2" />*/}
-      {/*</div>*/}
       {!showProjects && <Hero onClick={handleShowProjectsClicked}/>}
       {showProjects && <MainLayout />}
     </>
