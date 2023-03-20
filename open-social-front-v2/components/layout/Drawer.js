@@ -30,7 +30,6 @@ const Drawer = () => {
   const [sortedBy, setSortedBy] = useState("")
 
   const handleOnSelectSortedBy = (event) => {
-    console.log(event.target.value)
     setSortedBy(event.target.value)
   }
 
