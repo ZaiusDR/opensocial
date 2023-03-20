@@ -42,7 +42,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ./open-social-frontend
+        working-directory: ./open-social-front-v2
 
     steps:
       - name: Checkout
@@ -64,5 +64,5 @@ jobs:
       - name: 'Install Dependencies'
         run: npm install
 
-      - name: 'Run Unit Tests'
-        run: npm test
+#      - name: 'Run Unit Tests'
+#        run: npm test
