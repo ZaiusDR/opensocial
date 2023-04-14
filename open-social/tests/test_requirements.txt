@@ -2,5 +2,5 @@
 -r ../open_social_core/requirements.txt
 freezegun==1.2.2
 moto==4.1.4
-pytest==7.2.2
+pytest==7.3.1
 pyyaml==6.0
