@@ -1,4 +1,4 @@
-boto3==1.26.127
+boto3==1.26.143
 requests==2.31.0
 simplejson==3.19.1
 gql[requests]==3.4.1
