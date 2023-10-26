@@ -15,7 +15,7 @@ const ProjectRating = (props) => {
           type="radio"
           name={`rating-${props.id}`}
           disabled={true}
-          className={`bg-primary mask mask-star-2 ${getHalfType(i)}`}
+          className={`bg-primary mask mask-star-2 ${getHalfType(i)} cursor-default`}
           {...getIsChecked(props.rating, i)}
         />
       })}
