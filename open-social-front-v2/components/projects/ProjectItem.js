@@ -4,6 +4,7 @@ import mappings from "@/components/projects/TopicMappings"
 import Chart from "@/components/charts/Chart"
 import ProjectRating from "@/components/projects/ProjectRating"
 import ProjectStats from "@/components/projects/ProjectStats"
+import Link from "next/link"
 
 const ProjectItem = (props) => {
   return(
@@ -17,7 +18,9 @@ const ProjectItem = (props) => {
         </div>
       </figure>
       <div className="card-body items-center">
-        <h2 className="card-title">{props.projectData.project_name}</h2>
+        <Link className="card-title link" href={props.projectData.project_url} target="_blank">
+          {props.projectData.project_name}
+        </Link>
         <ProjectRating id={props.projectData.full_name} rating={props.projectData.rate}/>
         <p className="font-bold">{props.projectData.language}</p>
         <ProjectStats
