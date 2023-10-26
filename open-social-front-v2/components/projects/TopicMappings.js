@@ -9,6 +9,8 @@ const mappings = {
   'non-profit': `${getUrl('photo-1643321611132-15f7b8a63347')}`,
   'participatory democracy': `${getUrl('photo-1543087944-222eb2559a1a')}`,
   'social justice': `${getUrl('photo-1591937350525-92bddfc39b75')}`,
+  'social change': `${getUrl('photo-1591189596811-b417ab50fa1a')}`,
+  'feminism': `${getUrl('photo-1548383675-379abfac2c41')}`
 }
 
 export default mappings
