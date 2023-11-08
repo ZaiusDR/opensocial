@@ -74,6 +74,36 @@ jobs:
       - name: 'Terraform Apply'
         run: terraform apply -auto-approve
 
+  run_frontend_tests:
+    name: 'Run Frontend Tests'
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./open-social-front-v2
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: 'Configure Node'
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: 'Node Cache'
+        uses: actions/cache@v3.3.2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: 'Install Dependencies'
+        run: npm install
+
+      - name: 'Run Unit Tests'
+        run: npm test
+
   sam-app:
     name: 'SAM App Deploy'
     runs-on: ubuntu-latest
@@ -94,7 +124,7 @@ jobs:
       - name: 'Setup Python'
         uses: actions/setup-python@v4
         with:
-          python-version: '3.8'
+          python-version: '3.9'
 
       - name: 'Install Pip Dependencies'
         run: pip install -r open-social/tests/test_requirements.txt
