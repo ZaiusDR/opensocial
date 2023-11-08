@@ -74,7 +74,7 @@ jobs:
       - name: 'Terraform Apply'
         run: terraform apply -auto-approve
 
-  run_frontend_tests:
+  frontend:
     name: 'Run Frontend Tests'
     runs-on: ubuntu-latest
     defaults:
