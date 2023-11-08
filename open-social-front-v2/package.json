@@ -12,13 +12,13 @@
   },
   "dependencies": {
     "daisyui": "^2.51.6",
-    "eslint": "8.42.0",
+    "eslint": "8.53.0",
     "eslint-config-next": "14.0.1",
     "next": "13.5.6",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-gtm-module": "^2.0.11",
-    "sharp": "^0.32.1",
+    "sharp": "^0.32.6",
     "swr": "^2.1.5"
   },
   "devDependencies": {
