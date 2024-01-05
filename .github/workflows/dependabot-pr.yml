@@ -3,7 +3,7 @@ name: 'DependaBot Pull Requests'
 on:
   pull_request:
     branches:
-      - master
+      - main
 
 jobs:
   run_backend_tests:
