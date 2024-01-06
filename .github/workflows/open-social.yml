@@ -2,7 +2,7 @@ name: 'Open Social Deploy'
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   sam-app-docker:
