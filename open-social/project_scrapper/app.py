@@ -23,7 +23,10 @@ def _test_mongo_connection():
     uri = secrets_manager_client.get_secret_value(SecretId='mongodb-uri')
 
     mongo_client = pymongo.MongoClient(uri)
-    mongo_client.get_database('open-social')
+    db = mongo_client.get_database('open-social')
+    projects = db.get_collection('projects')
+    result = projects.find_one({'_id': "pepin"})
+    print(result)
 
 
 def lambda_handler(event, context):
