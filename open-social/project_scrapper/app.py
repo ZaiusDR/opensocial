@@ -20,8 +20,8 @@ def _test_mongo_connection():
     os.environ['AWS_SESSION_TOKEN'] = response['Credentials']['SessionToken']
 
     secrets_manager_client = boto3.client('secretsmanager')
-    uri = secrets_manager_client.get_secret_value(SecretId='mongodb-uri')
-    print(uri)
+    secret_data = secrets_manager_client.get_secret_value(SecretId='mongodb-uri')
+    uri = json.loads(secret_data['SecretString'])['mongo_db_uri']
 
     mongo_client = pymongo.MongoClient(uri)
     db = mongo_client.get_database('open-social')
