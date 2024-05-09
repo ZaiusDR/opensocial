@@ -21,6 +21,7 @@ def _test_mongo_connection():
 
     secrets_manager_client = boto3.client('secretsmanager')
     uri = secrets_manager_client.get_secret_value(SecretId='mongodb-uri')
+    print(uri)
 
     mongo_client = pymongo.MongoClient(uri)
     db = mongo_client.get_database('open-social')
