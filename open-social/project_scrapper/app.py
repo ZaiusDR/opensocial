@@ -29,6 +29,7 @@ def _test_mongo_connection():
 def lambda_handler(event, context):
     if event['topic'] == 'test':
         _test_mongo_connection()
+        return
     github_projects = github_gateway.get_project_list(event)
     projects = project_service.bulk_save(github_projects)
 
