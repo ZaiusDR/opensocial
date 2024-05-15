@@ -31,6 +31,8 @@ Resources:
             TableName: !Ref ProjectDynamoDBTable
         - SSMParameterReadPolicy:
             ParameterName: "github/open-social-token"
+        - AWSSecretsManagerGetSecretValuePolicy:
+            SecretArn: "arn:aws:secretsmanager:eu-west-1:326499071401:secret:mongodb-uri-qYViNv"
       Layers:
         - Ref: OpenSocialCoreLayer
       Events:
@@ -84,6 +86,8 @@ Resources:
       Policies:
         - DynamoDBCrudPolicy:
             TableName: !Ref ProjectDynamoDBTable
+        - AWSSecretsManagerGetSecretValuePolicy:
+            SecretArn: "arn:aws:secretsmanager:eu-west-1:326499071401:secret:mongodb-uri-qYViNv"
       Layers:
         - Ref: OpenSocialCoreLayer
       Events:

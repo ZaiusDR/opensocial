@@ -4,8 +4,6 @@ terraform {
     bucket         = "opensocial-base-open-social-state"
     key            = "terraform.tfstate"
     dynamodb_table = "opensocial-base-open-social-state-lock"
-    profile        = ""
-    role_arn       = ""
     encrypt        = "true"
   }
 }
