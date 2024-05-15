@@ -6,13 +6,20 @@ import pymongo
 
 
 def save_projects(projects):
-    # TODO: Migrate the full_name to _id field for MongoDB
-    projects_as_dicts = [project._asdict() for project in projects]
-    [project.update({'_id': project['full_name']}) for project in projects_as_dicts]
     mongo_client = _get_connection()
     db = mongo_client.get_database('open-social')
     projects_collection = db.get_collection('projects')
-    projects_collection.insert_many(projects_as_dicts)
+
+    projects_as_dicts = [project._asdict() for project in projects]
+
+    for project in projects_as_dicts:
+        projects_collection.update_one(
+            filter={'_id': project['full_name']},
+            update={'$set': project},
+            upsert=True
+        )
+
+    mongo_client.close()
 
 
 def _get_connection():

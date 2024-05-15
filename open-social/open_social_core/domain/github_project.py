@@ -1,5 +1,6 @@
 import collections
 
+# TODO: Migrate to dataclass
 GithubProject = collections.namedtuple(
     'GithubProject',
     [
