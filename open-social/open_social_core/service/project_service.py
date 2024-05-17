@@ -15,7 +15,8 @@ def bulk_save(github_projects):
 def get_projects(sorted_by=None, asc=False, page=None):
     if os.getenv('USE_MONGODB') == '1':
         # TODO: Remove this default value once migrated
-        page = 0
+        if not page:
+            page = 0
         return repository.get_projects(page, sorted_by)
 
     if sorted_by:
