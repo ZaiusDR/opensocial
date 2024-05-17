@@ -70,4 +70,4 @@ class TestApp(unittest.TestCase):
     def test_should_convert_decimal_to_integer(self):
         converted = app.decimal_default(decimal.Decimal(3))
 
-        self.assertTrue(isinstance(converted, int))
+        self.assertIsInstance(converted, int)
