@@ -38,7 +38,7 @@ def get_projects(page=0, sorted_by=None):
 
     projects = list(projects_collection.find(
         filter={},
-        skip=page * limit,
+        skip=int(page) * limit,
         limit=limit,
         sort=sorted_by
     ))
