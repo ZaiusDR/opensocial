@@ -100,7 +100,7 @@ Resources:
               Ref: OpenSocialAPI
       Environment:
         Variables:
-          USE_MONGODB: 0
+          USE_MONGODB: 1
 
   ProjectDynamoDBTable:
     Type: AWS::DynamoDB::Table
