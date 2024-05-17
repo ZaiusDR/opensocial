@@ -12,14 +12,48 @@ def save_projects(projects):
 
     projects_as_dicts = [project._asdict() for project in projects]
 
+    saved_projects = []
     for project in projects_as_dicts:
-        projects_collection.update_one(
+        project = projects_collection.update_one(
             filter={'_id': project['full_name']},
             update={'$set': project},
             upsert=True
         )
+        saved_projects.append(project)
 
     mongo_client.close()
+
+    return saved_projects
+
+
+def get_projects(page=0, sorted_by=None):
+    mongo_client = _get_connection()
+    db = mongo_client.get_database('open-social')
+    projects_collection = db.get_collection('projects')
+
+    if sorted_by:
+        sorted_by = [(sorted_by, pymongo.DESCENDING)]
+
+    limit = 12
+
+    projects = list(projects_collection.find(
+        filter={},
+        skip=page * limit,
+        limit=limit,
+        sort=sorted_by
+    ))
+
+    # TODO: Remove page identifier as it will be not needed anymore
+    response = {
+        'projects': projects,
+        'page_identifier': {
+            'full_name': projects[-1]['full_name']
+        }
+    }
+
+    mongo_client.close()
+
+    return response
 
 
 def _get_connection():
