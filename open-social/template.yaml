@@ -98,6 +98,9 @@ Resources:
             Method: get
             RestApiId:
               Ref: OpenSocialAPI
+      Environment:
+        Variables:
+          USE_MONGODB: 1
 
   ProjectDynamoDBTable:
     Type: AWS::DynamoDB::Table
