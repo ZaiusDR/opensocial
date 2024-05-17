@@ -71,7 +71,7 @@ class TestProjectService(unittest.TestCase):
 
         projects = project_service.get_projects()
 
-        repository_mock.assert_called_once_with(0, None)
+        repository_mock.assert_called_once_with(page=0, sorted_by=None)
         self.assertEqual(projects, expected_projects)
 
         os.environ['USE_MONGODB'] = '0'
@@ -81,6 +81,6 @@ class TestProjectService(unittest.TestCase):
         os.environ['USE_MONGODB'] = '1'
         project_service.get_projects(page=0, sorted_by='total_commits')
 
-        repository_mock.assert_called_once_with(0, 'total_commits')
+        repository_mock.assert_called_once_with(page=0, sorted_by='total_commits')
 
         os.environ['USE_MONGODB'] = '0'

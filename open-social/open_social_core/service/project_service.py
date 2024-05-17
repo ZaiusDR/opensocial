@@ -17,7 +17,7 @@ def get_projects(sorted_by=None, asc=False, page=None):
         # TODO: Remove this default value once migrated
         if not page:
             page = 0
-        return repository.get_projects(page, sorted_by)
+        return repository.get_projects(page=page, sorted_by=sorted_by)
 
     if sorted_by:
         return project_repository.get_sorted_projects(sorted_by, asc, page)
