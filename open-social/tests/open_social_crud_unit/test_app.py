@@ -9,14 +9,14 @@ from open_social_crud import app
 class TestApp(unittest.TestCase):
 
     @mock.patch('open_social_crud.app._gzip_b64encode')
-    @mock.patch('open_social_crud.app.project_service.get_projects')
+    @mock.patch('open_social_crud.app.repository.get_projects')
     def test_should_get_projects_with_pagination(self, project_service_mock, b64encode_mock):
         app.list_projects({'queryStringParameters': {'page': 'fake_page'}}, {})
 
         project_service_mock.assert_called_once_with('fake_page', None)
 
     @mock.patch('open_social_crud.app._gzip_b64encode')
-    @mock.patch('open_social_crud.app.project_service.get_projects')
+    @mock.patch('open_social_crud.app.repository.get_projects')
     def test_should_get_projects_sorted_by_asc(self, project_service_mock, b64encode_mock):
         app.list_projects(
             {

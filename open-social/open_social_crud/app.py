@@ -4,7 +4,7 @@ import gzip
 import io
 import json
 
-from service import project_service
+from repository import repository
 
 
 def lambda_handler(event, context):
@@ -29,7 +29,7 @@ def list_projects(event, context):
     page = _get_query_parameter(event, 'page', 0)
     sorted_by = _get_query_parameter(event, 'sorted_by', None)
 
-    projects = project_service.get_projects(page, sorted_by)
+    projects = repository.get_projects(page, sorted_by)
 
     return {
         'statusCode': 200,
