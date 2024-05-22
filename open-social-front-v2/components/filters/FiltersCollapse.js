@@ -4,6 +4,7 @@ import Image from "next/image"
 
 import SortedSelect from "@/components/filters/SortedSelect"
 import filterIcon from "@/public/filters.svg"
+import TopicsSelect from "@/components/filters/TopicsSelect"
 
 
 const FiltersCollapse = (props) => {
@@ -22,10 +23,11 @@ const FiltersCollapse = (props) => {
       onClick={handleOnClickCollapse}
     >
       <div className="flex collapse-title text-xl font-medium">
-        <Image className="mr-1" src={filterIcon} width={14} height={14} alt="Filter Ucon" />Filters
+        <Image className="mr-1" src={filterIcon} width={14} height={14} alt="Filter Icon" />Filters
       </div>
       <div className="collapse-content cursor-auto">
         <SortedSelect onSelect={props.onSelect} sortedByOptions={props.sortedByOptions}/>
+        <TopicsSelect />
       </div>
     </div>
   )
