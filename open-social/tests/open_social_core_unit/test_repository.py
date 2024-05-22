@@ -51,7 +51,6 @@ class TestRepository(unittest.TestCase):
         page_1 = repository.get_projects()
 
         self.assertEqual(len(page_1['projects']), 2)
-        self.assertEqual(page_1['page_identifier']['full_name'], 'user2/project_2')
 
     @mongomock.patch(servers=(('localhost', 27017),))
     def test_should_get_projects_with_pagination(self):

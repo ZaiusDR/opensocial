@@ -43,12 +43,8 @@ def get_projects(page=0, sorted_by=None):
         sort=sorted_by
     ))
 
-    # TODO: Remove page identifier as it will be not needed anymore
     response = {
-        'projects': projects,
-        'page_identifier': {
-            'full_name': projects[-1]['full_name']
-        }
+        'projects': projects
     }
 
     mongo_client.close()

@@ -28,9 +28,8 @@ def list_projects(event, context):
     print(event)
     page = _get_query_parameter(event, 'page', None)
     sorted_by = _get_query_parameter(event, 'sorted_by', None)
-    asc = _get_query_parameter(event, 'asc', False)
 
-    projects = project_service.get_projects(sorted_by, asc, page)
+    projects = project_service.get_projects(sorted_by, page)
 
     return {
         'statusCode': 200,
