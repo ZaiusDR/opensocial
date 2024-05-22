@@ -79,7 +79,7 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       CodeUri: open_social_crud/
-      Handler: app.list_projects
+      Handler: app.entrypoint
       Runtime: python3.9
       Policies:
         - AWSSecretsManagerGetSecretValuePolicy:
@@ -87,10 +87,17 @@ Resources:
       Layers:
         - Ref: OpenSocialCoreLayer
       Events:
-        ListEvent:
+        ListProjects:
           Type: Api
           Properties:
             Path: /projects
+            Method: get
+            RestApiId:
+              Ref: OpenSocialAPI
+        ListTopics:
+          Type: Api
+          Properties:
+            Path: /topics
             Method: get
             RestApiId:
               Ref: OpenSocialAPI

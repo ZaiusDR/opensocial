@@ -66,6 +66,16 @@ def save_topic(topic):
     )
 
 
+def get_topics():
+    mongo_client = _get_connection()
+    db = mongo_client.get_database('open-social')
+    topics_collection = db.get_collection('topics')
+
+    topics = topics_collection.find_one({'name': 'topics'})
+
+    return topics['topics']
+
+
 def _get_connection():
     sts_client = boto3.client('sts')
 

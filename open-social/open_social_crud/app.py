@@ -7,15 +7,6 @@ import json
 from repository import repository
 
 
-def lambda_handler(event, context):
-    return {
-        "statusCode": 200,
-        "body": json.dumps({
-            "message": "Hello World!",
-        }),
-    }
-
-
 def _gzip_b64encode(data):
     compressed = io.BytesIO()
     with gzip.GzipFile(fileobj=compressed, mode='w') as f:
@@ -24,17 +15,21 @@ def _gzip_b64encode(data):
     return base64.b64encode(compressed.getvalue()).decode('ascii')
 
 
-def list_projects(event, context):
+def entrypoint(event, context):
     print(event)
-    page = _get_query_parameter(event, 'page', 0)
-    sorted_by = _get_query_parameter(event, 'sorted_by', None)
+    response = {}
+    if event['path'] == '/projects':
+        page = _get_query_parameter(event, 'page', 0)
+        sorted_by = _get_query_parameter(event, 'sorted_by', None)
 
-    projects = repository.get_projects(page, sorted_by)
+        response = repository.get_projects(page, sorted_by)
+    elif event['path'] == '/topics':
+        response = repository.get_topics()
 
     return {
         'statusCode': 200,
         'isBase64Encoded': True,
-        'body': _gzip_b64encode(projects),
+        'body': _gzip_b64encode(response),
         'headers': {
             'Content-Type': 'application/json',
             'Content-Encoding': 'gzip',

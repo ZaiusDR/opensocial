@@ -122,3 +122,13 @@ class TestRepository(unittest.TestCase):
 
         saved_topics = db.topics.find_one({'name': 'topics'})
         self.assertEqual(saved_topics['topics'], fixtures.topics['topics'])
+
+    @mongomock.patch(servers=(('localhost', 27017),))
+    def test_should_return_topics(self):
+        client = pymongo.MongoClient('localhost', 27017)
+        db = client.get_database('open-social')
+        db.topics.insert_one(fixtures.topics)
+
+        topics = repository.get_topics()
+
+        self.assertEqual(topics, fixtures.topics['topics'])
