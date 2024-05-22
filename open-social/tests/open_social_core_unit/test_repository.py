@@ -48,7 +48,7 @@ class TestRepository(unittest.TestCase):
     def test_should_get_projects_without_pagination(self):
         repository.save_projects(fixtures.github_projects)
 
-        page_1 = repository.get_projects()
+        page_1 = repository.get_projects(None, None)
 
         self.assertEqual(len(page_1['projects']), 2)
 
@@ -56,8 +56,8 @@ class TestRepository(unittest.TestCase):
     def test_should_get_projects_with_pagination(self):
         repository.save_projects(fixtures.generate_github_projects_pagination())
 
-        page_1 = repository.get_projects(page=0)
-        page_2 = repository.get_projects(page=1)
+        page_1 = repository.get_projects(0, None)
+        page_2 = repository.get_projects(1, None)
 
         self.assertEqual(len(page_1['projects']), 12)
         self.assertEqual(len(page_2['projects']), 2)

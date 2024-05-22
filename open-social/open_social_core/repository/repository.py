@@ -26,10 +26,13 @@ def save_projects(projects):
     return saved_projects
 
 
-def get_projects(page=0, sorted_by=None):
+def get_projects(page, sorted_by):
     mongo_client = _get_connection()
     db = mongo_client.get_database('open-social')
     projects_collection = db.get_collection('projects')
+
+    if not page:
+        page = 0
 
     if sorted_by:
         sorted_by = [(sorted_by, pymongo.DESCENDING)]
