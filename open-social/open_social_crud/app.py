@@ -26,10 +26,10 @@ def _gzip_b64encode(data):
 
 def list_projects(event, context):
     print(event)
-    page = _get_query_parameter(event, 'page', None)
+    page = _get_query_parameter(event, 'page', 0)
     sorted_by = _get_query_parameter(event, 'sorted_by', None)
 
-    projects = project_service.get_projects(sorted_by, page)
+    projects = project_service.get_projects(page, sorted_by)
 
     return {
         'statusCode': 200,
