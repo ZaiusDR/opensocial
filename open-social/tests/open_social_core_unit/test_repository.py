@@ -98,3 +98,27 @@ class TestRepository(unittest.TestCase):
 
         self.assertEqual(page1['projects'][0]['rate'], '0.9')
         self.assertEqual(page1['projects'][1]['rate'], '0.8')
+
+    @mongomock.patch(servers=(('localhost', 27017),))
+    def test_should_save_a_new_topic(self):
+        expected_topic = 'fake_new_topic'
+        client = pymongo.MongoClient('localhost', 27017)
+        db = client.get_database('open-social')
+        db.topics.insert_one(fixtures.topics)
+
+        repository.save_topic(expected_topic)
+
+        saved_topics = db.topics.find_one({'name': 'topics'})
+        self.assertEqual(saved_topics['topics'], ['fake_topic_1', expected_topic])
+
+    @mongomock.patch(servers=(('localhost', 27017),))
+    def test_should_not_save_an_existing_topic(self):
+        existing_topic = 'fake_topic_1'
+        client = pymongo.MongoClient('localhost', 27017)
+        db = client.get_database('open-social')
+        db.topics.insert_one(fixtures.topics)
+
+        repository.save_topic(existing_topic)
+
+        saved_topics = db.topics.find_one({'name': 'topics'})
+        self.assertEqual(saved_topics['topics'], fixtures.topics['topics'])

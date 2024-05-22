@@ -130,3 +130,9 @@ def generate_github_projects_pagination():
         )
 
     return generated_projects
+
+
+topics = {
+    'name': 'topics',
+    'topics': ['fake_topic_1']
+}

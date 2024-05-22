@@ -55,6 +55,17 @@ def get_projects(page, sorted_by):
     return response
 
 
+def save_topic(topic):
+    mongo_client = _get_connection()
+    db = mongo_client.get_database('open-social')
+    topics_collection = db.get_collection('topics')
+
+    topics_collection.update_one(
+        {'name': 'topics'},
+        {'$addToSet': {'topics': topic}}
+    )
+
+
 def _get_connection():
     sts_client = boto3.client('sts')
 

@@ -8,6 +8,8 @@ def lambda_handler(event, context):
     github_projects = github_gateway.get_project_list(event)
     projects = repository.save_projects(github_projects)
 
+    repository.save_topic(event['topic'])
+
     return {
         "statusCode": 200,
         "body": json.dumps({
