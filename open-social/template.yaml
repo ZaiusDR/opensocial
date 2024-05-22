@@ -27,8 +27,6 @@ Resources:
       Runtime: python3.9
       Timeout: 300
       Policies:
-        - DynamoDBCrudPolicy:
-            TableName: !Ref ProjectDynamoDBTable
         - SSMParameterReadPolicy:
             ParameterName: "github/open-social-token"
         - AWSSecretsManagerGetSecretValuePolicy:
@@ -84,8 +82,6 @@ Resources:
       Handler: app.list_projects
       Runtime: python3.9
       Policies:
-        - DynamoDBCrudPolicy:
-            TableName: !Ref ProjectDynamoDBTable
         - AWSSecretsManagerGetSecretValuePolicy:
             SecretArn: "arn:aws:secretsmanager:eu-west-1:326499071401:secret:mongodb-uri-qYViNv"
       Layers:
@@ -98,69 +94,6 @@ Resources:
             Method: get
             RestApiId:
               Ref: OpenSocialAPI
-      Environment:
-        Variables:
-          USE_MONGODB: 1
-
-  ProjectDynamoDBTable:
-    Type: AWS::DynamoDB::Table
-    Properties:
-      AttributeDefinitions:
-        - AttributeName: 'full_name'
-          AttributeType: 'S'
-        - AttributeName: 'sorting'
-          AttributeType: 'N'
-        - AttributeName: 'total_commits'
-          AttributeType: 'N'
-        - AttributeName: 'contributors'
-          AttributeType: 'N'
-        - AttributeName: 'rate'
-          AttributeType: 'S'
-      KeySchema:
-        - AttributeName: 'full_name'
-          KeyType: 'HASH'
-      GlobalSecondaryIndexes:
-        - IndexName: 'TotalCommitsIndex'
-          KeySchema:
-            - AttributeName: 'sorting'
-              KeyType: 'HASH'
-            - AttributeName: 'total_commits'
-              KeyType: 'RANGE'
-          Projection:
-            ProjectionType: 'ALL'
-          ProvisionedThroughput:
-            ReadCapacityUnits: 5
-            WriteCapacityUnits: 1
-        - IndexName: 'ContributorsIndex'
-          KeySchema:
-            - AttributeName: 'sorting'
-              KeyType: 'HASH'
-            - AttributeName: 'contributors'
-              KeyType: 'RANGE'
-          Projection:
-            ProjectionType: 'ALL'
-          ProvisionedThroughput:
-            ReadCapacityUnits: 5
-            WriteCapacityUnits: 1
-        - IndexName: 'RateIndex'
-          KeySchema:
-            - AttributeName: 'sorting'
-              KeyType: 'HASH'
-            - AttributeName: 'rate'
-              KeyType: 'RANGE'
-          Projection:
-            ProjectionType: 'ALL'
-          ProvisionedThroughput:
-            ReadCapacityUnits: 5
-            WriteCapacityUnits: 1
-      TableName: open-social-projects
-      BillingMode: 'PROVISIONED'
-      ProvisionedThroughput:
-        ReadCapacityUnits: 10
-        WriteCapacityUnits: 25
-      TimeToLiveSpecification:
-        Enabled: true
-        AttributeName: 'ttl'
 
   OpenSocialAPI:
     Type: AWS::Serverless::Api
