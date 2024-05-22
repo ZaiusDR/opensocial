@@ -8,7 +8,7 @@ import Link from "next/link"
 
 const ProjectItem = (props) => {
   return(
-    <div className="card shadow-xl overflow-hidden">
+    <div className="card shadow-xl overflow-hidden animate-fade">
       <figure>
         <div className="relative">
           <Image className="object-cover" src={mappings[props.projectData.topic]} alt={props.projectData.topic} width={600} height={400} priority />
