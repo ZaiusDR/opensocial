@@ -18,27 +18,24 @@ const ProjectsList = (props) => {
     }
 
     if (previousPageData) {
-      const stringifiedPageIdentifier = JSON.stringify(previousPageData.page_identifier)
-      const nextPageValue = new URLSearchParams({page: stringifiedPageIdentifier}).toString()
-      apiUrl = apiUrl + `${nextPageValue}`
+      apiUrl = apiUrl + `page=${pageIndex}`
     }
 
     return apiUrl
   }
 
-  const { data, error, size, setSize } = useSWRInfinite(getKey, fetcher)
+  const { data, error, isValidating, size, setSize } = useSWRInfinite(getKey, fetcher)
 
   if (error) return <div className="container flex w-full h-full items-center justify-center">Failed to load projects</div>
-  if (!data) return <Loader />
 
   return (
     <div className="container px-6 mx-auto max-w-screen mt-16">
       <div className="grid grid-cols-1 gap-8 my-8 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
-        {data.map((page) => {
+        {data ? data.map((page) => {
           return page.projects.map((project => <ProjectItem key={project.full_name} projectData={project} />))
-        })}
+        }) : null}
       </div>
-      <LoadMoreButton onClick={() => setSize(size + 1)}/>
+      { isValidating ? <Loader /> : <LoadMoreButton onClick={() => setSize(size + 1)}/> }
     </div>
   )
 }
