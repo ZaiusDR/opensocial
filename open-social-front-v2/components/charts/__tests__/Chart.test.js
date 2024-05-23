@@ -3,11 +3,13 @@ import { render, screen } from '@testing-library/react'
 import Chart from '../Chart'
 
 // Mock the ChartBar component
-jest.mock('../ChartBar', () => ({ dataPoint, max }) => (
+jest.mock('../ChartBar', () => { const mockChartBar = ({ dataPoint, max }) => (
   <div data-testid="chart-bar">
     {dataPoint.month}: {dataPoint.commits} / {max}
   </div>
-))
+  )
+  return mockChartBar
+})
 
 describe('Chart Component', () => {
   const sampleData = [
