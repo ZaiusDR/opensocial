@@ -34,16 +34,16 @@ const Drawer = () => {
   }
 
   return(
-    <div className="bg-base-100 drawer drawer-mobile max-lg:drawer-end">
+    <div className="bg-base-100 drawer max-lg:drawer-end lg:drawer-open">
       <input id="drawer" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content">
         <NavBar />
         <ProjectsList sortedBy={sortedBy} />
       </div>
       <div className="drawer-side">
-        <label htmlFor="drawer" className="drawer-overlay"></label>
-        <aside className="menu bg-base-200 w-80">
-          <div className="flex h-16 items-center justify-center shadow-sm shadow-gray-300 z-30">
+        <label htmlFor="drawer" aria-label="close sidebar" className="drawer-overlay"></label>
+        <aside className="menu h-full p-0 bg-base-200 w-80">
+          <div className="flex w-full h-16 items-center justify-center shadow-sm shadow-gray-300 z-30">
             <Logo visible="max-lg:hidden" />
           </div>
           <ul className="menu mb-0 w-80 bg-base-200 text-base-content">
