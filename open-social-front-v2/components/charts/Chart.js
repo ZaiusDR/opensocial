@@ -1,5 +1,5 @@
 import ChartBar from "@/components/charts/ChartBar"
-import { useEffect, useState } from "react"
+
 
 const Chart = (props) => {
   const max = Math.max(...props.data.map(item => item.commits))
