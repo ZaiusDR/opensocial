@@ -22,21 +22,22 @@ def save_projects(projects):
     return saved_projects
 
 
-def get_projects(page, sorted_by):
+def get_projects(page, sorted_by, topics):
     projects_collection = _get_collection('projects')
 
-    if not page:
-        page = 0
+    results_limit = 12
+    query_filter = {}
 
     if sorted_by:
         sorted_by = [(sorted_by, pymongo.DESCENDING)]
 
-    limit = 12
+    if topics:
+        query_filter.update({'topic': {"$in": topics}})
 
     projects = list(projects_collection.find(
-        filter={},
-        skip=int(page) * limit,
-        limit=limit,
+        filter=query_filter,
+        skip=int(page if page else 0) * results_limit,
+        limit=results_limit,
         sort=sorted_by
     ))
 

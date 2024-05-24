@@ -123,7 +123,7 @@ def generate_github_projects_pagination():
                 total_commits=i,
                 commits_graph_data={},
                 rate=f'0.{i}',
-                topic='feminism',
+                topic=f'topic_{i}',
                 sorting=0,
                 ttl=1616659119
             )

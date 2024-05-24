@@ -18,7 +18,7 @@ class TestApp(unittest.TestCase):
             {}
         )
 
-        repository_mock.assert_called_once_with('fake_page', None)
+        repository_mock.assert_called_once_with('fake_page', None, None)
 
     @mock.patch('open_social_crud.app._gzip_b64encode')
     @mock.patch('open_social_crud.app.repository.get_projects')

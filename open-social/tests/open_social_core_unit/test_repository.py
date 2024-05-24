@@ -48,7 +48,7 @@ class TestRepository(unittest.TestCase):
     def test_should_get_projects_without_pagination(self):
         repository.save_projects(fixtures.github_projects)
 
-        page_1 = repository.get_projects(None, None)
+        page_1 = repository.get_projects(None, None, None)
 
         self.assertEqual(len(page_1['projects']), 2)
 
@@ -56,8 +56,8 @@ class TestRepository(unittest.TestCase):
     def test_should_get_projects_with_pagination(self):
         repository.save_projects(fixtures.generate_github_projects_pagination())
 
-        page_1 = repository.get_projects(0, None)
-        page_2 = repository.get_projects(1, None)
+        page_1 = repository.get_projects(0, None, None)
+        page_2 = repository.get_projects(1, None, None)
 
         self.assertEqual(len(page_1['projects']), 12)
         self.assertEqual(len(page_2['projects']), 2)
@@ -67,8 +67,8 @@ class TestRepository(unittest.TestCase):
         sorted_by = 'total_commits'
         repository.save_projects(fixtures.generate_github_projects_pagination())
 
-        page1 = repository.get_projects(page=0, sorted_by=sorted_by)
-        page2 = repository.get_projects(page=1, sorted_by=sorted_by)
+        page1 = repository.get_projects(page=0, sorted_by=sorted_by, topics=None)
+        page2 = repository.get_projects(page=1, sorted_by=sorted_by, topics=None)
 
         print(page1)
 
@@ -82,8 +82,8 @@ class TestRepository(unittest.TestCase):
         sorted_by = 'contributors'
         repository.save_projects(fixtures.generate_github_projects_pagination())
 
-        page1 = repository.get_projects(page=0, sorted_by=sorted_by)
-        repository.get_projects(page=1, sorted_by=sorted_by)
+        page1 = repository.get_projects(page=0, sorted_by=sorted_by, topics=None)
+        repository.get_projects(page=1, sorted_by=sorted_by, topics=None)
 
         self.assertEqual(page1['projects'][0]['contributors'], 14)
         self.assertEqual(page1['projects'][1]['contributors'], 13)
@@ -93,11 +93,38 @@ class TestRepository(unittest.TestCase):
         sorted_by = 'rate'
         repository.save_projects(fixtures.generate_github_projects_pagination())
 
-        page1 = repository.get_projects(page=0, sorted_by=sorted_by)
-        repository.get_projects(page=1, sorted_by=sorted_by)
+        page1 = repository.get_projects(page=0, sorted_by=sorted_by, topics=None)
+        repository.get_projects(page=1, sorted_by=sorted_by, topics=None)
 
         self.assertEqual(page1['projects'][0]['rate'], '0.9')
         self.assertEqual(page1['projects'][1]['rate'], '0.8')
+
+    @mongomock.patch(servers=(('localhost', 27017),))
+    def test_should_return_projects_filtered_by_topics(self):
+        topics = ['topic_1', 'topic_2']
+        repository.save_projects(fixtures.generate_github_projects_pagination())
+
+        page1 = repository.get_projects(page=0, sorted_by=None, topics=topics)
+        repository.get_projects(page=1, sorted_by=None, topics=topics)
+
+        self.assertEqual(page1['projects'][0]['topic'], 'topic_1')
+        self.assertEqual(page1['projects'][1]['topic'], 'topic_2')
+        self.assertEqual(len(page1['projects']), 2)
+
+    @mongomock.patch(servers=(('localhost', 27017),))
+    def test_should_return_projects_filtered_by_topics_and_sorted_by_commits(self):
+        topics = ['topic_1', 'topic_4']
+        sorted_by = 'total_commits'
+        repository.save_projects(fixtures.generate_github_projects_pagination())
+
+        page1 = repository.get_projects(page=0, sorted_by=sorted_by, topics=topics)
+        repository.get_projects(page=1, sorted_by=sorted_by, topics=topics)
+
+        self.assertEqual(page1['projects'][0]['topic'], 'topic_4')
+        self.assertEqual(page1['projects'][1]['topic'], 'topic_1')
+        self.assertEqual(page1['projects'][0]['total_commits'], 4)
+        self.assertEqual(page1['projects'][1]['total_commits'], 1)
+        self.assertEqual(len(page1['projects']), 2)
 
     @mongomock.patch(servers=(('localhost', 27017),))
     def test_should_save_a_new_topic(self):

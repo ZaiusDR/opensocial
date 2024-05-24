@@ -21,8 +21,9 @@ def entrypoint(event, context):
     if event['path'] == '/projects':
         page = _get_query_parameter(event, 'page', 0)
         sorted_by = _get_query_parameter(event, 'sorted_by', None)
+        topics = _get_query_parameter(event, 'topics', None)
 
-        response = repository.get_projects(page, sorted_by)
+        response = repository.get_projects(page, sorted_by, topics)
     elif event['path'] == '/topics':
         response = repository.get_topics()
 
