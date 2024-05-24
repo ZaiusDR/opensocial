@@ -32,7 +32,7 @@ def get_projects(page, sorted_by, topics):
         sorted_by = [(sorted_by, pymongo.DESCENDING)]
 
     if topics:
-        query_filter.update({'topic': {"$in": topics}})
+        query_filter.update({'topic': {'$in': topics}})
 
     projects = list(projects_collection.find(
         filter=query_filter,

@@ -23,6 +23,7 @@ def entrypoint(event, context):
         sorted_by = _get_query_parameter(event, 'sorted_by', None)
         topics = _get_query_parameter(event, 'topics', None)
         print(topics)
+        print(type(topics))
 
         response = repository.get_projects(page, sorted_by, topics)
     elif event['path'] == '/topics':
