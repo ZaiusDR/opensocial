@@ -18,8 +18,8 @@ const FiltersCollapse = (props) => {
 
   return (
     <div
-      className={`collapse collapse-arrow collapse-${collapseOpen ? "open" : "close"}
-                  border border-base-300 bg-primary rounded-box my-6 mx-4 hover:bg-primary-focus/100 cursor-pointer`}
+      className={`collapse collapse-arrow collapse-${collapseOpen ? "open" : "close"} border
+                  border-base-300 bg-primary rounded-box my-6 px-2 hover:bg-primary-focus/100 cursor-pointer`}
       onClick={handleOnClickCollapse}
     >
       <div className="flex collapse-title text-xl font-medium">
