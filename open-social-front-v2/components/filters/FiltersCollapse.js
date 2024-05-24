@@ -26,8 +26,8 @@ const FiltersCollapse = (props) => {
         <Image className="mr-1" src={filterIcon} width={14} height={14} alt="Filter Icon" />Filters
       </div>
       <div className="collapse-content cursor-auto">
-        <SortedSelect onSelect={props.onSelect} sortedByOptions={props.sortedByOptions}/>
-        <TopicsSelect />
+        <SortedSelect onSelect={props.onSelectSortedBy} sortedByOptions={props.sortedByOptions}/>
+        <TopicsSelect onSelect={props.onSelectTopic} topics={props.topics} />
       </div>
     </div>
   )

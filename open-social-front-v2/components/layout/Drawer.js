@@ -28,9 +28,14 @@ const sortedByOptions = [
 
 const Drawer = () => {
   const [sortedBy, setSortedBy] = useState("")
+  const [topics, setTopics] = useState("")
 
   const handleOnSelectSortedBy = (event) => {
     setSortedBy(event.target.value)
+  }
+
+  const handleOnSelectTopics = (event) => {
+    setTopics(event.target.value)
   }
 
   return(
@@ -38,7 +43,7 @@ const Drawer = () => {
       <input id="drawer" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content">
         <NavBar />
-        <ProjectsList sortedBy={sortedBy} />
+        <ProjectsList sortedBy={sortedBy} topics={topics}/>
       </div>
       <div className="drawer-side">
         <label htmlFor="drawer" aria-label="close sidebar" className="drawer-overlay"></label>
@@ -48,8 +53,10 @@ const Drawer = () => {
           </div>
           <ul className="menu mb-0 w-80 bg-base-200 text-base-content">
             <FiltersCollapse
-              onSelect={handleOnSelectSortedBy}
+              onSelectSortedBy={handleOnSelectSortedBy}
               sortedByOptions={sortedByOptions}
+              onSelectTopic={handleOnSelectTopics}
+              topics={topics}
             />
           </ul>
         </aside>
