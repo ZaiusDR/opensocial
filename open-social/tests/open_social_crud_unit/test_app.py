@@ -18,7 +18,7 @@ class TestApp(unittest.TestCase):
             {}
         )
 
-        repository_mock.assert_called_once_with('fake_page', None, None)
+        repository_mock.assert_called_once_with('fake_page', None, {})
 
     @mock.patch('open_social_crud.app._gzip_b64encode')
     @mock.patch('open_social_crud.app.repository.get_projects')
@@ -35,6 +35,25 @@ class TestApp(unittest.TestCase):
         )
 
         repository_mock.assert_called_once_with('fake_page', 'total_commits')
+
+    @mock.patch('open_social_crud.app._gzip_b64encode')
+    @mock.patch('open_social_crud.app.repository.get_projects')
+    def test_should_get_projects_by_topics(self, repository_mock, b64encode_mock):
+        app.entrypoint(
+            {
+                'path': '/projects',
+                'queryStringParameters': {
+                    'page': 'fake_page',
+                    'sorted_by': 'total_commits'
+                },
+                'multiValueQueryStringParameters': {
+                    'topics': ["'feminism'", "'climate change'"]
+                }
+            },
+            {}
+        )
+
+        repository_mock.assert_called_once_with('fake_page', 'total_commits', ['feminism', 'climate change'])
 
     @mock.patch('open_social_crud.app._gzip_b64encode')
     @mock.patch('open_social_crud.app.repository.get_topics')

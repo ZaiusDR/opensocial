@@ -19,11 +19,11 @@ def entrypoint(event, context):
     print(event)
     response = {}
     if event['path'] == '/projects':
-        page = _get_query_parameter(event, 'page', 0)
-        sorted_by = _get_query_parameter(event, 'sorted_by', None)
-        topics = _get_query_parameter(event, 'topics', None)
-        print(topics)
-        print(type(topics))
+        page = _get_query_parameter(event, 'queryStringParameters', 'page', 0)
+        sorted_by = _get_query_parameter(event, 'queryStringParameters', 'sorted_by', None)
+        topics = _get_query_parameter(event, 'multiValueQueryStringParameters','topics', None)
+        if topics:
+            topics = [topic.replace("'", '') for topic in topics]
 
         response = repository.get_projects(page, sorted_by, topics)
     elif event['path'] == '/topics':
@@ -42,9 +42,9 @@ def entrypoint(event, context):
     }
 
 
-def _get_query_parameter(event, parameter_name, default):
-    return event.get('queryStringParameters', {}) and \
-           event.get('queryStringParameters', {}).get(parameter_name, default)
+def _get_query_parameter(event, parameters_source, parameter_name, default):
+    return event.get(parameters_source, {}) and \
+           event.get(parameters_source, {}).get(parameter_name, default)
 
 
 def decimal_default(obj):
