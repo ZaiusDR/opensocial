@@ -8,7 +8,7 @@ import TopicsSelect from "@/components/filters/TopicsSelect"
 
 
 const FiltersCollapse = (props) => {
-  const [collapseOpen, setCollapseOpen] = useState(false)
+  const [collapseOpen, setCollapseOpen] = useState(true)
 
   const handleOnClickCollapse = (event) => {
     if (event.target.className.includes('collapse-title')) {
