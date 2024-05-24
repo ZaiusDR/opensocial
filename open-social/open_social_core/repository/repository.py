@@ -6,9 +6,7 @@ import pymongo
 
 
 def save_projects(projects):
-    mongo_client = _get_connection()
-    db = mongo_client.get_database('open-social')
-    projects_collection = db.get_collection('projects')
+    projects_collection = _get_collection('projects')
 
     projects_as_dicts = [project._asdict() for project in projects]
 
@@ -21,15 +19,11 @@ def save_projects(projects):
         )
         saved_projects.append(project)
 
-    mongo_client.close()
-
     return saved_projects
 
 
 def get_projects(page, sorted_by):
-    mongo_client = _get_connection()
-    db = mongo_client.get_database('open-social')
-    projects_collection = db.get_collection('projects')
+    projects_collection = _get_collection('projects')
 
     if not page:
         page = 0
@@ -50,15 +44,11 @@ def get_projects(page, sorted_by):
         'projects': projects
     }
 
-    mongo_client.close()
-
     return response
 
 
 def save_topic(topic):
-    mongo_client = _get_connection()
-    db = mongo_client.get_database('open-social')
-    topics_collection = db.get_collection('topics')
+    topics_collection = _get_collection('topics')
 
     topics_collection.update_one(
         {'name': 'topics'},
@@ -67,16 +57,14 @@ def save_topic(topic):
 
 
 def get_topics():
-    mongo_client = _get_connection()
-    db = mongo_client.get_database('open-social')
-    topics_collection = db.get_collection('topics')
+    topics_collection = _get_collection('topics')
 
     topics = topics_collection.find_one({'name': 'topics'})
 
     return topics['topics']
 
 
-def _get_connection():
+def _get_collection(collection_name):
     sts_client = boto3.client('sts')
 
     response = sts_client.assume_role(
@@ -91,4 +79,6 @@ def _get_connection():
     secret_data = secrets_manager_client.get_secret_value(SecretId='mongodb-uri')
     uri = json.loads(secret_data['SecretString'])['mongo_db_uri']
 
-    return pymongo.MongoClient(uri)
+    mongo_client = pymongo.MongoClient(uri)
+    db = mongo_client.get_database('open-social')
+    return db.get_collection(collection_name)
