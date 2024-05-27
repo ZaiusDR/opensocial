@@ -1,32 +1,32 @@
 const WhyOpenSocialModal = () => {
   return (
     <dialog id="why_modal" className="modal">
-      <article className="modal-box prose items-start">
+      <article className="modal-box prose">
         <h3><b>The problem</b></h3>
         <p>
-          Searching for Open Source projects aimed to have any social impact can be
-          very difficult. The projects are scattered around Github (which is huge),
-          there are tons of abandoned projects, or they simply didn't get to have
-          enough collaborators to keep going.
+          {`Searching for Open Source projects aimed to have any social impact can be
+            very difficult. The projects are scattered around Github (which is huge),
+            there are tons of abandoned projects, or they simply didn't get to have
+            enough collaborators to keep going.`}
         </p>
         <p>
-          I found myself, spending hours trying to find something meaningful, with
-          enough activity and I just simply gave up. Other than some curated lists
-          in some outdated pages is what I could find. So, what if tried to
-          automatically collect them, gather activity stats and put them together
-          in a single place, so others can easily find a project to contribute with?
+          {`I found myself, spending hours trying to find something meaningful, with
+            enough activity and I just simply gave up. Other than some curated lists
+            in some outdated pages is what I could find. So, what if tried to
+            automatically collect them, gather activity stats and put them together
+            in a single place, so others can easily find a project to contribute with?`}
         </p>
 
         <h3><b>What is OpenSocial?</b></h3>
         <p>
-          OpenSocial is an opinionated collection of Open-Source projects,
-          including their activity for the last six months, gathered from Github
-          based on different searches by terms related to social issues.
+          {`OpenSocial is an opinionated collection of Open-Source projects,
+            including their activity for the last six months, gathered from Github
+            based on different searches by terms related to social issues.`}
         </p>
         <p>
-          The Projects can be sorted by different criteria, so it's easier for you
-          to find the one you want. (Bigger communities, more activity and
-          delivery rate, or maybe more Issues to solve, etc...)
+          {`The Projects can be sorted by different criteria, so it's easier for you
+            to find the one you want. (Bigger communities, more activity and
+            delivery rate, or maybe more Issues to solve, etc...)`}
         </p>
         <p>
           The current keywords are:
@@ -58,9 +58,9 @@ const WhyOpenSocialModal = () => {
         </p>
         <h3><b>Finally</b></h3>
         <p>
-          As developers we have the opportunity to be part of the Open Source
-          philosophy's beauty, and have an impact on the society. So... <b>Let's code a
-          better World!! 🦄</b>
+          {`As developers we have the opportunity to be part of the Open Source
+            philosophy's beauty, and have an impact on the society. So... `}
+          <b>{`Let's code a better World!! 🦄`}</b>
         </p>
       </article>
       <form method="dialog" className="modal-backdrop">
