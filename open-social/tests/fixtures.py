@@ -119,7 +119,7 @@ def generate_github_projects_pagination():
                 pushed='2019-08-13T11:12:55Z',
                 created='2019-08-13T11:01:35Z',
                 updated='2019-08-13T11:12:55Z',
-                language='Javascript',
+                language=f'fake_language_{i}',
                 total_commits=i,
                 commits_graph_data={},
                 rate=f'0.{i}',
@@ -135,4 +135,9 @@ def generate_github_projects_pagination():
 topics = {
     'name': 'topics',
     'topics': ['fake_topic_1']
+}
+
+languages = {
+    'name': 'languages',
+    'languages': ['fake_language_1']
 }

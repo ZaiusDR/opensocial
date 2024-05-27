@@ -6,6 +6,7 @@ from repository import repository
 
 def lambda_handler(event, context):
     github_projects = github_gateway.get_project_list(event)
+    repository.save_languages(github_projects)
     projects = repository.save_projects(github_projects)
 
     repository.save_topic(event['topic'])

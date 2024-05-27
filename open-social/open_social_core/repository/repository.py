@@ -8,7 +8,7 @@ import pymongo
 def save_projects(projects):
     projects_collection = _get_collection('projects')
 
-    projects_as_dicts = [project._asdict() for project in projects]
+    projects_as_dicts = _convert_projects_to_dict(projects)
 
     saved_projects = []
     for project in projects_as_dicts:
@@ -63,6 +63,30 @@ def get_topics():
     topics = topics_collection.find_one({'name': 'topics'})
 
     return topics['topics']
+
+
+def save_languages(projects):
+    languages_collection = _get_collection('languages')
+
+    projects_as_dict = _convert_projects_to_dict(projects)
+    languages = {project['language'] for project in projects_as_dict}
+    for language in languages:
+        languages_collection.update_one(
+            {'name': 'languages'},
+            {'$addToSet': {'languages': language}}
+        )
+
+
+def get_languages():
+    languages_collection = _get_collection('languages')
+
+    languages = languages_collection.find_one({'name': 'languages'})
+
+    return languages['languages']
+
+
+def _convert_projects_to_dict(projects):
+    return [project._asdict() for project in projects]
 
 
 def _get_collection(collection_name):

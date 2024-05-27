@@ -159,3 +159,39 @@ class TestRepository(unittest.TestCase):
         topics = repository.get_topics()
 
         self.assertEqual(topics, fixtures.topics['topics'])
+
+    @mongomock.patch(servers=(('localhost', 27017),))
+    def test_should_save_new_languages(self):
+        client = pymongo.MongoClient('localhost', 27017)
+        db = client.get_database('open-social')
+        db.languages.insert_one(fixtures.languages)
+
+        repository.save_languages(fixtures.github_projects)
+
+        saved_languages = db.languages.find_one({'name': 'languages'})
+        self.assertIn('fake_language_1', saved_languages['languages'])
+        self.assertTrue(fixtures.github_projects[0].language, saved_languages['languages'])
+        self.assertTrue(fixtures.github_projects[1].language, saved_languages['languages'])
+
+    @mongomock.patch(servers=(('localhost', 27017),))
+    def test_should_not_save_an_existing_language(self):
+        client = pymongo.MongoClient('localhost', 27017)
+        db = client.get_database('open-social')
+        db.languages.insert_one(fixtures.languages)
+
+        # Saving twice
+        repository.save_languages(fixtures.github_projects)
+        repository.save_languages(fixtures.github_projects)
+
+        saved_languages = db.languages.find_one({'name': 'languages'})
+        self.assertEqual(len(saved_languages['languages']), 3)
+
+    @mongomock.patch(servers=(('localhost', 27017),))
+    def test_should_return_languages(self):
+        client = pymongo.MongoClient('localhost', 27017)
+        db = client.get_database('open-social')
+        db.languages.insert_one(fixtures.languages)
+
+        languages = repository.get_languages()
+
+        self.assertEqual(languages, fixtures.languages['languages'])

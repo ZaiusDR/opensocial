@@ -28,6 +28,8 @@ def entrypoint(event, context):
         response = repository.get_projects(page, sorted_by, topics)
     elif event['path'] == '/topics':
         response = repository.get_topics()
+    elif event['path'] == '/languages':
+        response = repository.get_languages()
 
     return {
         'statusCode': 200,
