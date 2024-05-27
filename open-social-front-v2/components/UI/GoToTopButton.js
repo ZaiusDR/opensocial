@@ -7,8 +7,6 @@ const GoToTopButton = () => {
   }, [])
 
   const handleVisibleButton = () => {
-    console.log(window.scrollY)
-    console.log(window.scrollY > 1000)
     setShowGoTop( window.scrollY > 1000 )
   }
 
