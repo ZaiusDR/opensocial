@@ -22,10 +22,13 @@ def entrypoint(event, context):
         page = _get_query_parameter(event, 'queryStringParameters', 'page', 0)
         sorted_by = _get_query_parameter(event, 'queryStringParameters', 'sorted_by', None)
         topics = _get_query_parameter(event, 'multiValueQueryStringParameters','topics', None)
+        languages = _get_query_parameter(event, 'multiValueQueryStringParameters','languages', None)
         if topics:
             topics = [topic.replace("'", '') for topic in topics]
+        if languages:
+            languages = [language.replace("'", '') for language in languages]
 
-        response = repository.get_projects(page, sorted_by, topics)
+        response = repository.get_projects(page, sorted_by, topics, languages)
     elif event['path'] == '/topics':
         response = repository.get_topics()
     elif event['path'] == '/languages':

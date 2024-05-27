@@ -29,6 +29,7 @@ const sortedByOptions = [
 const Drawer = () => {
   const [sortedBy, setSortedBy] = useState("")
   const [topics, setTopics] = useState("")
+  const [languages, setLanguages] = useState("")
 
   const handleOnSelectSortedBy = (event) => {
     setSortedBy(event.target.value)
@@ -38,12 +39,16 @@ const Drawer = () => {
     setTopics(event.target.value)
   }
 
+  const handleOnSelectLanguages = (event) => {
+    setLanguages(event.target.value)
+  }
+
   return(
     <div className="bg-base-100 drawer max-lg:drawer-end lg:drawer-open">
       <input id="drawer" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content">
         <NavBar />
-        <ProjectsList sortedBy={sortedBy} topics={topics}/>
+        <ProjectsList sortedBy={sortedBy} topics={topics} languages={languages}/>
       </div>
       <div className="drawer-side">
         <label htmlFor="drawer" aria-label="close sidebar" className="drawer-overlay"></label>
@@ -57,6 +62,8 @@ const Drawer = () => {
               sortedByOptions={sortedByOptions}
               onSelectTopic={handleOnSelectTopics}
               topics={topics}
+              onSelectLanguages={handleOnSelectLanguages}
+              languages={languages}
             />
           </ul>
         </aside>

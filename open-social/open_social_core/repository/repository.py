@@ -22,7 +22,7 @@ def save_projects(projects):
     return saved_projects
 
 
-def get_projects(page, sorted_by, topics):
+def get_projects(page, sorted_by, topics, languages):
     projects_collection = _get_collection('projects')
 
     results_limit = 12
@@ -31,8 +31,17 @@ def get_projects(page, sorted_by, topics):
     if sorted_by:
         sorted_by = [(sorted_by, pymongo.DESCENDING)]
 
-    if topics:
+    if topics and languages:
+        query_filter.update({
+            '$and': [
+                {'topic': {'$in': topics}},
+                {'language': {'$in': languages}}
+            ]
+        })
+    elif topics:
         query_filter.update({'topic': {'$in': topics}})
+    elif languages:
+        query_filter.update({'language': {'$in': languages}})
 
     projects = list(projects_collection.find(
         filter=query_filter,

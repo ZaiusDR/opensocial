@@ -5,6 +5,7 @@ import Image from "next/image"
 import SortedSelect from "@/components/filters/SortedSelect"
 import filterIcon from "@/public/filters.svg"
 import TopicsSelect from "@/components/filters/TopicsSelect"
+import LanguagesSelect from "@/components/filters/LanguagesSelect"
 
 
 const FiltersCollapse = (props) => {
@@ -26,8 +27,9 @@ const FiltersCollapse = (props) => {
         <Image className="mr-1" src={filterIcon} width={14} height={14} alt="Filter Icon" />Filters
       </div>
       <div className="collapse-content cursor-auto">
-        <SortedSelect onSelect={props.onSelectSortedBy} sortedByOptions={props.sortedByOptions}/>
+        <SortedSelect onSelect={props.onSelectSortedBy} sortedByOptions={props.sortedByOptions} />
         <TopicsSelect onSelect={props.onSelectTopic} topics={props.topics} />
+        <LanguagesSelect onSelect={props.onSelectLanguages} language={props.languages} />
       </div>
     </div>
   )

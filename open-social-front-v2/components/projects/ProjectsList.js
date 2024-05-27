@@ -13,7 +13,7 @@ const ProjectsList = (props) => {
 
   useEffect(() => {
     setSize(1)
-  }, [props.sortedBy, props.topics])
+  }, [props.sortedBy, props.topics, props.languages])
 
   const getKey = (pageIndex, previousPageData) => {
     let apiUrl = "https://api.open-social.net/projects?"
@@ -24,6 +24,10 @@ const ProjectsList = (props) => {
 
     if (props.topics) {
       apiUrl = apiUrl + `topics=${props.topics}&`
+    }
+
+    if (props.languages) {
+      apiUrl = apiUrl + `languages=${props.languages}`
     }
 
     if (previousPageData) {
