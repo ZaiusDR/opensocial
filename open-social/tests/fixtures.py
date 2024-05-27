@@ -99,6 +99,32 @@ updated_github_projects = [
     )
 ]
 
+github_project_null_language = [
+    github_project.GithubProject(
+        project_name='project_1',
+        full_name='user1/project_1',
+        avatar_url='fake_url_1',
+        description='description1',
+        homepage='https://fake_homepage.com',
+        contributors=18,
+        open_issues=30,
+        watchers=15,
+        stargazers=25,
+        forks=28,
+        project_url='url_1',
+        pushed='2020-10-13T13:10:42Z',
+        created='2019-08-04T05:36:49Z',
+        updated='2019-08-06T07:38:15Z',
+        language=None,
+        total_commits=24,
+        commits_graph_data={},
+        rate=0.8,
+        topic='feminism',
+        sorting=0,
+        ttl=1616659119
+    )
+]
+
 
 def generate_github_projects_pagination():
     generated_projects = []

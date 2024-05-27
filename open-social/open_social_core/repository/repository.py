@@ -69,7 +69,7 @@ def save_languages(projects):
     languages_collection = _get_collection('languages')
 
     projects_as_dict = _convert_projects_to_dict(projects)
-    languages = {project['language'] for project in projects_as_dict}
+    languages = {project['language'] for project in projects_as_dict if project['language']}
     for language in languages:
         languages_collection.update_one(
             {'name': 'languages'},
