@@ -27,7 +27,7 @@ const ProjectsList = (props) => {
     }
 
     if (props.languages) {
-      apiUrl = apiUrl + `languages=${props.languages}`
+      apiUrl = apiUrl + `languages=${props.languages}&`
     }
 
     if (previousPageData) {
