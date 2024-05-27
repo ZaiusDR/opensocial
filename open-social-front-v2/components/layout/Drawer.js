@@ -4,6 +4,7 @@ import NavBar from "@/components/layout/NavBar"
 import Logo from "@/components/layout/Logo"
 import ProjectsList from "@/components/projects/ProjectsList"
 import FiltersCollapse from "@/components/filters/FiltersCollapse"
+import WhyOpenSocialMenuItem from "@/components/why/WhyOpenSocialMenuItem"
 
 
 const sortedByOptions = [
@@ -65,6 +66,7 @@ const Drawer = () => {
               onSelectLanguages={handleOnSelectLanguages}
               languages={languages}
             />
+            <WhyOpenSocialMenuItem />
           </ul>
         </aside>
       </div>
