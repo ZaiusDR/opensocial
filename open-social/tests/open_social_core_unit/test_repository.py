@@ -70,8 +70,6 @@ class TestRepository(unittest.TestCase):
         page1 = repository.get_projects(page=0, sorted_by=sorted_by, topics=None)
         page2 = repository.get_projects(page=1, sorted_by=sorted_by, topics=None)
 
-        print(page1)
-
         self.assertEqual(page1['projects'][0]['total_commits'], 14)
         self.assertEqual(page1['projects'][1]['total_commits'], 13)
         self.assertEqual(len(page1['projects']), 12)
