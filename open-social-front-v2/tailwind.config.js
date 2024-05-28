@@ -19,7 +19,7 @@ module.exports = {
   },
   plugins: [require("@tailwindcss/typography"), require('daisyui')],
   daisyui: {
-    themes: ['cupcake', 'forest'],
-    darkThemeheme: 'forest',
+    themes: ['cupcake', 'dracula'],
+    darkThemeheme: 'dracula',
   },
 }

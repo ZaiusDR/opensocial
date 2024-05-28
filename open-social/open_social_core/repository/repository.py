@@ -6,11 +6,9 @@ import pymongo
 
 
 def save_projects(projects):
-    mongo_client = _get_connection()
-    db = mongo_client.get_database('open-social')
-    projects_collection = db.get_collection('projects')
+    projects_collection = _get_collection('projects')
 
-    projects_as_dicts = [project._asdict() for project in projects]
+    projects_as_dicts = _convert_projects_to_dict(projects)
 
     saved_projects = []
     for project in projects_as_dicts:
@@ -21,28 +19,34 @@ def save_projects(projects):
         )
         saved_projects.append(project)
 
-    mongo_client.close()
-
     return saved_projects
 
 
-def get_projects(page, sorted_by):
-    mongo_client = _get_connection()
-    db = mongo_client.get_database('open-social')
-    projects_collection = db.get_collection('projects')
+def get_projects(page, sorted_by, topics, languages):
+    projects_collection = _get_collection('projects')
 
-    if not page:
-        page = 0
+    results_limit = 12
+    query_filter = {}
 
     if sorted_by:
         sorted_by = [(sorted_by, pymongo.DESCENDING)]
 
-    limit = 12
+    if topics and languages:
+        query_filter.update({
+            '$and': [
+                {'topic': {'$in': topics}},
+                {'language': {'$in': languages}}
+            ]
+        })
+    elif topics:
+        query_filter.update({'topic': {'$in': topics}})
+    elif languages:
+        query_filter.update({'language': {'$in': languages}})
 
     projects = list(projects_collection.find(
-        filter={},
-        skip=int(page) * limit,
-        limit=limit,
+        filter=query_filter,
+        skip=int(page if page else 0) * results_limit,
+        limit=results_limit,
         sort=sorted_by
     ))
 
@@ -50,15 +54,11 @@ def get_projects(page, sorted_by):
         'projects': projects
     }
 
-    mongo_client.close()
-
     return response
 
 
 def save_topic(topic):
-    mongo_client = _get_connection()
-    db = mongo_client.get_database('open-social')
-    topics_collection = db.get_collection('topics')
+    topics_collection = _get_collection('topics')
 
     topics_collection.update_one(
         {'name': 'topics'},
@@ -67,16 +67,38 @@ def save_topic(topic):
 
 
 def get_topics():
-    mongo_client = _get_connection()
-    db = mongo_client.get_database('open-social')
-    topics_collection = db.get_collection('topics')
+    topics_collection = _get_collection('topics')
 
     topics = topics_collection.find_one({'name': 'topics'})
 
     return topics['topics']
 
 
-def _get_connection():
+def save_languages(projects):
+    languages_collection = _get_collection('languages')
+
+    projects_as_dict = _convert_projects_to_dict(projects)
+    languages = {project['language'] for project in projects_as_dict if project['language']}
+    for language in languages:
+        languages_collection.update_one(
+            {'name': 'languages'},
+            {'$addToSet': {'languages': language}}
+        )
+
+
+def get_languages():
+    languages_collection = _get_collection('languages')
+
+    languages = languages_collection.find_one({'name': 'languages'})
+
+    return languages['languages']
+
+
+def _convert_projects_to_dict(projects):
+    return [project._asdict() for project in projects]
+
+
+def _get_collection(collection_name):
     sts_client = boto3.client('sts')
 
     response = sts_client.assume_role(
@@ -91,4 +113,6 @@ def _get_connection():
     secret_data = secrets_manager_client.get_secret_value(SecretId='mongodb-uri')
     uri = json.loads(secret_data['SecretString'])['mongo_db_uri']
 
-    return pymongo.MongoClient(uri)
+    mongo_client = pymongo.MongoClient(uri)
+    db = mongo_client.get_database('open-social')
+    return db.get_collection(collection_name)

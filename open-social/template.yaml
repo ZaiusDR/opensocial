@@ -101,6 +101,13 @@ Resources:
             Method: get
             RestApiId:
               Ref: OpenSocialAPI
+        ListLanguages:
+          Type: Api
+          Properties:
+            Path: /languages
+            Method: get
+            RestApiId:
+              Ref: OpenSocialAPI
 
   OpenSocialAPI:
     Type: AWS::Serverless::Api

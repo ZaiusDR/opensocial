@@ -4,6 +4,7 @@ import NavBar from "@/components/layout/NavBar"
 import Logo from "@/components/layout/Logo"
 import ProjectsList from "@/components/projects/ProjectsList"
 import FiltersCollapse from "@/components/filters/FiltersCollapse"
+import WhyOpenSocialMenuItem from "@/components/why/WhyOpenSocialMenuItem"
 
 
 const sortedByOptions = [
@@ -28,9 +29,19 @@ const sortedByOptions = [
 
 const Drawer = () => {
   const [sortedBy, setSortedBy] = useState("")
+  const [topics, setTopics] = useState("")
+  const [languages, setLanguages] = useState("")
 
   const handleOnSelectSortedBy = (event) => {
     setSortedBy(event.target.value)
+  }
+
+  const handleOnSelectTopics = (event) => {
+    setTopics(event.target.value)
+  }
+
+  const handleOnSelectLanguages = (event) => {
+    setLanguages(event.target.value)
   }
 
   return(
@@ -38,7 +49,7 @@ const Drawer = () => {
       <input id="drawer" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content">
         <NavBar />
-        <ProjectsList sortedBy={sortedBy} />
+        <ProjectsList sortedBy={sortedBy} topics={topics} languages={languages}/>
       </div>
       <div className="drawer-side">
         <label htmlFor="drawer" aria-label="close sidebar" className="drawer-overlay"></label>
@@ -48,9 +59,14 @@ const Drawer = () => {
           </div>
           <ul className="menu mb-0 w-80 bg-base-200 text-base-content">
             <FiltersCollapse
-              onSelect={handleOnSelectSortedBy}
+              onSelectSortedBy={handleOnSelectSortedBy}
               sortedByOptions={sortedByOptions}
+              onSelectTopic={handleOnSelectTopics}
+              topics={topics}
+              onSelectLanguages={handleOnSelectLanguages}
+              languages={languages}
             />
+            <WhyOpenSocialMenuItem />
           </ul>
         </aside>
       </div>

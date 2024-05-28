@@ -48,7 +48,7 @@ class TestRepository(unittest.TestCase):
     def test_should_get_projects_without_pagination(self):
         repository.save_projects(fixtures.github_projects)
 
-        page_1 = repository.get_projects(None, None)
+        page_1 = repository.get_projects(None, None, None, None)
 
         self.assertEqual(len(page_1['projects']), 2)
 
@@ -56,8 +56,8 @@ class TestRepository(unittest.TestCase):
     def test_should_get_projects_with_pagination(self):
         repository.save_projects(fixtures.generate_github_projects_pagination())
 
-        page_1 = repository.get_projects(0, None)
-        page_2 = repository.get_projects(1, None)
+        page_1 = repository.get_projects(0, None, None, None)
+        page_2 = repository.get_projects(1, None, None, None)
 
         self.assertEqual(len(page_1['projects']), 12)
         self.assertEqual(len(page_2['projects']), 2)
@@ -67,10 +67,8 @@ class TestRepository(unittest.TestCase):
         sorted_by = 'total_commits'
         repository.save_projects(fixtures.generate_github_projects_pagination())
 
-        page1 = repository.get_projects(page=0, sorted_by=sorted_by)
-        page2 = repository.get_projects(page=1, sorted_by=sorted_by)
-
-        print(page1)
+        page1 = repository.get_projects(page=0, sorted_by=sorted_by, topics=None, languages=None)
+        page2 = repository.get_projects(page=1, sorted_by=sorted_by, topics=None, languages=None)
 
         self.assertEqual(page1['projects'][0]['total_commits'], 14)
         self.assertEqual(page1['projects'][1]['total_commits'], 13)
@@ -82,8 +80,8 @@ class TestRepository(unittest.TestCase):
         sorted_by = 'contributors'
         repository.save_projects(fixtures.generate_github_projects_pagination())
 
-        page1 = repository.get_projects(page=0, sorted_by=sorted_by)
-        repository.get_projects(page=1, sorted_by=sorted_by)
+        page1 = repository.get_projects(page=0, sorted_by=sorted_by, topics=None, languages=None)
+        repository.get_projects(page=1, sorted_by=sorted_by, topics=None, languages=None)
 
         self.assertEqual(page1['projects'][0]['contributors'], 14)
         self.assertEqual(page1['projects'][1]['contributors'], 13)
@@ -93,11 +91,67 @@ class TestRepository(unittest.TestCase):
         sorted_by = 'rate'
         repository.save_projects(fixtures.generate_github_projects_pagination())
 
-        page1 = repository.get_projects(page=0, sorted_by=sorted_by)
-        repository.get_projects(page=1, sorted_by=sorted_by)
+        page1 = repository.get_projects(page=0, sorted_by=sorted_by, topics=None, languages=None)
+        repository.get_projects(page=1, sorted_by=sorted_by, topics=None, languages=None)
 
         self.assertEqual(page1['projects'][0]['rate'], '0.9')
         self.assertEqual(page1['projects'][1]['rate'], '0.8')
+
+    @mongomock.patch(servers=(('localhost', 27017),))
+    def test_should_return_projects_filtered_by_topics(self):
+        topics = ['topic_1', 'topic_2']
+        repository.save_projects(fixtures.generate_github_projects_pagination())
+
+        page1 = repository.get_projects(page=0, sorted_by=None, topics=topics, languages=None)
+        repository.get_projects(page=1, sorted_by=None, topics=topics, languages=None)
+
+        self.assertEqual(page1['projects'][0]['topic'], 'topic_1')
+        self.assertEqual(page1['projects'][1]['topic'], 'topic_2')
+        self.assertEqual(len(page1['projects']), 2)
+
+    @mongomock.patch(servers=(('localhost', 27017),))
+    def test_should_return_projects_filtered_by_topics_and_sorted_by_commits(self):
+        topics = ['topic_1', 'topic_4']
+        sorted_by = 'total_commits'
+        repository.save_projects(fixtures.generate_github_projects_pagination())
+
+        page1 = repository.get_projects(page=0, sorted_by=sorted_by, topics=topics, languages=None)
+        repository.get_projects(page=1, sorted_by=sorted_by, topics=topics, languages=None)
+
+        self.assertEqual(page1['projects'][0]['topic'], 'topic_4')
+        self.assertEqual(page1['projects'][1]['topic'], 'topic_1')
+        self.assertEqual(page1['projects'][0]['total_commits'], 4)
+        self.assertEqual(page1['projects'][1]['total_commits'], 1)
+        self.assertEqual(len(page1['projects']), 2)
+
+    @mongomock.patch(servers=(('localhost', 27017),))
+    def test_should_return_projects_filtered_by_languages(self):
+        languages = ['fake_language_1', 'fake_language_2']
+        repository.save_projects(fixtures.generate_github_projects_pagination())
+
+        page1 = repository.get_projects(page=0, sorted_by=None, topics=None, languages=languages)
+        repository.get_projects(page=1, sorted_by=None, topics=None, languages=languages)
+
+        self.assertEqual(page1['projects'][0]['language'], 'fake_language_1')
+        self.assertEqual(page1['projects'][1]['language'], 'fake_language_2')
+        self.assertEqual(len(page1['projects']), 2)
+
+    @mongomock.patch(servers=(('localhost', 27017),))
+    def test_should_return_projects_using_all_filters(self):
+        # fake_language_3 and topic_4 shouldn't return any value, as both won't
+        # be present on any project
+        languages = ['fake_language_1', 'fake_language_2', 'fake_language_3']
+        topics = ['topic_1', 'topic_2', 'topic_4']
+        repository.save_projects(fixtures.generate_github_projects_pagination())
+
+        page1 = repository.get_projects(page=0, sorted_by='total_commits', topics=topics, languages=languages)
+        repository.get_projects(page=1, sorted_by='total_commits', topics=topics, languages=languages)
+
+        self.assertEqual(page1['projects'][0]['language'], 'fake_language_2')
+        self.assertEqual(page1['projects'][0]['topic'], 'topic_2')
+        self.assertEqual(page1['projects'][1]['language'], 'fake_language_1')
+        self.assertEqual(page1['projects'][1]['topic'], 'topic_1')
+        self.assertEqual(len(page1['projects']), 2)
 
     @mongomock.patch(servers=(('localhost', 27017),))
     def test_should_save_a_new_topic(self):
@@ -132,3 +186,50 @@ class TestRepository(unittest.TestCase):
         topics = repository.get_topics()
 
         self.assertEqual(topics, fixtures.topics['topics'])
+
+    @mongomock.patch(servers=(('localhost', 27017),))
+    def test_should_save_new_languages(self):
+        client = pymongo.MongoClient('localhost', 27017)
+        db = client.get_database('open-social')
+        db.languages.insert_one(fixtures.languages)
+
+        repository.save_languages(fixtures.github_projects)
+
+        saved_languages = db.languages.find_one({'name': 'languages'})
+        self.assertIn('fake_language_1', saved_languages['languages'])
+        self.assertIn(fixtures.github_projects[0].language, saved_languages['languages'])
+        self.assertIn(fixtures.github_projects[1].language, saved_languages['languages'])
+
+    @mongomock.patch(servers=(('localhost', 27017),))
+    def test_should_not_save_an_existing_language(self):
+        client = pymongo.MongoClient('localhost', 27017)
+        db = client.get_database('open-social')
+        db.languages.insert_one(fixtures.languages)
+
+        # Saving twice
+        repository.save_languages(fixtures.github_projects)
+        repository.save_languages(fixtures.github_projects)
+
+        saved_languages = db.languages.find_one({'name': 'languages'})
+        self.assertEqual(len(saved_languages['languages']), 3)
+
+    @mongomock.patch(servers=(('localhost', 27017),))
+    def test_should_not_save_null_language(self):
+        client = pymongo.MongoClient('localhost', 27017)
+        db = client.get_database('open-social')
+        db.languages.insert_one(fixtures.languages)
+
+        repository.save_languages(fixtures.github_project_null_language)
+
+        saved_languages = db.languages.find_one({'name': 'languages'})
+        self.assertEqual(len(saved_languages['languages']), 1)
+
+    @mongomock.patch(servers=(('localhost', 27017),))
+    def test_should_return_languages(self):
+        client = pymongo.MongoClient('localhost', 27017)
+        db = client.get_database('open-social')
+        db.languages.insert_one(fixtures.languages)
+
+        languages = repository.get_languages()
+
+        self.assertEqual(languages, fixtures.languages['languages'])
