@@ -30,6 +30,7 @@ const WhyOpenSocialModal = () => {
         </p>
         <p>
           The current keywords are:
+        </p>
           <ul>
             <li><i>Climate Change</i></li>
             <li><i>Feminism</i></li>
@@ -40,7 +41,7 @@ const WhyOpenSocialModal = () => {
             <li><i>Social Justice</i></li>
             <li><i>Social Change</i></li>
           </ul>
-
+        <p>
           But the list will grow to include more.
         </p>
         <p>

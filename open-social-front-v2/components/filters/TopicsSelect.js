@@ -9,8 +9,8 @@ const TopicsSelect = (props) => {
       <label className="label">
         <span>Topics</span>
       </label>
-      <select className="select select-bordered w-full max-w-xs" onChange={props.onSelect} >
-        <option disabled selected key={"none"} label={"None"} value={"none"} />
+      <select className="select select-bordered w-full max-w-xs" value={"none"} onChange={props.onSelect} >
+        <option disabled key={"none"} label={"None"} value={"none"} />
         {isLoading ? null : data.map(topic =>
           <option key={topic} label={topic.charAt(0).toUpperCase() + topic.slice(1)} value={topic} />
         )}

@@ -9,8 +9,8 @@ const LanguagesSelect = (props) => {
       <label className="label">
         <span>Languages</span>
       </label>
-      <select className="select select-bordered w-full max-w-xs" onChange={props.onSelect}>
-        <option disabled selected key={"none"} label={"None"} value={"none"} />
+      <select className="select select-bordered w-full max-w-xs" value={"none"} onChange={props.onSelect}>
+        <option disabled key={"none"} label={"None"} value={"none"} />
         {isLoading ? null : data.sort().map(language =>
           <option key={language} label={language} value={language} />
         )}
