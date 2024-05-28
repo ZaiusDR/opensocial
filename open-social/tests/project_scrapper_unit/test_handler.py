@@ -12,8 +12,9 @@ class TestLambda(unittest.TestCase):
 
     @mock.patch('project_scrapper.app.github_gateway.get_project_list')
     @mock.patch('project_scrapper.app.repository.save_projects')
+    @mock.patch('project_scrapper.app.repository.save_languages')
     @mock.patch('project_scrapper.app.repository.save_topic')
-    def test_should_return_a_list_of_saved_projects_using_gql(self, topic_mock, service_mock, gateway_mock):
+    def test_should_return_a_list_of_saved_projects_using_gql(self, topic_mock, languages_mock, service_mock, gateway_mock):
         gateway_mock.return_value = {}
         event = {'topic': 'humanitarian'}
         expected_projects = fixtures.github_projects
@@ -26,6 +27,7 @@ class TestLambda(unittest.TestCase):
 
         gateway_mock.assert_called_once_with(event)
         service_mock.assert_called_once_with({})
+        languages_mock.assert_called_once_with({})
         topic_mock.assert_called_once_with(event['topic'])
 
         self.assertEqual(projects, expected_response)

@@ -1,5 +1,4 @@
 import useSWR from "swr"
-import Loader from "@/components/UI/Loader"
 
 const TopicsSelect = (props) => {
   const fetcher = (...args) => fetch(...args).then((res) => res.json())
@@ -10,8 +9,9 @@ const TopicsSelect = (props) => {
       <label className="label">
         <span>Topics</span>
       </label>
-      <select className="select select-bordered w-full max-w-xs" onChange={props.onSelect} >
-        {isLoading ? <Loader /> : data.map(topic =>
+      <select className="select select-bordered w-full max-w-xs" value={"none"} onChange={props.onSelect} >
+        <option disabled key={"none"} label={"None"} value={"none"} />
+        {isLoading ? null : data.map(topic =>
           <option key={topic} label={topic.charAt(0).toUpperCase() + topic.slice(1)} value={topic} />
         )}
       </select>

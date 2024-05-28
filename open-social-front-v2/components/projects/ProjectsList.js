@@ -3,6 +3,7 @@ import useSWRInfinite from 'swr/infinite'
 import ProjectItem from "@/components/projects/ProjectItem"
 import Loader from "@/components/UI/Loader"
 import LoadMoreButton from "@/components/projects/LoadMoreButton"
+import { useEffect } from "react"
 
 
 const fetcher = (...args) => fetch(...args).then((res) => res.json())
@@ -10,11 +11,23 @@ const fetcher = (...args) => fetch(...args).then((res) => res.json())
 
 const ProjectsList = (props) => {
 
+  useEffect(() => {
+    setSize(1)
+  }, [props.sortedBy, props.topics, props.languages])
+
   const getKey = (pageIndex, previousPageData) => {
     let apiUrl = "https://api.open-social.net/projects?"
 
     if (props.sortedBy) {
       apiUrl = apiUrl + `sorted_by=${props.sortedBy}&`
+    }
+
+    if (props.topics) {
+      apiUrl = apiUrl + `topics=${props.topics}&`
+    }
+
+    if (props.languages) {
+      apiUrl = apiUrl + `languages=${props.languages}&`
     }
 
     if (previousPageData) {
