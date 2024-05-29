@@ -4,7 +4,7 @@ const SortedSelect = (props) => {
       <label className="label">
         <span>Sorted By</span>
       </label>
-      <select className="select select-bordered w-full max-w-xs" onChange={props.onSelect} >
+      <select id="sortedBy" className="select select-bordered w-full max-w-xs" onChange={props.onSelect} >
         {props.sortedByOptions.map(option =>
           <option key={option.value} label={option.label} value={option.value} />
         )}
