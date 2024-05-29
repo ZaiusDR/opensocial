@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 import Hero from "@/components/home/Hero"
 import MainLayout from "@/components/layout/MainLayout"
@@ -17,6 +18,7 @@ export default function Home() {
       <HeadSection/>
       {!showProjects && <Hero onClick={handleShowProjectsClicked}/>}
       {showProjects && <MainLayout />}
+      <SpeedInsights/>
     </>
   )
 }
