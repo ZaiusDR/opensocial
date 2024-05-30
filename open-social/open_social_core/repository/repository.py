@@ -89,7 +89,7 @@ def save_languages(projects):
 def get_languages():
     languages_collection = _get_collection('languages')
 
-    languages = languages_collection.find_one({'name': 'languages'})
+    languages = languages_collection.find_one({'_id': 'languages'})
 
     return languages['languages']
 
