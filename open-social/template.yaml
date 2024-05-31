@@ -109,6 +109,13 @@ Resources:
             Method: get
             RestApiId:
               Ref: OpenSocialAPI
+        SearchProjects:
+          Type: Api
+          Properties:
+            Path: /search
+            Method: get
+            RestApiId:
+              Ref: OpenSocialAPI
 
   OpenSocialAPI:
     Type: AWS::Serverless::Api

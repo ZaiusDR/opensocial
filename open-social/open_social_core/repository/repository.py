@@ -57,6 +57,36 @@ def get_projects(page, sorted_by, topics, languages):
     return response
 
 
+def search_projects(search_text):
+    projects_collection = _get_collection('projects')
+
+    # projects = list(projects_collection.find(
+    #     {'$text': {'$search': search_text}}
+    # ))
+
+    projects = projects_collection.aggregate([
+        {
+            '$search': {
+                'index': 'search',
+                'text': {
+                    'path': 'description',
+                    'query': search_text
+                }
+            }
+        },
+        {
+            '$limit': 5
+        },
+        {
+            '$project': {
+                'description': 1
+            }
+        }
+    ])
+
+    return list(projects)
+
+
 def save_topic(topic):
     topics_collection = _get_collection('topics')
 
