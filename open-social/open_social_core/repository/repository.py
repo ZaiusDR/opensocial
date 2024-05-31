@@ -1,6 +1,5 @@
 import json
 import os
-import time
 
 import boto3
 import pymongo
@@ -70,12 +69,9 @@ def save_topic(topic):
 def get_topics():
     topics_collection = _get_collection('topics')
 
-    start_time = time.time()
-    topics = topics_collection.find_one({'name': 'topics'})['topics']
-    end_time = time.time()
+    topics = topics_collection.find_one({'name': 'topics'})
 
-    print('Query Execution time: ', end_time - start_time)
-    return topics
+    return topics['topics']
 
 
 def save_languages(projects):
