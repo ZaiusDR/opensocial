@@ -74,7 +74,7 @@ def get_topics():
     topics = topics_collection.find_one({'name': 'topics'})
     end_time = time.time()
 
-    print('Execution time: ', end_time - start_time)
+    print('Query Execution time: ', end_time - start_time)
     return topics['topics']
 
 

@@ -3,19 +3,24 @@ import decimal
 import gzip
 import io
 import json
+import time
 
 from repository import repository
 
 
 def _gzip_b64encode(data):
+    start_time = time.time()
     compressed = io.BytesIO()
     with gzip.GzipFile(fileobj=compressed, mode='w') as f:
         json_response = json.dumps(data, default=decimal_default)
         f.write(json_response.encode('utf-8'))
+    end_time = time.time()
+    print('Execution time compressing: ', end_time - start_time)
     return base64.b64encode(compressed.getvalue()).decode('ascii')
 
 
 def entrypoint(event, context):
+    start_time = time.time()
     print(event)
     response = {}
     if event['path'] == '/projects':
@@ -34,6 +39,8 @@ def entrypoint(event, context):
     elif event['path'] == '/languages':
         response = repository.get_languages()
 
+    end_time = time.time()
+    print('Execution time full process: ', end_time - start_time)
     return {
         'statusCode': 200,
         'isBase64Encoded': True,
