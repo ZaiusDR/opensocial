@@ -20,7 +20,6 @@ def _gzip_b64encode(data):
 
 
 def entrypoint(event, context):
-    start_time = time.time()
     print(event)
     response = {}
     if event['path'] == '/projects':
@@ -35,9 +34,10 @@ def entrypoint(event, context):
 
         response = repository.get_projects(page, sorted_by, topics, languages)
     elif event['path'] == '/topics':
-        end_time = time.time()
-        print('Execution time before query: ', end_time - start_time)
+        start_time = time.time()
         response = repository.get_topics()
+        end_time = time.time()
+        print('Execution time outside repository query: ', end_time - start_time)
     elif event['path'] == '/languages':
         response = repository.get_languages()
 
