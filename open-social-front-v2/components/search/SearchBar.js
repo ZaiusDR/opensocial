@@ -15,7 +15,7 @@ const SearchBar = () => {
   }
 
   const handleOnBlur = () => {
-    setOnFocus("w-42")
+    if (query.length === 0) setOnFocus("w-42")
   }
 
   const handleSearch = (event) => {
