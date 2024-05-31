@@ -32,11 +32,11 @@ def entrypoint(event, context):
             topics = [topic.replace("'", '') for topic in topics]
         if languages:
             languages = [language.replace("'", '') for language in languages]
-        end_time = time.time()
-        print('Execution time before query: ', end_time - start_time)
 
         response = repository.get_projects(page, sorted_by, topics, languages)
     elif event['path'] == '/topics':
+        end_time = time.time()
+        print('Execution time before query: ', end_time - start_time)
         response = repository.get_topics()
     elif event['path'] == '/languages':
         response = repository.get_languages()
