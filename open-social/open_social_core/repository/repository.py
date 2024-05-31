@@ -71,11 +71,11 @@ def get_topics():
     topics_collection = _get_collection('topics')
 
     start_time = time.time()
-    topics = topics_collection.find_one({'name': 'topics'})
+    topics = topics_collection.find_one({'name': 'topics'})['topics']
     end_time = time.time()
 
     print('Query Execution time: ', end_time - start_time)
-    return topics['topics']
+    return topics
 
 
 def save_languages(projects):
