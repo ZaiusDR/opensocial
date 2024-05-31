@@ -60,10 +60,6 @@ def get_projects(page, sorted_by, topics, languages):
 def search_projects(search_text):
     projects_collection = _get_collection('projects')
 
-    # projects = projects_collection.find(
-    #     {'$text': {'$search': search_text}}
-    # )
-
     projects = projects_collection.aggregate([
         {
             '$search': {
