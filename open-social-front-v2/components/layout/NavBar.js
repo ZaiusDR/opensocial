@@ -1,6 +1,5 @@
 import Logo from "@/components/layout/Logo"
 import SearchBar from "@/components/search/SearchBar"
-import ResultsList from "@/components/search/ResultsList"
 
 const NavBar = () => {
   return (
