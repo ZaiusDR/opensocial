@@ -81,6 +81,7 @@ Resources:
       CodeUri: open_social_crud/
       Handler: app.entrypoint
       Runtime: python3.9
+      MemorySize: 512
       Policies:
         - AWSSecretsManagerGetSecretValuePolicy:
             SecretArn: "arn:aws:secretsmanager:eu-west-1:326499071401:secret:mongodb-uri-qYViNv"
@@ -105,6 +106,13 @@ Resources:
           Type: Api
           Properties:
             Path: /languages
+            Method: get
+            RestApiId:
+              Ref: OpenSocialAPI
+        SearchProjects:
+          Type: Api
+          Properties:
+            Path: /search
             Method: get
             RestApiId:
               Ref: OpenSocialAPI

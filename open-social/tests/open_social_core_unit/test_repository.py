@@ -10,8 +10,7 @@ from open_social_core.repository import repository
 from tests import fixtures
 
 
-@moto.mock_sts
-@moto.mock_secretsmanager
+@moto.mock_aws
 class TestRepository(unittest.TestCase):
 
     def setUp(self):
@@ -152,6 +151,19 @@ class TestRepository(unittest.TestCase):
         self.assertEqual(page1['projects'][1]['language'], 'fake_language_1')
         self.assertEqual(page1['projects'][1]['topic'], 'topic_1')
         self.assertEqual(len(page1['projects']), 2)
+
+    # TODO: Enable when $text is added to pymongo
+    # https://github.com/mongomock/mongomock/issues/839
+    #
+    # @mongomock.patch(servers=(('localhost', 27017),))
+    # def test_should_search_projects_by_text(self):
+    #     text = 'description'
+    #     repository.save_projects(fixtures.generate_github_projects_pagination())
+    #
+    #     page1 = repository.search_projects(text)
+    #
+    #     self.assertEqual(page1['projects'], 'topic_1')
+    #     self.assertEqual(len(page1['projects']), 12)
 
     @mongomock.patch(servers=(('localhost', 27017),))
     def test_should_save_a_new_topic(self):

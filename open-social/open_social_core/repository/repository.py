@@ -57,6 +57,32 @@ def get_projects(page, sorted_by, topics, languages):
     return response
 
 
+def search_projects(search_text):
+    projects_collection = _get_collection('projects')
+
+    projects = projects_collection.aggregate([
+        {
+            '$search': {
+                'index': 'search',
+                'text': {
+                    'path': 'description',
+                    'query': search_text
+                }
+            }
+        },
+        {
+            '$limit': 5
+        },
+        {
+            '$project': {
+                'description': 1
+            }
+        }
+    ])
+
+    return list(projects)
+
+
 def save_topic(topic):
     topics_collection = _get_collection('topics')
 
@@ -89,7 +115,7 @@ def save_languages(projects):
 def get_languages():
     languages_collection = _get_collection('languages')
 
-    languages = languages_collection.find_one({'name': 'languages'})
+    languages = languages_collection.find_one({'_id': 'languages'})
 
     return languages['languages']
 

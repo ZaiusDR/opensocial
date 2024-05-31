@@ -29,6 +29,9 @@ def entrypoint(event, context):
             languages = [language.replace("'", '') for language in languages]
 
         response = repository.get_projects(page, sorted_by, topics, languages)
+    if event['path'] == '/search':
+        query = _get_query_parameter(event, 'queryStringParameters', 'query', None)
+        response = repository.search_projects(query)
     elif event['path'] == '/topics':
         response = repository.get_topics()
     elif event['path'] == '/languages':
