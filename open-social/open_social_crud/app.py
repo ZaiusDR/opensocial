@@ -32,6 +32,8 @@ def entrypoint(event, context):
             topics = [topic.replace("'", '') for topic in topics]
         if languages:
             languages = [language.replace("'", '') for language in languages]
+        end_time = time.time()
+        print('Execution time before query: ', end_time - start_time)
 
         response = repository.get_projects(page, sorted_by, topics, languages)
     elif event['path'] == '/topics':
@@ -39,8 +41,6 @@ def entrypoint(event, context):
     elif event['path'] == '/languages':
         response = repository.get_languages()
 
-    end_time = time.time()
-    print('Execution time full process: ', end_time - start_time)
     return {
         'statusCode': 200,
         'isBase64Encoded': True,
