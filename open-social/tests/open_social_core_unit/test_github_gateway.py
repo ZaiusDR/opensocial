@@ -11,7 +11,7 @@ from open_social_core.infrastructure import github_gateway
 from tests import constants
 
 
-@moto.mock_ssm
+@moto.mock_aws
 class TestGithubAPI(unittest.TestCase):
 
     @mock.patch('infrastructure.github_gateway.github_project_parser.parse_project_activity')

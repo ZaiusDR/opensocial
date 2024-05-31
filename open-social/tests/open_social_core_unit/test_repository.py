@@ -10,8 +10,7 @@ from open_social_core.repository import repository
 from tests import fixtures
 
 
-@moto.mock_sts
-@moto.mock_secretsmanager
+@moto.mock_aws
 class TestRepository(unittest.TestCase):
 
     def setUp(self):
