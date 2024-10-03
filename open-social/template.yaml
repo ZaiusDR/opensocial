@@ -81,7 +81,7 @@ Resources:
       CodeUri: open_social_crud/
       Handler: app.entrypoint
       Runtime: python3.12
-      MemorySize: 512
+      MemorySize: 1024
       Policies:
         - AWSSecretsManagerGetSecretValuePolicy:
             SecretArn: "arn:aws:secretsmanager:eu-west-1:326499071401:secret:mongodb-uri-qYViNv"
