@@ -15,16 +15,16 @@ Resources:
     Properties:
       ContentUri: open_social_core
       CompatibleRuntimes:
-        - python3.9
+        - python3.12
     Metadata:
-      BuildMethod: python3.9
+      BuildMethod: python3.12
 
   ProjectScrapperFunction:
     Type: AWS::Serverless::Function
     Properties:
       CodeUri: project_scrapper/
       Handler: app.lambda_handler
-      Runtime: python3.9
+      Runtime: python3.12
       Timeout: 300
       Policies:
         - SSMParameterReadPolicy:
@@ -80,7 +80,7 @@ Resources:
     Properties:
       CodeUri: open_social_crud/
       Handler: app.entrypoint
-      Runtime: python3.9
+      Runtime: python3.12
       MemorySize: 512
       Policies:
         - AWSSecretsManagerGetSecretValuePolicy:
