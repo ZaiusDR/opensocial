@@ -11,7 +11,7 @@
     "test-ci": "jest"
   },
   "dependencies": {
-    "@vercel/speed-insights": "^1.0.12",
+    "@vercel/speed-insights": "^1.0.14",
     "daisyui": "^4.12.13",
     "eslint": "8.57.0",
     "eslint-config-next": "14.2.15",
