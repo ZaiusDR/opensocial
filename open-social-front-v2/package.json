@@ -14,7 +14,7 @@
     "@vercel/speed-insights": "^1.0.14",
     "daisyui": "^4.12.13",
     "eslint": "8.57.0",
-    "eslint-config-next": "14.2.15",
+    "eslint-config-next": "15.0.2",
     "next": "14.2.15",
     "react": "18.3.1",
     "react-dom": "18.3.1",
