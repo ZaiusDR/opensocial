@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@vercel/speed-insights": "^1.0.14",
-    "daisyui": "^4.12.13",
+    "daisyui": "^4.12.14",
     "eslint": "9.13.0",
     "eslint-config-next": "15.0.2",
     "next": "15.0.2",
