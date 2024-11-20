@@ -2,3 +2,4 @@ boto3==1.35.65
 gql[requests]==3.5.0
 pymongo[aws]==4.10.1
 requests==2.32.3
+ddtrace==2.16.3

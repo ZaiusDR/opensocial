@@ -1,5 +1,7 @@
 import json
 
+import ddtrace.auto
+
 from infrastructure import github_gateway
 from repository import repository
 

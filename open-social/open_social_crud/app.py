@@ -4,6 +4,8 @@ import gzip
 import io
 import json
 
+import ddtrace.auto
+
 from repository import repository
 
 
