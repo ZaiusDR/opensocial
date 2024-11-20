@@ -4,9 +4,13 @@ import gzip
 import io
 import json
 
-import ddtrace.auto
+from ddtrace import patch_all
+from datadog_lambda.wrapper import datadog_lambda_wrapper
 
 from repository import repository
+
+
+patch_all()
 
 
 def _gzip_b64encode(data):
@@ -17,6 +21,7 @@ def _gzip_b64encode(data):
     return base64.b64encode(compressed.getvalue()).decode('ascii')
 
 
+@datadog_lambda_wrapper
 def entrypoint(event, context):
     print(event)
     response = {}

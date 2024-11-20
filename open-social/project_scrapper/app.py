@@ -1,11 +1,15 @@
 import json
 
-import ddtrace.auto
+from ddtrace import patch_all
+from datadog_lambda.wrapper import datadog_lambda_wrapper
 
 from infrastructure import github_gateway
 from repository import repository
 
 
+patch_all()
+
+@datadog_lambda_wrapper
 def lambda_handler(event, context):
     github_projects = github_gateway.get_project_list(event)
     repository.save_languages(github_projects)
