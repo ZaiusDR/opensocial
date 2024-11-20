@@ -1,6 +1,4 @@
 boto3==1.35.65
-datadog_lambda==6.102.0
-ddtrace==2.16.3
 gql[requests]==3.5.0
 pymongo[aws]==4.10.1
 requests==2.32.3
