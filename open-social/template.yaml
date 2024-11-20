@@ -1,13 +1,5 @@
 AWSTemplateFormatVersion: '2010-09-09'
-Transform:
-  - AWS::Serverless-2016-10-31
-  - Name: DatadogServerless
-    Parameters:
-      stackName: !Ref "AWS::StackName"
-      pythonLayerVersion: 102
-      extensionLayerVersion: 66
-      site: "datadoghq.eu"
-      apiKeySecretArn: "arn:aws:secretsmanager:eu-west-1:326499071401:secret:datadog-api-key-qSGT8w"
+Transform: AWS::Serverless-2016-10-31
 
 Description: >
   open-social
@@ -35,11 +27,6 @@ Resources:
       Handler: app.lambda_handler
       Runtime: python3.12
       Timeout: 300
-      Environment:
-        Variables:
-          DD_SERVICE: "open-social-scrapper"
-          DD_ENV: "live"
-          DD_VERSION: "1.0.0"
       Policies:
         - SSMParameterReadPolicy:
             ParameterName: "github/open-social-token"
@@ -96,11 +83,6 @@ Resources:
       Handler: app.entrypoint
       Runtime: python3.12
       MemorySize: 1024
-      Environment:
-        Variables:
-          DD_SERVICE: "open-social-crud"
-          DD_ENV: "live"
-          DD_VERSION: "1.0.0"
       Policies:
         - AWSSecretsManagerGetSecretValuePolicy:
             SecretArn: "arn:aws:secretsmanager:eu-west-1:326499071401:secret:mongodb-uri-qYViNv"
