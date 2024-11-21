@@ -45,12 +45,15 @@ def get_projects(page, sorted_by, topics, languages):
     elif languages:
         query_filter.update({'language': {'$in': languages}})
 
+    repo_get_start = time.time()
     projects = list(projects_collection.find(
         filter=query_filter,
         skip=int(page if page else 0) * results_limit,
         limit=results_limit,
         sort=sorted_by
     ))
+    repo_get_end = time.time()
+    print('Repo get:', repo_get_end - repo_get_start)
 
     response = {
         'projects': projects
