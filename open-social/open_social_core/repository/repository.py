@@ -25,8 +25,10 @@ def save_projects(projects):
 
 def get_projects(page, sorted_by, topics, languages):
     repo_total_start = time.time()
+    get_collection_start = time.time()
     projects_collection = _get_collection('projects')
-
+    get_collection_end = time.time()
+    print('Get collection', get_collection_end - get_collection_start)
     results_limit = 12
     query_filter = {}
 
