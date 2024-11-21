@@ -1,5 +1,6 @@
 import json
 import os
+import time
 
 import boto3
 import pymongo
@@ -23,6 +24,7 @@ def save_projects(projects):
 
 
 def get_projects(page, sorted_by, topics, languages):
+    repo_total_start = time.time()
     projects_collection = _get_collection('projects')
 
     results_limit = 12
@@ -53,7 +55,8 @@ def get_projects(page, sorted_by, topics, languages):
     response = {
         'projects': projects
     }
-
+    repo_total_end = time.time()
+    print('Inside Repo:', repo_total_end - repo_total_start)
     return response
 
 
