@@ -55,9 +55,12 @@ def get_projects(page, sorted_by, topics, languages):
     repo_get_end = time.time()
     print('Repo get:', repo_get_end - repo_get_start)
 
+    repo_response_start = time.time()
     response = {
         'projects': projects
     }
+    repo_response_end = time.time()
+    print('Repo response:', repo_response_end - repo_response_start)
     repo_total_end = time.time()
     print('Inside Repo:', repo_total_end - repo_total_start)
     return response
