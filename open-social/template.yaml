@@ -1,13 +1,5 @@
 AWSTemplateFormatVersion: '2010-09-09'
-Transform:
-  - AWS::Serverless-2016-10-31
-  - Name: DatadogServerless
-    Parameters:
-      stackName: !Ref "AWS::StackName"
-      pythonLayerVersion: 102
-      extensionLayerVersion: 66
-      site: "datadoghq.eu"
-      apiKeySecretArn: "arn:aws:secretsmanager:eu-west-1:326499071401:secret:datadog-api-key-qSGT8w"
+Transform: AWS::Serverless-2016-10-31
 
 Description: >
   open-social
