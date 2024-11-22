@@ -130,6 +130,7 @@ def _convert_projects_to_dict(projects):
 
 
 def _get_collection(collection_name, client=None):
+    get_secret_start = time.time()
     sts_client = boto3.client('sts')
 
     response = sts_client.assume_role(
@@ -143,6 +144,8 @@ def _get_collection(collection_name, client=None):
     secrets_manager_client = boto3.client('secretsmanager')
     secret_data = secrets_manager_client.get_secret_value(SecretId='mongodb-uri')
     uri = json.loads(secret_data['SecretString'])['mongo_db_uri']
+    get_secret_end = time.time()
+    print('Get Secret:', get_secret_end - get_secret_start)
 
     print(client)
     get_connection_start = time.time()
@@ -155,6 +158,13 @@ def _get_collection(collection_name, client=None):
     get_connection_end = time.time()
     print('Get Connection:', get_connection_end - get_connection_start)
 
+    get_db_start = time.time()
     db = client.get_database('open-social')
+    get_db_end = time.time()
+    print('Get DB:', get_db_end - get_db_start)
+
+    get_collection_start = time.time()
     collection = db.get_collection(collection_name)
+    get_collection_end = time.time()
+    print('Get Collection:', get_collection_end - get_collection_start)
     return collection
