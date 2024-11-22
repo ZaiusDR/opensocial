@@ -88,6 +88,8 @@ Resources:
             SecretArn: "arn:aws:secretsmanager:eu-west-1:326499071401:secret:mongodb-uri-qYViNv"
       Layers:
         - Ref: OpenSocialCoreLayer
+        - >-
+          arn:aws:lambda:eu-west-1:015030872274:layer:AWS-Parameters-and-Secrets-Lambda-Extension:12
       Events:
         ListProjects:
           Type: Api
