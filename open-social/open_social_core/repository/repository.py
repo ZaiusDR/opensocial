@@ -6,8 +6,6 @@ import boto3
 import pymongo
 
 
-mongo_client = None
-
 def save_projects(projects):
     projects_collection = _get_collection('projects')
 
@@ -26,8 +24,7 @@ def save_projects(projects):
 
 
 def get_projects(page, sorted_by, topics, languages):
-    global mongo_client
-    projects_collection = _get_collection('projects', mongo_client)
+    projects_collection = _get_collection('projects')
     results_limit = 12
     query_filter = {}
 
@@ -61,8 +58,7 @@ def get_projects(page, sorted_by, topics, languages):
 
 
 def search_projects(search_text):
-    global mongo_client
-    projects_collection = _get_collection('projects', mongo_client)
+    projects_collection = _get_collection('projects')
 
     projects = projects_collection.aggregate([
         {
@@ -88,8 +84,7 @@ def search_projects(search_text):
 
 
 def save_topic(topic):
-    global mongo_client
-    topics_collection = _get_collection('topics', mongo_client)
+    topics_collection = _get_collection('topics')
 
     topics_collection.update_one(
         {'name': 'topics'},
@@ -129,7 +124,7 @@ def _convert_projects_to_dict(projects):
     return [project._asdict() for project in projects]
 
 
-def _get_collection(collection_name, client=None):
+def _get_collection(collection_name):
     get_sts_start = time.time()
     sts_client = boto3.client('sts')
 
@@ -150,19 +145,18 @@ def _get_collection(collection_name, client=None):
     get_secret_end = time.time()
     print('Get Secret:', get_secret_end - get_secret_start)
 
-    print(client)
     get_connection_start = time.time()
-    if not client:
-        client = pymongo.MongoClient(
-            uri,
-            maxPoolSize=10,
-            minPoolSize=1
-        )
+
+    mongo_client = pymongo.MongoClient(
+        uri,
+        maxPoolSize=10,
+        minPoolSize=1
+    )
     get_connection_end = time.time()
     print('Get Connection:', get_connection_end - get_connection_start)
 
     get_db_start = time.time()
-    db = client.get_database('open-social')
+    db = mongo_client.get_database('open-social')
     get_db_end = time.time()
     print('Get DB:', get_db_end - get_db_start)
 
