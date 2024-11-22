@@ -1,5 +1,6 @@
 import json
 import os
+import time
 
 import boto3
 import pymongo
@@ -143,12 +144,16 @@ def _get_collection(collection_name, client=None):
     secret_data = secrets_manager_client.get_secret_value(SecretId='mongodb-uri')
     uri = json.loads(secret_data['SecretString'])['mongo_db_uri']
 
+    print(client)
+    get_connection_start = time.time()
     if not client:
         client = pymongo.MongoClient(
             uri,
             maxPoolSize=10,
             minPoolSize=1
         )
+    get_connection_end = time.time()
+    print('Get Connection:', get_connection_end - get_connection_start)
 
     db = client.get_database('open-social')
     collection = db.get_collection(collection_name)
