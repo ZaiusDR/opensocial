@@ -5,6 +5,8 @@ import boto3
 import pymongo
 
 
+mongo_client = None
+
 def save_projects(projects):
     projects_collection = _get_collection('projects')
 
@@ -23,7 +25,8 @@ def save_projects(projects):
 
 
 def get_projects(page, sorted_by, topics, languages):
-    projects_collection = _get_collection('projects')
+    global mongo_client
+    projects_collection = _get_collection('projects', mongo_client)
     results_limit = 12
     query_filter = {}
 
@@ -57,7 +60,8 @@ def get_projects(page, sorted_by, topics, languages):
 
 
 def search_projects(search_text):
-    projects_collection = _get_collection('projects')
+    global mongo_client
+    projects_collection = _get_collection('projects', mongo_client)
 
     projects = projects_collection.aggregate([
         {
@@ -83,7 +87,8 @@ def search_projects(search_text):
 
 
 def save_topic(topic):
-    topics_collection = _get_collection('topics')
+    global mongo_client
+    topics_collection = _get_collection('topics', mongo_client)
 
     topics_collection.update_one(
         {'name': 'topics'},
@@ -123,7 +128,7 @@ def _convert_projects_to_dict(projects):
     return [project._asdict() for project in projects]
 
 
-def _get_collection(collection_name):
+def _get_collection(collection_name, client=None):
     sts_client = boto3.client('sts')
 
     response = sts_client.assume_role(
@@ -138,11 +143,13 @@ def _get_collection(collection_name):
     secret_data = secrets_manager_client.get_secret_value(SecretId='mongodb-uri')
     uri = json.loads(secret_data['SecretString'])['mongo_db_uri']
 
-    mongo_client = pymongo.MongoClient(
-        uri,
-        maxPoolSize=10,
-        minPoolSize=1
-    )
-    db = mongo_client.get_database('open-social')
+    if not client:
+        client = pymongo.MongoClient(
+            uri,
+            maxPoolSize=10,
+            minPoolSize=1
+        )
+
+    db = client.get_database('open-social')
     collection = db.get_collection(collection_name)
     return collection
