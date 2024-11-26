@@ -138,8 +138,34 @@ Resources:
         CertificateArn: "arn:aws:acm:eu-west-1:326499071401:certificate/1a61d95d-8740-4334-b641-8c0b7c429c46"
         Route53:
           HostedZoneId: Z056117665GXDL3UXFF7
+      PropagateTags: true
+      AccessLogSetting:
+        DestinationArn: !GetAtt ApiGatewayLogGroup.Arn
+        Format: >- 
+          { 
+            "requestId":"$context.requestId",
+            "extendedRequestId":"$context.extendedRequestId",
+            "ip": "$context.identity.sourceIp",
+            "caller":"$context.identity.caller",
+            "user":"$context.identity.user",
+            "requestTime":"$context.requestTime",
+            "httpMethod":"$context.httpMethod",
+            "resourcePath":"$context.resourcePath",
+            "status":"$context.status",
+            "protocol":"$context.protocol",
+            "responseLength":"$context.responseLength" 
+          }
       Tags:
         ApplicationName: OpenSocial
+
+  ApiGatewayLogGroup:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: !Join
+        - '-'
+        - - !Ref OpenSocialAPI
+          - access-logs
+      RetentionInDays: 14
 
 
 Outputs:
