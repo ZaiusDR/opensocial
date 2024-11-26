@@ -9,6 +9,8 @@ Description: >
 Globals:
   Function:
     Timeout: 5
+    Tags:
+      ApplicationName: OpenSocial
 
 Resources:
   OpenSocialCoreLayer:
@@ -136,6 +138,8 @@ Resources:
         CertificateArn: "arn:aws:acm:eu-west-1:326499071401:certificate/1a61d95d-8740-4334-b641-8c0b7c429c46"
         Route53:
           HostedZoneId: Z056117665GXDL3UXFF7
+      Tags:
+        ApplicationName: OpenSocial
 
 
 Outputs:
