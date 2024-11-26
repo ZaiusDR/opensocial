@@ -141,8 +141,8 @@ Resources:
       PropagateTags: true
       AccessLogSetting:
         DestinationArn: !GetAtt ApiGatewayLogGroup.Arn
-        Format: >- 
-          { 
+        Format: >
+          {
             "requestId":"$context.requestId",
             "extendedRequestId":"$context.extendedRequestId",
             "ip": "$context.identity.sourceIp",
