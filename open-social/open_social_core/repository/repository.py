@@ -139,10 +139,10 @@ def _get_collection(collection_name):
 
     # TODO: I'll fix this crap, I promise!
     connection_string = connection_string.replace(
-        '__key_id__', quote(sts_credentials['AccessKeyId'])
+        '__key_id__', quote(sts_credentials['AccessKeyId'], safe='')
     )
     connection_string = connection_string.replace(
-        '__secret_key__', quote(sts_credentials['SecretAccessKey'])
+        '__secret_key__', quote(sts_credentials['SecretAccessKey'], safe='')
     )
     connection_string = connection_string.replace(
         '__session_token__', quote(sts_credentials['SessionToken'], safe='')
