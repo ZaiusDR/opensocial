@@ -3,6 +3,8 @@ import time
 
 import pymongo
 
+from requests.utils import quote
+
 from repository import creds_manager
 
 
@@ -130,12 +132,17 @@ def _get_collection(collection_name):
     sts_credentials = creds_manager.get_sts_credentials()
     os.environ['AWS_ACCESS_KEY_ID'] = sts_credentials['AccessKeyId']
     os.environ['AWS_SECRET_ACCESS_KEY'] = sts_credentials['SecretAccessKey']
-    os.environ['AWS_SESSION_TOKEN'] = sts_credentials['SessionToken']
+
+
     get_sts_end = time.time()
     print('STS:', get_sts_end - get_sts_start)
 
     get_secret_start = time.time()
     connection_string = creds_manager.get_connection_string()
+
+    # TODO: I'll fix this crap, I promise!
+    connection_string.replace('__session_token__', quote(sts_credentials['SessionToken'], safe=''))
+
     get_secret_end = time.time()
     print('Get Secret:', get_secret_end - get_secret_start)
 
