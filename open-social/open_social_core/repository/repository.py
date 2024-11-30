@@ -1,9 +1,9 @@
-import json
 import os
 import time
 
-import boto3
 import pymongo
+
+from repository import creds_manager
 
 
 def save_projects(projects):
@@ -126,29 +126,23 @@ def _convert_projects_to_dict(projects):
 
 def _get_collection(collection_name):
     get_sts_start = time.time()
-    sts_client = boto3.client('sts')
 
-    response = sts_client.assume_role(
-        RoleArn='arn:aws:iam::326499071401:role/mongo-db-rw',
-        RoleSessionName='AssumeRole'
-    )
-    os.environ['AWS_ACCESS_KEY_ID'] = response['Credentials']['AccessKeyId']
-    os.environ['AWS_SECRET_ACCESS_KEY'] = response['Credentials']['SecretAccessKey']
-    os.environ['AWS_SESSION_TOKEN'] = response['Credentials']['SessionToken']
+    sts_credentials = creds_manager.get_sts_credentials()
+    os.environ['AWS_ACCESS_KEY_ID'] = sts_credentials['AccessKeyId']
+    os.environ['AWS_SECRET_ACCESS_KEY'] = sts_credentials['SecretAccessKey']
+    os.environ['AWS_SESSION_TOKEN'] = sts_credentials['SessionToken']
     get_sts_end = time.time()
     print('STS:', get_sts_end - get_sts_start)
 
     get_secret_start = time.time()
-    secrets_manager_client = boto3.client('secretsmanager')
-    secret_data = secrets_manager_client.get_secret_value(SecretId='mongodb-uri')
-    uri = json.loads(secret_data['SecretString'])['mongo_db_uri']
+    connection_string = creds_manager.get_connection_string()
     get_secret_end = time.time()
     print('Get Secret:', get_secret_end - get_secret_start)
 
     get_connection_start = time.time()
 
     mongo_client = pymongo.MongoClient(
-        uri,
+        connection_string,
         maxPoolSize=10,
         minPoolSize=1
     )

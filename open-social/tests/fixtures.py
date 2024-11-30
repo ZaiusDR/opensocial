@@ -1,3 +1,5 @@
+import datetime
+
 from open_social_core.domain import github_project
 
 
@@ -167,4 +169,11 @@ languages = {
     '_id': 'languages',
     'name': 'languages',
     'languages': ['fake_language_1']
+}
+
+fake_credentials = {
+    'AccessKeyId': 'fake_access_key',
+    'SecretAccessKey': 'fake_secret_access_key',
+    'SessionToken': 'fake_session_token',
+    'Expiration': datetime.datetime(2024, 11, 20, 12, 00).timestamp()
 }

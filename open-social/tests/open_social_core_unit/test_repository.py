@@ -1,8 +1,7 @@
 import unittest
+from unittest.mock import patch
 
-import boto3
 import mongomock
-import moto
 import pymongo
 
 from open_social_core.repository import repository
@@ -10,18 +9,12 @@ from open_social_core.repository import repository
 from tests import fixtures
 
 
-@moto.mock_aws
+@patch('repository.creds_manager.get_connection_string', return_value='mongodb://localhost:27017')
+@patch('repository.creds_manager.get_sts_credentials', return_value=fixtures.fake_credentials)
 class TestRepository(unittest.TestCase):
 
-    def setUp(self):
-        secret_client = boto3.client('secretsmanager')
-        secret_client.create_secret(Name='mongodb-uri', SecretString='{"mongo_db_uri": "mongodb://localhost:27017"}')
-
-    def tearDown(self):
-        boto3.client('secretsmanager').delete_secret(SecretId='mongodb-uri')
-
     @mongomock.patch(servers=(('localhost', 27017),))
-    def test_should_store_projects(self):
+    def test_should_store_projects(self, db_string, db_creds):
         client = pymongo.MongoClient('localhost', 27017)
         db = client.get_database('open-social')
 
@@ -32,7 +25,7 @@ class TestRepository(unittest.TestCase):
         self.assertEqual(project1['description'], fixtures.github_projects[0].description)
 
     @mongomock.patch(servers=(('localhost', 27017),))
-    def test_should_update_projects_when_already_exist(self):
+    def test_should_update_projects_when_already_exist(self, db_string, db_creds):
         client = pymongo.MongoClient('localhost', 27017)
         db = client.get_database('open-social')
         repository.save_projects(fixtures.github_projects)
@@ -44,7 +37,7 @@ class TestRepository(unittest.TestCase):
         self.assertEqual(project1['description'], fixtures.updated_github_projects[0].description)
 
     @mongomock.patch(servers=(('localhost', 27017),))
-    def test_should_get_projects_without_pagination(self):
+    def test_should_get_projects_without_pagination(self, db_string, db_creds):
         repository.save_projects(fixtures.github_projects)
 
         page_1 = repository.get_projects(None, None, None, None)
@@ -52,7 +45,7 @@ class TestRepository(unittest.TestCase):
         self.assertEqual(len(page_1['projects']), 2)
 
     @mongomock.patch(servers=(('localhost', 27017),))
-    def test_should_get_projects_with_pagination(self):
+    def test_should_get_projects_with_pagination(self, db_string, db_creds):
         repository.save_projects(fixtures.generate_github_projects_pagination())
 
         page_1 = repository.get_projects(0, None, None, None)
@@ -62,7 +55,7 @@ class TestRepository(unittest.TestCase):
         self.assertEqual(len(page_2['projects']), 2)
 
     @mongomock.patch(servers=(('localhost', 27017),))
-    def test_should_get_projects_sorted_by_total_commits_desc(self):
+    def test_should_get_projects_sorted_by_total_commits_desc(self, db_string, db_creds):
         sorted_by = 'total_commits'
         repository.save_projects(fixtures.generate_github_projects_pagination())
 
@@ -75,7 +68,7 @@ class TestRepository(unittest.TestCase):
         self.assertEqual(len(page2['projects']), 2)
 
     @mongomock.patch(servers=(('localhost', 27017),))
-    def test_should_get_projects_sorted_by_contributors_desc(self):
+    def test_should_get_projects_sorted_by_contributors_desc(self, mock_db_string, mock_db_sts):
         sorted_by = 'contributors'
         repository.save_projects(fixtures.generate_github_projects_pagination())
 
@@ -86,7 +79,7 @@ class TestRepository(unittest.TestCase):
         self.assertEqual(page1['projects'][1]['contributors'], 13)
 
     @mongomock.patch(servers=(('localhost', 27017),))
-    def test_should_return_projects_sorted_by_rate_desc(self):
+    def test_should_return_projects_sorted_by_rate_desc(self, db_string, db_creds):
         sorted_by = 'rate'
         repository.save_projects(fixtures.generate_github_projects_pagination())
 
@@ -97,7 +90,7 @@ class TestRepository(unittest.TestCase):
         self.assertEqual(page1['projects'][1]['rate'], '0.8')
 
     @mongomock.patch(servers=(('localhost', 27017),))
-    def test_should_return_projects_filtered_by_topics(self):
+    def test_should_return_projects_filtered_by_topics(self, db_string, db_creds):
         topics = ['topic_1', 'topic_2']
         repository.save_projects(fixtures.generate_github_projects_pagination())
 
@@ -109,7 +102,7 @@ class TestRepository(unittest.TestCase):
         self.assertEqual(len(page1['projects']), 2)
 
     @mongomock.patch(servers=(('localhost', 27017),))
-    def test_should_return_projects_filtered_by_topics_and_sorted_by_commits(self):
+    def test_should_return_projects_filtered_by_topics_and_sorted_by_commits(self, db_string, db_creds):
         topics = ['topic_1', 'topic_4']
         sorted_by = 'total_commits'
         repository.save_projects(fixtures.generate_github_projects_pagination())
@@ -124,7 +117,7 @@ class TestRepository(unittest.TestCase):
         self.assertEqual(len(page1['projects']), 2)
 
     @mongomock.patch(servers=(('localhost', 27017),))
-    def test_should_return_projects_filtered_by_languages(self):
+    def test_should_return_projects_filtered_by_languages(self, db_string, db_creds):
         languages = ['fake_language_1', 'fake_language_2']
         repository.save_projects(fixtures.generate_github_projects_pagination())
 
@@ -136,7 +129,7 @@ class TestRepository(unittest.TestCase):
         self.assertEqual(len(page1['projects']), 2)
 
     @mongomock.patch(servers=(('localhost', 27017),))
-    def test_should_return_projects_using_all_filters(self):
+    def test_should_return_projects_using_all_filters(self, db_string, db_creds):
         # fake_language_3 and topic_4 shouldn't return any value, as both won't
         # be present on any project
         languages = ['fake_language_1', 'fake_language_2', 'fake_language_3']
@@ -156,7 +149,7 @@ class TestRepository(unittest.TestCase):
     # https://github.com/mongomock/mongomock/issues/839
     #
     # @mongomock.patch(servers=(('localhost', 27017),))
-    # def test_should_search_projects_by_text(self):
+    # def test_should_search_projects_by_text(self, db_string, db_creds):
     #     text = 'description'
     #     repository.save_projects(fixtures.generate_github_projects_pagination())
     #
@@ -166,7 +159,7 @@ class TestRepository(unittest.TestCase):
     #     self.assertEqual(len(page1['projects']), 12)
 
     @mongomock.patch(servers=(('localhost', 27017),))
-    def test_should_save_a_new_topic(self):
+    def test_should_save_a_new_topic(self, db_string, db_creds):
         expected_topic = 'fake_new_topic'
         client = pymongo.MongoClient('localhost', 27017)
         db = client.get_database('open-social')
@@ -178,7 +171,7 @@ class TestRepository(unittest.TestCase):
         self.assertEqual(saved_topics['topics'], ['fake_topic_1', expected_topic])
 
     @mongomock.patch(servers=(('localhost', 27017),))
-    def test_should_not_save_an_existing_topic(self):
+    def test_should_not_save_an_existing_topic(self, db_string, db_creds):
         existing_topic = 'fake_topic_1'
         client = pymongo.MongoClient('localhost', 27017)
         db = client.get_database('open-social')
@@ -190,7 +183,7 @@ class TestRepository(unittest.TestCase):
         self.assertEqual(saved_topics['topics'], fixtures.topics['topics'])
 
     @mongomock.patch(servers=(('localhost', 27017),))
-    def test_should_return_topics(self):
+    def test_should_return_topics(self, db_string, db_creds):
         client = pymongo.MongoClient('localhost', 27017)
         db = client.get_database('open-social')
         db.topics.insert_one(fixtures.topics)
@@ -200,7 +193,7 @@ class TestRepository(unittest.TestCase):
         self.assertEqual(topics, fixtures.topics['topics'])
 
     @mongomock.patch(servers=(('localhost', 27017),))
-    def test_should_save_new_languages(self):
+    def test_should_save_new_languages(self, db_string, db_creds):
         client = pymongo.MongoClient('localhost', 27017)
         db = client.get_database('open-social')
         db.languages.insert_one(fixtures.languages)
@@ -213,7 +206,7 @@ class TestRepository(unittest.TestCase):
         self.assertIn(fixtures.github_projects[1].language, saved_languages['languages'])
 
     @mongomock.patch(servers=(('localhost', 27017),))
-    def test_should_not_save_an_existing_language(self):
+    def test_should_not_save_an_existing_language(self, db_string, db_creds):
         client = pymongo.MongoClient('localhost', 27017)
         db = client.get_database('open-social')
         db.languages.insert_one(fixtures.languages)
@@ -226,7 +219,7 @@ class TestRepository(unittest.TestCase):
         self.assertEqual(len(saved_languages['languages']), 3)
 
     @mongomock.patch(servers=(('localhost', 27017),))
-    def test_should_not_save_null_language(self):
+    def test_should_not_save_null_language(self, db_string, db_creds):
         client = pymongo.MongoClient('localhost', 27017)
         db = client.get_database('open-social')
         db.languages.insert_one(fixtures.languages)
@@ -237,7 +230,7 @@ class TestRepository(unittest.TestCase):
         self.assertEqual(len(saved_languages['languages']), 1)
 
     @mongomock.patch(servers=(('localhost', 27017),))
-    def test_should_return_languages(self):
+    def test_should_return_languages(self, db_string, db_creds):
         client = pymongo.MongoClient('localhost', 27017)
         db = client.get_database('open-social')
         db.languages.insert_one(fixtures.languages)
