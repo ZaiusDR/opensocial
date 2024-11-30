@@ -141,8 +141,11 @@ def _get_collection(collection_name):
     connection_string = creds_manager.get_connection_string()
 
     # TODO: I'll fix this crap, I promise!
-    connection_string.replace('__session_token__', quote(sts_credentials['SessionToken'], safe=''))
+    connection_string = connection_string.replace(
+        '__session_token__', quote(sts_credentials['SessionToken'], safe='')
+    )
 
+    print(connection_string)
     get_secret_end = time.time()
     print('Get Secret:', get_secret_end - get_secret_start)
 
