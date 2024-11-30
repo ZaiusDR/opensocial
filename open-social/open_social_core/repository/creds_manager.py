@@ -7,9 +7,9 @@ import requests
 
 def _get_secret(secret_id):
     secret_cache_endpoint = 'http://localhost:2773/secretsmanager/get'
-    headers = {"X-Aws-Parameters-Secrets-Token": os.environ.get('AWS_SESSION_TOKEN')}
+    # headers = {"X-Aws-Parameters-Secrets-Token": os.environ.get('AWS_SESSION_TOKEN')}
 
-    response = requests.get(f'{secret_cache_endpoint}?secretId={secret_id}', headers=headers)
+    response = requests.get(f'{secret_cache_endpoint}?secretId={secret_id}')
     print('Requests response content:', response.content)
     secret_string = response.json().get('SecretString')
     print('SecretString:', secret_string)
