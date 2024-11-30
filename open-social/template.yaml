@@ -88,6 +88,8 @@ Resources:
       Policies:
         - AWSSecretsManagerGetSecretValuePolicy:
             SecretArn: "arn:aws:secretsmanager:eu-west-1:326499071401:secret:mongodb-uri-qYViNv"
+        - AWSSecretsManagerGetSecretValuePolicy:
+            SecretArn: "arn:aws:secretsmanager:eu-west-1:326499071401:secret:mongodb-sts-credentials-eWuEZy"
         - AWSSecretsManagerRotationPolicy:
             FunctionName: "open-social-ApiCrudLambdaFunction-1OQ8B9NH0V3Z1"
             SecretArn: "arn:aws:secretsmanager:eu-west-1:326499071401:secret:mongodb-sts-credentials-eWuEZy"
