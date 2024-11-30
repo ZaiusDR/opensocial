@@ -88,7 +88,7 @@ Resources:
       Policies:
         - AWSSecretsManagerGetSecretValuePolicy:
             SecretArn: "arn:aws:secretsmanager:eu-west-1:326499071401:secret:mongodb-uri-qYViNv"
-        - AWSSecretManagerGetSecretValuePolicy:
+        - AWSSecretsManagerGetSecretValuePolicy:
             SecretArn: "arn:aws:secretsmanager:eu-west-1:326499071401:secret:mongodb-sts-credentials-eWuEZy"
       Layers:
         - Ref: OpenSocialCoreLayer
