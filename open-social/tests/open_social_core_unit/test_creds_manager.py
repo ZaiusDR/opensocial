@@ -32,7 +32,7 @@ class TestCredsManager(unittest.TestCase):
             url=self.cache_extension_url,
             status=200,
             match=[responses.matchers.query_string_matcher("secretId=mongodb-uri")],
-            json={'SecretString': {'mongo_db_uri': 'mongodb://localhost:27017'}, 'ARN': 'fake_arn'}
+            json={'SecretString': '{"mongo_db_uri": "mongodb://localhost:27017"}', 'ARN': 'fake_arn'}
         )
 
         connection_string = creds_manager.get_connection_string()
@@ -46,7 +46,7 @@ class TestCredsManager(unittest.TestCase):
             url=self.cache_extension_url,
             status=200,
             match=[responses.matchers.query_string_matcher("secretId=mongodb-sts-credentials")],
-            json={'SecretString': self.fake_credentials}
+            json={'SecretString': json.dumps(self.fake_credentials)}
         )
 
         sts_credentials = creds_manager.get_sts_credentials()
@@ -62,7 +62,7 @@ class TestCredsManager(unittest.TestCase):
             url=self.cache_extension_url,
             status=200,
             match=[responses.matchers.query_string_matcher("secretId=mongodb-sts-credentials")],
-            json={'SecretString': self.fake_credentials}
+            json={'SecretString': json.dumps(self.fake_credentials)}
         )
 
         sts_credentials = creds_manager.get_sts_credentials()

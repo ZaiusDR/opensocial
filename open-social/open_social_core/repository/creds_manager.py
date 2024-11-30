@@ -10,7 +10,7 @@ def _get_secret(secret_id):
     headers = {"X-Aws-Parameters-Secrets-Token": os.environ.get('AWS_SESSION_TOKEN')}
 
     response = requests.get(f'{secret_cache_endpoint}?secretId={secret_id}', headers=headers)
-    return response.json().get('SecretString')
+    return json.loads(response.json().get('SecretString'))
 
 
 def get_connection_string():
