@@ -20,7 +20,7 @@ def get_connection_string():
 
 def get_sts_credentials():
     secret_id = 'mongodb-sts-credentials'
-    twelve_hour_in_secs = 43200
+    one_hour_in_secs = 3600
 
     sts_credentials = _get_secret(secret_id)
     print(type(sts_credentials))
@@ -31,7 +31,7 @@ def get_sts_credentials():
         response = sts_client.assume_role(
             RoleArn='arn:aws:iam::326499071401:role/mongo-db-rw',
             RoleSessionName='AssumeRole',
-            DurationSeconds=twelve_hour_in_secs
+            DurationSeconds=one_hour_in_secs
         )
         sts_credentials = response['Credentials']
 
