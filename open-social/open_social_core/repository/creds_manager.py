@@ -23,6 +23,7 @@ def get_sts_credentials():
     twelve_hour_in_secs = 43200
 
     sts_credentials = _get_secret(secret_id)
+    print(sts_credentials)
 
     if sts_credentials['Expiration'] <= time.time():
         sts_client = boto3.client('sts')
