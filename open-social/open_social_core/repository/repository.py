@@ -130,9 +130,6 @@ def _get_collection(collection_name):
     get_sts_start = time.time()
 
     sts_credentials = creds_manager.get_sts_credentials()
-    os.environ['AWS_ACCESS_KEY_ID'] = sts_credentials['AccessKeyId']
-    os.environ['AWS_SECRET_ACCESS_KEY'] = sts_credentials['SecretAccessKey']
-
 
     get_sts_end = time.time()
     print('STS:', get_sts_end - get_sts_start)
@@ -141,6 +138,12 @@ def _get_collection(collection_name):
     connection_string = creds_manager.get_connection_string()
 
     # TODO: I'll fix this crap, I promise!
+    connection_string = connection_string.replace(
+        '__key_id__', quote(sts_credentials['AccessKeyId'])
+    )
+    connection_string = connection_string.replace(
+        '__secret_key__', quote(sts_credentials['SecretAccessKey'])
+    )
     connection_string = connection_string.replace(
         '__session_token__', quote(sts_credentials['SessionToken'], safe='')
     )
