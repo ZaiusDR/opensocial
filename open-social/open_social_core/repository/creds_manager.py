@@ -38,7 +38,7 @@ def get_sts_credentials():
         sts_credentials.update({'Expiration': sts_credentials['Expiration'].timestamp()})
 
         secrets_manager_client = boto3.client('secretsmanager')
-        secrets_manager_client.update_secret(
+        secrets_manager_client.put_secret_value(
             SecretId=secret_id,
             SecretString=json.dumps(sts_credentials)
         )
