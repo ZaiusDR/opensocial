@@ -30,6 +30,7 @@ def get_sts_credentials():
     print(type(sts_credentials))
 
     if sts_credentials['Expiration'] <= time.time():
+        print('STS Creds Expired')
         sts_client = boto3.client('sts')
 
         response = sts_client.assume_role(
