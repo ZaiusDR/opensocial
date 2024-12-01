@@ -10,10 +10,8 @@ def _get_secret(secret_id):
     headers = {"X-Aws-Parameters-Secrets-Token": os.environ.get('AWS_SESSION_TOKEN')}
 
     response = requests.get(f'{secret_cache_endpoint}?secretId={secret_id}', headers=headers)
-    print('Requests response content:', response.content)
     secret_string = response.json().get('SecretString')
-    print('SecretString:', secret_string)
-    print('SecretString Type:', type(secret_string))
+
     return json.loads(secret_string)
 
 
@@ -27,10 +25,8 @@ def get_sts_credentials():
     one_hour_in_secs = 3600
 
     sts_credentials = _get_secret(secret_id)
-    print(type(sts_credentials))
 
     if sts_credentials['Expiration'] <= time.time():
-        print('STS Creds Expired')
         sts_client = boto3.client('sts')
 
         response = sts_client.assume_role(

@@ -1,6 +1,3 @@
-import os
-import time
-
 import pymongo
 
 from requests.utils import quote
@@ -127,14 +124,7 @@ def _convert_projects_to_dict(projects):
 
 
 def _get_collection(collection_name):
-    get_sts_start = time.time()
-
     sts_credentials = creds_manager.get_sts_credentials()
-
-    get_sts_end = time.time()
-    print('STS:', get_sts_end - get_sts_start)
-
-    get_secret_start = time.time()
     connection_string = creds_manager.get_connection_string()
 
     # TODO: I'll fix this crap, I promise!
@@ -148,27 +138,12 @@ def _get_collection(collection_name):
         '__session_token__', quote(sts_credentials['SessionToken'], safe='')
     )
 
-    print(connection_string)
-    get_secret_end = time.time()
-    print('Get Secret:', get_secret_end - get_secret_start)
-
-    get_connection_start = time.time()
-
     mongo_client = pymongo.MongoClient(
         connection_string,
         maxPoolSize=10,
         minPoolSize=1
     )
-    get_connection_end = time.time()
-    print('Get Connection:', get_connection_end - get_connection_start)
-
-    get_db_start = time.time()
     db = mongo_client.get_database('open-social')
-    get_db_end = time.time()
-    print('Get DB:', get_db_end - get_db_start)
-
-    get_collection_start = time.time()
     collection = db.get_collection(collection_name)
-    get_collection_end = time.time()
-    print('Get Collection:', get_collection_end - get_collection_start)
+
     return collection
