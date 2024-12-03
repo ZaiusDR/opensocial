@@ -1,9 +1,17 @@
+import enum
 import json
 import os
 import time
 
 import boto3
 import requests
+
+
+class Placeholders(enum.Enum):
+    KEY_ID = '__key_id__'
+    SECRET_KEY = '__secret_key__'
+    SESSION_TOKEN = '__session_token__'
+
 
 def _get_secret(secret_id):
     secret_cache_endpoint = 'http://localhost:2773/secretsmanager/get'
@@ -15,12 +23,38 @@ def _get_secret(secret_id):
     return json.loads(secret_string)
 
 
+def _url_encode(credential):
+    return requests.utils.quote(credential, safe='')
+
+
+def _replace_placeholder(connection_string, placeholder, credential):
+    return connection_string.replace(placeholder, _url_encode(credential))
+
+
+def _build_connection_string(connection_string, sts_credentials):
+    connection_string = _replace_placeholder(
+        connection_string, Placeholders.KEY_ID.value, sts_credentials['AccessKeyId']
+    )
+    connection_string = _replace_placeholder(
+        connection_string, Placeholders.SECRET_KEY.value, sts_credentials['SecretAccessKey']
+    )
+    connection_string = _replace_placeholder(
+        connection_string, Placeholders.SESSION_TOKEN.value, sts_credentials['SessionToken']
+    )
+
+    return connection_string
+
+
 def get_connection_string():
     secret_id = 'mongodb-uri'
-    return _get_secret(secret_id)['mongo_db_uri']
+    connection_string_secret = _get_secret(secret_id)['mongo_db_uri']
+    sts_credentials = _get_sts_credentials()
+    encoded_connection_string = _build_connection_string(connection_string_secret, sts_credentials)
+
+    return encoded_connection_string
 
 
-def get_sts_credentials():
+def _get_sts_credentials():
     secret_id = 'mongodb-sts-credentials'
     one_hour_in_secs = 3600
 

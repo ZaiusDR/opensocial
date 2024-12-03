@@ -1,12 +1,8 @@
 import pymongo
 
-from requests.utils import quote
 
-from repository import creds_manager
-
-
-def save_projects(projects):
-    projects_collection = _get_collection('projects')
+def save_projects(mongo_client, projects):
+    projects_collection = _get_collection(mongo_client, 'projects')
 
     projects_as_dicts = _convert_projects_to_dict(projects)
 
@@ -22,8 +18,8 @@ def save_projects(projects):
     return saved_projects
 
 
-def get_projects(page, sorted_by, topics, languages):
-    projects_collection = _get_collection('projects')
+def get_projects(mongo_client, page, sorted_by, topics, languages):
+    projects_collection = _get_collection(mongo_client, 'projects')
     results_limit = 12
     query_filter = {}
 
@@ -82,8 +78,8 @@ def search_projects(search_text):
     return list(projects)
 
 
-def save_topic(topic):
-    topics_collection = _get_collection('topics')
+def save_topic(mongo_client, topic):
+    topics_collection = _get_collection(mongo_client, 'topics')
 
     topics_collection.update_one(
         {'name': 'topics'},
@@ -91,16 +87,16 @@ def save_topic(topic):
     )
 
 
-def get_topics():
-    topics_collection = _get_collection('topics')
+def get_topics(mongo_client):
+    topics_collection = _get_collection(mongo_client,'topics')
 
     topics = topics_collection.find_one({'name': 'topics'})
 
     return topics['topics']
 
 
-def save_languages(projects):
-    languages_collection = _get_collection('languages')
+def save_languages(mongo_client, projects):
+    languages_collection = _get_collection(mongo_client,'languages')
 
     projects_as_dict = _convert_projects_to_dict(projects)
     languages = {project['language'] for project in projects_as_dict if project['language']}
@@ -111,8 +107,8 @@ def save_languages(projects):
         )
 
 
-def get_languages():
-    languages_collection = _get_collection('languages')
+def get_languages(mongo_client):
+    languages_collection = _get_collection(mongo_client,'languages')
 
     languages = languages_collection.find_one({'_id': 'languages'})
 
@@ -123,26 +119,7 @@ def _convert_projects_to_dict(projects):
     return [project._asdict() for project in projects]
 
 
-def _get_collection(collection_name):
-    sts_credentials = creds_manager.get_sts_credentials()
-    connection_string = creds_manager.get_connection_string()
-
-    # TODO: I'll fix this crap, I promise!
-    connection_string = connection_string.replace(
-        '__key_id__', quote(sts_credentials['AccessKeyId'], safe='')
-    )
-    connection_string = connection_string.replace(
-        '__secret_key__', quote(sts_credentials['SecretAccessKey'], safe='')
-    )
-    connection_string = connection_string.replace(
-        '__session_token__', quote(sts_credentials['SessionToken'], safe='')
-    )
-
-    mongo_client = pymongo.MongoClient(
-        connection_string,
-        maxPoolSize=10,
-        minPoolSize=1
-    )
+def _get_collection(mongo_client, collection_name):
     db = mongo_client.get_database('open-social')
     collection = db.get_collection(collection_name)
 

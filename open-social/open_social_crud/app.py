@@ -3,9 +3,15 @@ import decimal
 import gzip
 import io
 import json
-import time
+
+import pymongo
 
 from repository import repository
+from repository import creds_manager
+
+
+# Defining the DB Client here is recommended for reusing it across lambda executions
+mongo_client = None
 
 
 def _gzip_b64encode(data):
@@ -18,6 +24,8 @@ def _gzip_b64encode(data):
 
 def entrypoint(event, context):
     print(event)
+    global mongo_client
+    mongo_client = pymongo.MongoClient(creds_manager.get_connection_string())
     response = {}
     if event['path'] == '/projects':
         page = _get_query_parameter(event, 'queryStringParameters', 'page', 0)
@@ -32,11 +40,11 @@ def entrypoint(event, context):
         response = repository.get_projects(page, sorted_by, topics, languages)
     if event['path'] == '/search':
         query = _get_query_parameter(event, 'queryStringParameters', 'query', None)
-        response = repository.search_projects(query)
+        response = repository.search_projects(mongo_client, query)
     elif event['path'] == '/topics':
-        response = repository.get_topics()
+        response = repository.get_topics(mongo_client)
     elif event['path'] == '/languages':
-        response = repository.get_languages()
+        response = repository.get_languages(mongo_client)
 
     compressed_body = _gzip_b64encode(response)
 

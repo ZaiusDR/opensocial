@@ -6,11 +6,12 @@ from unittest import mock
 from open_social_crud import app
 
 
+@mock.patch('open_social_crud.app.creds_manager.get_connection_string', return_value='mongodb://localhost:27017')
 class TestApp(unittest.TestCase):
 
     @mock.patch('open_social_crud.app._gzip_b64encode')
     @mock.patch('open_social_crud.app.repository.get_projects')
-    def test_should_get_projects_with_pagination(self, repository_mock, b64encode_mock):
+    def test_should_get_projects_with_pagination(self, repository_mock, b64encode_mock, mongo_mock):
         app.entrypoint(
             {
                 'path': '/projects',
@@ -22,7 +23,7 @@ class TestApp(unittest.TestCase):
 
     @mock.patch('open_social_crud.app._gzip_b64encode')
     @mock.patch('open_social_crud.app.repository.get_projects')
-    def test_should_get_projects_sorted(self, repository_mock, b64encode_mock):
+    def test_should_get_projects_sorted(self, repository_mock, b64encode_mock, mongo_mock):
         app.entrypoint(
             {
                 'path': '/projects',
@@ -38,7 +39,7 @@ class TestApp(unittest.TestCase):
 
     @mock.patch('open_social_crud.app._gzip_b64encode')
     @mock.patch('open_social_crud.app.repository.get_projects')
-    def test_should_get_projects_by_topics(self, repository_mock, b64encode_mock):
+    def test_should_get_projects_by_topics(self, repository_mock, b64encode_mock, mongo_mock):
         app.entrypoint(
             {
                 'path': '/projects',
@@ -57,7 +58,7 @@ class TestApp(unittest.TestCase):
 
     @mock.patch('open_social_crud.app._gzip_b64encode')
     @mock.patch('open_social_crud.app.repository.get_topics')
-    def test_should_get_topics(self, repository_mock, b64encode_mock):
+    def test_should_get_topics(self, repository_mock, b64encode_mock, mongo_mock):
         app.entrypoint(
             {
                 'path': '/topics',
@@ -69,7 +70,7 @@ class TestApp(unittest.TestCase):
 
     @mock.patch('open_social_crud.app._gzip_b64encode')
     @mock.patch('open_social_crud.app.repository.get_projects')
-    def test_should_get_projects_by_languages(self, repository_mock, b64encode_mock):
+    def test_should_get_projects_by_languages(self, repository_mock, b64encode_mock, mongo_mock):
         app.entrypoint(
             {
                 'path': '/projects',
@@ -88,7 +89,7 @@ class TestApp(unittest.TestCase):
 
     @mock.patch('open_social_crud.app._gzip_b64encode')
     @mock.patch('open_social_crud.app.repository.get_languages')
-    def test_should_get_languages(self, repository_mock, b64encode_mock):
+    def test_should_get_languages(self, repository_mock, b64encode_mock, mongo_mock):
         app.entrypoint(
             {
                 'path': '/languages',
@@ -98,7 +99,7 @@ class TestApp(unittest.TestCase):
 
         repository_mock.assert_called_once()
 
-    def test_should_convert_decimal_to_integer(self):
+    def test_should_convert_decimal_to_integer(self, mongo_mock):
         converted = app.decimal_default(decimal.Decimal(3))
 
         self.assertIsInstance(converted, int)
