@@ -25,7 +25,8 @@ def _gzip_b64encode(data):
 def entrypoint(event, context):
     print(event)
     global mongo_client
-    mongo_client = pymongo.MongoClient(creds_manager.get_connection_string())
+    if not mongo_client:
+        mongo_client = pymongo.MongoClient(creds_manager.get_connection_string())
     response = {}
     if event['path'] == '/projects':
         page = _get_query_parameter(event, 'queryStringParameters', 'page', 0)
