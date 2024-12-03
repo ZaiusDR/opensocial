@@ -26,9 +26,9 @@ class TestLambda(unittest.TestCase):
     ):
         gateway_mock.return_value = {}
         event = {'topic': 'humanitarian'}
-        expected_projects = fixtures.github_projects
+        expected_projects = len(fixtures.github_projects)
         expected_response = {
-            'statusCode': 200, 'body': json.dumps({"projects": expected_projects})
+            'statusCode': 200, 'body': json.dumps({"projects_updated": expected_projects})
         }
         projects_mock.return_value = expected_projects
 

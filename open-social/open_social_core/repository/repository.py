@@ -14,11 +14,8 @@ def save_projects(mongo_client, projects):
             upsert=True
         )
         saved_projects.append(project)
-    print(saved_projects)
-    for project in saved_projects:
-        print(project.raw_result)
-        print(project.upserted_id)
-    return saved_projects
+
+    return len(saved_projects)
 
 
 def get_projects(mongo_client, page, sorted_by, topics, languages):
