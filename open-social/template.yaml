@@ -6,6 +6,20 @@ Description: >
 
   open-social SAM Infrastructure
 
+Parameters:
+  LambdaSecretsExtensionLayer:
+    Type: String
+    Default: "arn:aws:lambda:eu-west-1:015030872274:layer:AWS-Parameters-and-Secrets-Lambda-Extension:12"
+  NewRelicLayer:
+    Type: String
+    Default: "arn:aws:lambda:eu-west-1:451483290750:layer:NewRelicPython312:22"
+  MongoURISecretArn:
+    Type: String
+    Default: "arn:aws:secretsmanager:eu-west-1:326499071401:secret:mongodb-uri-qYViNv"
+  MongoSTSSecretArn:
+    Type: String
+    Default: "arn:aws:secretsmanager:eu-west-1:326499071401:secret:mongodb-sts-credentials-eWuEZy"
+
 Globals:
   Function:
     Timeout: 5
@@ -33,9 +47,19 @@ Resources:
         - SSMParameterReadPolicy:
             ParameterName: "github/open-social-token"
         - AWSSecretsManagerGetSecretValuePolicy:
-            SecretArn: "arn:aws:secretsmanager:eu-west-1:326499071401:secret:mongodb-uri-qYViNv"
+            SecretArn:
+              Ref: MongoURISecretArn
+        - AWSSecretsManagerGetSecretValuePolicy:
+            SecretArn:
+              Ref: MongoSTSSecretArn
+        - AWSSecretsManagerRotationPolicy:
+            FunctionName: "open-social-ProjectScrapperFunction-VN4S1G51BNH6"
+            SecretArn:
+              Ref: MongoSTSSecretArn
       Layers:
         - Ref: OpenSocialCoreLayer
+        - Ref: LambdaSecretsExtensionLayer
+        - Ref: NewRelicLayer
       Events:
         ScrapeHumanitarianEvent:
           Type: Schedule
@@ -87,16 +111,19 @@ Resources:
       MemorySize: 1024
       Policies:
         - AWSSecretsManagerGetSecretValuePolicy:
-            SecretArn: "arn:aws:secretsmanager:eu-west-1:326499071401:secret:mongodb-uri-qYViNv"
+            SecretArn:
+              Ref: MongoURISecretArn
         - AWSSecretsManagerGetSecretValuePolicy:
-            SecretArn: "arn:aws:secretsmanager:eu-west-1:326499071401:secret:mongodb-sts-credentials-eWuEZy"
+            SecretArn:
+              Ref: MongoSTSSecretArn
         - AWSSecretsManagerRotationPolicy:
             FunctionName: "open-social-ApiCrudLambdaFunction-1OQ8B9NH0V3Z1"
-            SecretArn: "arn:aws:secretsmanager:eu-west-1:326499071401:secret:mongodb-sts-credentials-eWuEZy"
+            SecretArn:
+              Ref: MongoSTSSecretArn
       Layers:
         - Ref: OpenSocialCoreLayer
-        - "arn:aws:lambda:eu-west-1:015030872274:layer:AWS-Parameters-and-Secrets-Lambda-Extension:12"
-        - "arn:aws:lambda:eu-west-1:451483290750:layer:NewRelicPython312:22"
+        - Ref: LambdaSecretsExtensionLayer
+        - Ref: NewRelicLayer
       Events:
         ListProjects:
           Type: Api
