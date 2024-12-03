@@ -17,6 +17,7 @@ def save_projects(mongo_client, projects):
     print(saved_projects)
     for project in saved_projects:
         print(project.raw_result)
+        print(project.upserted_id)
     return saved_projects
 
 
