@@ -14,7 +14,9 @@ def save_projects(mongo_client, projects):
             upsert=True
         )
         saved_projects.append(project)
-
+    print(saved_projects)
+    for project in saved_projects:
+        print(project.raw_result)
     return saved_projects
 
 
