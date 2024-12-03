@@ -52,8 +52,8 @@ def get_projects(mongo_client, page, sorted_by, topics, languages):
     return response
 
 
-def search_projects(search_text):
-    projects_collection = _get_collection('projects')
+def search_projects(mongo_client, search_text):
+    projects_collection = _get_collection(mongo_client, 'projects')
 
     projects = projects_collection.aggregate([
         {

@@ -3,11 +3,16 @@ import unittest
 
 from unittest import mock
 
+import mongomock
 from open_social_crud import app
 
 
+@mongomock.patch(servers=(('localhost', 27017),))
 @mock.patch('open_social_crud.app.creds_manager.get_connection_string', return_value='mongodb://localhost:27017')
 class TestApp(unittest.TestCase):
+
+    def setUp(self):
+        self.client = mongomock.MongoClient('localhost', 27017)
 
     @mock.patch('open_social_crud.app._gzip_b64encode')
     @mock.patch('open_social_crud.app.repository.get_projects')
@@ -19,7 +24,7 @@ class TestApp(unittest.TestCase):
             {}
         )
 
-        repository_mock.assert_called_once_with('fake_page', None, {}, {})
+        repository_mock.assert_called_once_with(self.client, 'fake_page', None, {}, {})
 
     @mock.patch('open_social_crud.app._gzip_b64encode')
     @mock.patch('open_social_crud.app.repository.get_projects')
@@ -35,7 +40,7 @@ class TestApp(unittest.TestCase):
             {}
         )
 
-        repository_mock.assert_called_once_with('fake_page', 'total_commits', {}, {})
+        repository_mock.assert_called_once_with(self.client, 'fake_page', 'total_commits', {}, {})
 
     @mock.patch('open_social_crud.app._gzip_b64encode')
     @mock.patch('open_social_crud.app.repository.get_projects')
@@ -54,7 +59,7 @@ class TestApp(unittest.TestCase):
             {}
         )
 
-        repository_mock.assert_called_once_with('fake_page', 'total_commits', ['feminism', 'climate change'], None)
+        repository_mock.assert_called_once_with(self.client, 'fake_page', 'total_commits', ['feminism', 'climate change'], None)
 
     @mock.patch('open_social_crud.app._gzip_b64encode')
     @mock.patch('open_social_crud.app.repository.get_topics')
@@ -85,7 +90,7 @@ class TestApp(unittest.TestCase):
             {}
         )
 
-        repository_mock.assert_called_once_with('fake_page', 'total_commits', None, ['Python', 'Javascript'])
+        repository_mock.assert_called_once_with(self.client, 'fake_page', 'total_commits', None, ['Python', 'Javascript'])
 
     @mock.patch('open_social_crud.app._gzip_b64encode')
     @mock.patch('open_social_crud.app.repository.get_languages')

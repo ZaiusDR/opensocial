@@ -38,7 +38,7 @@ def entrypoint(event, context):
         if languages:
             languages = [language.replace("'", '') for language in languages]
 
-        response = repository.get_projects(page, sorted_by, topics, languages)
+        response = repository.get_projects(mongo_client, page, sorted_by, topics, languages)
     if event['path'] == '/search':
         query = _get_query_parameter(event, 'queryStringParameters', 'query', None)
         response = repository.search_projects(mongo_client, query)
