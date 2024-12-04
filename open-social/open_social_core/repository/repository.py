@@ -64,6 +64,7 @@ def autocomplete(mongo_client, search_text):
 
     result = projects_collection.aggregate(pipeline)
 
+    print(result)
     return result
 
 
