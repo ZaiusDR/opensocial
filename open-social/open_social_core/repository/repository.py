@@ -62,7 +62,7 @@ def autocomplete(mongo_client, search_text):
         {'$project': {'description': 1}}
     ]
 
-    result = projects_collection.aggregate(pipeline)
+    result = list(projects_collection.aggregate(pipeline))
 
     print(result)
     return result
