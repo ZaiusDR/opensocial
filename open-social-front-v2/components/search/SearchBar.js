@@ -2,14 +2,15 @@ import { useState } from "react"
 import ResultsList from "@/components/search/ResultsList"
 import SearchIcon from "@/components/search/SearchIcon"
 
-const SearchBar = (props) => {
-  const fakeResults = [
-    {id: 1, value: "Intersectional feminism project, blabla"},
-    {id: 2, value: "Incel culture study and anti-feminism negative impact"}
-  ]
+import useSWR from "swr"
 
+const fetcher = url => fetch(url).then(r => r.json())
+
+const SearchBar = (props) => {
   const [onFocus, setOnFocus] = useState("max-lg:w-42")
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useState("");
+
+  const { data, error } = useSWR(`https://api.open-social.net/autocomplete?query=${query}`, fetcher)
 
   const handleOnFocus = () => {
     setOnFocus("lg:w-96 max-lg:w-64")
@@ -21,8 +22,6 @@ const SearchBar = (props) => {
 
   const handleSearch = (event) => {
     setQuery(event.target.value)
-
-    // implement logic here
   }
 
   return (
@@ -37,7 +36,7 @@ const SearchBar = (props) => {
                placeholder="Search" />
         <SearchIcon />
       </label>
-      {query.length > 2 ? <ResultsList results={fakeResults} /> : null}
+      {data && data.length > 0 ? <ResultsList results={data} /> : null}
     </div>
   )
 }
