@@ -132,7 +132,16 @@ class TestRepository(unittest.TestCase):
         self.assertEqual(page1['projects'][1]['topic'], 'topic_1')
         self.assertEqual(len(page1['projects']), 2)
 
-    # TODO: Enable when $text is added to pymongo
+    # TODO: Enable when $search is added to mongomock
+    # https://github.com/mongomock/mongomock/issues/779
+    # def test_should_return_autocomplete_results(self):
+    #     repository.save_projects(self.client, fixtures.generate_github_projects_pagination())
+    #
+    #     autocomplete_results = repository.autocomplete(self.client, 'desc')
+    #
+    #     self.assertEqual(autocomplete_results, 'desc')
+
+    # TODO: Enable when $text is added to mongomock
     # https://github.com/mongomock/mongomock/issues/839
     #
     # @mongomock.patch(servers=(('localhost', 27017),))

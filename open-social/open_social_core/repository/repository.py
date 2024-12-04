@@ -1,4 +1,5 @@
 import pymongo
+from jmespath.ast import projection
 
 
 def save_projects(mongo_client, projects):
@@ -50,6 +51,20 @@ def get_projects(mongo_client, page, sorted_by, topics, languages):
     }
 
     return response
+
+
+def autocomplete(mongo_client, search_text):
+    projects_collection = _get_collection(mongo_client, 'projects')
+
+    pipeline = [
+        {'$search': {'index': 'search', 'autocomplete': {'query': search_text, 'path': 'description'}}},
+        {'$limit': 5},
+        {'$project': {'description': 1}}
+    ]
+
+    result = projects_collection.aggregate(pipeline)
+
+    return result
 
 
 def search_projects(mongo_client, search_text):

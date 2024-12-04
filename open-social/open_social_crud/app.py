@@ -37,13 +37,19 @@ def entrypoint(event, context):
             topics = [topic.replace("'", '') for topic in topics]
         if languages:
             languages = [language.replace("'", '') for language in languages]
-
         response = repository.get_projects(mongo_client, page, sorted_by, topics, languages)
-    if event['path'] == '/search':
+
+    elif event['path'] == '/autocomplete':
+        query = _get_query_parameter(event, 'queryStringParameters', 'query', None)
+        response = repository.autocomplete(mongo_client, query)
+
+    elif event['path'] == '/search':
         query = _get_query_parameter(event, 'queryStringParameters', 'query', None)
         response = repository.search_projects(mongo_client, query)
+
     elif event['path'] == '/topics':
         response = repository.get_topics(mongo_client)
+
     elif event['path'] == '/languages':
         response = repository.get_languages(mongo_client)
 

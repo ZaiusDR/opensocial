@@ -153,6 +153,13 @@ Resources:
             Method: get
             RestApiId:
               Ref: OpenSocialAPI
+        Autcomplete:
+          Type: Api
+          Properties:
+            Path: /autocomplete
+            Method: get
+            RestApiId:
+              Ref: OpenSocialAPI
 
   OpenSocialAPI:
     Type: AWS::Serverless::Api
