@@ -11,7 +11,7 @@
     "test-ci": "jest"
   },
   "dependencies": {
-    "daisyui": "^4.12.14",
+    "daisyui": "^4.12.21",
     "eslint": "9.16.0",
     "eslint-config-next": "15.0.3",
     "next": "15.0.3",
