@@ -43,7 +43,7 @@ class TestProjectParser(unittest.TestCase):
         )
 
         self.assertEqual(project_information.project_name, 'PepinTour')
-        self.assertEqual(project_information.language, None)
+        self.assertIsNone(project_information.language)
 
     @freezegun.freeze_time('2021-02-21')
     def test_should_correctly_generate_commits_graph_data(self):
