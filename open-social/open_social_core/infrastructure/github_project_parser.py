@@ -1,12 +1,13 @@
 from datetime import datetime
-from dateutil import relativedelta
-from datetime import timedelta
+from typing import Optional
 
-from domain.github_project import GithubProject
+from dateutil import relativedelta
+
+from domain.github_project import GithubProjectDTO
 from infrastructure import rate_calculator
 
 
-def parse_project_activity(project: dict, topic: str) -> GithubProject | None:
+def parse_project_activity(project: dict, topic: str) -> Optional[GithubProjectDTO]:
     contributors = _get_contributors(project)
     total_commits = project['defaultBranchRef']['target']['history']['totalCount'] \
         if project['defaultBranchRef'] else 0
@@ -14,7 +15,7 @@ def parse_project_activity(project: dict, topic: str) -> GithubProject | None:
     if total_commits == 0:
         return None
 
-    return GithubProject(
+    return GithubProjectDTO(
         project_name=project['name'],
         full_name=project['nameWithOwner'],
         avatar_url=project['owner']['avatarUrl'],
@@ -36,8 +37,7 @@ def parse_project_activity(project: dict, topic: str) -> GithubProject | None:
             project['createdAt'], project['pushedAt'], contributors, total_commits
         ),
         topic=topic,
-        sorting=0,
-        ttl=int((datetime.today() + timedelta(days=7)).timestamp())
+        sorting=0
     )
 
 

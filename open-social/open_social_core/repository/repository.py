@@ -132,7 +132,7 @@ def get_languages(mongo_client):
 
 
 def _convert_projects_to_dict(projects):
-    return [project._asdict() for project in projects]
+    return [project.__dict__ for project in projects]
 
 
 def _get_collection(mongo_client, collection_name):

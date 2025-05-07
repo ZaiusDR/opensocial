@@ -34,7 +34,7 @@ class TestProjectParser(unittest.TestCase):
         self.assertEqual(project_information.rate, 0.32)
         self.assertEqual(project_information.topic, 'fake_topic')
         self.assertEqual(project_information.sorting, 0)
-        self.assertEqual(project_information.ttl, 1614470400)
+        self.assertEqual(project_information._ttl, 1614470400)
 
     def test_should_parse_project_activity_with_no_primary_language(self):
         project_information = github_project_parser.parse_project_activity(
@@ -71,15 +71,15 @@ class TestProjectParser(unittest.TestCase):
             'fake_topic'
         )
 
-        self.assertEqual(project_information, None)
+        self.assertIsNone(project_information)
 
-    def test_should_ellipsize_description(self):
-        ellipsized_description_length = 603
+    def test_should_truncate_description(self):
+        truncated_description_length = 603
 
         project_information = github_project_parser.parse_project_activity(
             constants.PROJECTS_FIRST_PAGE['search']['repos'][1]['repo'],
             'fake_topic'
         )
 
-        self.assertEqual(len(project_information.description), ellipsized_description_length)
+        self.assertEqual(len(project_information.description), truncated_description_length)
         self.assertTrue(project_information.description.endswith('...'))
