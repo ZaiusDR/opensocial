@@ -53,11 +53,12 @@ const Drawer = () => {
       </div>
       <div className="drawer-side">
         <label htmlFor="drawer" aria-label="close sidebar" className="drawer-overlay"></label>
-        <aside className="menu h-full p-0 bg-base-200 w-80">
-          <div className="flex w-full h-16 items-center justify-center shadow-sm shadow-gray-300 z-30">
+        <aside className="flex flex-col h-full w-80 gradient-sidebar">
+          <div className="flex w-full h-16 items-center justify-center border-b border-base-300/50 z-30">
             <Logo visible="max-lg:hidden" />
           </div>
-          <ul className="menu mb-0 w-80 bg-base-200 text-base-content">
+          <div className="flex-1 p-4">
+            <h3 className="text-xs font-semibold uppercase tracking-wider text-base-content/60 mb-2 px-2">Refine Results</h3>
             <FiltersCollapse
               onSelectSortedBy={handleOnSelectSortedBy}
               sortedByOptions={sortedByOptions}
@@ -66,8 +67,10 @@ const Drawer = () => {
               onSelectLanguages={handleOnSelectLanguages}
               languages={languages}
             />
+          </div>
+          <div className="p-4 mt-auto">
             <WhyOpenSocialMenuItem />
-          </ul>
+          </div>
         </aside>
       </div>
     </div>

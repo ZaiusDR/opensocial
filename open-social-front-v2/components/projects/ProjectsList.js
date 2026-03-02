@@ -39,11 +39,11 @@ const ProjectsList = (props) => {
 
   const { data, error, isValidating, size, setSize } = useSWRInfinite(getKey, fetcher)
 
-  if (error) return <div className="container flex w-full h-full items-center justify-center">Failed to load projects</div>
+  if (error) return <div className="container flex w-full h-full items-center justify-center text-error font-semibold">Failed to load projects</div>
 
   return (
-    <div className="container px-6 mx-auto max-w-screen mt-16">
-      <div className="grid grid-cols-1 gap-8 my-8 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
+    <div className="container px-6 mx-auto max-w-screen mt-8">
+      <div className="grid grid-cols-1 gap-6 my-8 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
         {data ? data.map((page) => {
           return page.projects.map((project => <ProjectItem key={project.full_name} projectData={project} />))
         }) : null}

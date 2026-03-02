@@ -18,7 +18,7 @@ const GoToTopButton = () => {
 
   return (
     <button
-      className={`${showGoTop ? "" : "hidden"} btn btn-circle btn-primary !fixed bottom-8 end-8 shadow-md animate-fade`}
+      className={`${showGoTop ? "" : "hidden"} btn btn-circle !fixed bottom-8 end-8 shadow-md animate-fade gradient-btn hover:scale-110 transition-transform`}
       onClick={handleScrollUp}
     >
       <span className="[&>svg]:w-6">

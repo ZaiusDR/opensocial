@@ -1,10 +1,10 @@
 const SortedSelect = (props) => {
   return (
-    <div className="form-control w-full max-w-xs font-bold">
+    <div className="form-control w-full">
       <label className="label">
-        <span>Sorted By</span>
+        <span className="text-xs font-semibold uppercase tracking-wider text-base-content/60">Sorted By</span>
       </label>
-      <select id="sortedBy" className="select select-bordered w-full max-w-xs" onChange={props.onSelect} >
+      <select id="sortedBy" className="select select-bordered select-sm w-full" onChange={props.onSelect} >
         {props.sortedByOptions.map(option =>
           <option key={option.value} label={option.label} value={option.value} />
         )}

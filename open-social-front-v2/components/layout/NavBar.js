@@ -14,7 +14,7 @@ const NavBar = () => {
   }
 
   return (
-    <div className="navbar sticky top-0 z-50 w-full shadow bg-white">
+    <div className="navbar sticky top-0 z-50 w-full bg-base-100/80 backdrop-blur-lg border-b border-base-300/50">
       <Logo visible={logoVisible} />
       <div className="w-full px-4">
         <SearchBar onSearchOpen={searchOpen} />

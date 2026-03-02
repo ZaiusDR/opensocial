@@ -26,14 +26,14 @@ const SearchBar = (props) => {
 
   return (
     <div>
-      <label className={`input input-bordered input-primary flex items-center gap-2 ${props.onSearchOpen ? null : "max-lg:hidden"}`}>
+      <label className={`input input-bordered input-primary flex items-center gap-2 bg-base-200/50 focus-within:ring-2 focus-within:ring-primary/20 transition-all ${props.onSearchOpen ? null : "max-lg:hidden"}`}>
         <input type="text"
                className={`grow ${onFocus}`}
                onFocus={handleOnFocus}
                onBlur={handleOnBlur}
                value={query}
                onChange={handleSearch}
-               placeholder="Search" />
+               placeholder="Search projects..." />
         <SearchIcon />
       </label>
       {data && data.length > 0 ? <ResultsList results={data} /> : null}

@@ -1,7 +1,8 @@
 const WhyOpenSocialModal = () => {
   return (
     <dialog id="why_modal" className="modal">
-      <article className="modal-box prose">
+      <article className="modal-box prose max-w-2xl relative overflow-hidden">
+        <div className="absolute top-0 left-0 right-0 h-1 gradient-card-accent" />
         <h3><b>The problem</b></h3>
         <p>
           {`Searching for Open Source projects aimed to have any social impact can be

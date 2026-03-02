@@ -1,10 +1,11 @@
 const WhyOpenSocialMenuItem = () => {
   return(
-    <li>
-      <button className="btn bg-primary font-bold" onClick={() => document.getElementById('why_modal').showModal()}>Why
-        OpenSocial?
-      </button>
-    </li>
+    <button
+      className="btn btn-outline btn-primary font-bold w-full hover:gradient-btn transition-all"
+      onClick={() => document.getElementById('why_modal').showModal()}
+    >
+      Why OpenSocial?
+    </button>
   )
 }
 
