@@ -32,6 +32,7 @@ const Drawer = () => {
   const [sortedBy, setSortedBy] = useState("")
   const [topics, setTopics] = useState("")
   const [languages, setLanguages] = useState("")
+  const [search, setSearch] = useState("")
 
   const handleOnSelectSortedBy = (event) => {
     setSortedBy(event.target.value)
@@ -45,13 +46,17 @@ const Drawer = () => {
     setLanguages(event.target.value)
   }
 
+  const handleOnSearch = (query) => {
+    setSearch(query)
+  }
+
   return(
     <div className="bg-base-100 drawer max-lg:drawer-end lg:drawer-open">
       <input id="drawer" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content flex flex-col min-h-screen">
-        <NavBar />
+        <NavBar onSearch={handleOnSearch} />
         <div className="flex-1">
-          <ProjectsList sortedBy={sortedBy} topics={topics} languages={languages}/>
+          <ProjectsList sortedBy={sortedBy} topics={topics} languages={languages} search={search}/>
         </div>
         <Footer />
       </div>

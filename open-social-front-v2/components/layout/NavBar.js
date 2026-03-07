@@ -5,7 +5,7 @@ import { useState } from "react"
 import SearchButton from "@/components/search/SearchButton"
 import ThemeToggle from "@/components/UI/ThemeToggle"
 
-const NavBar = () => {
+const NavBar = ({ onSearch }) => {
   const [searchOpen, setSearchOpen] = useState(false)
   const [logoVisible, setLogoVisible] = useState("lg:hidden")
 
@@ -18,7 +18,7 @@ const NavBar = () => {
     <div className="navbar sticky top-0 z-50 w-full bg-base-100/80 backdrop-blur-lg border-b border-base-300/50">
       <Logo visible={logoVisible} />
       <div className="w-full px-4">
-        <SearchBar onSearchOpen={searchOpen} />
+        <SearchBar onSearchOpen={searchOpen} onSearch={onSearch} />
       </div>
       <ThemeToggle />
       <div className="w-full justify-end lg:hidden">
