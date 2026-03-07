@@ -3,6 +3,7 @@ import SearchBar from "@/components/search/SearchBar"
 import SearchIcon from "@/components/search/SearchIcon"
 import { useState } from "react"
 import SearchButton from "@/components/search/SearchButton"
+import ThemeToggle from "@/components/UI/ThemeToggle"
 
 const NavBar = () => {
   const [searchOpen, setSearchOpen] = useState(false)
@@ -19,6 +20,7 @@ const NavBar = () => {
       <div className="w-full px-4">
         <SearchBar onSearchOpen={searchOpen} />
       </div>
+      <ThemeToggle />
       <div className="w-full justify-end lg:hidden">
         <SearchButton onClick={handleOnClickSearchIcon} searchOpen={searchOpen} />
         <label htmlFor="drawer" aria-label="open sidebar" className="btn btn-square btn-ghost">
