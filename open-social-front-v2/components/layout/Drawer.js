@@ -5,6 +5,7 @@ import Logo from "@/components/layout/Logo"
 import ProjectsList from "@/components/projects/ProjectsList"
 import FiltersCollapse from "@/components/filters/FiltersCollapse"
 import WhyOpenSocialMenuItem from "@/components/why/WhyOpenSocialMenuItem"
+import Footer from "@/components/layout/Footer"
 
 
 const sortedByOptions = [
@@ -47,9 +48,12 @@ const Drawer = () => {
   return(
     <div className="bg-base-100 drawer max-lg:drawer-end lg:drawer-open">
       <input id="drawer" type="checkbox" className="drawer-toggle" />
-      <div className="drawer-content">
+      <div className="drawer-content flex flex-col min-h-screen">
         <NavBar />
-        <ProjectsList sortedBy={sortedBy} topics={topics} languages={languages}/>
+        <div className="flex-1">
+          <ProjectsList sortedBy={sortedBy} topics={topics} languages={languages}/>
+        </div>
+        <Footer />
       </div>
       <div className="drawer-side">
         <label htmlFor="drawer" aria-label="close sidebar" className="drawer-overlay"></label>
