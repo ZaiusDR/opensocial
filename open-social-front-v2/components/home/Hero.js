@@ -9,14 +9,15 @@ const Hero = (props) => {
         <div>
           <div className="max-w-screen pb-18 animate-slide-up">
             <h1 className="text-5xl font-black tracking-tight text-white">
-              Welcome to <span className="bg-gradient-to-r from-amber-300 via-orange-400 to-rose-400 bg-clip-text text-transparent">OpenSocial</span>!
+              Discover <span className="bg-gradient-to-r from-amber-300 via-orange-400 to-rose-400 bg-clip-text text-transparent">OpenSocial</span>
             </h1>
-            <p className="text-3xl py-6 text-white/90">A Social Impact Open Source Projects Aggregator</p>
+            <p className="text-xl py-6 text-white/80 max-w-xl mx-auto">Browse open-source projects tackling climate change, poverty, social justice, and more — filtered by topic, language, and activity.</p>
+            <p className="text-2xl font-black tracking-tight text-white/90 mb-6">Let&apos;s code a better World!! 🦄</p>
             <button
               className="btn btn-lg m-3 uppercase gradient-btn shadow-lg shadow-orange-500/25 hover:shadow-orange-500/40 hover:scale-105 transition-all"
               onClick={props.onClick}
             >
-              Start Exploring
+              Explore Projects
             </button>
           </div>
           <SubHero />
