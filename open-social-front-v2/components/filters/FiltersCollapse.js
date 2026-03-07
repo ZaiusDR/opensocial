@@ -24,7 +24,7 @@ const FiltersCollapse = (props) => {
       onClick={handleOnClickCollapse}
     >
       <div className="flex collapse-title text-xl font-medium text-base-content">
-        <Image className="mr-1" src={filterIcon} width={14} height={14} alt="Filter Icon" />Filters
+        <Image className="mr-1 [[data-theme=opensocial-dark]_&]:invert" src={filterIcon} width={14} height={14} alt="Filter Icon" />Filters
       </div>
       <div className="collapse-content cursor-auto">
         <SortedSelect onSelect={props.onSelectSortedBy} sortedByOptions={props.sortedByOptions} />
