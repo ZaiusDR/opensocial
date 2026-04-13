@@ -5,6 +5,7 @@ import Logo from "@/components/layout/Logo"
 import ProjectsList from "@/components/projects/ProjectsList"
 import FiltersCollapse from "@/components/filters/FiltersCollapse"
 import WhyOpenSocialMenuItem from "@/components/why/WhyOpenSocialMenuItem"
+import Footer from "@/components/layout/Footer"
 
 
 const sortedByOptions = [
@@ -31,6 +32,7 @@ const Drawer = () => {
   const [sortedBy, setSortedBy] = useState("")
   const [topics, setTopics] = useState("")
   const [languages, setLanguages] = useState("")
+  const [search, setSearch] = useState("")
 
   const handleOnSelectSortedBy = (event) => {
     setSortedBy(event.target.value)
@@ -44,12 +46,19 @@ const Drawer = () => {
     setLanguages(event.target.value)
   }
 
+  const handleOnSearch = (query) => {
+    setSearch(query)
+  }
+
   return(
     <div className="bg-base-100 drawer max-lg:drawer-end lg:drawer-open">
       <input id="drawer" type="checkbox" className="drawer-toggle" />
-      <div className="drawer-content">
-        <NavBar />
-        <ProjectsList sortedBy={sortedBy} topics={topics} languages={languages}/>
+      <div className="drawer-content flex flex-col min-h-screen">
+        <NavBar onSearch={handleOnSearch} />
+        <div className="flex-1">
+          <ProjectsList sortedBy={sortedBy} topics={topics} languages={languages} search={search}/>
+        </div>
+        <Footer />
       </div>
       <div className="drawer-side">
         <label htmlFor="drawer" aria-label="close sidebar" className="drawer-overlay"></label>

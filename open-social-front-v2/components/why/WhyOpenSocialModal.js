@@ -5,64 +5,51 @@ const WhyOpenSocialModal = () => {
         <div className="absolute top-0 left-0 right-0 h-1 gradient-card-accent" />
         <h3><b>The problem</b></h3>
         <p>
-          {`Searching for Open Source projects aimed to have any social impact can be
-            very difficult. The projects are scattered around Github (which is huge),
-            there are tons of abandoned projects, or they simply didn't get to have
-            enough collaborators to keep going.`}
+          Finding open-source projects that are genuinely tackling social issues is harder than it should be.
+          GitHub is vast, and most searches return abandoned repositories, projects with no contributors, or results buried under unrelated noise.
         </p>
         <p>
-          {`I found myself, spending hours trying to find something meaningful, with
-            enough activity and I just simply gave up. Other than some curated lists
-            in some outdated pages is what I could find. So, what if tried to
-            automatically collect them, gather activity stats and put them together
-            in a single place, so others can easily find a project to contribute with?`}
+          After spending hours looking for something meaningful — with real activity and a community behind it — and coming up empty,
+          the idea was born: automatically collect these projects, enrich them with activity data, and surface them in one place.
         </p>
 
         <h3><b>What is OpenSocial?</b></h3>
         <p>
-          {`OpenSocial is an opinionated collection of Open-Source projects,
-            including their activity for the last six months, gathered from Github
-            based on different searches by terms related to social issues.`}
+          OpenSocial scrapes GitHub for repositories tagged with social-impact topics and presents them through a searchable, filterable interface.
+          Every project includes six months of activity history so you can tell at a glance whether it&apos;s actively maintained.
         </p>
         <p>
-          {`The Projects can be sorted by different criteria, so it's easier for you
-            to find the one you want. (Bigger communities, more activity and
-            delivery rate, or maybe more Issues to solve, etc...)`}
+          You can sort by community size, activity, delivery rate, or open issues — whatever matters most to the kind of contribution you want to make.
         </p>
         <p>
-          The current keywords are:
+          Topics currently tracked:
         </p>
-          <ul>
-            <li><i>Climate Change</i></li>
-            <li><i>Feminism</i></li>
-            <li><i>Humanitarian</i></li>
-            <li><i>Non-profit</i></li>
-            <li><i>Participatory Democracy</i></li>
-            <li><i>Poverty</i></li>
-            <li><i>Social Justice</i></li>
-            <li><i>Social Change</i></li>
-          </ul>
+        <ul>
+          <li><i>Climate Change</i></li>
+          <li><i>Feminism</i></li>
+          <li><i>Humanitarian</i></li>
+          <li><i>Non-profit</i></li>
+          <li><i>Participatory Democracy</i></li>
+          <li><i>Poverty</i></li>
+          <li><i>Social Justice</i></li>
+          <li><i>Social Change</i></li>
+        </ul>
         <p>
-          But the list will grow to include more.
+          More topics will be added over time.
         </p>
         <p>
-          The <b>objective</b> is to give people the possibility to find a
-          project they want to collaborate with. And also, give social impact
-          projects more visibility, so more people contribute on them.
+          The goal is simple: help developers find a project worth contributing to, and give social-impact projects the visibility they deserve.
         </p>
-        <h3><b>Project Rating</b></h3>
+        <h3><b>Project rating</b></h3>
         <p>
-          The Rate of a project in OpenSocial is calculated based mainly in the
-          latest <b> Commits Activity</b>, the number of <b>Open Issues</b> and
-          the number of <b>Contributors</b> of a project.
-          I got inspired by the <a href={"https://github.com/ossf/criticality_score"}>Criticality Score Project</a>,
-          and just implemented a simplified version of their algorithm.
+          Each project is scored based on its recent <b>commit activity</b>, number of <b>open issues</b>, and <b>contributor count</b>.
+          The algorithm is a simplified version of the{" "}
+          <a href={"https://github.com/ossf/criticality_score"}>OpenSSF Criticality Score</a> — a battle-tested model for measuring project health.
         </p>
-        <h3><b>Finally</b></h3>
+        <h3><b>Let&apos;s code a better World!! 🦄</b></h3>
         <p>
-          {`As developers we have the opportunity to be part of the Open Source
-            philosophy's beauty, and have an impact on the society. So... `}
-          <b>{`Let's code a better World!! 🦄`}</b>
+          As developers, we have a rare opportunity: our skills can directly drive social change.
+          Find your cause, pick a project, and start contributing.
         </p>
       </article>
       <form method="dialog" className="modal-backdrop">
