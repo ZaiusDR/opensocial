@@ -33,11 +33,12 @@ def entrypoint(event, context):
         sorted_by = _get_query_parameter(event, 'queryStringParameters', 'sorted_by', None)
         topics = _get_query_parameter(event, 'multiValueQueryStringParameters','topics', None)
         languages = _get_query_parameter(event, 'multiValueQueryStringParameters','languages', None)
+        query = _get_query_parameter(event, 'queryStringParameters', 'query', None)
         if topics:
             topics = [topic.replace("'", '') for topic in topics]
         if languages:
             languages = [language.replace("'", '') for language in languages]
-        response = repository.get_projects(mongo_client, page, sorted_by, topics, languages)
+        response = repository.get_projects(mongo_client, page, sorted_by, topics, languages, query)
 
     elif event['path'] == '/autocomplete':
         query = _get_query_parameter(event, 'queryStringParameters', 'query', None)

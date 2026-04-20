@@ -1,14 +1,16 @@
-import { useEffect, useState } from "react"
+import { useCallback, useEffect, useState } from "react"
 
 const GoToTopButton = () => {
   const [showGoTop, setShowGoTop] = useState(false)
-  useEffect(() => {
-    window.addEventListener('scroll', handleVisibleButton)
+
+  const handleVisibleButton = useCallback(() => {
+    setShowGoTop( window.scrollY > 1000 )
   }, [])
 
-  const handleVisibleButton = () => {
-    setShowGoTop( window.scrollY > 1000 )
-  }
+  useEffect(() => {
+    window.addEventListener('scroll', handleVisibleButton)
+    return () => window.removeEventListener('scroll', handleVisibleButton)
+  }, [handleVisibleButton])
 
   const handleScrollUp = () => {
     window.scrollTo( { left: 0, top: 0, behavior: 'smooth' } )
@@ -16,7 +18,7 @@ const GoToTopButton = () => {
 
   return (
     <button
-      className={`${showGoTop ? "" : "hidden"} btn btn-circle btn-primary !fixed bottom-8 end-8 shadow-md animate-fade`}
+      className={`${showGoTop ? "" : "hidden"} btn btn-circle !fixed bottom-8 end-8 shadow-md animate-fade gradient-btn hover:scale-110 transition-transform`}
       onClick={handleScrollUp}
     >
       <span className="[&>svg]:w-6">

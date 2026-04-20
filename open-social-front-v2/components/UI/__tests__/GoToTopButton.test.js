@@ -60,6 +60,14 @@ describe('GoToTopButton Component', () => {
     expect(window.scrollTo).toHaveBeenCalledWith({ left: 0, top: 0, behavior: 'smooth' })
   })
 
+  it('should remove scroll listener on unmount', () => {
+    jest.spyOn(window, 'removeEventListener')
+    const { unmount } = render(<GoToTopButton />)
+    unmount()
+
+    expect(window.removeEventListener).toHaveBeenCalledWith('scroll', expect.any(Function))
+  })
+
   it('should hide when scrolled back to the top', () => {
     render(<GoToTopButton />)
     window.scrollY = 1001

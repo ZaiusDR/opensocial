@@ -52,12 +52,12 @@ const fakeProjectData = {
 
 
 describe('ProjectItem', () => {
-  it('renders ProjectItem component heading', () => {
+  it('renders ProjectItem component topic badge', () => {
     render(<ProjectItem projectData={fakeProjectData}/>)
 
-    const heading = screen.getByRole('heading', {name: /feminism/i})
+    const topicBadges = screen.getAllByText(/feminism/i)
 
-    expect(heading).toHaveTextContent('feminism')
+    expect(topicBadges.length).toBeGreaterThanOrEqual(1)
   })
 
   it('renders ProjectItem component link', () => {

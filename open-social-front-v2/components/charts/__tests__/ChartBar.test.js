@@ -16,7 +16,7 @@ describe('ChartBar Component', () => {
   it('should not display the number if commits are zero', () => {
     const zeroCommitsDataPoint = { month: '2023-11', commits: 0 }
     const { container } = render(<ChartBar dataPoint={zeroCommitsDataPoint} max={maxCommits} />)
-    const barElement = container.querySelector('.bg-primary')
+    const barElement = container.querySelector('.gradient-card-accent')
 
     expect(barElement).toBeEmptyDOMElement()
   })

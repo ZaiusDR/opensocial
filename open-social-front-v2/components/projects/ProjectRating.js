@@ -8,14 +8,14 @@ const ProjectRating = (props) => {
   }
 
   return(
-    <div className="rating rating-half">
+    <div className="rating rating-half rating-sm">
       {Array.apply(0, Array(10)).map(function (x, i) {
         return <input
           key={i}
           type="radio"
           name={`rating-${props.id}`}
           disabled={true}
-          className={`bg-primary mask mask-star-2 ${getHalfType(i)} cursor-default`}
+          className={`bg-secondary mask mask-star-2 ${getHalfType(i)} cursor-default`}
           {...getIsChecked(props.rating, i)}
         />
       })}

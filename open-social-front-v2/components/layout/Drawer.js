@@ -5,6 +5,7 @@ import Logo from "@/components/layout/Logo"
 import ProjectsList from "@/components/projects/ProjectsList"
 import FiltersCollapse from "@/components/filters/FiltersCollapse"
 import WhyOpenSocialMenuItem from "@/components/why/WhyOpenSocialMenuItem"
+import Footer from "@/components/layout/Footer"
 
 
 const sortedByOptions = [
@@ -31,6 +32,7 @@ const Drawer = () => {
   const [sortedBy, setSortedBy] = useState("")
   const [topics, setTopics] = useState("")
   const [languages, setLanguages] = useState("")
+  const [search, setSearch] = useState("")
 
   const handleOnSelectSortedBy = (event) => {
     setSortedBy(event.target.value)
@@ -44,20 +46,28 @@ const Drawer = () => {
     setLanguages(event.target.value)
   }
 
+  const handleOnSearch = (query) => {
+    setSearch(query)
+  }
+
   return(
     <div className="bg-base-100 drawer max-lg:drawer-end lg:drawer-open">
       <input id="drawer" type="checkbox" className="drawer-toggle" />
-      <div className="drawer-content">
-        <NavBar />
-        <ProjectsList sortedBy={sortedBy} topics={topics} languages={languages}/>
+      <div className="drawer-content flex flex-col min-h-screen">
+        <NavBar onSearch={handleOnSearch} />
+        <div className="flex-1">
+          <ProjectsList sortedBy={sortedBy} topics={topics} languages={languages} search={search}/>
+        </div>
+        <Footer />
       </div>
       <div className="drawer-side">
         <label htmlFor="drawer" aria-label="close sidebar" className="drawer-overlay"></label>
-        <aside className="menu h-full p-0 bg-base-200 w-80">
-          <div className="flex w-full h-16 items-center justify-center shadow-sm shadow-gray-300 z-30">
+        <aside className="flex flex-col h-full w-80 gradient-sidebar">
+          <div className="flex w-full h-16 items-center justify-center border-b border-base-300/50 z-30">
             <Logo visible="max-lg:hidden" />
           </div>
-          <ul className="menu mb-0 w-80 bg-base-200 text-base-content">
+          <div className="flex-1 p-4">
+            <h3 className="text-xs font-semibold uppercase tracking-wider text-base-content/60 mb-2 px-2">Refine Results</h3>
             <FiltersCollapse
               onSelectSortedBy={handleOnSelectSortedBy}
               sortedByOptions={sortedByOptions}
@@ -66,8 +76,10 @@ const Drawer = () => {
               onSelectLanguages={handleOnSelectLanguages}
               languages={languages}
             />
+          </div>
+          <div className="p-4 mt-auto">
             <WhyOpenSocialMenuItem />
-          </ul>
+          </div>
         </aside>
       </div>
     </div>

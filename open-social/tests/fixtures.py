@@ -4,7 +4,7 @@ from open_social_core.domain import github_project
 
 
 github_projects = [
-    github_project.GithubProject(
+    github_project.GithubProjectDTO(
         project_name='project_1',
         full_name='user1/project_1',
         avatar_url='fake_url_1',
@@ -24,10 +24,9 @@ github_projects = [
         commits_graph_data={},
         rate=0.8,
         topic='feminism',
-        sorting=0,
-        ttl=1616659119
+        sorting=0
     ),
-    github_project.GithubProject(
+    github_project.GithubProjectDTO(
         project_name='project_2',
         full_name='user2/project_2',
         avatar_url='fake_url_2',
@@ -47,13 +46,12 @@ github_projects = [
         commits_graph_data={},
         rate=0.23,
         topic='feminism',
-        sorting=0,
-        ttl=1616659119
+        sorting=0
     )
 ]
 
 updated_github_projects = [
-    github_project.GithubProject(
+    github_project.GithubProjectDTO(
         project_name='project_1',
         full_name='user1/project_1',
         avatar_url='fake_url_1',
@@ -73,10 +71,9 @@ updated_github_projects = [
         commits_graph_data={},
         rate=0.8,
         topic='feminism',
-        sorting=0,
-        ttl=1616659119
+        sorting=0
     ),
-    github_project.GithubProject(
+    github_project.GithubProjectDTO(
         project_name='project_2',
         full_name='user2/project_2',
         avatar_url='fake_url_2',
@@ -96,13 +93,12 @@ updated_github_projects = [
         commits_graph_data={},
         rate=0.23,
         topic='feminism',
-        sorting=0,
-        ttl=1616659119
+        sorting=0
     )
 ]
 
 github_project_null_language = [
-    github_project.GithubProject(
+    github_project.GithubProjectDTO(
         project_name='project_1',
         full_name='user1/project_1',
         avatar_url='fake_url_1',
@@ -122,8 +118,7 @@ github_project_null_language = [
         commits_graph_data={},
         rate=0.8,
         topic='feminism',
-        sorting=0,
-        ttl=1616659119
+        sorting=0
     )
 ]
 
@@ -132,7 +127,7 @@ def generate_github_projects_pagination():
     generated_projects = []
     for i in range(1, 15):
         generated_projects.append(
-            github_project.GithubProject(
+            github_project.GithubProjectDTO(
                 project_name=f'project_{i}',
                 full_name=f'user2/project_{i}',
                 avatar_url=f'fake_url_{i}',
@@ -152,8 +147,7 @@ def generate_github_projects_pagination():
                 commits_graph_data={},
                 rate=f'0.{i}',
                 topic=f'topic_{i}',
-                sorting=0,
-                ttl=1616659119
+                sorting=0
             )
         )
 

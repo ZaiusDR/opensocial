@@ -1,12 +1,13 @@
 from datetime import datetime
-from dateutil import relativedelta
-from datetime import timedelta
+from typing import Optional
 
-from domain import github_project
+from dateutil import relativedelta
+
+from domain.github_project import GithubProjectDTO
 from infrastructure import rate_calculator
 
 
-def parse_project_activity(project, topic):
+def parse_project_activity(project: dict, topic: str) -> Optional[GithubProjectDTO]:
     contributors = _get_contributors(project)
     total_commits = project['defaultBranchRef']['target']['history']['totalCount'] \
         if project['defaultBranchRef'] else 0
@@ -14,11 +15,11 @@ def parse_project_activity(project, topic):
     if total_commits == 0:
         return None
 
-    return github_project.GithubProject(
+    return GithubProjectDTO(
         project_name=project['name'],
         full_name=project['nameWithOwner'],
         avatar_url=project['owner']['avatarUrl'],
-        description=_get_ellipsized_description(project['description']),
+        description=_get_truncated_description(project['description']),
         homepage=project['homepageUrl'],
         contributors=contributors,
         open_issues=project['issues']['totalCount'],
@@ -36,18 +37,17 @@ def parse_project_activity(project, topic):
             project['createdAt'], project['pushedAt'], contributors, total_commits
         ),
         topic=topic,
-        sorting=0,
-        ttl=int((datetime.today() + timedelta(days=7)).timestamp())
+        sorting=0
     )
 
 
-def _get_ellipsized_description(description):
+def _get_truncated_description(description: str) -> str:
     if description and len(description) > 600:
         description = description[:600] + '...'
     return description
 
 
-def _get_commits_graph_data(project):
+def _get_commits_graph_data(project: dict) -> list[dict]:
     commits_graph_data = []
 
     for i in range(5, -1, -1):
@@ -61,14 +61,14 @@ def _get_commits_graph_data(project):
     return commits_graph_data
 
 
-def _get_commits(project):
+def _get_commits(project: dict) -> list[str]:
     return [
         commit['node']['author']['date']
         for commit in project['defaultBranchRef']['target']['history']['edges']
     ] if project['defaultBranchRef'] else []
 
 
-def _get_contributors(project):
+def _get_contributors(project: dict) -> int:
     return len({
         commit['node']['author']['name']
         for commit in project['defaultBranchRef']['target']['history']['edges']

@@ -101,6 +101,51 @@ Resources:
           Properties:
             Schedule: 'cron(10 5 * * ? *)'
             Input: "{\"topic\": \"feminism\"}"
+        ScrapeDisabilityRightsEvent:
+          Type: Schedule
+          Properties:
+            Schedule: 'cron(20 5 * * ? *)'
+            Input: "{\"topic\": \"disability rights\"}"
+        ScrapeLgbtqRightsEvent:
+          Type: Schedule
+          Properties:
+            Schedule: 'cron(30 5 * * ? *)'
+            Input: "{\"topic\": \"lgbtq rights\"}"
+        ScrapeRefugeesEvent:
+          Type: Schedule
+          Properties:
+            Schedule: 'cron(40 5 * * ? *)'
+            Input: "{\"topic\": \"refugees\"}"
+        ScrapeRacialJusticeEvent:
+          Type: Schedule
+          Properties:
+            Schedule: 'cron(50 5 * * ? *)'
+            Input: "{\"topic\": \"racial justice\"}"
+        ScrapeRenewableEnergyEvent:
+          Type: Schedule
+          Properties:
+            Schedule: 'cron(0 6 * * ? *)'
+            Input: "{\"topic\": \"renewable energy\"}"
+        ScrapeBiodiversityEvent:
+          Type: Schedule
+          Properties:
+            Schedule: 'cron(10 6 * * ? *)'
+            Input: "{\"topic\": \"biodiversity\"}"
+        ScrapeDigitalRightsEvent:
+          Type: Schedule
+          Properties:
+            Schedule: 'cron(20 6 * * ? *)'
+            Input: "{\"topic\": \"digital rights\"}"
+        ScrapeMentalHealthEvent:
+          Type: Schedule
+          Properties:
+            Schedule: 'cron(30 6 * * ? *)'
+            Input: "{\"topic\": \"mental health\"}"
+        ScrapeDigitalInclusionEvent:
+          Type: Schedule
+          Properties:
+            Schedule: 'cron(40 6 * * ? *)'
+            Input: "{\"topic\": \"digital inclusion\"}"
 
   ApiCrudLambdaFunction:
     Type: AWS::Serverless::Function
