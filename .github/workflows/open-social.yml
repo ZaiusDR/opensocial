@@ -7,7 +7,7 @@ on:
 jobs:
   sam-app-docker:
     name: 'Sam App Build Docker Image'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-slim
 
     steps:
       - name: Checkout
@@ -41,7 +41,7 @@ jobs:
 
   infrastructure:
     name: 'Basic Infrastructure'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-slim
     defaults:
       run:
         working-directory: ./infrastructure
@@ -76,7 +76,7 @@ jobs:
 
   frontend:
     name: 'Run Frontend Tests'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-slim
     defaults:
       run:
         working-directory: ./open-social-front-v2
@@ -106,7 +106,7 @@ jobs:
 
   sam-app:
     name: 'SAM App Deploy'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-slim
     needs: ['sam-app-docker', 'infrastructure', 'frontend']
 
     steps:

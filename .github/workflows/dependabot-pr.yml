@@ -8,7 +8,7 @@ on:
 jobs:
   run_backend_tests:
     name: 'Run Backend Tests'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-slim
 
     steps:
       - name: Checkout
@@ -39,7 +39,7 @@ jobs:
 
   run_frontend_tests:
     name: 'Run Frontend Tests'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-slim
     defaults:
       run:
         working-directory: ./open-social-front-v2
