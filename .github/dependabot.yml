@@ -4,19 +4,45 @@ updates:
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
-      interval: "daily"
+      interval: "weekly"
+    groups:
+      github-actions:
+        patterns:
+          - "actions/*"
   # Maintain dependencies for JS
   - package-ecosystem: "npm"
     directory: "/open-social-front-v2"
     schedule:
-      interval: "daily"
+      interval: "weekly"
+    groups:
+      npm-prod:
+        dependency-type: "production"
+        update-types:
+          - "minor"
+          - "patch"
+      npm-dev:
+        dependency-type: "development"
+        update-types:
+          - "major"
+          - "minor"
+          - "patch"
   # Maintain dependencies for Python
   - package-ecosystem: "pip"
     directory: "/open-social"
     schedule:
-      interval: "daily"
+      interval: "weekly"
+    groups:
+      pip:
+        update-types:
+          - "minor"
+          - "patch"
   # Maintain dependencies for Terraform
   - package-ecosystem: "terraform"
     directory: "/infrastructure"
     schedule:
-      interval: "daily"
+      interval: "weekly"
+    groups:
+      terraform:
+        update-types:
+          - "minor"
+          - "patch"
