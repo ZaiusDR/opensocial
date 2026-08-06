@@ -10,9 +10,6 @@ Parameters:
   LambdaSecretsExtensionLayer:
     Type: String
     Default: "arn:aws:lambda:eu-west-1:015030872274:layer:AWS-Parameters-and-Secrets-Lambda-Extension:12"
-  NewRelicLayer:
-    Type: String
-    Default: "arn:aws:lambda:eu-west-1:451483290750:layer:NewRelicPython312:22"
   MongoURISecretArn:
     Type: String
     Default: "arn:aws:secretsmanager:eu-west-1:326499071401:secret:mongodb-uri-qYViNv"
@@ -59,7 +56,6 @@ Resources:
       Layers:
         - Ref: OpenSocialCoreLayer
         - Ref: LambdaSecretsExtensionLayer
-        - Ref: NewRelicLayer
       Events:
         ScrapeHumanitarianEvent:
           Type: Schedule
@@ -168,7 +164,6 @@ Resources:
       Layers:
         - Ref: OpenSocialCoreLayer
         - Ref: LambdaSecretsExtensionLayer
-        - Ref: NewRelicLayer
       Events:
         ListProjects:
           Type: Api
