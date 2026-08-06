@@ -2,6 +2,7 @@ version: 2
 updates:
   # Maintain dependencies for GitHub Actions
   - package-ecosystem: "github-actions"
+    rebase-strategy: disabled
     directory: "/"
     schedule:
       interval: "weekly"
@@ -11,6 +12,7 @@ updates:
           - "actions/*"
   # Maintain dependencies for JS
   - package-ecosystem: "npm"
+    rebase-strategy: disabled
     directory: "/open-social-front-v2"
     schedule:
       interval: "weekly"
@@ -28,6 +30,7 @@ updates:
           - "patch"
   # Maintain dependencies for Python
   - package-ecosystem: "pip"
+    rebase-strategy: disabled
     directory: "/open-social"
     schedule:
       interval: "weekly"
@@ -38,6 +41,7 @@ updates:
           - "patch"
   # Maintain dependencies for Terraform
   - package-ecosystem: "terraform"
+    rebase-strategy: disabled
     directory: "/infrastructure"
     schedule:
       interval: "weekly"
