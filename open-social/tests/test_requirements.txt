@@ -1,7 +1,7 @@
 -r ../project_scrapper/requirements.txt
 -r ../open_social_core/requirements.txt
-freezegun==1.5.1
+freezegun==1.5.5
 mongomock==4.3.0
-moto==5.0.24
-pytest==9.0.3
-pyyaml==6.0.2
+moto==5.2.2
+pytest==9.1.1
+pyyaml==6.0.3
