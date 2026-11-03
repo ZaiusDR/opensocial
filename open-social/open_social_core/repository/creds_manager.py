@@ -7,6 +7,11 @@ import boto3
 import requests
 
 
+_CONNECTION_STRING_CACHE = None
+_STS_CREDENTIALS_CACHE = None
+_STS_REFRESH_BUFFER_SECS = 300
+
+
 class Placeholders(enum.Enum):
     KEY_ID = '__key_id__'
     SECRET_KEY = '__secret_key__'
@@ -46,30 +51,40 @@ def _build_connection_string(connection_string, sts_credentials):
 
 
 def get_connection_string():
-    secret_id = 'mongodb-uri'
-    connection_string_secret = _get_secret(secret_id)['mongo_db_uri']
+    global _CONNECTION_STRING_CACHE
+
+    if _CONNECTION_STRING_CACHE is None:
+        secret_id = 'mongodb-uri'
+        _CONNECTION_STRING_CACHE = _get_secret(secret_id)['mongo_db_uri']
+
     sts_credentials = _get_sts_credentials()
-    encoded_connection_string = _build_connection_string(connection_string_secret, sts_credentials)
+    encoded_connection_string = _build_connection_string(_CONNECTION_STRING_CACHE, sts_credentials)
 
     return encoded_connection_string
 
 
 def _get_sts_credentials():
+    global _STS_CREDENTIALS_CACHE
+
     secret_id = 'mongodb-sts-credentials'
-    one_hour_in_secs = 3600
+    now = time.time()
+
+    if _STS_CREDENTIALS_CACHE is not None:
+        expiration = _STS_CREDENTIALS_CACHE.get('Expiration')
+        if expiration is not None and expiration > (now + _STS_REFRESH_BUFFER_SECS):
+            return _STS_CREDENTIALS_CACHE
 
     sts_credentials = _get_secret(secret_id)
 
-    if sts_credentials['Expiration'] <= time.time():
+    if sts_credentials.get('Expiration') is None or sts_credentials['Expiration'] <= now:
         sts_client = boto3.client('sts')
 
         response = sts_client.assume_role(
             RoleArn='arn:aws:iam::326499071401:role/mongo-db-rw',
             RoleSessionName='AssumeRole',
-            DurationSeconds=one_hour_in_secs
+            DurationSeconds=3600
         )
         sts_credentials = response['Credentials']
-
         sts_credentials.update({'Expiration': sts_credentials['Expiration'].timestamp()})
 
         secrets_manager_client = boto3.client('secretsmanager')
@@ -78,4 +93,5 @@ def _get_sts_credentials():
             SecretString=json.dumps(sts_credentials)
         )
 
-    return sts_credentials
+    _STS_CREDENTIALS_CACHE = sts_credentials
+    return _STS_CREDENTIALS_CACHE
