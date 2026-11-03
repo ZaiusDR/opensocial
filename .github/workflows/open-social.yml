@@ -7,7 +7,7 @@ on:
 jobs:
   sam-app-docker:
     name: 'Sam App Build Docker Image'
-    runs-on: ubuntu-slim
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout
