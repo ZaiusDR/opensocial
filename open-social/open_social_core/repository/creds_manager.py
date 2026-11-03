@@ -12,6 +12,12 @@ _STS_CREDENTIALS_CACHE = None
 _STS_REFRESH_BUFFER_SECS = 300
 
 
+def clear_caches():
+    global _CONNECTION_STRING_CACHE, _STS_CREDENTIALS_CACHE
+    _CONNECTION_STRING_CACHE = None
+    _STS_CREDENTIALS_CACHE = None
+
+
 class Placeholders(enum.Enum):
     KEY_ID = '__key_id__'
     SECRET_KEY = '__secret_key__'
