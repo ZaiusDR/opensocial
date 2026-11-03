@@ -106,7 +106,7 @@ jobs:
 
   sam-app:
     name: 'SAM App Deploy'
-    runs-on: ubuntu-slim
+    runs-on: ubuntu-latest
     needs: ['sam-app-docker', 'infrastructure', 'frontend']
 
     steps:
