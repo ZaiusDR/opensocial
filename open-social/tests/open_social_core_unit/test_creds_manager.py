@@ -14,6 +14,7 @@ from tests import fixtures
 @moto.mock_aws
 class TestCredsManager(unittest.TestCase):
     def setUp(self):
+        creds_manager.clear_caches()
         self.cache_extension_url = 'http://localhost:2773/secretsmanager/get'
         self.connection_string = 'mongodb://__key_id__:__secret_key__@localhost:27017?authMechanismProperties=AWS_SESSION_TOKEN:__session_token__'  # noqa
         self.fake_credentials = fixtures.fake_credentials
@@ -25,6 +26,7 @@ class TestCredsManager(unittest.TestCase):
         )
 
     def tearDown(self):
+        creds_manager.clear_caches()
         boto3.client('secretsmanager').delete_secret(SecretId='mongodb-sts-credentials')
 
     @freezegun.freeze_time('2024-11-19')
