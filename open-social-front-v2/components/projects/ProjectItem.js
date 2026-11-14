@@ -26,8 +26,8 @@ const ProjectItem = (props) => {
           )}
         </div>
       </figure>
-      <div className="card-body items-center">
-        <Link className="card-title link" href={props.projectData.project_url} target="_blank">
+      <div className="card-body items-center w-full">
+        <Link className="card-title link line-clamp-2 w-full text-center" href={props.projectData.project_url} target="_blank">
           {props.projectData.project_name}
         </Link>
         <ProjectRating id={props.projectData.full_name} rating={props.projectData.rate}/>
@@ -36,8 +36,8 @@ const ProjectItem = (props) => {
           stargazers={props.projectData.stargazers}
           contributors={props.projectData.contributors}
         />
-        <div className="divider m-1" />
-        <p className="line-clamp-3">{props.projectData.description}</p>
+        <div className="divider m-1 w-full" />
+        <p className="line-clamp-3 w-full text-sm">{props.projectData.description}</p>
         <Chart data={props.projectData.commits_graph_data}/>
       </div>
     </div>

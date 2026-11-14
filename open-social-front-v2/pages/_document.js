@@ -1,4 +1,5 @@
 import { Html, Head, Main, NextScript } from 'next/document'
+import Script from 'next/script'
 
 const themeScript = `
   (function() {
@@ -17,9 +18,9 @@ export default function Document() {
       <Head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <Script id="theme-script" strategy="beforeInteractive" dangerouslySetInnerHTML={{ __html: themeScript }} />
       </Head>
       <body className="antialiased">
-        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
         <Main />
         <NextScript />
       </body>
