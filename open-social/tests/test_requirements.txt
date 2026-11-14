@@ -2,6 +2,6 @@
 -r ../open_social_core/requirements.txt
 freezegun==1.5.5
 mongomock==4.3.0
-moto==5.2.2
-pytest==9.1.1
+moto==5.2.5
+pytest==9.2.0
 pyyaml==6.0.3
