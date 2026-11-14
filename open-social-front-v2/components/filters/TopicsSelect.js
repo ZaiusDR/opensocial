@@ -11,7 +11,7 @@ const TopicsSelect = (props) => {
       </label>
       <select className="select select-bordered select-sm w-full" defaultValue={"none"} onChange={props.onSelect} >
         <option disabled key={"none"} label={"None"} value={"none"} />
-        {isLoading ? null : data.map(topic =>
+        {isLoading ? null : data.sort().map(topic =>
           <option key={topic} label={topic.charAt(0).toUpperCase() + topic.slice(1)} value={topic} />
         )}
       </select>
