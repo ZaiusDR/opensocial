@@ -1,4 +1,4 @@
-boto3==1.44.1
+boto3==1.44.6
 gql[requests]==4.4.0
-pymongo[aws]==4.19.0
+pymongo[aws]==4.20.0
 requests==2.34.2
